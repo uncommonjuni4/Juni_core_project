@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JuniCore — Sign In</title>
+
+  <script>
+    (() => {
+      const saved = localStorage.getItem("junicore-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui"] },
+          boxShadow: {
+            card: "0 24px 80px rgba(15, 23, 42, .12)",
+            glow: "0 16px 45px rgba(37, 99, 235, .22)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Inter, sans-serif; }
+    .grid-pattern {
+      background-image:
+        linear-gradient(rgba(37,99,235,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.045) 1px, transparent 1px);
+      background-size: 34px 34px;
+    }
+    .dark .grid-pattern {
+      background-image:
+        linear-gradient(rgba(148,163,184,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148,163,184,.055) 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden bg-[#f6f9fc] text-slate-900 transition-colors duration-300 dark:bg-[#07111f] dark:text-slate-100">
+  <div class="grid-pattern fixed inset-0 pointer-events-none"></div>
+  <div class="pointer-events-none fixed -left-32 -top-32 h-[430px] w-[430px] rounded-full bg-blue-400/15 blur-3xl dark:bg-blue-500/10"></div>
+  <div class="pointer-events-none fixed -bottom-40 -right-32 h-[480px] w-[480px] rounded-full bg-cyan-400/15 blur-3xl dark:bg-cyan-500/10"></div>
+
+  <main class="relative min-h-screen">
+    <!-- Header -->
+    <header class="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-6 sm:px-8 lg:px-10">
+      <a href="#" class="flex items-center gap-3">
+        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 text-white shadow-glow">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </span>
+        <span>
+          <span class="block text-xl font-extrabold tracking-tight">JuniCore</span>
+          <span class="block text-[11px] font-semibold uppercase tracking-[.18em] text-slate-400">Education ERP</span>
+        </span>
+      </a>
+
+      <div class="flex items-center gap-2">
+        <button type="button"
+          class="hidden rounded-xl px-3 py-2 text-sm font-semibold text-slate-500 transition hover:bg-white hover:text-blue-600 dark:text-slate-400 dark:hover:bg-slate-800 sm:block">
+          <i class="fa-regular fa-circle-question mr-1.5"></i> Help
+        </button>
+
+        <button id="themeToggle" type="button"
+          class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:hover:border-blue-700"
+          aria-label="Toggle dark mode">
+          <i id="themeIcon" class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="mx-auto grid w-full max-w-7xl items-center gap-12 px-5 pb-12 pt-4 sm:px-8 lg:min-h-[calc(100vh-120px)] lg:grid-cols-[1.08fr_.92fr] lg:px-10 lg:pb-16">
+
+      <!-- Left -->
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold text-blue-700 dark:border-blue-900/70 dark:bg-blue-950/50 dark:text-blue-300">
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+          Unified Education Management Platform
+        </div>
+
+        <h1 class="max-w-xl text-4xl font-extrabold leading-[1.08] tracking-[-.04em] sm:text-5xl lg:text-6xl">
+          Your entire campus,
+          <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">connected.</span>
+        </h1>
+
+        <p class="mt-6 max-w-xl text-base leading-7 text-slate-500 dark:text-slate-400 sm:text-lg">
+          A single secure workspace for academics, learning, administration, examinations and campus operations.
+        </p>
+
+        <div class="mt-9 grid max-w-xl gap-3 sm:grid-cols-2">
+          <div class="group flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900/65">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/70 dark:text-blue-300">
+              <i class="fa-solid fa-book-open-reader"></i>
+            </span>
+            <div>
+              <p class="text-sm font-bold">Academics & LMS</p>
+              <p class="mt-0.5 text-xs text-slate-400">Courses, classes & learning</p>
+            </div>
+          </div>
+
+          <div class="group flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-cyan-200 dark:border-slate-800 dark:bg-slate-900/65">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cyan-50 text-cyan-600 dark:bg-cyan-950/60 dark:text-cyan-300">
+              <i class="fa-solid fa-chart-pie"></i>
+            </span>
+            <div>
+              <p class="text-sm font-bold">Smart Insights</p>
+              <p class="mt-0.5 text-xs text-slate-400">Reports & institutional data</p>
+            </div>
+          </div>
+
+          <div class="group flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900/65">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-300">
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <div>
+              <p class="text-sm font-bold">Secure Role Access</p>
+              <p class="mt-0.5 text-xs text-slate-400">Dedicated portals & permissions</p>
+            </div>
+          </div>
+
+          <div class="group flex items-center gap-4 rounded-2xl border border-slate-200/80 bg-white/75 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:border-emerald-200 dark:border-slate-800 dark:bg-slate-900/65">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-300">
+              <i class="fa-solid fa-building-columns"></i>
+            </span>
+            <div>
+              <p class="text-sm font-bold">Multi-Institution</p>
+              <p class="mt-0.5 text-xs text-slate-400">School, college & university</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-medium text-slate-400">
+          <span><i class="fa-solid fa-circle-check mr-1.5 text-emerald-500"></i> Secure access</span>
+          <span><i class="fa-solid fa-circle-check mr-1.5 text-emerald-500"></i> Role based</span>
+          <span><i class="fa-solid fa-circle-check mr-1.5 text-emerald-500"></i> Responsive</span>
+        </div>
+      </div>
+
+      <!-- Login Card -->
+      <div class="mx-auto w-full max-w-[490px]">
+        <div class="relative overflow-hidden rounded-[28px] border border-slate-200/90 bg-white/95 p-6 shadow-card backdrop-blur-xl transition-colors dark:border-slate-800 dark:bg-[#0c1828]/95 sm:p-8">
+          <div class="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-400"></div>
+
+          <div class="mb-7">
+            <div class="mb-5 flex items-center justify-between">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-300">
+                <i class="fa-solid fa-user-graduate text-lg"></i>
+              </span>
+              <span class="rounded-full bg-emerald-50 px-3 py-1.5 text-[11px] font-bold text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300">
+                <i class="fa-solid fa-lock mr-1"></i> Secure Login
+              </span>
+            </div>
+            <h2 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Welcome back</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">
+              Choose your portal and enter your account details.
+            </p>
+          </div>
+
+          <form id="loginForm" class="space-y-5">
+            <div>
+              <label for="portal" class="mb-2 block text-sm font-semibold">Select Portal</label>
+              <div class="relative">
+                <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-blue-500">
+                  <i class="fa-solid fa-layer-group"></i>
+                </span>
+                <select id="portal" required
+                  class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-10 text-sm text-slate-700 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:focus:border-blue-500">
+                  <option value="">Choose your portal</option>
+                  <optgroup label="Administration">
+                    <option value="super-admin">Super Admin</option>
+                    <option value="institute-admin">Institute Admin / Principal</option>
+                    <option value="hod">HOD / Dean</option>
+                    <option value="registrar">Registrar / Academic Affairs</option>
+                    <option value="quality-assurance">Quality Assurance</option>
+                  </optgroup>
+                  <optgroup label="Academic">
+                    <option value="teacher">Teacher / Lecturer</option>
+                    <option value="school-student">School Student</option>
+                    <option value="college-student">College Student</option>
+                    <option value="university-student">University Student</option>
+                    <option value="parent">Parent / Guardian</option>
+                  </optgroup>
+                  <optgroup label="Learning Management">
+                    <option value="lms-teacher">LMS — Teacher</option>
+                    <option value="lms-student">LMS — Student</option>
+                  </optgroup>
+                  <optgroup label="Examination">
+                    <option value="exam-controller">Exam Controller</option>
+                    <option value="invigilator">Invigilator</option>
+                  </optgroup>
+                  <optgroup label="Staff & Administration">
+                    <option value="accountant">Accountant</option>
+                    <option value="hr">HR Officer</option>
+                    <option value="librarian">Librarian</option>
+                    <option value="receptionist">Receptionist</option>
+                  </optgroup>
+                  <optgroup label="Admissions">
+                    <option value="applicant">Applicant</option>
+                    <option value="admission-staff">Admission Staff</option>
+                  </optgroup>
+                  <optgroup label="Campus Operations">
+                    <option value="hostel">Hostel Warden</option>
+                    <option value="transport">Transport Manager</option>
+                    <option value="security">Security / Gatepass Manager</option>
+                    <option value="sports">Sports Coordinator</option>
+                    <option value="clinic">Health / Campus Clinic</option>
+                    <option value="facilities">Facilities & Assets</option>
+                  </optgroup>
+                  <optgroup label="Support & Governance">
+                    <option value="it-support">IT Support / Helpdesk</option>
+                    <option value="auditor">Auditor / Compliance</option>
+                  </optgroup>
+                  <optgroup label="Extended Services">
+                    <option value="alumni">Alumni</option>
+                    <option value="career">Career & Placement</option>
+                    <option value="procurement">Procurement Officer</option>
+                    <option value="vendor">Vendor</option>
+                    <option value="research">Research & Grants</option>
+                    <option value="international-student">International Student Services</option>
+                    <option value="continuing-education">Continuing Education</option>
+                  </optgroup>
+                </select>
+                <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400">
+                  <i class="fa-solid fa-chevron-down text-xs"></i>
+                </span>
+              </div>
+            </div>
+
+            <div>
+              <label for="identifier" class="mb-2 block text-sm font-semibold">Email or User ID</label>
+              <div class="relative">
+                <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                  <i class="fa-regular fa-user"></i>
+                </span>
+                <input id="identifier" type="text" required autocomplete="username"
+                  placeholder="name@institution.edu"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:focus:border-blue-500">
+              </div>
+            </div>
+
+            <div>
+              <div class="mb-2 flex items-center justify-between">
+                <label for="password" class="text-sm font-semibold">Password</label>
+                <button type="button" class="text-xs font-bold text-blue-600 transition hover:text-blue-700 dark:text-blue-400">
+                  Forgot password?
+                </button>
+              </div>
+              <div class="relative">
+                <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+                <input id="password" type="password" required autocomplete="current-password"
+                  placeholder="Enter your password"
+                  class="w-full rounded-xl border border-slate-200 bg-slate-50 py-3.5 pl-11 pr-12 text-sm outline-none transition placeholder:text-slate-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 dark:border-slate-700 dark:bg-slate-900 dark:focus:border-blue-500">
+                <button id="passwordToggle" type="button"
+                  class="absolute inset-y-0 right-0 grid w-12 place-items-center text-slate-400 transition hover:text-blue-600"
+                  aria-label="Show password">
+                  <i id="eyeIcon" class="fa-regular fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between gap-3">
+              <label class="flex cursor-pointer items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                <input type="checkbox" class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+                Remember me
+              </label>
+              <span class="text-xs text-slate-400">
+                <i class="fa-solid fa-shield-halved mr-1 text-emerald-500"></i>
+                Protected access
+              </span>
+            </div>
+
+            <div id="messageBox" class="hidden rounded-xl border px-4 py-3 text-sm"></div>
+
+            <button type="submit"
+              class="group flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-3.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:from-blue-700 hover:to-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500/20">
+              Sign In
+              <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </form>
+
+          <div class="mt-7 border-t border-slate-100 pt-6 text-center dark:border-slate-800">
+            <p class="text-xs text-slate-400">Having trouble signing in?</p>
+            <button type="button" class="mt-2 text-sm font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400">
+              <i class="fa-solid fa-headset mr-1.5"></i> Contact Institution Support
+            </button>
+          </div>
+        </div>
+
+        <p class="mt-5 text-center text-xs text-slate-400">
+          © 2026 JuniCore · Privacy · Security · Help Center
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+    const password = document.getElementById("password");
+    const passwordToggle = document.getElementById("passwordToggle");
+    const eyeIcon = document.getElementById("eyeIcon");
+    const form = document.getElementById("loginForm");
+    const messageBox = document.getElementById("messageBox");
+
+    function updateThemeIcon() {
+      const dark = root.classList.contains("dark");
+      themeIcon.className = dark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+      themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    }
+
+    updateThemeIcon();
+
+    themeToggle.addEventListener("click", () => {
+      root.classList.toggle("dark");
+      localStorage.setItem("junicore-theme", root.classList.contains("dark") ? "dark" : "light");
+      updateThemeIcon();
+    });
+
+    passwordToggle.addEventListener("click", () => {
+      const show = password.type === "password";
+      password.type = show ? "text" : "password";
+      eyeIcon.className = show ? "fa-regular fa-eye-slash" : "fa-regular fa-eye";
+    });
+
+    function showMessage(text, type) {
+      messageBox.className =
+        "rounded-xl border px-4 py-3 text-sm " +
+        (type === "success"
+          ? "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-300"
+          : "border-red-200 bg-red-50 text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300");
+
+      messageBox.innerHTML =
+        `<i class="fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-exclamation"} mr-2"></i>${text}`;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const portal = document.getElementById("portal").value;
+      const identifier = document.getElementById("identifier").value.trim();
+
+      if (!portal || !identifier || !password.value.trim()) {
+        showMessage("Please complete all required fields.", "error");
+        return;
+      }
+
+      showMessage("Login interface is ready. Authentication will be connected in the React/API phase.", "success");
+    });
+  </script>
+</body>
+</html>
