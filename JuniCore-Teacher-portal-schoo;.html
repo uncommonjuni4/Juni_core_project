@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,37 +19,6 @@
 </head>
 
 <body class="min-h-screen bg-slate-50 font-[Inter] text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
-  <!-- JUNICORE TEACHER PORTAL LOADER -->
-  <div id="teacherPortalLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950 transition-opacity duration-500">
-    <div class="w-full max-w-[360px] px-6 text-center">
-      <div class="relative mx-auto h-24 w-24">
-        <div class="absolute inset-0 rounded-[28px] bg-blue-600/20 blur-xl"></div>
-        <div class="absolute inset-2 animate-spin rounded-[24px] border-2 border-blue-400/20 border-t-blue-500"></div>
-        <div class="absolute inset-4 grid place-items-center rounded-[20px] bg-gradient-to-br from-blue-600 to-indigo-600 shadow-2xl shadow-blue-950/50">
-          <i class="fa-solid fa-chalkboard-user text-2xl text-white"></i>
-        </div>
-      </div>
-
-      <div class="mt-6">
-        <div class="flex items-center justify-center gap-2">
-          <span class="text-2xl font-black tracking-tight text-white">Juni<span class="text-blue-400">Core</span></span>
-        </div>
-        <p class="mt-1 text-[9px] font-black uppercase tracking-[.18em] text-blue-300">School Teacher Portal</p>
-        <p id="teacherLoaderStatus" class="mt-4 text-[9px] font-bold text-slate-400">Preparing your teaching workspace...</p>
-      </div>
-
-      <div class="mt-5 overflow-hidden rounded-full bg-slate-800">
-        <div id="teacherLoaderBar" class="h-1.5 w-0 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-[width] duration-300"></div>
-      </div>
-
-      <div class="mt-3 flex items-center justify-center gap-2 text-[8px] font-bold text-slate-500">
-        <span id="teacherLoaderPercent">0%</span>
-        <span>•</span>
-        <span>Secure Portal Access</span>
-      </div>
-    </div>
-  </div>
-
 
   <div id="mobileOverlay" onclick="toggleSidebar(false)" class="fixed inset-0 z-40 hidden bg-slate-950/60 lg:hidden"></div>
 
@@ -3646,7 +3614,7 @@
       </section>
 
       <footer class="mt-8 flex flex-col gap-2 border-t border-slate-200 py-5 text-[10px] font-semibold text-slate-400 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
-        <span>JuniCore School Teacher Portal · V72 Professional Loader Locked</span>
+        <span>JuniCore School Teacher Portal · V71 Payroll Dual Proof System Locked</span>
         <span>Frontend functional prototype · HTML + Tailwind + JavaScript</span>
       </footer>
     </main>
@@ -4102,47 +4070,7 @@
 
     let timetableHistoryPeriod = 'week';
 
-
-    function startTeacherPortalLoader(){
-      const loader=document.getElementById('teacherPortalLoader');
-      const bar=document.getElementById('teacherLoaderBar');
-      const percent=document.getElementById('teacherLoaderPercent');
-      const status=document.getElementById('teacherLoaderStatus');
-      if(!loader||!bar||!percent||!status)return;
-
-      const stages=[
-        {p:24,t:'Loading teacher profile...'},
-        {p:48,t:'Preparing classes & students...'},
-        {p:72,t:'Syncing academic workspace...'},
-        {p:92,t:'Finalizing portal access...'},
-        {p:100,t:'Teacher Portal ready'}
-      ];
-
-      let i=0;
-      const runStage=()=>{
-        if(i>=stages.length){
-          setTimeout(()=>hideTeacherPortalLoader(),180);
-          return;
-        }
-        const s=stages[i++];
-        bar.style.width=`${s.p}%`;
-        percent.textContent=`${s.p}%`;
-        status.textContent=s.t;
-        setTimeout(runStage,170);
-      };
-
-      setTimeout(runStage,80);
-    }
-
-    function hideTeacherPortalLoader(){
-      const loader=document.getElementById('teacherPortalLoader');
-      if(!loader)return;
-      loader.classList.add('opacity-0','pointer-events-none');
-      setTimeout(()=>loader.remove(),520);
-    }
-
     function init(){
-      startTeacherPortalLoader();
       const savedTheme = localStorage.getItem('juniTeacherTheme');
       const initialTheme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'light';
       setTheme(initialTheme);
@@ -11666,8 +11594,6 @@ function profileEditableIds(){
       document.querySelectorAll('.field-label').forEach(el=>el.className='field-label text-[10px] font-black uppercase tracking-[.08em] text-slate-400');
       init();
     });
-  
-    window.addEventListener('load',()=>setTimeout(()=>{if(document.getElementById('teacherPortalLoader'))hideTeacherPortalLoader();},1800));
-</script>
+  </script>
 </body>
 </html>
