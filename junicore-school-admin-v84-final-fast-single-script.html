@@ -124,6 +124,7 @@
       <p class="px-3 pb-2 pt-5 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Administration</p>
       <button onclick="openPage('permissions', this)" data-nav="permissions" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-user-shield w-5 text-center"></i><span>Users & Permissions</span></button>
       <button onclick="openPage('settings', this)" data-nav="settings" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-gear w-5 text-center"></i><span>School Settings</span></button>
+      <button onclick="openPage('websiteManagement', this)" data-nav="websiteManagement" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-globe w-5 text-center"></i><span>Website Management</span><span class="ml-auto rounded-full bg-teal-50 px-2 py-0.5 text-[9px] font-extrabold text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">PUBLIC</span></button>
     </nav>
   </aside>
 
@@ -3376,6 +3377,397 @@
       </section>
 
 
+
+      <!-- Website Management Page -->
+      
+<section id="websiteManagementPage" class="hidden min-w-0">
+  <!-- Header -->
+  <div class="mb-5 flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+    <div class="min-w-0">
+      <div class="mb-2 flex flex-wrap items-center gap-2">
+        <span class="inline-flex items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-[10px] font-extrabold text-teal-700 dark:border-teal-900/60 dark:bg-teal-950/30 dark:text-teal-300">
+          <i class="fa-solid fa-globe"></i> PUBLIC WEBSITE
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-[10px] font-extrabold text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300">
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span> WEBSITE ONLINE
+        </span>
+        <span id="websiteSaveState" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[10px] font-extrabold text-slate-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+          <i class="fa-solid fa-cloud"></i> LIVE SYNCED
+        </span>
+      </div>
+      <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-zinc-100 sm:text-3xl">Website Management</h1>
+      <p class="mt-1 max-w-4xl text-xs leading-5 text-slate-500 dark:text-zinc-400 sm:text-sm sm:leading-6">
+        Public website control center. Existing Teachers, Results, School Events and School Profile remain the source of truth; this module controls what becomes public and manages website-only content.
+      </p>
+    </div>
+
+    <div class="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap">
+      <a href="junicore-school-main-website-FINAL-LOCKED.html" target="_blank"
+         class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[11px] font-extrabold text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i><span>Preview Site</span>
+      </a>
+      <button onclick="saveWebsiteDraft()"
+              class="rounded-xl border border-teal-200 bg-teal-50 px-3 py-2.5 text-[11px] font-extrabold text-teal-700 transition hover:bg-teal-100 dark:border-teal-900/50 dark:bg-teal-950/25 dark:text-teal-300">
+        <i class="fa-solid fa-floppy-disk mr-1.5"></i>Save Draft
+      </button>
+      <button onclick="publishWebsiteChanges()"
+              class="col-span-2 rounded-xl bg-teal-600 px-4 py-2.5 text-[11px] font-extrabold text-white shadow-sm transition hover:bg-teal-700 sm:col-span-1">
+        <i class="fa-solid fa-bullhorn mr-1.5"></i>Publish Changes
+      </button>
+    </div>
+  </div>
+
+  <!-- Live summary -->
+  <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div class="flex items-start justify-between gap-3">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-teal-50 text-teal-700 dark:bg-teal-950/30 dark:text-teal-300"><i class="fa-solid fa-eye"></i></span>
+        <span class="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-extrabold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">LIVE</span>
+      </div>
+      <p id="websitePublishedCount" class="mt-3 text-2xl font-extrabold">0 / 0</p>
+      <p class="mt-1 text-[10px] font-semibold text-slate-400">Public areas enabled</p>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div class="flex items-start justify-between gap-3">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-violet-50 text-violet-700 dark:bg-violet-950/30 dark:text-violet-300"><i class="fa-solid fa-person-chalkboard"></i></span>
+        <button onclick="openPage('teachers',document.querySelector('[data-nav=teachers]'))" class="text-[9px] font-extrabold text-teal-700 dark:text-teal-300">SOURCE →</button>
+      </div>
+      <p id="websitePublicTeacherCount" class="mt-3 text-2xl font-extrabold">0</p>
+      <p class="mt-1 text-[10px] font-semibold text-slate-400">Teacher profiles public</p>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div class="flex items-start justify-between gap-3">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300"><i class="fa-solid fa-trophy"></i></span>
+        <button onclick="openPage('results',document.querySelector('[data-nav=results]'))" class="text-[9px] font-extrabold text-teal-700 dark:text-teal-300">SOURCE →</button>
+      </div>
+      <p id="websiteFeaturedAchieverCount" class="mt-3 text-2xl font-extrabold">0</p>
+      <p class="mt-1 text-[10px] font-semibold text-slate-400">Featured achievers</p>
+    </article>
+
+    <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <div class="flex items-start justify-between gap-3">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-sky-50 text-sky-700 dark:bg-sky-950/30 dark:text-sky-300"><i class="fa-solid fa-calendar-days"></i></span>
+        <button onclick="openPage('schoolEvents',document.querySelector('[data-nav=schoolEvents]'))" class="text-[9px] font-extrabold text-teal-700 dark:text-teal-300">SOURCE →</button>
+      </div>
+      <p id="websitePublicEventCount" class="mt-3 text-2xl font-extrabold">0</p>
+      <p class="mt-1 text-[10px] font-semibold text-slate-400">Events visible publicly</p>
+    </article>
+  </div>
+
+  <!-- Source-of-truth rule -->
+  <section class="mt-4 rounded-2xl border border-cyan-200 bg-cyan-50 p-4 dark:border-cyan-900/50 dark:bg-cyan-950/15">
+    <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+      <div class="max-w-4xl">
+        <h2 class="text-xs font-extrabold text-cyan-900 dark:text-cyan-200"><i class="fa-solid fa-link mr-2"></i>One Record, One Source</h2>
+        <p class="mt-1 text-[10px] leading-5 text-cyan-800/80 dark:text-cyan-300">
+          Do not re-enter operational records here. Teachers come from Teachers, achievers from Results, events from School Events, and Principal/identity data from School Profile. This tab only controls website publishing and website-only information.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="openPage('teachers',document.querySelector('[data-nav=teachers]'))" class="rounded-lg bg-white px-3 py-2 text-[10px] font-extrabold text-cyan-800 shadow-sm dark:bg-zinc-900 dark:text-cyan-300">Teachers</button>
+        <button onclick="openPage('results',document.querySelector('[data-nav=results]'))" class="rounded-lg bg-white px-3 py-2 text-[10px] font-extrabold text-cyan-800 shadow-sm dark:bg-zinc-900 dark:text-cyan-300">Results</button>
+        <button onclick="openPage('schoolEvents',document.querySelector('[data-nav=schoolEvents]'))" class="rounded-lg bg-white px-3 py-2 text-[10px] font-extrabold text-cyan-800 shadow-sm dark:bg-zinc-900 dark:text-cyan-300">School Events</button>
+        <button onclick="openPage('schoolProfile',document.querySelector('[data-nav=schoolProfile]'))" class="rounded-lg bg-white px-3 py-2 text-[10px] font-extrabold text-cyan-800 shadow-sm dark:bg-zinc-900 dark:text-cyan-300">School Profile</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Website tabs -->
+  <section class="mt-4 rounded-2xl border border-slate-200 bg-white p-2 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+    <div class="flex gap-1.5 overflow-x-auto">
+      <button id="websiteTabOverview" onclick="setWebsiteManagementTab('overview')" class="website-tab shrink-0 rounded-xl bg-teal-600 px-3 py-2.5 text-[10px] font-extrabold text-white"><i class="fa-solid fa-gauge-high mr-1.5"></i>Overview</button>
+      <button id="websiteTabVisibility" onclick="setWebsiteManagementTab('visibility')" class="website-tab shrink-0 rounded-xl px-3 py-2.5 text-[10px] font-extrabold text-slate-500 dark:text-zinc-400"><i class="fa-solid fa-toggle-on mr-1.5"></i>Visibility</button>
+      <button id="websiteTabPeople" onclick="setWebsiteManagementTab('people')" class="website-tab shrink-0 rounded-xl px-3 py-2.5 text-[10px] font-extrabold text-slate-500 dark:text-zinc-400"><i class="fa-solid fa-users mr-1.5"></i>People</button>
+      <button id="websiteTabMedia" onclick="setWebsiteManagementTab('media')" class="website-tab shrink-0 rounded-xl px-3 py-2.5 text-[10px] font-extrabold text-slate-500 dark:text-zinc-400"><i class="fa-solid fa-images mr-1.5"></i>Events & Gallery</button>
+      <button id="websiteTabParents" onclick="setWebsiteManagementTab('parents')" class="website-tab shrink-0 rounded-xl px-3 py-2.5 text-[10px] font-extrabold text-slate-500 dark:text-zinc-400"><i class="fa-solid fa-people-roof mr-1.5"></i>Parent Info</button>
+      <button id="websiteTabSettings" onclick="setWebsiteManagementTab('settings')" class="website-tab shrink-0 rounded-xl px-3 py-2.5 text-[10px] font-extrabold text-slate-500 dark:text-zinc-400"><i class="fa-solid fa-sliders mr-1.5"></i>Settings</button>
+      <button id="websiteTabPublish" onclick="setWebsiteManagementTab('publish')" class="website-tab shrink-0 rounded-xl px-3 py-2.5 text-[10px] font-extrabold text-slate-500 dark:text-zinc-400"><i class="fa-solid fa-cloud-arrow-up mr-1.5"></i>Publish Center</button>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <div id="websiteViewOverview" class="website-view mt-4 grid gap-4 xl:grid-cols-[1.25fr_.75fr]">
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div><h2 class="text-sm font-extrabold">Source Sync Status</h2><p class="mt-1 text-[10px] text-slate-400">Where each public area gets its authoritative data.</p></div>
+        <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-extrabold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">LINKED SOURCES</span>
+      </div>
+      <div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 dark:border-zinc-800">
+        <table class="min-w-[680px] w-full text-left">
+          <thead class="bg-slate-50 text-[9px] uppercase tracking-[.1em] text-slate-400 dark:bg-zinc-950">
+            <tr><th class="px-4 py-3">Public Content</th><th class="px-4 py-3">Source</th><th class="px-4 py-3">Sync</th><th class="px-4 py-3 text-right">Manage</th></tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200 text-[10px] dark:divide-zinc-800">
+            <tr><td class="px-4 py-3 font-extrabold">Teachers Directory</td><td class="px-4 py-3 text-slate-500">Teachers</td><td class="px-4 py-3"><span class="font-extrabold text-emerald-600">Linked</span></td><td class="px-4 py-3 text-right"><button onclick="openPage('teachers',document.querySelector('[data-nav=teachers]'))" class="font-extrabold text-teal-700">Open</button></td></tr>
+            <tr><td class="px-4 py-3 font-extrabold">Top Students / Achievers</td><td class="px-4 py-3 text-slate-500">Results</td><td class="px-4 py-3"><span class="font-extrabold text-emerald-600">Linked</span></td><td class="px-4 py-3 text-right"><button onclick="openPage('results',document.querySelector('[data-nav=results]'))" class="font-extrabold text-teal-700">Open</button></td></tr>
+            <tr><td class="px-4 py-3 font-extrabold">Events & News</td><td class="px-4 py-3 text-slate-500">School Events</td><td class="px-4 py-3"><span class="font-extrabold text-emerald-600">Linked</span></td><td class="px-4 py-3 text-right"><button onclick="openPage('schoolEvents',document.querySelector('[data-nav=schoolEvents]'))" class="font-extrabold text-teal-700">Open</button></td></tr>
+            <tr><td class="px-4 py-3 font-extrabold">Principal / Identity</td><td class="px-4 py-3 text-slate-500">School Profile</td><td class="px-4 py-3"><span class="font-extrabold text-emerald-600">Linked</span></td><td class="px-4 py-3 text-right"><button onclick="openPage('schoolProfile',document.querySelector('[data-nav=schoolProfile]'))" class="font-extrabold text-teal-700">Open</button></td></tr>
+            <tr><td class="px-4 py-3 font-extrabold">Gallery / Lunch / Offers</td><td class="px-4 py-3 text-slate-500">Website Management</td><td class="px-4 py-3"><span class="font-extrabold text-amber-600">Manual</span></td><td class="px-4 py-3 text-right"><button onclick="setWebsiteManagementTab('media')" class="font-extrabold text-teal-700">Manage</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-slate-400">Last Published</p>
+        <p id="websiteLastPublishedLabel" class="mt-2 text-lg font-extrabold">Not published in this browser yet</p>
+        <p id="websiteLastPublishedBy" class="mt-1 text-[10px] text-slate-400">School Admin / Principal</p>
+        <div class="mt-3 rounded-xl bg-emerald-50 p-3 text-[10px] font-semibold text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"><i class="fa-solid fa-circle-check mr-2"></i>Published content remains separate from draft edits.</div>
+      </section>
+      <section class="rounded-2xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/50 dark:bg-amber-950/15">
+        <p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-amber-700 dark:text-amber-300">Pending Changes</p>
+        <p id="websitePendingCount" class="mt-2 text-3xl font-black text-amber-900 dark:text-amber-200">0</p>
+        <p class="mt-1 text-[10px] leading-5 text-amber-800/80 dark:text-amber-300">Difference between the current draft and last published website state.</p>
+        <button onclick="setWebsiteManagementTab('publish')" class="mt-3 text-[10px] font-extrabold text-amber-900 underline dark:text-amber-200">Review Publish Center →</button>
+      </section>
+    </div>
+  </div>
+
+  <!-- VISIBILITY -->
+  <div id="websiteViewVisibility" class="website-view mt-4 hidden">
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div><h2 class="text-sm font-extrabold">Public Visibility</h2><p class="mt-1 text-[10px] text-slate-400">Hide a website area without deleting its data or source records.</p></div>
+        <span class="w-fit rounded-full bg-slate-100 px-3 py-1 text-[9px] font-extrabold text-slate-500 dark:bg-zinc-800 dark:text-zinc-300">DRAFT CONTROL</span>
+      </div>
+
+      <div class="mt-5">
+        <p class="text-[9px] font-extrabold uppercase tracking-[.14em] text-slate-400">Main Website</p>
+        <div class="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <!-- each label intentionally uses a native checkbox: backend later maps each key -->
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Admissions Banner</b><small class="text-[9px] text-slate-400">Hero open/closed status</small></span><input data-website-toggle="admissions" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">About</b><small class="text-[9px] text-slate-400">Home + detail pages</small></span><input data-website-toggle="about" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Academics</b><small class="text-[9px] text-slate-400">Stages + curriculum pages</small></span><input data-website-toggle="academics" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Achievements</b><small class="text-[9px] text-slate-400">Top students and success</small></span><input data-website-toggle="achievements" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Facilities</b><small class="text-[9px] text-slate-400">Campus facilities area</small></span><input data-website-toggle="facilities" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Teachers</b><small class="text-[9px] text-slate-400">Class-wise directory</small></span><input data-website-toggle="teachers" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Events & News</b><small class="text-[9px] text-slate-400">Public events/news</small></span><input data-website-toggle="events" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Gallery</b><small class="text-[9px] text-slate-400">Approved public media</small></span><input data-website-toggle="gallery" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Contact & Footer</b><small class="text-[9px] text-slate-400">Contact and social info</small></span><input data-website-toggle="contact" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+        </div>
+      </div>
+
+      <div class="mt-5 border-t border-slate-200 pt-5 dark:border-zinc-800">
+        <p class="text-[9px] font-extrabold uppercase tracking-[.14em] text-slate-400">Detail / Parent Pages</p>
+        <div class="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Principal Message</b><small class="text-[9px] text-slate-400">Source: School Profile</small></span><input data-website-toggle="principal" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Term Dates</b><small class="text-[9px] text-slate-400">Parent information</small></span><input data-website-toggle="termDates" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">School Lunches</b><small class="text-[9px] text-slate-400">Weekly parent menu</small></span><input data-website-toggle="lunches" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Local Offers</b><small class="text-[9px] text-slate-400">Approved community items</small></span><input data-website-toggle="offers" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+          <label class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span><b class="block text-xs">Policies</b><small class="text-[9px] text-slate-400">Public policy library</small></span><input data-website-toggle="policies" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600"></label>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PEOPLE -->
+  <div id="websiteViewPeople" class="website-view mt-4 hidden grid gap-4 xl:grid-cols-2">
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div><h2 class="text-sm font-extrabold">Teacher Public Directory</h2><p class="mt-1 text-[10px] text-slate-400">Profile data stays in Teachers. Select only who may appear publicly.</p></div>
+        <button onclick="openPage('teachers',document.querySelector('[data-nav=teachers]'))" class="rounded-lg bg-teal-50 px-3 py-2 text-[10px] font-extrabold text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">Open Teachers</button>
+      </div>
+      <div class="relative mt-4"><i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400"></i><input id="websiteTeacherSearch" oninput="filterWebsiteTeacherRecords()" placeholder="Search teacher, class or subject..." class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-3 text-xs dark:border-zinc-800 dark:bg-zinc-950"></div>
+      <div id="websiteTeacherPublicList" class="mt-3 max-h-[360px] space-y-2 overflow-y-auto pr-1">
+        <div data-website-teacher-row data-search="ayesha malik playgroup class teacher" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><div class="grid h-9 w-9 place-items-center rounded-xl bg-pink-50 text-[10px] font-black text-pink-700 dark:bg-pink-950/30 dark:text-pink-300">AM</div><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Ayesha Malik</p><p class="text-[9px] text-slate-400">Playgroup • Class Teacher</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="teacher-am" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Public</label></div>
+        <div data-website-teacher-row data-search="hira fatima grade 1 class teacher" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><div class="grid h-9 w-9 place-items-center rounded-xl bg-sky-50 text-[10px] font-black text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">HF</div><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Hira Fatima</p><p class="text-[9px] text-slate-400">Grade 1 • Class Teacher</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="teacher-hf" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Public</label></div>
+        <div data-website-teacher-row data-search="hamza rauf grade 4 mathematics" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><div class="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-[10px] font-black text-blue-700 dark:bg-blue-950/30 dark:text-blue-300">HR</div><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Hamza Rauf</p><p class="text-[9px] text-slate-400">Grade 4 • Mathematics</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="teacher-hr" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Public</label></div>
+        <div data-website-teacher-row data-search="usman tariq grade 7 computing" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><div class="grid h-9 w-9 place-items-center rounded-xl bg-amber-50 text-[10px] font-black text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">UT</div><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Usman Tariq</p><p class="text-[9px] text-slate-400">Grade 7 • Computing</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="teacher-ut" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Public</label></div>
+        <div data-website-teacher-row data-search="mariam noor grade 8 english" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><div class="grid h-9 w-9 place-items-center rounded-xl bg-rose-50 text-[10px] font-black text-rose-700 dark:bg-rose-950/30 dark:text-rose-300">MN</div><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Mariam Noor</p><p class="text-[9px] text-slate-400">Grade 8 • English</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="teacher-mn" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Public</label></div>
+        <div data-website-teacher-row data-search="ahmed raza grade 10 mathematics" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><div class="grid h-9 w-9 place-items-center rounded-xl bg-violet-50 text-[10px] font-black text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">AR</div><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Ahmed Raza</p><p class="text-[9px] text-slate-400">Grade 10 • Mathematics</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="teacher-ar" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Public</label></div>
+      </div>
+      <p id="websiteTeacherSourceNote" class="mt-3 text-[9px] text-slate-400">Prototype list shown here; backend will render all eligible Teachers records.</p>
+    </section>
+
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div><h2 class="text-sm font-extrabold">Top Students / Achievements</h2><p class="mt-1 text-[10px] text-slate-400">Only approved/published result records should be eligible.</p></div>
+        <button onclick="openPage('results',document.querySelector('[data-nav=results]'))" class="rounded-lg bg-amber-50 px-3 py-2 text-[10px] font-extrabold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">Open Results</button>
+      </div>
+      <div class="relative mt-4"><i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-[10px] text-slate-400"></i><input id="websiteAchieverSearch" oninput="filterWebsiteAchieverRecords()" placeholder="Search student, grade or session..." class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-9 pr-3 text-xs dark:border-zinc-800 dark:bg-zinc-950"></div>
+      <div class="mt-3 space-y-2">
+        <div data-website-achiever-row data-search="ayesha khan grade 10 96.8 2025 26" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span class="grid h-9 w-9 place-items-center rounded-xl bg-amber-50 text-amber-700"><i class="fa-solid fa-trophy"></i></span><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Ayesha Khan • 96.8%</p><p class="text-[9px] text-slate-400">Grade 10 • Session 2025–26</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="achiever-ayesha" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Feature</label></div>
+        <div data-website-achiever-row data-search="hamza ali grade 9 95.4 2025 26" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span class="grid h-9 w-9 place-items-center rounded-xl bg-amber-50 text-amber-700"><i class="fa-solid fa-medal"></i></span><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Hamza Ali • 95.4%</p><p class="text-[9px] text-slate-400">Grade 9 • Session 2025–26</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="achiever-hamza" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Feature</label></div>
+        <div data-website-achiever-row data-search="sara ahmed grade 8 94.9 2025 26" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span class="grid h-9 w-9 place-items-center rounded-xl bg-amber-50 text-amber-700"><i class="fa-solid fa-award"></i></span><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Sara Ahmed • 94.9%</p><p class="text-[9px] text-slate-400">Grade 8 • Session 2025–26</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="achiever-sara" type="checkbox" checked onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Feature</label></div>
+        <div data-website-achiever-row data-search="zainab malik mathematics 100 subject excellence 2025 26" class="flex items-center gap-3 rounded-xl border border-slate-200 p-3 dark:border-zinc-800"><span class="grid h-9 w-9 place-items-center rounded-xl bg-cyan-50 text-cyan-700"><i class="fa-solid fa-star"></i></span><div class="min-w-0 flex-1"><p class="truncate text-xs font-extrabold">Zainab Malik • Mathematics 100%</p><p class="text-[9px] text-slate-400">Subject Excellence • 2025–26</p></div><label class="flex items-center gap-2 text-[9px] font-bold text-slate-500"><input data-public-record="achiever-zainab" type="checkbox" onchange="markWebsiteDirty()" class="h-4 w-4 accent-teal-600">Feature</label></div>
+      </div>
+      <div class="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3 text-[9px] leading-5 text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/15 dark:text-amber-300"><i class="fa-solid fa-shield-halved mr-1"></i>Public student name/photo visibility should require school approval and the applicable consent/visibility rule.</div>
+    </section>
+  </div>
+
+  <!-- MEDIA -->
+  <div id="websiteViewMedia" class="website-view mt-4 hidden grid gap-4 xl:grid-cols-[1.05fr_.95fr]">
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div><h2 class="text-sm font-extrabold">Event Publishing</h2><p class="mt-1 text-[10px] text-slate-400">Live source: School Events. Website status is controlled here.</p></div>
+        <button onclick="openPage('schoolEvents',document.querySelector('[data-nav=schoolEvents]'))" class="rounded-lg bg-sky-50 px-3 py-2 text-[10px] font-extrabold text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">Open Events</button>
+      </div>
+      <div id="websiteEventPublishingList" class="mt-4 max-h-[430px] space-y-2 overflow-y-auto pr-1"></div>
+    </section>
+
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex items-start justify-between gap-3"><div><h2 class="text-sm font-extrabold">Public Gallery</h2><p class="mt-1 text-[10px] text-slate-400">Website-only approved media.</p></div><span class="rounded-full bg-teal-50 px-2 py-1 text-[9px] font-extrabold text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">6 ITEMS</span></div>
+      <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <label class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"><div class="aspect-[4/3] rounded-lg bg-gradient-to-br from-teal-100 to-sky-100 p-2 text-[9px] font-extrabold text-teal-800">Learning</div><div class="mt-2 flex items-center justify-between text-[9px]"><span>Learning</span><input data-public-record="gallery-learning" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></div></label>
+        <label class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"><div class="aspect-[4/3] rounded-lg bg-gradient-to-br from-amber-100 to-orange-100 p-2 text-[9px] font-extrabold text-amber-800">Sports</div><div class="mt-2 flex items-center justify-between text-[9px]"><span>Sports</span><input data-public-record="gallery-sports" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></div></label>
+        <label class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"><div class="aspect-[4/3] rounded-lg bg-gradient-to-br from-violet-100 to-fuchsia-100 p-2 text-[9px] font-extrabold text-violet-800">Events</div><div class="mt-2 flex items-center justify-between text-[9px]"><span>Events</span><input data-public-record="gallery-events" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></div></label>
+        <label class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"><div class="aspect-[4/3] rounded-lg bg-gradient-to-br from-slate-100 to-teal-100 p-2 text-[9px] font-extrabold text-slate-700">Campus</div><div class="mt-2 flex items-center justify-between text-[9px]"><span>Campus</span><input data-public-record="gallery-campus" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></div></label>
+        <label class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"><div class="aspect-[4/3] rounded-lg bg-gradient-to-br from-sky-100 to-indigo-100 p-2 text-[9px] font-extrabold text-sky-800">Science</div><div class="mt-2 flex items-center justify-between text-[9px]"><span>Science</span><input data-public-record="gallery-science" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></div></label>
+        <label class="rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"><div class="aspect-[4/3] rounded-lg bg-gradient-to-br from-rose-100 to-amber-100 p-2 text-[9px] font-extrabold text-rose-800">Activity</div><div class="mt-2 flex items-center justify-between text-[9px]"><span>Activity</span><input data-public-record="gallery-activity" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></div></label>
+      </div>
+      <label class="mt-3 flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-teal-300 bg-teal-50 px-4 py-3 text-[10px] font-extrabold text-teal-700 dark:border-teal-900 dark:bg-teal-950/20 dark:text-teal-300"><i class="fa-solid fa-cloud-arrow-up"></i>Add Gallery Image<input accept="image/*" class="hidden" onchange="handleWebsiteGalleryUpload(event)" type="file"></label>
+      <p id="websiteGalleryUploadNote" class="mt-2 hidden rounded-lg bg-emerald-50 p-2 text-[9px] font-semibold text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"></p>
+      <p class="mt-3 text-[9px] leading-5 text-slate-400">Prototype stores visibility/settings locally. Actual image bytes will be uploaded to backend/storage later.</p>
+    </section>
+  </div>
+
+  <!-- PARENTS -->
+  <div id="websiteViewParents" class="website-view mt-4 hidden space-y-4">
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex items-start justify-between gap-3"><div><h2 class="text-sm font-extrabold">Term Dates</h2><p class="mt-1 text-[10px] text-slate-400">Website-only calendar summary for families.</p></div><span class="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-extrabold text-emerald-700">PUBLIC</span></div>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <label class="text-[10px] font-extrabold">Academic Session<input data-website-field="termSession" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Term 1 Starts<input data-website-field="term1Start" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Term 1 Ends<input data-website-field="term1End" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Term 2 Starts<input data-website-field="term2Start" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Term 2 Ends<input data-website-field="term2End" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Term 3 Starts<input data-website-field="term3Start" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Term 3 Ends<input data-website-field="term3End" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        <label class="text-[10px] font-extrabold">Next School Day<input data-website-field="nextSchoolDay" type="date" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+      </div>
+    </section>
+
+    <div class="grid gap-4 xl:grid-cols-[1.15fr_.85fr]">
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+        <div><h2 class="text-sm font-extrabold">Weekly School Lunch Menu</h2><p class="mt-1 text-[10px] text-slate-400">Simple public menu; detailed meal service can be connected later.</p></div>
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          <label class="text-[10px] font-extrabold">Monday<input data-website-field="lunchMon" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Tuesday<input data-website-field="lunchTue" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Wednesday<input data-website-field="lunchWed" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Thursday<input data-website-field="lunchThu" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold sm:col-span-2">Friday<input data-website-field="lunchFri" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        </div>
+      </section>
+
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+        <div class="flex items-start justify-between gap-3"><div><h2 class="text-sm font-extrabold">Local Offers</h2><p class="mt-1 text-[10px] text-slate-400">Approved family/community listings.</p></div><span class="rounded-full bg-amber-50 px-2 py-1 text-[9px] font-extrabold text-amber-700">MANUAL</span></div>
+        <label class="mt-4 block text-[10px] font-extrabold">Publishing Rule<select data-website-field="offerRule" onchange="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"><option>Manual approval required</option><option>Auto publish approved partner offers</option></select></label>
+        <div class="mt-3 space-y-2 text-[10px]">
+          <div class="flex items-center justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span><b class="block">Parent Support Programme</b><small class="text-slate-400">Current session</small></span><select data-public-record="offer-support" onchange="markWebsiteDirty()" class="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[9px] dark:border-zinc-700 dark:bg-zinc-900"><option>Published</option><option>Hidden</option></select></div>
+          <div class="flex items-center justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span><b class="block">Holiday Activities</b><small class="text-slate-400">Seasonal</small></span><select data-public-record="offer-holiday" onchange="markWebsiteDirty()" class="rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-[9px] dark:border-zinc-700 dark:bg-zinc-900"><option>Published</option><option>Hidden</option></select></div>
+        </div>
+        <button onclick="addWebsiteOfferDemo()" class="mt-3 w-full rounded-xl border border-slate-200 px-3 py-2.5 text-[10px] font-extrabold text-slate-600 dark:border-zinc-700 dark:text-zinc-300"><i class="fa-solid fa-plus mr-2"></i>New Offer Draft</button>
+        <p id="websiteOfferNote" class="mt-2 hidden rounded-lg bg-emerald-50 p-2 text-[9px] font-semibold text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"></p>
+      </section>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="websiteViewSettings" class="website-view mt-4 hidden grid gap-4 xl:grid-cols-[1.1fr_.9fr]">
+    <div class="space-y-4">
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+        <h2 class="text-sm font-extrabold">Admissions & Public Contact</h2><p class="mt-1 text-[10px] text-slate-400">Website banner, contact area and footer details.</p>
+        <div class="mt-4 grid gap-3 md:grid-cols-2">
+          <label class="text-[10px] font-extrabold">Admissions Status<select data-website-field="admissionStatus" onchange="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"><option>Admissions Open</option><option>Admissions Closed</option><option>Applications Opening Soon</option></select></label>
+          <label class="text-[10px] font-extrabold">Admissions Session<input data-website-field="admissionSession" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold md:col-span-2">Admissions Banner Message<input data-website-field="admissionMessage" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">General Phone<input data-website-field="phone" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Admissions Phone<input data-website-field="admissionPhone" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold md:col-span-2">Public Email<input data-website-field="email" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold md:col-span-2">Campus Address<input data-website-field="address" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Office Hours<input data-website-field="officeHours" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Transport Phone<input data-website-field="transportPhone" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+        </div>
+      </section>
+
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+        <h2 class="text-sm font-extrabold">Social & Search Information</h2>
+        <div class="mt-4 grid gap-3 md:grid-cols-2">
+          <label class="text-[10px] font-extrabold">Facebook<input data-website-field="facebook" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">Instagram<input data-website-field="instagram" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">YouTube<input data-website-field="youtube" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold">LinkedIn<input data-website-field="linkedin" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold md:col-span-2">Website Title<input data-website-field="siteTitle" oninput="markWebsiteDirty()" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs dark:border-zinc-700 dark:bg-zinc-950"></label>
+          <label class="text-[10px] font-extrabold md:col-span-2">Search Description<textarea data-website-field="metaDescription" oninput="markWebsiteDirty()" rows="3" class="mt-1.5 w-full resize-none rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs leading-5 dark:border-zinc-700 dark:bg-zinc-950"></textarea></label>
+        </div>
+      </section>
+    </div>
+
+    <div class="space-y-4">
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <div class="flex items-start justify-between gap-3"><div><h3 class="text-xs font-extrabold">Principal Message</h3><p class="mt-1 text-[9px] text-slate-400">Source: School Profile</p></div><button onclick="openPage('schoolProfile',document.querySelector('[data-nav=schoolProfile]'))" class="text-[9px] font-extrabold text-teal-700 dark:text-teal-300">EDIT SOURCE →</button></div>
+        <p class="mt-3 text-[10px] leading-5 text-slate-500 dark:text-zinc-400">The public page should use the approved Principal identity and message from School Profile rather than a second copy here.</p>
+      </section>
+
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <div class="flex items-start justify-between gap-3"><div><h3 class="text-xs font-extrabold">Policies & Safeguarding</h3><p class="mt-1 text-[9px] text-slate-400">Choose public documents.</p></div><span id="websitePolicyVisibleCount" class="rounded-full bg-emerald-50 px-2 py-1 text-[9px] font-extrabold text-emerald-700">0 Visible</span></div>
+        <div class="mt-3 space-y-2 text-[10px]">
+          <label class="flex justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span>Safeguarding Policy</span><input data-public-record="policy-safeguarding" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></label>
+          <label class="flex justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span>Behaviour & Discipline</span><input data-public-record="policy-behaviour" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></label>
+          <label class="flex justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span>Attendance & Punctuality</span><input data-public-record="policy-attendance" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></label>
+          <label class="flex justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span>Anti-Bullying</span><input data-public-record="policy-bullying" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></label>
+          <label class="flex justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span>Online Safety & Privacy</span><input data-public-record="policy-online" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></label>
+          <label class="flex justify-between gap-3 rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><span>Privacy & Student Data</span><input data-public-record="policy-privacy" type="checkbox" checked onchange="markWebsiteDirty()" class="accent-teal-600"></label>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PUBLISH CENTER -->
+  <div id="websiteViewPublish" class="website-view mt-4 hidden grid gap-4 xl:grid-cols-[1.05fr_.95fr]">
+    <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-5">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div><h2 class="text-sm font-extrabold">Draft → Live Publishing</h2><p class="mt-1 text-[10px] text-slate-400">Save work safely, preview it, then publish the approved website state.</p></div>
+        <span id="websitePublishStatusBadge" class="rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-extrabold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">LIVE SYNCED</span>
+      </div>
+
+      <div class="mt-4 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-slate-400">Pending Changes</p><p id="websitePublishPendingCount" class="mt-2 text-2xl font-black">0</p></div>
+        <div class="rounded-xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-slate-400">Draft Saved</p><p id="websiteDraftSavedLabel" class="mt-2 text-xs font-extrabold">Not saved</p></div>
+        <div class="rounded-xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-slate-400">Last Published</p><p id="websitePublishLastLabel" class="mt-2 text-xs font-extrabold">Not yet</p></div>
+      </div>
+
+      <div class="mt-5 rounded-xl border border-slate-200 p-4 dark:border-zinc-800">
+        <p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-slate-400">Pre-Publish Checklist</p>
+        <div class="mt-3 grid gap-2 text-[10px] sm:grid-cols-2">
+          <div class="flex items-center gap-2 rounded-lg bg-emerald-50 p-3 text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"><i class="fa-solid fa-circle-check"></i>Source modules remain authoritative</div>
+          <div class="flex items-center gap-2 rounded-lg bg-emerald-50 p-3 text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"><i class="fa-solid fa-circle-check"></i>Public contact fields configured</div>
+          <div class="flex items-center gap-2 rounded-lg bg-emerald-50 p-3 text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"><i class="fa-solid fa-circle-check"></i>Visibility reviewed</div>
+          <div class="flex items-center gap-2 rounded-lg bg-amber-50 p-3 text-amber-700 dark:bg-amber-950/20 dark:text-amber-300"><i class="fa-solid fa-shield-halved"></i>Verify student public visibility/consent</div>
+        </div>
+      </div>
+
+      <div class="mt-5 grid gap-2 sm:grid-cols-3">
+        <button onclick="saveWebsiteDraft()" class="rounded-xl border border-teal-200 bg-teal-50 px-4 py-3 text-[10px] font-extrabold text-teal-700 dark:border-teal-900/50 dark:bg-teal-950/20 dark:text-teal-300"><i class="fa-solid fa-floppy-disk mr-2"></i>Save Draft</button>
+        <a href="junicore-school-main-website-FINAL-LOCKED.html" target="_blank" class="rounded-xl border border-slate-200 bg-white px-4 py-3 text-center text-[10px] font-extrabold text-slate-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-200"><i class="fa-solid fa-eye mr-2"></i>Preview Website</a>
+        <button onclick="publishWebsiteChanges()" class="rounded-xl bg-teal-600 px-4 py-3 text-[10px] font-extrabold text-white"><i class="fa-solid fa-cloud-arrow-up mr-2"></i>Publish Now</button>
+      </div>
+      <button onclick="restoreWebsitePublishedState()" class="mt-2 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-[10px] font-extrabold text-slate-500 dark:border-zinc-700 dark:text-zinc-300"><i class="fa-solid fa-rotate-left mr-2"></i>Discard Draft & Restore Last Published</button>
+    </section>
+
+    <div class="space-y-4">
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <h3 class="text-xs font-extrabold">Publishing Rules</h3>
+        <div class="mt-3 space-y-2 text-[10px] leading-5 text-slate-500 dark:text-zinc-400">
+          <p class="rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><b class="text-slate-800 dark:text-zinc-200">Save Draft:</b> stores changes without replacing the live website state.</p>
+          <p class="rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><b class="text-slate-800 dark:text-zinc-200">Publish:</b> promotes the current draft to the live website configuration.</p>
+          <p class="rounded-xl bg-slate-50 p-3 dark:bg-zinc-950"><b class="text-slate-800 dark:text-zinc-200">Backend phase:</b> these actions will call API/storage rather than browser localStorage.</p>
+        </div>
+      </section>
+      <section class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+        <p class="text-[9px] font-extrabold uppercase tracking-[.12em] text-slate-400">Current Release</p>
+        <p class="mt-2 text-lg font-extrabold">School Website • FINAL</p>
+        <p class="mt-1 text-[10px] text-slate-400">Responsive public website linked to this control center.</p>
+        <a href="junicore-school-main-website-FINAL-LOCKED.html" target="_blank" class="mt-3 inline-flex items-center gap-2 text-[10px] font-extrabold text-teal-700 dark:text-teal-300">Open public website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </section>
+    </div>
+  </div>
+</section>
+
+
       <!-- Admin / Principal Profile -->
       <section id="adminProfilePage" class="hidden min-w-0">
         <!-- Hero -->
@@ -5555,6 +5947,7 @@
       const reportsPage = document.getElementById('reportsPage');
       const permissionsPage = document.getElementById('permissionsPage');
       const settingsPage = document.getElementById('settingsPage');
+      const websiteManagementPage = document.getElementById('websiteManagementPage');
       const adminProfilePage = document.getElementById('adminProfilePage');
       const placeholderPage = document.getElementById('placeholderPage');
       const pageTitle = document.getElementById('pageTitle');
@@ -5586,6 +5979,7 @@
       reportsPage.classList.add('hidden');
       permissionsPage.classList.add('hidden');
       settingsPage.classList.add('hidden');
+      websiteManagementPage.classList.add('hidden');
       adminProfilePage.classList.add('hidden');
       placeholderPage.classList.add('hidden');
 
@@ -5689,6 +6083,10 @@
         settingsPage.classList.remove('hidden');
         pageTitle.textContent = 'School Settings';
         initSchoolSettingsPage();
+      } else if(page === 'websiteManagement'){
+        websiteManagementPage.classList.remove('hidden');
+        pageTitle.textContent = 'Website Management';
+        initWebsiteManagementPage();
       } else if(page === 'profile'){
         adminProfilePage.classList.remove('hidden');
         pageTitle.textContent = 'My Profile';
@@ -16682,5 +17080,289 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>window.jcV107RenderNotifications());else window.jcV107RenderNotifications();
 })();
 </script>
+
+<script>
+  const WEBSITE_MGMT_DRAFT_KEY='juniCoreSchoolWebsiteManagementV110Draft';
+  const WEBSITE_MGMT_PUBLISHED_KEY='juniCoreSchoolWebsiteManagementV110Published';
+
+  function websiteDefaultState(){
+    return {
+      toggles:{
+        admissions:true,about:true,academics:true,achievements:true,facilities:true,teachers:true,
+        events:true,gallery:true,contact:true,principal:true,termDates:true,lunches:true,offers:true,policies:true
+      },
+      fields:{
+        termSession:'2026–27',
+        term1Start:'2026-09-01',term1End:'2026-12-18',
+        term2Start:'2027-01-04',term2End:'2027-03-26',
+        term3Start:'2027-04-05',term3End:'2027-07-30',
+        nextSchoolDay:'2026-09-19',
+        lunchMon:'Chicken rice + salad',lunchTue:'Pasta + vegetables',lunchWed:'Lentils + rice',lunchThu:'Chicken wrap + fruit',lunchFri:'Seasonal special menu',
+        offerRule:'Manual approval required',
+        admissionStatus:'Admissions Open',admissionSession:'2026–27',
+        admissionMessage:'Admissions Open for Academic Session 2026–27',
+        phone:'+92 42 111 000 111',admissionPhone:'+92 42 111 000 112',transportPhone:'+92 42 111 000 113',
+        email:'info@junicoreschool.edu.pk',address:'JuniCore School, Main Campus, Lahore, Pakistan',
+        officeHours:'Mon–Thu 8:00 AM – 3:00 PM',
+        facebook:'https://facebook.com/junicoreschool',instagram:'https://instagram.com/junicoreschool',
+        youtube:'https://youtube.com/@junicoreschool',linkedin:'https://linkedin.com/company/junicoreschool',
+        siteTitle:'JuniCore School | Learn • Grow • Lead',
+        metaDescription:'JuniCore School public website for academics, achievements, teachers, events, parent information and school contact details.'
+      },
+      records:{
+        'teacher-am':true,'teacher-hf':true,'teacher-hr':true,'teacher-ut':true,'teacher-mn':true,'teacher-ar':true,
+        'achiever-ayesha':true,'achiever-hamza':true,'achiever-sara':true,'achiever-zainab':false,
+        'gallery-learning':true,'gallery-sports':true,'gallery-events':true,'gallery-campus':true,'gallery-science':true,'gallery-activity':true,
+        'offer-support':'Published','offer-holiday':'Published',
+        'policy-safeguarding':true,'policy-behaviour':true,'policy-attendance':true,'policy-bullying':true,'policy-online':true,'policy-privacy':true
+      },
+      meta:{savedAt:'',publishedAt:'',publishedBy:'School Admin / Principal',release:'V110'}
+    };
+  }
+
+  function websiteClone(v){return JSON.parse(JSON.stringify(v));}
+  function websiteReadStorage(key){
+    try{return JSON.parse(localStorage.getItem(key)||'null')}catch(_){return null}
+  }
+  function websiteMergeState(saved){
+    const base=websiteDefaultState();
+    if(!saved)return base;
+    return {
+      toggles:{...base.toggles,...(saved.toggles||{})},
+      fields:{...base.fields,...(saved.fields||{})},
+      records:{...base.records,...(saved.records||{})},
+      meta:{...base.meta,...(saved.meta||{})}
+    };
+  }
+  function getWebsitePublishedState(){return websiteMergeState(websiteReadStorage(WEBSITE_MGMT_PUBLISHED_KEY));}
+  function getWebsiteDraftState(){
+    const draft=websiteReadStorage(WEBSITE_MGMT_DRAFT_KEY);
+    if(draft)return websiteMergeState(draft);
+    const live=websiteReadStorage(WEBSITE_MGMT_PUBLISHED_KEY);
+    return websiteMergeState(live);
+  }
+
+  function websiteApplyState(state){
+    document.querySelectorAll('[data-website-toggle]').forEach(input=>{
+      const key=input.dataset.websiteToggle;
+      if(key in state.toggles)input.checked=!!state.toggles[key];
+    });
+    document.querySelectorAll('[data-website-field]').forEach(input=>{
+      const key=input.dataset.websiteField;
+      if(key in state.fields)input.value=state.fields[key]??'';
+    });
+    document.querySelectorAll('[data-public-record]').forEach(input=>{
+      const key=input.dataset.publicRecord;
+      if(!(key in state.records))return;
+      const v=state.records[key];
+      if(input.type==='checkbox')input.checked=!!v;
+      else input.value=v;
+    });
+  }
+
+  function websiteStateFromForm(){
+    const current=websiteDefaultState();
+    document.querySelectorAll('[data-website-toggle]').forEach(input=>current.toggles[input.dataset.websiteToggle]=input.checked);
+    document.querySelectorAll('[data-website-field]').forEach(input=>current.fields[input.dataset.websiteField]=input.value);
+    document.querySelectorAll('[data-public-record]').forEach(input=>current.records[input.dataset.publicRecord]=input.type==='checkbox'?input.checked:input.value);
+    const draft=websiteReadStorage(WEBSITE_MGMT_DRAFT_KEY);
+    const live=websiteReadStorage(WEBSITE_MGMT_PUBLISHED_KEY);
+    current.meta={...(draft?.meta||live?.meta||current.meta)};
+    return current;
+  }
+
+  function websiteFlatten(obj,prefix='',out={}){
+    Object.entries(obj||{}).forEach(([k,v])=>{
+      if(k==='meta')return;
+      const path=prefix?`${prefix}.${k}`:k;
+      if(v&&typeof v==='object'&&!Array.isArray(v))websiteFlatten(v,path,out);
+      else out[path]=String(v);
+    });
+    return out;
+  }
+  function websiteDiffCount(a,b){
+    const A=websiteFlatten(a),B=websiteFlatten(b),keys=new Set([...Object.keys(A),...Object.keys(B)]);
+    let n=0;keys.forEach(k=>{if((A[k]??'')!==(B[k]??''))n++;});return n;
+  }
+
+  function websiteFmtTime(value){
+    if(!value)return 'Not yet';
+    try{return new Date(value).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}catch(_){return value}
+  }
+
+  function renderWebsiteEventPublishing(state){
+    const box=document.getElementById('websiteEventPublishingList');if(!box)return;
+    let rows=[];
+    try{
+      if(typeof seedSchoolEvents==='function')seedSchoolEvents();
+      if(typeof schoolEventRuntime!=='undefined'&&Array.isArray(schoolEventRuntime.rows))rows=schoolEventRuntime.rows;
+    }catch(_){}
+    if(!rows.length){
+      rows=[
+        {id:'EVT-0001',title:'Parent Teacher Meeting',category:'PTM',startAt:'2026-10-08T09:00:00',published:true},
+        {id:'EVT-0002',title:'Inter-House Sports Day',category:'Sports',startAt:'2026-12-04T09:00:00',published:true},
+        {id:'EVT-0004',title:'Science Exhibition 2026',category:'Academic',startAt:'2026-11-15T09:00:00',published:true}
+      ];
+    }
+    box.innerHTML=rows.map(row=>{
+      const key=`event-${row.id}`;
+      const selected=state.records[key]??(row.published?'Published':'Hidden');
+      const date=row.startAt?websiteFmtTime(row.startAt):'Date not set';
+      return `<div class="rounded-xl border border-slate-200 p-3 dark:border-zinc-800" data-website-event-row>
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div class="min-w-0"><p class="truncate text-xs font-extrabold">${String(row.title||'Event').replace(/</g,'&lt;')}</p><p class="mt-1 text-[9px] text-slate-400">${String(row.category||'Event').replace(/</g,'&lt;')} • ${date}</p></div>
+          <select data-public-record="${key}" onchange="markWebsiteDirty()" class="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-[10px] font-bold sm:w-auto dark:border-zinc-700 dark:bg-zinc-950">
+            <option ${selected==='Featured'?'selected':''}>Featured</option><option ${selected==='Published'?'selected':''}>Published</option><option ${selected==='Hidden'?'selected':''}>Hidden</option>
+          </select>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function syncWebsiteSourceCounts(){
+    try{
+      if(typeof getTeachers==='function'){
+        const total=(getTeachers()||[]).filter(x=>x.status!=='Inactive').length;
+        const note=document.getElementById('websiteTeacherSourceNote');
+        if(note)note.textContent=`${total} active Teacher record${total===1?'':'s'} available from the Teachers source. Public selections shown here are prototype examples until backend binding.`;
+      }
+    }catch(_){}
+  }
+
+  function initWebsiteManagementPage(){
+    const draft=getWebsiteDraftState();
+    renderWebsiteEventPublishing(draft);
+    websiteApplyState(draft);
+    syncWebsiteSourceCounts();
+    setWebsiteManagementTab(window.jcWebsiteActiveTab||'overview');
+    updateWebsiteManagementDashboard();
+  }
+
+  function setWebsiteManagementTab(tab){
+    window.jcWebsiteActiveTab=tab;
+    document.querySelectorAll('.website-view').forEach(v=>v.classList.add('hidden'));
+    document.getElementById('websiteView'+tab.charAt(0).toUpperCase()+tab.slice(1))?.classList.remove('hidden');
+    document.querySelectorAll('.website-tab').forEach(btn=>{
+      btn.classList.remove('bg-teal-600','text-white');
+      btn.classList.add('text-slate-500','dark:text-zinc-400');
+    });
+    const active=document.getElementById('websiteTab'+tab.charAt(0).toUpperCase()+tab.slice(1));
+    active?.classList.remove('text-slate-500','dark:text-zinc-400');
+    active?.classList.add('bg-teal-600','text-white');
+  }
+
+  function updateWebsiteManagementDashboard(){
+    const current=websiteStateFromForm();
+    const published=getWebsitePublishedState();
+    const pending=websiteDiffCount(current,published);
+
+    const toggles=[...document.querySelectorAll('[data-website-toggle]')];
+    const on=toggles.filter(x=>x.checked).length;
+    const pubCount=document.getElementById('websitePublishedCount');
+    if(pubCount)pubCount.textContent=`${on} / ${toggles.length}`;
+
+    const teachers=[...document.querySelectorAll('[data-public-record^="teacher-"][type="checkbox"]')].filter(x=>x.checked).length;
+    const achievers=[...document.querySelectorAll('[data-public-record^="achiever-"][type="checkbox"]')].filter(x=>x.checked).length;
+    const events=[...document.querySelectorAll('[data-public-record^="event-"]')].filter(x=>x.value!=='Hidden').length;
+    const policies=[...document.querySelectorAll('[data-public-record^="policy-"][type="checkbox"]')].filter(x=>x.checked).length;
+
+    if(document.getElementById('websitePublicTeacherCount'))websitePublicTeacherCount.textContent=teachers;
+    if(document.getElementById('websiteFeaturedAchieverCount'))websiteFeaturedAchieverCount.textContent=achievers;
+    if(document.getElementById('websitePublicEventCount'))websitePublicEventCount.textContent=events;
+    if(document.getElementById('websitePolicyVisibleCount'))websitePolicyVisibleCount.textContent=`${policies} Visible`;
+    if(document.getElementById('websitePendingCount'))websitePendingCount.textContent=pending;
+    if(document.getElementById('websitePublishPendingCount'))websitePublishPendingCount.textContent=pending;
+
+    const draft=websiteReadStorage(WEBSITE_MGMT_DRAFT_KEY);
+    if(document.getElementById('websiteDraftSavedLabel'))websiteDraftSavedLabel.textContent=websiteFmtTime(draft?.meta?.savedAt);
+    if(document.getElementById('websiteLastPublishedLabel'))websiteLastPublishedLabel.textContent=websiteFmtTime(published?.meta?.publishedAt);
+    if(document.getElementById('websitePublishLastLabel'))websitePublishLastLabel.textContent=websiteFmtTime(published?.meta?.publishedAt);
+    if(document.getElementById('websiteLastPublishedBy'))websiteLastPublishedBy.textContent=published?.meta?.publishedAt?`By ${published.meta.publishedBy||'School Admin / Principal'}`:'No browser publish history yet';
+
+    setWebsiteSaveState(pending>0);
+  }
+
+  function setWebsiteSaveState(dirty){
+    const badge=document.getElementById('websiteSaveState');
+    const publishBadge=document.getElementById('websitePublishStatusBadge');
+    if(badge){
+      badge.innerHTML=dirty?'<i class="fa-solid fa-pen"></i> DRAFT CHANGES':'<i class="fa-solid fa-cloud"></i> LIVE SYNCED';
+      badge.className=dirty
+        ?'inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-extrabold text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/20 dark:text-amber-300'
+        :'inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-[10px] font-extrabold text-slate-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400';
+    }
+    if(publishBadge){
+      publishBadge.textContent=dirty?'CHANGES READY':'LIVE SYNCED';
+      publishBadge.className=dirty
+        ?'rounded-full bg-amber-50 px-2.5 py-1 text-[9px] font-extrabold text-amber-700 dark:bg-amber-950/30 dark:text-amber-300'
+        :'rounded-full bg-emerald-50 px-2.5 py-1 text-[9px] font-extrabold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300';
+    }
+  }
+
+  function markWebsiteDirty(){updateWebsiteManagementDashboard();}
+
+  function saveWebsiteDraft(){
+    const state=websiteStateFromForm();
+    state.meta={...(state.meta||{}),savedAt:new Date().toISOString(),release:'V110'};
+    localStorage.setItem(WEBSITE_MGMT_DRAFT_KEY,JSON.stringify(state));
+    updateWebsiteManagementDashboard();
+    const badge=document.getElementById('websiteSaveState');
+    if(badge){
+      const original=badge.innerHTML;
+      badge.innerHTML='<i class="fa-solid fa-circle-check"></i> DRAFT SAVED';
+      setTimeout(()=>updateWebsiteManagementDashboard(),1200);
+    }
+    if(typeof showToast==='function')showToast('Website draft saved.');
+  }
+
+  function publishWebsiteChanges(){
+    const state=websiteStateFromForm();
+    if(!confirm('Publish the current Website Management draft as the live website configuration?'))return;
+    const now=new Date().toISOString();
+    state.meta={...(state.meta||{}),savedAt:now,publishedAt:now,publishedBy:'School Admin / Principal',release:'V110'};
+    localStorage.setItem(WEBSITE_MGMT_DRAFT_KEY,JSON.stringify(state));
+    localStorage.setItem(WEBSITE_MGMT_PUBLISHED_KEY,JSON.stringify(state));
+    updateWebsiteManagementDashboard();
+    if(typeof showToast==='function')showToast('Website changes published.');
+  }
+
+  // Backward-compatible function name from V109.
+  function saveWebsiteManagement(){saveWebsiteDraft();}
+
+  function restoreWebsitePublishedState(){
+    if(!confirm('Discard current draft changes and restore the last published website configuration?'))return;
+    const published=getWebsitePublishedState();
+    localStorage.setItem(WEBSITE_MGMT_DRAFT_KEY,JSON.stringify(published));
+    renderWebsiteEventPublishing(published);
+    websiteApplyState(published);
+    updateWebsiteManagementDashboard();
+    if(typeof showToast==='function')showToast('Draft restored from last published state.');
+  }
+
+  function filterWebsiteTeacherRecords(){
+    const q=(document.getElementById('websiteTeacherSearch')?.value||'').trim().toLowerCase();
+    document.querySelectorAll('[data-website-teacher-row]').forEach(row=>row.classList.toggle('hidden',q&&!String(row.dataset.search||row.textContent).toLowerCase().includes(q)));
+  }
+  function filterWebsiteAchieverRecords(){
+    const q=(document.getElementById('websiteAchieverSearch')?.value||'').trim().toLowerCase();
+    document.querySelectorAll('[data-website-achiever-row]').forEach(row=>row.classList.toggle('hidden',q&&!String(row.dataset.search||row.textContent).toLowerCase().includes(q)));
+  }
+
+  function handleWebsiteGalleryUpload(event){
+    const file=event.target.files?.[0],note=document.getElementById('websiteGalleryUploadNote');
+    if(!file||!note)return;
+    note.textContent=`${file.name} added to gallery draft. Actual file upload will use backend/storage later.`;
+    note.classList.remove('hidden');
+    markWebsiteDirty();
+    event.target.value='';
+  }
+
+  function addWebsiteOfferDemo(){
+    const note=document.getElementById('websiteOfferNote');
+    if(note){note.textContent='New offer draft started. Full offer records will be stored by backend later.';note.classList.remove('hidden');}
+    markWebsiteDirty();
+  }
+</script>
+
 </body>
 </html>
