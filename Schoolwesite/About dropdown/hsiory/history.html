@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School History | JuniCore School</title>
+
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+</head>
+
+<body class="bg-slate-50 text-[15px] leading-relaxed text-slate-800 antialiased sm:text-base dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="junicore-school-main-website-v31-history-linked.html#home" class="flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-sm font-black text-white sm:h-11 sm:w-11 sm:rounded-2xl">JC</span>
+        <span class="min-w-0">
+          <span class="block truncate text-base font-black text-slate-950 sm:text-lg dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[10px] sm:tracking-[0.18em] dark:text-teal-400">School History</span>
+        </span>
+      </a>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <a href="junicore-school-main-website-v31-history-linked.html#about" class="hidden rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:inline-flex dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-700 dark:hover:text-teal-300">
+          ← Main Website
+        </a>
+        <button id="themeBtn" type="button" class="rounded-xl bg-slate-100 px-3 py-2.5 text-sm font-black text-slate-700 transition hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <img
+        src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2000&q=90"
+        alt="School campus"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/82 to-slate-950/45"></div>
+
+      <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-8 px-4 py-14 sm:min-h-[620px] sm:px-6 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:px-8 lg:py-20">
+        <div>
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200 backdrop-blur">
+            School History
+          </span>
+
+          <h1 class="mt-6 max-w-4xl text-4xl font-black leading-[1.07] tracking-[-0.03em] sm:text-5xl lg:text-6xl" data-backend-key="history.hero.title">
+            A story of steady growth, stronger learning and a school community built over time.
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg" data-backend-key="history.hero.intro">
+            Our history reflects the school’s journey from its early foundations to a broader academic community with stronger facilities, more learning stages and better systems for students and families.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#timeline" class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-5 py-3.5 text-sm font-black text-white transition hover:bg-teal-400">
+              Explore the Timeline
+            </a>
+            <a href="#today" class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/15">
+              Where We Are Today
+            </a>
+          </div>
+        </div>
+
+        <aside class="rounded-[1.5rem] border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-6">
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">History Snapshot</p>
+
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-3xl font-black text-teal-300" data-backend-key="history.foundedYear">2011</p>
+              <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Founded</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-3xl font-black text-sky-300" data-backend-key="history.years">15+</p>
+              <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Years</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-3xl font-black text-amber-300" data-backend-key="history.milestones">8+</p>
+              <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Major Milestones</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-3xl font-black text-violet-300" data-backend-key="history.stages">4</p>
+              <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Learning Stages</p>
+            </div>
+          </div>
+
+          <p class="mt-5 text-xs leading-5 text-slate-400">
+            Dates and milestones shown here are demo content. Official verified history will come from school records through the backend.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Beginning -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">Our Beginning</span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              The school began with a simple focus: clear teaching, strong routines and close support for students.
+            </h2>
+
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300" data-backend-key="history.beginning.p1">
+              JuniCore School started as a smaller learning community with a focus on accessible education, dependable classroom practice and close communication between teachers and families.
+            </p>
+
+            <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300" data-backend-key="history.beginning.p2">
+              As student numbers and academic needs grew, the school expanded carefully—adding new learning stages, specialist teaching, improved facilities and stronger systems for student support.
+            </p>
+
+            <div class="mt-6 rounded-2xl border border-teal-100 bg-teal-50/60 p-5 dark:border-teal-900 dark:bg-teal-950/20">
+              <p class="text-xs font-black uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Founding Principle</p>
+              <p class="mt-2 text-lg font-black text-slate-950 dark:text-white">Grow carefully without losing the personal support students need.</p>
+            </div>
+          </div>
+
+          <div class="relative min-h-[460px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=88"
+              alt="Students in an early school classroom"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">The Early Years</p>
+              <p class="mt-2 text-2xl font-black">Small beginnings. Clear purpose. Strong relationships.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">Growth Timeline</span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            Key moments in the school’s development.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            These sample milestones show how the public history page can present verified school records once backend data is connected.
+          </p>
+        </div>
+
+        <div class="mt-10 space-y-5">
+          <article class="grid gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <p class="text-3xl font-black text-teal-700 dark:text-teal-300" data-backend-key="history.timeline.2011.year">2011</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Foundation</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">School established with early primary classes.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">The first phase focused on building strong classroom routines, family trust and a stable learning environment.</p>
+            </div>
+          </article>
+
+          <article class="grid gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <p class="text-3xl font-black text-sky-700 dark:text-sky-300" data-backend-key="history.timeline.2014.year">2014</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Expansion</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">Primary section expanded and new classrooms added.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Growing enrolment led to improved classroom capacity and a more structured learning-stage model.</p>
+            </div>
+          </article>
+
+          <article class="grid gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <p class="text-3xl font-black text-amber-700 dark:text-amber-300" data-backend-key="history.timeline.2017.year">2017</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Middle School</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">Middle School introduced with specialist subject teaching.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Students gained access to deeper subject learning, project work, science activities and stronger study routines.</p>
+            </div>
+          </article>
+
+          <article class="grid gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <p class="text-3xl font-black text-violet-700 dark:text-violet-300" data-backend-key="history.timeline.2020.year">2020</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Digital Shift</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">Digital learning and communication systems expanded.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">The school increased its use of digital tools for learning resources, notices, parent communication and academic coordination.</p>
+            </div>
+          </article>
+
+          <article class="grid gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <p class="text-3xl font-black text-rose-700 dark:text-rose-300" data-backend-key="history.timeline.2022.year">2022</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Senior School</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">Senior School pathway strengthened for Grade 9–10.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Exam preparation, mentoring, academic tracking and senior subject support became more structured.</p>
+            </div>
+          </article>
+
+          <article class="grid gap-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <p class="text-3xl font-black text-emerald-700 dark:text-emerald-300" data-backend-key="history.timeline.2025.year">2025</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">Campus Growth</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">Facilities and student support services expanded.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Classrooms, labs, reading areas, transport coordination and wellbeing support were strengthened across the campus.</p>
+            </div>
+          </article>
+
+          <article class="grid gap-4 rounded-[1.5rem] border border-teal-200 bg-gradient-to-br from-teal-50 to-white p-5 shadow-sm sm:grid-cols-[130px_1fr] sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:from-teal-950/20 dark:to-slate-900">
+            <div>
+              <p class="text-3xl font-black text-teal-700 dark:text-teal-300" data-backend-key="history.timeline.2026.year">2026</p>
+              <p class="mt-1 text-xs font-black uppercase tracking-[0.14em] text-slate-500">JuniCore Era</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-950 dark:text-white">JuniCore digital school ecosystem introduced.</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">School website, Admin, Teacher, Student and Parent experiences are brought into one connected system for better visibility and communication.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evolution -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+          <div class="lg:sticky lg:top-28">
+            <span class="inline-flex rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">How We Evolved</span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Growth across academics, facilities and school systems.
+            </h2>
+            <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              The school’s development is not only about size. It is also about becoming more organised, more supportive and better equipped for student needs.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="rounded-[1.5rem] border border-teal-100 bg-teal-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:bg-teal-950/20">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">📚</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Academic Growth</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">From broad classroom teaching to clearer learning stages, specialist subjects and senior exam preparation.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-sky-950/20">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🏫</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Campus Development</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Improved classrooms, labs, reading spaces, activity areas and better student movement across campus.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-amber-100 bg-amber-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-amber-950/20">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🤝</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Student & Family Support</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">More structured communication, student wellbeing support and clearer parent-school processes.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-violet-100 bg-violet-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-violet-900 dark:bg-violet-950/20">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">💻</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Digital Transformation</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Moving from manual processes toward connected portals, backend data and real-time school communication.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus then & now -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-violet-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">Then & Now</span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            A campus that has grown with the needs of its students.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid gap-5 lg:grid-cols-2">
+          <article class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[2rem] dark:border-slate-800 dark:bg-slate-900">
+            <div class="relative h-72 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?auto=format&fit=crop&w=1200&q=88" alt="Earlier school learning environment" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-white">
+                <p class="text-xs font-black uppercase tracking-[0.16em] text-amber-300">Earlier Years</p>
+                <p class="mt-2 text-2xl font-black">A smaller, close-knit learning environment.</p>
+              </div>
+            </div>
+            <div class="p-5 sm:p-6">
+              <p class="text-sm leading-7 text-slate-600 dark:text-slate-300">
+                The early school model focused on core classroom teaching, close teacher-student contact and simple administrative processes.
+              </p>
+            </div>
+          </article>
+
+          <article class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[2rem] dark:border-slate-800 dark:bg-slate-900">
+            <div class="relative h-72 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=88" alt="Modern school campus" class="h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-white">
+                <p class="text-xs font-black uppercase tracking-[0.16em] text-teal-200">Today</p>
+                <p class="mt-2 text-2xl font-black">A more connected academic and student-support ecosystem.</p>
+              </div>
+            </div>
+            <div class="p-5 sm:p-6">
+              <p class="text-sm leading-7 text-slate-600 dark:text-slate-300">
+                The school now combines multiple learning stages, specialist spaces, student support services and a growing digital infrastructure.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Today -->
+    <section id="today" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="overflow-hidden rounded-[1.5rem] bg-slate-950 text-white sm:rounded-[2rem]">
+          <div class="grid lg:grid-cols-[1.05fr_.95fr]">
+            <div class="p-5 sm:p-7 lg:p-10">
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Where We Are Today</p>
+              <h2 class="mt-3 max-w-4xl text-[1.75rem] font-black leading-tight sm:text-3xl lg:text-4xl">
+                A school with stronger systems, broader opportunities and the same focus on student growth.
+              </h2>
+              <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
+                Today, JuniCore School is designed around a connected journey from Early Years to Senior School, supported by teaching teams, campus facilities, family communication and digital school systems.
+              </p>
+
+              <div class="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-teal-300">4</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Learning Stages</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-sky-300">13</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Grade Levels</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-amber-300">75+</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Teachers</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-violet-300">1</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Connected System</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative min-h-[340px] border-t border-white/10 lg:border-l lg:border-t-0">
+              <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1400&q=88" alt="Modern school classroom today" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-r from-slate-950/45 via-transparent to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future direction -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[1.5rem] border border-teal-100 bg-gradient-to-br from-teal-50 via-white to-sky-50 p-6 sm:rounded-[2rem] sm:p-8 lg:p-10 dark:border-teal-900 dark:from-teal-950/20 dark:via-slate-900 dark:to-sky-950/20">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Looking Forward</p>
+              <h2 class="mt-3 text-[1.75rem] font-black leading-tight text-slate-950 sm:text-3xl lg:text-4xl dark:text-white">
+                The next chapter should be about smarter growth, not just bigger growth.
+              </h2>
+              <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base dark:text-slate-300">
+                Future development will focus on teaching quality, stronger student support, better facilities and a more connected digital experience for staff, students and families.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-teal-700 dark:text-teal-300">Quality</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Better teaching and learning.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-sky-700 dark:text-sky-300">Support</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Earlier help for students.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-amber-700 dark:text-amber-300">Facilities</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Safer, stronger spaces.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-violet-700 dark:text-violet-300">Digital</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">More connected systems.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="junicore-school-mission-vision-values-v2-full.html" class="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-center text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">← Mission, Vision & Values</a>
+          <a href="junicore-school-main-website-v31-history-linked.html#about" class="rounded-xl bg-teal-600 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-teal-700">Back to Website</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+
+    function paintThemeButton() {
+      const isDark = root.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    paintThemeButton();
+
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('juniSchoolWebsiteTheme', root.classList.contains('dark') ? 'dark' : 'light');
+      paintThemeButton();
+    });
+  </script>
+</body>
+</html>

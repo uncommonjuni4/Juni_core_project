@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Principal's Message | JuniCore School</title>
+
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+</head>
+
+<body class="bg-slate-50 text-[15px] leading-relaxed text-slate-800 antialiased sm:text-base dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="junicore-school-main-website-v29-principal-message-linked.html#home" class="flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-sm font-black text-white sm:h-11 sm:w-11 sm:rounded-2xl">JC</span>
+        <span class="min-w-0">
+          <span class="block truncate text-base font-black text-slate-950 sm:text-lg dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[10px] sm:tracking-[0.18em] dark:text-teal-400">Principal's Message</span>
+        </span>
+      </a>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <a href="junicore-school-main-website-v29-principal-message-linked.html#about" class="hidden rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:inline-flex dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-700 dark:hover:text-teal-300">
+          ← Main Website
+        </a>
+        <button id="themeBtn" type="button" class="rounded-xl bg-slate-100 px-3 py-2.5 text-sm font-black text-slate-700 transition hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <img
+        src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=90"
+        alt="School leadership and classroom environment"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/82 to-slate-950/50"></div>
+
+      <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-8 px-4 py-14 sm:min-h-[620px] sm:px-6 sm:py-16 lg:grid-cols-[1.1fr_.9fr] lg:px-8 lg:py-20">
+        <div>
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200 backdrop-blur">
+            Principal's Message
+          </span>
+
+          <h1 class="mt-6 max-w-4xl text-4xl font-black leading-[1.07] tracking-[-0.03em] sm:text-5xl lg:text-6xl" data-backend-key="principal.hero.title">
+            Every student deserves to be known, supported and challenged to grow.
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg" data-backend-key="principal.hero.intro">
+            Our role as a school is not only to deliver lessons, but to create the conditions in which students can build confidence, responsibility, curiosity and strong academic habits.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#message" class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-5 py-3.5 text-sm font-black text-white transition hover:bg-teal-400">
+              Read the Message
+            </a>
+            <a href="#leadership-priorities" class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/15">
+              Leadership Priorities
+            </a>
+          </div>
+        </div>
+
+        <aside class="rounded-[1.5rem] border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-6">
+          <div class="flex items-center gap-4">
+            <div class="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-teal-500 text-xl font-black text-white" data-backend-key="principal.initials">PR</div>
+            <div>
+              <p class="text-xl font-black text-white" data-backend-key="principal.name">Principal Name</p>
+              <p class="mt-1 text-sm font-bold text-teal-200" data-backend-key="principal.role">Principal, JuniCore School</p>
+            </div>
+          </div>
+
+          <div class="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p class="text-xs font-black uppercase tracking-[0.16em] text-amber-300">Leadership Focus</p>
+            <p class="mt-2 text-sm leading-7 text-slate-300">Strong teaching, safe routines, student wellbeing, family partnership and continuous improvement.</p>
+          </div>
+
+          <p class="mt-5 text-xs leading-5 text-slate-400">Principal name, official photo and verified profile details will load from the backend later.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Principal profile -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div class="relative min-h-[460px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=88"
+              alt="Principal profile placeholder"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">School Leadership</p>
+              <h2 class="mt-2 text-2xl font-black" data-backend-key="principal.name">Principal Name</h2>
+              <p class="mt-1 text-sm text-slate-200" data-backend-key="principal.qualification">M.Ed • Educational Leadership</p>
+              <p class="mt-1 text-sm text-slate-300" data-backend-key="principal.experience">15+ Years in Education</p>
+            </div>
+          </div>
+
+          <div id="message">
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+              From the Principal
+            </span>
+
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              A message to our students, parents and school community.
+            </h2>
+
+            <div class="mt-6 space-y-5 text-[15px] leading-8 text-slate-600 sm:text-base dark:text-slate-300">
+              <p data-backend-key="principal.message.p1">
+                Welcome to JuniCore School. We believe that meaningful education begins when students feel safe enough to ask questions, confident enough to try, and responsible enough to learn from both success and mistakes.
+              </p>
+
+              <p data-backend-key="principal.message.p2">
+                Our teachers work to make learning clear, purposeful and connected. We want students to understand ideas deeply, communicate confidently and develop the habits they will need in later study and in everyday life.
+              </p>
+
+              <p data-backend-key="principal.message.p3">
+                We also know that academic progress does not happen in isolation. Good attendance, respectful behaviour, regular practice, supportive relationships and strong communication with families all contribute to a student's growth.
+              </p>
+
+              <p data-backend-key="principal.message.p4">
+                As Principal, my responsibility is to help maintain a school culture where expectations are high but support is equally strong. We want every student to leave each stage of school more capable, more independent and better prepared for the next challenge.
+              </p>
+            </div>
+
+            <div class="mt-7 border-l-4 border-teal-500 pl-5">
+              <p class="text-lg font-black italic leading-8 text-slate-950 dark:text-white" data-backend-key="principal.quote">
+                “Our goal is not simply to help students complete a school year. It is to help them become stronger learners year after year.”
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership priorities -->
+    <section id="leadership-priorities" class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">
+            Leadership Priorities
+          </span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            What school leadership focuses on every day.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            Effective leadership should be visible in classroom quality, student support, safe operations and clear communication.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.5rem] border border-teal-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-xl dark:bg-teal-950/30">📚</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Teaching Quality</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Clear planning, strong explanations, useful feedback and consistent academic expectations.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-sky-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-xl dark:bg-sky-950/30">🛡️</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Student Safety</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Supervision, appropriate procedures, respectful behaviour and quick response when support is needed.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-amber-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-xl dark:bg-amber-950/30">🤝</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Family Partnership</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Timely communication about progress, attendance, concerns and school expectations.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-violet-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-violet-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-xl dark:bg-violet-950/30">📈</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Continuous Improvement</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Reviewing results, attendance, feedback and school systems to identify where improvement is needed.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expectations for students -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+              To Our Students
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              We expect effort, honesty, respect and a willingness to improve.
+            </h2>
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              Students do not need to be perfect. They do need to participate, take responsibility for their learning and respond positively to guidance.
+            </p>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Attend & Participate</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Be present, prepared and involved in learning.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Ask Questions</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Curiosity is part of serious learning.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Respect Others</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Strong classrooms depend on respectful behaviour.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Learn from Feedback</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Mistakes are useful when they lead to improvement.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[430px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1300&q=88"
+              alt="Students learning together"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Student Mindset</p>
+              <p class="mt-2 text-2xl font-black">Effort • Curiosity • Respect • Responsibility</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parent partnership -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div class="relative min-h-[420px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1300&q=88"
+              alt="Parents and school community"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Family Partnership</p>
+              <p class="mt-2 text-2xl font-black">School and home work best together.</p>
+            </div>
+          </div>
+
+          <div>
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+              To Our Parents & Guardians
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Communication should be clear, timely and focused on the student.
+            </h2>
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              We value families as partners in education. When concerns arise, early communication helps the school and family respond before small issues become larger problems.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Stay informed</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Review notices, attendance, published results and school updates regularly.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Communicate early</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Raise academic, attendance or wellbeing concerns through approved channels.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Support routines</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Attendance, sleep, homework routines and punctuality all influence learning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- School direction -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[1.5rem] border border-teal-100 bg-gradient-to-br from-teal-50 via-white to-sky-50 p-6 sm:rounded-[2rem] sm:p-8 lg:p-10 dark:border-teal-900 dark:from-teal-950/20 dark:via-slate-900 dark:to-sky-950/20">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Our Direction</p>
+              <h2 class="mt-3 text-[1.75rem] font-black leading-tight text-slate-950 sm:text-3xl lg:text-4xl dark:text-white">
+                Stronger teaching. Better communication. Safer systems. More consistent student support.
+              </h2>
+              <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base dark:text-slate-300">
+                The school should keep improving its teaching, facilities, student support and digital systems without losing the personal relationships that make students feel known.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-teal-700 dark:text-teal-300">Teach</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Clearer and more consistently.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-sky-700 dark:text-sky-300">Support</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Earlier and more effectively.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-amber-700 dark:text-amber-300">Communicate</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Clearly and responsibly.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-violet-700 dark:text-violet-300">Improve</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Through evidence and feedback.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing signature -->
+    <section class="bg-slate-950 py-14 text-white sm:py-16">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Closing Note</p>
+            <h2 class="mt-3 max-w-3xl text-2xl font-black leading-tight sm:text-3xl">
+              Thank you for trusting us to be part of your child's learning journey.
+            </h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+              We look forward to working with students, families and staff to keep building a school community that learns, improves and grows together.
+            </p>
+
+            <div class="mt-6">
+              <p class="text-xl font-black" data-backend-key="principal.name">Principal Name</p>
+              <p class="mt-1 text-sm font-bold text-teal-200">Principal, JuniCore School</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a href="junicore-school-about-overview-v3-clean-header.html" class="rounded-xl border border-white/15 bg-white/5 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-white/10">
+              About Our School
+            </a>
+            <a href="junicore-school-main-website-v29-principal-message-linked.html#contact" class="rounded-xl bg-teal-500 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-teal-400">
+              Contact School
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+
+    function paintThemeButton() {
+      const isDark = root.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    paintThemeButton();
+
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('juniSchoolWebsiteTheme', root.classList.contains('dark') ? 'dark' : 'light');
+      paintThemeButton();
+    });
+  </script>
+</body>
+</html>

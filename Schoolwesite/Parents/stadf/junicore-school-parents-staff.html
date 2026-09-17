@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Staff | JuniCore School</title>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+</head>
+<body class="bg-slate-50 text-[15px] leading-relaxed text-slate-800 antialiased dark:bg-slate-950 dark:text-slate-100">
+  
+  <!-- Responsive JuniCore public navbar -->
+  <div class="border-b border-slate-200 bg-white text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-white">
+    <div class="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-2 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-slate-600 sm:justify-start dark:text-slate-300">
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#contact" class="inline-flex items-center gap-2 transition hover:text-teal-700 dark:hover:text-teal-300">
+          <span class="text-teal-600 dark:text-teal-400">●</span><span>Main Campus, Lahore</span>
+        </a>
+        <a href="tel:+9242111000111" class="inline-flex items-center gap-2 transition hover:text-teal-700 dark:hover:text-teal-300">
+          <span class="text-teal-600 dark:text-teal-400">☎</span><span>+92 42 111 000 111</span>
+        </a>
+        <a href="mailto:info@junicoreschool.edu.pk" class="hidden items-center gap-2 transition hover:text-teal-700 md:inline-flex dark:hover:text-teal-300">
+          <span class="text-teal-600 dark:text-teal-400">✉</span><span>info@junicoreschool.edu.pk</span>
+        </a>
+      </div>
+
+      <div class="flex items-center justify-center gap-2 sm:justify-end">
+        <span class="hidden text-slate-400 md:inline">Follow us</span>
+        <a href="#" aria-label="Facebook" class="grid h-7 w-7 place-items-center rounded-full bg-blue-600 text-xs font-black text-white">f</a>
+        <a href="#" aria-label="Instagram" class="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-fuchsia-500 via-pink-500 to-amber-400 text-xs font-black text-white">◎</a>
+        <a href="#" aria-label="YouTube" class="grid h-7 w-7 place-items-center rounded-full bg-red-600 text-[10px] font-black text-white">▶</a>
+        <span class="mx-1 hidden h-4 w-px bg-slate-200 sm:block dark:bg-slate-700"></span>
+        <button id="themeBtn" type="button" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-bold text-slate-700 transition hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle dark mode">
+          <span class="grid h-5 w-5 place-items-center rounded-full bg-slate-200 dark:bg-slate-800">🌙</span>
+          <span class="hidden sm:inline">Dark</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-[70] border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="junicore-school-main-website-v39-compact-mobile-menu.html#home" class="group flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-white shadow-lg shadow-teal-600/20 transition group-hover:-translate-y-0.5 sm:h-12 sm:w-12 sm:rounded-2xl">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 5l9 5.5-9 5.5-9-5.5Z"></path><path d="M7 13.5V17c2.7 2 7.3 2 10 0v-3.5"></path><path d="M21 10.5V16"></path>
+          </svg>
+        </span>
+        <span class="min-w-0 leading-tight">
+          <span class="block truncate text-lg font-black tracking-tight text-slate-950 sm:text-xl dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[11px] sm:tracking-[0.2em] dark:text-teal-400">Learn • Grow • Lead</span>
+        </span>
+      </a>
+
+      <nav class="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#home" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Home</a>
+
+        <div class="group relative">
+          <button type="button" class="flex items-center gap-1 rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300" aria-haspopup="true">
+            About Us
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </button>
+          <div class="invisible absolute left-0 top-full z-[90] mt-2 w-72 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-2xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-slate-700 dark:bg-slate-900">
+            <div class="grid grid-cols-1 gap-1"><a href="junicore-school-about-overview-v3-clean-header.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">About Our School</a><a href="junicore-school-principal-message-v2-full.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Principal's Message</a><a href="junicore-school-mission-vision-values-v2-full.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Mission, Vision & Values</a><a href="junicore-school-history-v2-full.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">School History</a><a href="junicore-school-governance-v2-full-professional.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Governance & Leadership</a><a href="junicore-school-policies-v2-full-professional.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Policies & Safeguarding</a><a href="junicore-school-student-achievement-v2-full-professional.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Student Achievement</a></div>
+          </div>
+        </div>
+
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#academics" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Academics</a>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#achievements" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Achievements</a>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#facilities" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Facilities</a>
+
+        <div class="group relative">
+          <button type="button" class="flex items-center gap-1 rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300" aria-haspopup="true">
+            Teachers
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </button>
+          <div class="invisible absolute right-0 top-full z-[90] mt-2 w-[32rem] max-w-[85vw] translate-y-2 rounded-2xl border border-slate-200 bg-white p-3 opacity-0 shadow-2xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-slate-700 dark:bg-slate-900">
+            <p class="px-2 pb-2 text-xs font-black uppercase tracking-[0.16em] text-teal-700 dark:text-teal-300">Teachers by Class</p>
+            <div class="grid grid-cols-3 gap-1"><a href="junicore-school-teachers-playgroup.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Playgroup</a><a href="junicore-school-teachers-nursery.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Nursery</a><a href="junicore-school-teachers-kg.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">KG</a><a href="junicore-school-teachers-grade-1.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 1</a><a href="junicore-school-teachers-grade-2.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 2</a><a href="junicore-school-teachers-grade-3.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 3</a><a href="junicore-school-teachers-grade-4.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 4</a><a href="junicore-school-teachers-grade-5.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 5</a><a href="junicore-school-teachers-grade-6.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 6</a><a href="junicore-school-teachers-grade-7.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 7</a><a href="junicore-school-teachers-grade-8.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 8</a><a href="junicore-school-teachers-grade-9.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 9</a><a href="junicore-school-teachers-grade-10.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 10</a></div>
+          </div>
+        </div>
+
+        <div class="group relative">
+          <button type="button" class="flex items-center gap-1 rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300" aria-haspopup="true">
+            Parents
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </button>
+          <div class="invisible absolute right-0 top-full z-[90] mt-2 w-64 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-2xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-slate-700 dark:bg-slate-900">
+            <div class="grid grid-cols-1 gap-1"><a href="junicore-school-parents-staff.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Staff</a><a href="junicore-school-parents-term-dates.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Term Dates</a><a href="junicore-school-parents-uniform.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Uniform</a><a href="junicore-school-parents-school-lunches.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">School Lunches</a><a href="junicore-school-parents-local-offers.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Local Offers</a></div>
+          </div>
+        </div>
+
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#events" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Events</a>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#contact" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Contact</a>
+      </nav>
+
+      <div class="hidden shrink-0 items-center gap-2 xl:flex">
+        <button id="portalBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[13px] font-bold text-slate-800 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300">Portal Login ▾</button>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#contact" class="rounded-xl bg-amber-400 px-3 py-2.5 text-[13px] font-black text-slate-950 transition hover:bg-amber-300">Admission Inquiry</a>
+      </div>
+
+      <button id="mobileBtn" type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white text-xl text-slate-800 xl:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-white" aria-label="Open menu">☰</button>
+    </div>
+
+    <div id="portalMenu" class="absolute right-4 top-[68px] z-[100] hidden w-72 rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl sm:right-6 lg:right-8 dark:border-slate-700 dark:bg-slate-900">
+      <p class="px-3 py-2 text-xs font-black uppercase tracking-[0.16em] text-slate-400">Choose Portal</p>
+      <a href="junicore-school-admin-v108-sidebar-school-card-color-fix.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">School Admin</a>
+      <a href="junicore-school-teacher-v31-final-aligned-loader.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Teacher</a>
+      <a href="junicore-school-student-v1-final-control-sync.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Student</a>
+      <a href="junicore-school-parent-v1-admin-teacher-sync-final.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Parent</a>
+    </div>
+
+    <div id="mobileMenu" class="absolute right-3 top-[calc(100%+0.35rem)] z-[110] hidden max-h-[72vh] w-[20rem] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-2.5 shadow-2xl xl:hidden dark:border-slate-700 dark:bg-slate-900">
+      <div class="grid gap-1.5">
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#home" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Home</a>
+        
+        <details class="group rounded-lg border border-slate-200 bg-slate-50/70 dark:border-slate-700 dark:bg-slate-800/50">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-800 dark:text-white">
+            <span>About Us</span>
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </summary>
+          <div class="grid grid-cols-1 gap-1 border-t border-slate-200 p-1.5 dark:border-slate-700"><a href="junicore-school-about-overview-v3-clean-header.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">About Our School</a><a href="junicore-school-principal-message-v2-full.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Principal's Message</a><a href="junicore-school-mission-vision-values-v2-full.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Mission, Vision & Values</a><a href="junicore-school-history-v2-full.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">School History</a><a href="junicore-school-governance-v2-full-professional.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Governance & Leadership</a><a href="junicore-school-policies-v2-full-professional.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Policies & Safeguarding</a><a href="junicore-school-student-achievement-v2-full-professional.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Student Achievement</a></div>
+        </details>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#academics" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Academics</a>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#achievements" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Achievements</a>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#facilities" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Facilities</a>
+        
+        <details class="group rounded-lg border border-slate-200 bg-slate-50/70 dark:border-slate-700 dark:bg-slate-800/50">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-800 dark:text-white">
+            <span>Teachers</span>
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </summary>
+          <div class="grid grid-cols-3 gap-1 border-t border-slate-200 p-1.5 dark:border-slate-700"><a href="junicore-school-teachers-playgroup.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Playgroup</a><a href="junicore-school-teachers-nursery.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Nursery</a><a href="junicore-school-teachers-kg.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">KG</a><a href="junicore-school-teachers-grade-1.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 1</a><a href="junicore-school-teachers-grade-2.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 2</a><a href="junicore-school-teachers-grade-3.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 3</a><a href="junicore-school-teachers-grade-4.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 4</a><a href="junicore-school-teachers-grade-5.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 5</a><a href="junicore-school-teachers-grade-6.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 6</a><a href="junicore-school-teachers-grade-7.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 7</a><a href="junicore-school-teachers-grade-8.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 8</a><a href="junicore-school-teachers-grade-9.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 9</a><a href="junicore-school-teachers-grade-10.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 10</a></div>
+        </details>
+        
+        <details class="group rounded-lg border border-slate-200 bg-slate-50/70 dark:border-slate-700 dark:bg-slate-800/50">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-800 dark:text-white">
+            <span>Parents</span>
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </summary>
+          <div class="grid grid-cols-1 gap-1 border-t border-slate-200 p-1.5 dark:border-slate-700"><a href="junicore-school-parents-staff.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Staff</a><a href="junicore-school-parents-term-dates.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Term Dates</a><a href="junicore-school-parents-uniform.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Uniform</a><a href="junicore-school-parents-school-lunches.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">School Lunches</a><a href="junicore-school-parents-local-offers.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Local Offers</a></div>
+        </details>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#events" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Events</a>
+        <a href="junicore-school-main-website-v39-compact-mobile-menu.html#contact" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Contact</a>
+
+        <div class="mt-1.5 grid grid-cols-2 gap-1.5">
+          <a href="junicore-school-student-v1-final-control-sync.html" class="rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-center text-xs font-black text-slate-800 dark:border-slate-700 dark:bg-slate-950 dark:text-white">Portal Login</a>
+          <a href="junicore-school-main-website-v39-compact-mobile-menu.html#contact" class="rounded-lg bg-amber-400 px-2.5 py-2 text-center text-xs font-black text-slate-950">Admission Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=2000&q=90" alt="Staff" class="absolute inset-0 -z-20 h-full w-full object-cover" />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/96 via-slate-950/82 to-slate-950/48"></div>
+      <div class="mx-auto flex min-h-[420px] max-w-7xl items-center px-4 py-14 sm:px-6 lg:px-8">
+        <div class="max-w-4xl">
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200">Parents • Staff</span>
+          <h1 class="mt-6 text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">Meet the people who lead, teach and support our school.</h1>
+          <p class="mt-5 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg">A clear staff directory helps families understand who is responsible for leadership, teaching, student support and school services.</p>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">Leadership Team</span>
+          <h2 class="mt-5 text-3xl font-black text-slate-950 sm:text-4xl dark:text-white">The people responsible for school leadership and day-to-day coordination.</h2>
+          <p class="mt-4 leading-8 text-slate-600 dark:text-slate-300">Names below are demo records. Live staff assignments, roles and public visibility will later come from the JuniCore backend.</p>
+        </div>
+
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+          <div class="grid grid-cols-[1fr_1.2fr] bg-slate-50 px-5 py-3 text-xs font-black uppercase tracking-[0.14em] text-slate-500 dark:bg-slate-800/70">
+            <span>Leadership Role</span><span>Name</span>
+          </div>
+          <div class="divide-y divide-slate-200 dark:divide-slate-800">
+            <div class="grid grid-cols-[1fr_1.2fr] px-5 py-4"><strong>Principal</strong><span>Principal Name</span></div>
+            <div class="grid grid-cols-[1fr_1.2fr] px-5 py-4"><strong>Assistant Principal</strong><span>Assistant Principal Name</span></div>
+            <div class="grid grid-cols-[1fr_1.2fr] px-5 py-4"><strong>Early Years Lead</strong><span>Early Years Coordinator</span></div>
+            <div class="grid grid-cols-[1fr_1.2fr] px-5 py-4"><strong>Primary Lead</strong><span>Primary Coordinator</span></div>
+            <div class="grid grid-cols-[1fr_1.2fr] px-5 py-4"><strong>Middle & Senior Lead</strong><span>Academic Coordinator</span></div>
+          </div>
+        </div>
+
+        <div class="mt-14">
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:text-sky-300">Teaching Teams</p>
+          <h2 class="mt-2 text-3xl font-black text-slate-950 dark:text-white">Class teaching structure</h2>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <a href="junicore-school-teachers-nursery.html" class="rounded-2xl border border-pink-100 bg-pink-50/60 p-5 transition hover:-translate-y-1 dark:border-pink-900 dark:bg-pink-950/20"><strong class="block text-lg text-slate-950 dark:text-white">Early Years</strong><span class="mt-2 block text-sm text-slate-600 dark:text-slate-300">Playgroup • Nursery • KG</span></a>
+            <a href="junicore-school-teachers-grade-1.html" class="rounded-2xl border border-sky-100 bg-sky-50/60 p-5 transition hover:-translate-y-1 dark:border-sky-900 dark:bg-sky-950/20"><strong class="block text-lg text-slate-950 dark:text-white">Primary</strong><span class="mt-2 block text-sm text-slate-600 dark:text-slate-300">Grade 1 – 5</span></a>
+            <a href="junicore-school-teachers-grade-6.html" class="rounded-2xl border border-amber-100 bg-amber-50/60 p-5 transition hover:-translate-y-1 dark:border-amber-900 dark:bg-amber-950/20"><strong class="block text-lg text-slate-950 dark:text-white">Middle School</strong><span class="mt-2 block text-sm text-slate-600 dark:text-slate-300">Grade 6 – 8</span></a>
+            <a href="junicore-school-teachers-grade-9.html" class="rounded-2xl border border-violet-100 bg-violet-50/60 p-5 transition hover:-translate-y-1 dark:border-violet-900 dark:bg-violet-950/20"><strong class="block text-lg text-slate-950 dark:text-white">Senior School</strong><span class="mt-2 block text-sm text-slate-600 dark:text-slate-300">Grade 9 – 10</span></a>
+          </div>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-3">
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900"><h3 class="text-xl font-black text-slate-950 dark:text-white">Administration</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Admissions, records, fees, front office and parent service support.</p></article>
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900"><h3 class="text-xl font-black text-slate-950 dark:text-white">Student Support</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Wellbeing, learning support, first aid and student guidance roles.</p></article>
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900"><h3 class="text-xl font-black text-slate-950 dark:text-white">Campus Services</h3><p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Transport, security, facilities, library and campus operations.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    function paintTheme() {
+      if (!themeBtn) return;
+      const dark = root.classList.contains('dark');
+      themeBtn.innerHTML = dark ? '<span>☀️</span><span class="hidden sm:inline">Light</span>' : '<span>🌙</span><span class="hidden sm:inline">Dark</span>';
+    }
+    paintTheme();
+    themeBtn?.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('juniSchoolWebsiteTheme', root.classList.contains('dark') ? 'dark' : 'light');
+      paintTheme();
+    });
+  </script>
+
+  <script data-global-nav-script>
+    (() => {
+      const mobileBtn = document.getElementById('mobileBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const portalBtn = document.getElementById('portalBtn');
+      const portalMenu = document.getElementById('portalMenu');
+
+      if (mobileBtn && mobileMenu && !mobileBtn.dataset.bound) {
+        mobileBtn.dataset.bound = '1';
+        mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+      }
+
+      if (portalBtn && portalMenu && !portalBtn.dataset.bound) {
+        portalBtn.dataset.bound = '1';
+        portalBtn.addEventListener('click', (event) => {
+          event.stopPropagation();
+          portalMenu.classList.toggle('hidden');
+        });
+        document.addEventListener('click', (event) => {
+          if (!portalMenu.contains(event.target) && !portalBtn.contains(event.target)) {
+            portalMenu.classList.add('hidden');
+          }
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

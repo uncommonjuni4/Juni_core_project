@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JuniCore School - Modern learning, strong values, bright futures." />
+  <title>JuniCore School | Learn • Grow • Lead</title>
+  <script>
+    // Apply the saved theme before the page paints to avoid a light-mode flash.
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const initial = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          boxShadow: {
+            soft: '0 18px 45px rgba(15, 23, 42, 0.08)'
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-sky-50/40 text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+  
+  <!-- Responsive JuniCore public navbar -->
+  <div class="border-b border-slate-200 bg-white text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-white">
+    <div class="mx-auto flex max-w-[1440px] flex-col gap-2 px-4 py-2 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-slate-600 sm:justify-start dark:text-slate-300">
+        <a href="#contact" class="inline-flex items-center gap-2 transition hover:text-teal-700 dark:hover:text-teal-300">
+          <span class="text-teal-600 dark:text-teal-400">●</span><span>Main Campus, Lahore</span>
+        </a>
+        <a href="tel:+9242111000111" class="inline-flex items-center gap-2 transition hover:text-teal-700 dark:hover:text-teal-300">
+          <span class="text-teal-600 dark:text-teal-400">☎</span><span>+92 42 111 000 111</span>
+        </a>
+        <a href="mailto:info@junicoreschool.edu.pk" class="hidden items-center gap-2 transition hover:text-teal-700 md:inline-flex dark:hover:text-teal-300">
+          <span class="text-teal-600 dark:text-teal-400">✉</span><span>info@junicoreschool.edu.pk</span>
+        </a>
+      </div>
+
+      <div class="flex items-center justify-center gap-2 sm:justify-end">
+        <span class="hidden text-slate-400 md:inline">Follow us</span>
+        <a href="#" aria-label="Facebook" class="grid h-7 w-7 place-items-center rounded-full bg-blue-600 text-xs font-black text-white">f</a>
+        <a href="#" aria-label="Instagram" class="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-fuchsia-500 via-pink-500 to-amber-400 text-xs font-black text-white">◎</a>
+        <a href="#" aria-label="YouTube" class="grid h-7 w-7 place-items-center rounded-full bg-red-600 text-[10px] font-black text-white">▶</a>
+        <span class="mx-1 hidden h-4 w-px bg-slate-200 sm:block dark:bg-slate-700"></span>
+        <button id="themeBtn" type="button" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 font-bold text-slate-700 transition hover:border-teal-300 hover:bg-teal-50 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle dark mode">
+          <span class="grid h-5 w-5 place-items-center rounded-full bg-slate-200 dark:bg-slate-800">🌙</span>
+          <span class="hidden sm:inline">Dark</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-[70] border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#home" class="group flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-white shadow-lg shadow-teal-600/20 transition group-hover:-translate-y-0.5 sm:h-12 sm:w-12 sm:rounded-2xl">
+          <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 5l9 5.5-9 5.5-9-5.5Z"></path><path d="M7 13.5V17c2.7 2 7.3 2 10 0v-3.5"></path><path d="M21 10.5V16"></path>
+          </svg>
+        </span>
+        <span class="min-w-0 leading-tight">
+          <span class="block truncate text-lg font-black tracking-tight text-slate-950 sm:text-xl dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[11px] sm:tracking-[0.2em] dark:text-teal-400">Learn • Grow • Lead</span>
+        </span>
+      </a>
+
+      <nav class="hidden flex-1 items-center justify-center gap-0.5 xl:flex">
+        <a href="#home" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Home</a>
+
+        <div class="group relative">
+          <button type="button" class="flex items-center gap-1 rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300" aria-haspopup="true">
+            About Us
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </button>
+          <div class="invisible absolute left-0 top-full z-[90] mt-2 w-72 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-2xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-slate-700 dark:bg-slate-900">
+            <div class="grid grid-cols-1 gap-1"><a href="junicore-school-about-overview-v3-clean-header.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">About Our School</a><a href="junicore-school-principal-message-v2-full.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Principal's Message</a><a href="junicore-school-mission-vision-values-v2-full.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Mission, Vision & Values</a><a href="junicore-school-history-v2-full.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">School History</a><a href="junicore-school-governance-v2-full-professional.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Governance & Leadership</a><a href="junicore-school-policies-v2-full-professional.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Policies & Safeguarding</a><a href="junicore-school-student-achievement-v2-full-professional.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Student Achievement</a></div>
+          </div>
+        </div>
+
+        <a href="#academics" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Academics</a>
+        <a href="#achievements" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Achievements</a>
+        <a href="#facilities" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Facilities</a>
+
+        <div class="group relative">
+          <button type="button" class="flex items-center gap-1 rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300" aria-haspopup="true">
+            Teachers
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </button>
+          <div class="invisible absolute right-0 top-full z-[90] mt-2 w-[32rem] max-w-[85vw] translate-y-2 rounded-2xl border border-slate-200 bg-white p-3 opacity-0 shadow-2xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-slate-700 dark:bg-slate-900">
+            <p class="px-2 pb-2 text-xs font-black uppercase tracking-[0.16em] text-teal-700 dark:text-teal-300">Teachers by Class</p>
+            <div class="grid grid-cols-3 gap-1"><a href="junicore-school-teachers-playgroup.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Playgroup</a><a href="junicore-school-teachers-nursery.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Nursery</a><a href="junicore-school-teachers-kg.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">KG</a><a href="junicore-school-teachers-grade-1.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 1</a><a href="junicore-school-teachers-grade-2.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 2</a><a href="junicore-school-teachers-grade-3.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 3</a><a href="junicore-school-teachers-grade-4.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 4</a><a href="junicore-school-teachers-grade-5.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 5</a><a href="junicore-school-teachers-grade-6.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 6</a><a href="junicore-school-teachers-grade-7.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 7</a><a href="junicore-school-teachers-grade-8.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 8</a><a href="junicore-school-teachers-grade-9.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 9</a><a href="junicore-school-teachers-grade-10.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Grade 10</a></div>
+          </div>
+        </div>
+
+        <div class="group relative">
+          <button type="button" class="flex items-center gap-1 rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 focus:bg-teal-50 focus:text-teal-700 focus:outline-none dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300" aria-haspopup="true">
+            Parents
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-hover:rotate-180 group-focus-within:rotate-180" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </button>
+          <div class="invisible absolute right-0 top-full z-[90] mt-2 w-64 translate-y-2 rounded-2xl border border-slate-200 bg-white p-2 opacity-0 shadow-2xl transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 dark:border-slate-700 dark:bg-slate-900">
+            <div class="grid grid-cols-1 gap-1"><a href="junicore-school-parents-staff.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Staff</a><a href="junicore-school-parents-term-dates.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Term Dates</a><a href="junicore-school-parents-uniform.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Uniform</a><a href="junicore-school-parents-school-lunches.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">School Lunches</a><a href="junicore-school-parents-local-offers.html" class="block rounded-xl px-3 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Local Offers</a></div>
+          </div>
+        </div>
+
+        <a href="#events" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Events</a>
+        <a href="#contact" class="rounded-xl px-2.5 py-2 text-[13px] font-semibold text-slate-700 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-teal-300">Contact</a>
+      </nav>
+
+      <div class="hidden shrink-0 items-center gap-2 xl:flex">
+        <button id="portalBtn" type="button" class="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-[13px] font-bold text-slate-800 transition hover:border-teal-500 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-teal-400 dark:hover:text-teal-300">Portal Login ▾</button>
+        <a href="#contact" class="rounded-xl bg-amber-400 px-3 py-2.5 text-[13px] font-black text-slate-950 transition hover:bg-amber-300">Admission Inquiry</a>
+      </div>
+
+      <button id="mobileBtn" type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200 bg-white text-xl text-slate-800 xl:hidden dark:border-slate-700 dark:bg-slate-900 dark:text-white" aria-label="Open menu">☰</button>
+    </div>
+
+    <div id="portalMenu" class="absolute right-4 top-[68px] z-[100] hidden w-72 rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl sm:right-6 lg:right-8 dark:border-slate-700 dark:bg-slate-900">
+      <p class="px-3 py-2 text-xs font-black uppercase tracking-[0.16em] text-slate-400">Choose Portal</p>
+      <a href="junicore-school-admin-v108-sidebar-school-card-color-fix.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">School Admin</a>
+      <a href="junicore-school-teacher-v31-final-aligned-loader.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Teacher</a>
+      <a href="junicore-school-student-v1-final-control-sync.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Student</a>
+      <a href="junicore-school-parent-v1-admin-teacher-sync-final.html" class="block rounded-xl px-3 py-3 font-bold text-slate-800 hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Parent</a>
+    </div>
+
+    <div id="mobileMenu" class="absolute right-3 top-[calc(100%+0.35rem)] z-[110] hidden max-h-[72vh] w-[20rem] max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-2.5 shadow-2xl xl:hidden dark:border-slate-700 dark:bg-slate-900">
+      <div class="grid gap-1.5">
+        <a href="#home" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Home</a>
+        
+        <details class="group rounded-lg border border-slate-200 bg-slate-50/70 dark:border-slate-700 dark:bg-slate-800/50">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-800 dark:text-white">
+            <span>About Us</span>
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </summary>
+          <div class="grid grid-cols-1 gap-1 border-t border-slate-200 p-1.5 dark:border-slate-700"><a href="junicore-school-about-overview-v3-clean-header.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">About Our School</a><a href="junicore-school-principal-message-v2-full.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Principal's Message</a><a href="junicore-school-mission-vision-values-v2-full.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Mission, Vision & Values</a><a href="junicore-school-history-v2-full.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">School History</a><a href="junicore-school-governance-v2-full-professional.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Governance & Leadership</a><a href="junicore-school-policies-v2-full-professional.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Policies & Safeguarding</a><a href="junicore-school-student-achievement-v2-full-professional.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Student Achievement</a></div>
+        </details>
+        <a href="#academics" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Academics</a>
+        <a href="#achievements" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Achievements</a>
+        <a href="#facilities" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Facilities</a>
+        
+        <details class="group rounded-lg border border-slate-200 bg-slate-50/70 dark:border-slate-700 dark:bg-slate-800/50">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-800 dark:text-white">
+            <span>Teachers</span>
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </summary>
+          <div class="grid grid-cols-3 gap-1 border-t border-slate-200 p-1.5 dark:border-slate-700"><a href="junicore-school-teachers-playgroup.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Playgroup</a><a href="junicore-school-teachers-nursery.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Nursery</a><a href="junicore-school-teachers-kg.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">KG</a><a href="junicore-school-teachers-grade-1.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 1</a><a href="junicore-school-teachers-grade-2.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 2</a><a href="junicore-school-teachers-grade-3.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 3</a><a href="junicore-school-teachers-grade-4.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 4</a><a href="junicore-school-teachers-grade-5.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 5</a><a href="junicore-school-teachers-grade-6.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 6</a><a href="junicore-school-teachers-grade-7.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 7</a><a href="junicore-school-teachers-grade-8.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 8</a><a href="junicore-school-teachers-grade-9.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 9</a><a href="junicore-school-teachers-grade-10.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Grade 10</a></div>
+        </details>
+        
+        <details class="group rounded-lg border border-slate-200 bg-slate-50/70 dark:border-slate-700 dark:bg-slate-800/50">
+          <summary class="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-slate-800 dark:text-white">
+            <span>Parents</span>
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 7.5 5 5 5-5"></path></svg>
+          </summary>
+          <div class="grid grid-cols-1 gap-1 border-t border-slate-200 p-1.5 dark:border-slate-700"><a href="junicore-school-parents-staff.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Staff</a><a href="junicore-school-parents-term-dates.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Term Dates</a><a href="junicore-school-parents-uniform.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Uniform</a><a href="junicore-school-parents-school-lunches.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">School Lunches</a><a href="junicore-school-parents-local-offers.html" class="rounded-md px-2.5 py-1.5 text-xs font-semibold text-slate-600 transition hover:bg-teal-50 hover:text-teal-700 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-teal-300">Local Offers</a></div>
+        </details>
+        <a href="#events" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Events</a>
+        <a href="#contact" class="rounded-lg px-3 py-2 text-left text-sm font-bold text-slate-800 transition hover:bg-slate-100 dark:text-white dark:hover:bg-slate-800">Contact</a>
+
+        <div class="mt-1.5 grid grid-cols-2 gap-1.5">
+          <a href="junicore-school-student-v1-final-control-sync.html" class="rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-center text-xs font-black text-slate-800 dark:border-slate-700 dark:bg-slate-950 dark:text-white">Portal Login</a>
+          <a href="#contact" class="rounded-lg bg-amber-400 px-2.5 py-2 text-center text-xs font-black text-slate-950">Admission Inquiry</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <!-- Hero -->
+    <section id="home" class="relative isolate overflow-hidden bg-slate-950">
+      <img
+        src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2200&q=90"
+        alt="JuniCore School students learning in a bright classroom"
+        class="absolute inset-0 -z-30 h-full w-full object-cover object-center"
+      />
+      <div class="absolute inset-0 -z-20 bg-slate-950/55"></div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/25"></div>
+
+      <div class="mx-auto grid min-h-[620px] max-w-7xl items-center gap-8 px-4 py-12 sm:min-h-[660px] sm:px-6 sm:py-16 lg:min-h-[720px] lg:grid-cols-[1.1fr_.9fr] lg:gap-10 lg:px-8 lg:py-20">
+        <div class="max-w-[48rem] text-white">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-white backdrop-blur-md">
+            <span class="h-2 w-2 rounded-full bg-amber-300"></span>
+            Admissions Open • Session 2026–27
+          </div>
+
+          <p class="text-sm font-black uppercase tracking-[0.24em] text-teal-300">JuniCore School • Lahore</p>
+
+          <h1 class="mt-4 max-w-[48rem] text-[2.35rem] font-black leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl">
+            A school where students
+            <span class="text-teal-300">learn, grow and belong.</span>
+          </h1>
+
+          <p class="mt-5 max-w-[42rem] text-[15px] leading-7 text-slate-200 sm:mt-6 sm:text-lg sm:leading-8">
+            Strong academics, caring teachers, a safe campus and meaningful opportunities that help every student build confidence for the future.
+          </p>
+
+          <div class="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-5 py-3.5 text-sm font-black sm:px-6 text-slate-950 shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:bg-amber-300"
+            >
+              Admission Inquiry
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="#about"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-3.5 text-sm font-black sm:px-6 text-white backdrop-blur-md transition hover:bg-white/20"
+            >
+              Explore Our School
+            </a>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-x-8 gap-y-5 border-t border-white/15 pt-6">
+            <div>
+              <p class="text-2xl font-black text-white">1,250+</p>
+              <p class="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-300">Students</p>
+            </div>
+            <div>
+              <p class="text-2xl font-black text-white">75+</p>
+              <p class="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-300">Teachers</p>
+            </div>
+            <div>
+              <p class="text-2xl font-black text-white">22 Years</p>
+              <p class="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-slate-300">Learning & Trust</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden lg:block">
+          <div class="ml-auto max-w-sm rounded-[1.35rem] sm:rounded-[1.75rem] border border-white/20 bg-white/10 p-5 text-white shadow-2xl backdrop-blur-xl">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">School at a Glance</p>
+                <h2 class="mt-2 text-2xl font-black">A balanced learning experience.</h2>
+              </div>
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-teal-400/20 text-xl">🏫</span>
+            </div>
+
+            <div class="mt-6 grid gap-3">
+              <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/20 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-amber-300/20">📘</span>
+                <div>
+                  <p class="text-sm font-black">Academic Excellence</p>
+                  <p class="mt-1 text-xs leading-5 text-slate-200">Structured learning with regular progress review.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/20 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-teal-300/20">🤝</span>
+                <div>
+                  <p class="text-sm font-black">Caring Community</p>
+                  <p class="mt-1 text-xs leading-5 text-slate-200">Teachers, students and families stay connected.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-slate-950/20 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sky-300/20">🏆</span>
+                <div>
+                  <p class="text-sm font-black">Beyond the Classroom</p>
+                  <p class="mt-1 text-xs leading-5 text-slate-200">Sports, clubs, events and leadership opportunities.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="#facilities" class="mt-5 inline-flex items-center gap-2 text-sm font-black text-amber-300 transition hover:text-amber-200">
+              Explore campus life <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10 bg-slate-950/65 backdrop-blur-md">
+        <div class="mx-auto grid max-w-7xl grid-cols-2 px-4 sm:grid-cols-4 lg:px-8">
+          <a href="#academics" class="flex items-center gap-3 border-r border-white/10 px-3 py-4 text-white transition hover:bg-white/10 sm:px-5">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10">📘</span>
+            <span>
+              <span class="block text-sm font-black">Academics</span>
+              <span class="hidden text-xs text-slate-300 sm:block">Explore learning</span>
+            </span>
+          </a>
+
+          <a href="#achievements" class="flex items-center gap-3 border-white/10 px-3 py-4 text-white transition hover:bg-white/10 sm:border-r sm:px-5">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10">✦</span>
+            <span>
+              <span class="block text-sm font-black">Achievements</span>
+              <span class="hidden text-xs text-slate-300 sm:block">Student success</span>
+            </span>
+          </a>
+
+          <a href="#facilities" class="flex items-center gap-3 border-r border-t border-white/10 px-3 py-4 text-white transition hover:bg-white/10 sm:border-t-0 sm:px-5">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10">🏫</span>
+            <span>
+              <span class="block text-sm font-black">Campus Life</span>
+              <span class="hidden text-xs text-slate-300 sm:block">Facilities & activities</span>
+            </span>
+          </a>
+
+          <a href="#contact" class="flex items-center gap-3 border-t border-white/10 px-3 py-4 text-white transition hover:bg-white/10 sm:border-t-0 sm:px-5">
+            <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/10">☎</span>
+            <span>
+              <span class="block text-sm font-black">Contact</span>
+              <span class="hidden text-xs text-slate-300 sm:block">Talk to our team</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notice strip -->
+    <section class="border-y border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900/60">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center lg:px-8">
+        <div class="shrink-0 rounded-full bg-amber-100 px-4 py-2 text-sm font-black text-amber-800 dark:bg-amber-900/30 dark:text-amber-300">Latest Notice</div>
+        <div class="flex-1 text-sm font-semibold text-slate-700 dark:text-slate-200">Admission assessment schedule for the new session is now available. Families are encouraged to submit inquiries early.</div>
+        <a href="#achievements" class="text-sm font-black text-teal-700 hover:underline dark:text-teal-300">View Achievements →</a>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" data-section="about" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Section heading -->
+        <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/40 dark:text-teal-300">
+              About JuniCore School
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+              <span data-backend-key="about.heading">More than a school — a place to learn, belong and grow with confidence.</span>
+            </h2>
+            <p class="mt-5 max-w-[42rem] text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg dark:text-slate-300">
+              <span data-backend-key="about.intro">JuniCore School is designed around one simple idea: students do their best when they feel safe, supported, challenged and connected. Our school combines strong academics, clear values, active student life and meaningful family partnership in one balanced learning environment.</span>
+            </p>
+            <div class="mt-6 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[11px] font-bold text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+              Content ready for dynamic backend data
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="relative overflow-hidden rounded-[1.35rem] sm:rounded-[1.75rem] border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:row-span-2">
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=88" alt="Students learning together in school" class="h-full min-h-[360px] w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/15 bg-slate-950/45 p-4 text-white backdrop-blur-md">
+                <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Learning Environment</p>
+                <p class="mt-2 text-lg font-black">Active classrooms, supportive teaching and confident learners.</p>
+              </div>
+            </div>
+
+            <div class="relative overflow-hidden rounded-[1.35rem] sm:rounded-[1.75rem] border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1000&q=88" alt="School campus building" class="h-44 w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 text-white">
+                <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Campus Life</p>
+                <p class="mt-1 text-sm font-bold">Safe spaces designed for learning and growth.</p>
+              </div>
+            </div>
+
+            <div class="rounded-[1.75rem] border border-slate-200 bg-slate-50 p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900/70">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Quick School Snapshot</p>
+              <div class="mt-4 grid grid-cols-2 gap-3 text-center">
+                <div class="rounded-2xl bg-white p-4 dark:bg-slate-950/60">
+                  <p class="text-2xl font-black text-teal-600 dark:text-teal-400" data-backend-key="stats.students">1,250+</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Students</p>
+                </div>
+                <div class="rounded-2xl bg-white p-4 dark:bg-slate-950/60">
+                  <p class="text-2xl font-black text-sky-600 dark:text-sky-400" data-backend-key="stats.teachers">75+</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Teachers</p>
+                </div>
+                <div class="rounded-2xl bg-white p-4 dark:bg-slate-950/60">
+                  <p class="text-2xl font-black text-amber-600 dark:text-amber-400" data-backend-key="stats.years">22</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Years</p>
+                </div>
+                <div class="rounded-2xl bg-white p-4 dark:bg-slate-950/60">
+                  <p class="text-2xl font-black text-violet-600 dark:text-violet-400" data-backend-key="stats.portals">4</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.14em] text-slate-500">Portals</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main image + story -->
+        <div class="mt-14 grid gap-7 sm:gap-8 lg:grid-cols-[1.05fr_.95fr]">
+          <div class="relative min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] sm:min-h-[500px] lg:min-h-[560px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <img
+              src="https://images.unsplash.com/photo-1560785496-3c9d27877182?auto=format&fit=crop&w=1600&q=88"
+              alt="Students and teachers in a modern school environment"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent"></div>
+
+            <div class="absolute left-5 top-5 flex flex-wrap gap-2">
+              <span class="rounded-full border border-white/20 bg-white/90 px-4 py-2 text-xs font-black text-slate-900 shadow-sm backdrop-blur">
+                Established Learning Community
+              </span>
+              <span class="rounded-full border border-white/20 bg-teal-500/90 px-4 py-2 text-xs font-black text-white shadow-sm backdrop-blur">
+                <span data-backend-key="school.campus">Main Campus • Lahore</span>
+              </span>
+            </div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <div class="max-w-2xl">
+                <p class="text-xs font-black uppercase tracking-[0.22em] text-teal-200">Our Story</p>
+                <h3 class="mt-3 text-[1.75rem] font-black leading-tight text-white sm:text-3xl lg:text-4xl">
+                  <span data-backend-key="about.storyTitle">Building a school culture where every student is seen, guided and encouraged.</span>
+                </h3>
+                <p class="mt-4 max-w-xl text-sm leading-7 text-slate-200 sm:text-base">
+                  <span data-backend-key="about.storyText">JuniCore School brings together experienced teaching, structured routines, student wellbeing and digital connection so that learning remains clear for students and transparent for families.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-7 lg:p-9 dark:border-slate-800 dark:bg-slate-900/70">
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-700 dark:text-teal-300">What Defines Us</p>
+            <h3 class="mt-3 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">A clear school experience for students, teachers and families.</h3>
+
+            <div class="mt-7 space-y-5">
+              <div class="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950/60">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sky-50 text-xl dark:bg-sky-950/40">📚</span>
+                <div>
+                  <h4 class="font-black text-slate-950 dark:text-white">Purposeful Learning</h4>
+                  <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Lessons are structured around clear objectives, practice, feedback and regular review so students know what they are learning and how to improve.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950/60">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-teal-50 text-xl dark:bg-teal-950/40">🛡️</span>
+                <div>
+                  <h4 class="font-black text-slate-950 dark:text-white">Safe & Respectful Environment</h4>
+                  <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Clear expectations, respectful relationships and consistent school routines help students feel secure and ready to learn.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950/60">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-50 text-xl dark:bg-amber-950/40">🤝</span>
+                <div>
+                  <h4 class="font-black text-slate-950 dark:text-white">Strong Home–School Partnership</h4>
+                  <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Parents stay informed through meetings, school notices, progress updates and connected Parent Portal access.</p>
+                </div>
+              </div>
+
+              <div class="flex gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950/60">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-violet-50 text-xl dark:bg-violet-950/40">🌱</span>
+                <div>
+                  <h4 class="font-black text-slate-950 dark:text-white">Growth Beyond Grades</h4>
+                  <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Sports, clubs, events, teamwork and leadership opportunities help students build confidence and personal responsibility.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission / Vision / Promise -->
+        <div class="mt-8 grid gap-5 lg:grid-cols-3">
+          <div class="rounded-[1.75rem] border border-teal-100 bg-teal-50/70 p-6 sm:p-7 dark:border-teal-900 dark:bg-teal-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-2xl shadow-sm dark:bg-slate-900">🎯</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Our Mission</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white"><span data-backend-key="about.missionTitle">Helping every student make meaningful progress.</span></h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              <span data-backend-key="about.missionText">To provide a safe, engaging and disciplined learning environment where students build strong academic foundations, confidence, character and the habits needed for lifelong learning.</span>
+            </p>
+          </div>
+
+          <div class="rounded-[1.75rem] border border-amber-100 bg-amber-50/70 p-6 sm:p-7 dark:border-amber-900 dark:bg-amber-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-2xl shadow-sm dark:bg-slate-900">🌟</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:text-amber-300">Our Vision</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white"><span data-backend-key="about.visionTitle">Preparing responsible learners for a changing world.</span></h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              <span data-backend-key="about.visionText">To develop curious, capable and responsible young people who can think independently, communicate confidently, work with others and contribute positively to society.</span>
+            </p>
+          </div>
+
+          <div class="rounded-[1.75rem] border border-sky-100 bg-sky-50/70 p-6 sm:p-7 dark:border-sky-900 dark:bg-sky-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-2xl shadow-sm dark:bg-slate-900">💙</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:text-sky-300">Our Promise</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white"><span data-backend-key="about.promiseTitle">Clear support, fair expectations and genuine care.</span></h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              <span data-backend-key="about.promiseText">We aim to make every school day purposeful by combining clear teaching, respectful behaviour, timely communication and consistent support for students and families.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Student experience -->
+        <div class="mt-8 grid gap-8 rounded-[1.5rem] sm:rounded-[2rem] border border-slate-200 bg-slate-50 p-5 sm:p-7 lg:grid-cols-[0.95fr_1.05fr] lg:p-10 dark:border-slate-800 dark:bg-slate-900/70">
+          <div class="relative overflow-hidden rounded-[1.35rem] sm:rounded-[1.75rem] border border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-950/60">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1400&q=88" alt="Students participating in school activities" class="h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/15 bg-slate-950/45 p-5 text-white backdrop-blur-md">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">The JuniCore Experience</p>
+              <p class="mt-2 text-xl font-black">What students experience every day.</p>
+              <p class="mt-2 text-sm leading-6 text-slate-200">A strong school is built through everyday experiences — structured learning, regular feedback, participation and support.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl bg-white p-5 shadow-sm dark:bg-slate-950/60">
+                <p class="text-sm font-black text-slate-950 dark:text-white">01 • Clear Learning Goals</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Students understand what they are learning and what successful work looks like.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-sm dark:bg-slate-950/60">
+                <p class="text-sm font-black text-slate-950 dark:text-white">02 • Regular Feedback</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Teachers use classwork, homework and assessment to guide improvement.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-sm dark:bg-slate-950/60">
+                <p class="text-sm font-black text-slate-950 dark:text-white">03 • Active Participation</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Students are encouraged to ask, discuss, collaborate and take responsibility.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-5 shadow-sm dark:bg-slate-950/60">
+                <p class="text-sm font-black text-slate-950 dark:text-white">04 • Support When Needed</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Students receive additional guidance when they need more time or explanation.</p>
+              </div>
+            </div>
+            <div class="mt-4 rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-950/60">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">School Life</p>
+              <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Beyond the classroom, students explore sports, school events, clubs, teamwork and leadership activities that help them build confidence and discover their strengths.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Principal message -->
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-slate-200 bg-slate-950 text-white shadow-sm dark:border-slate-800">
+          <div class="grid lg:grid-cols-[1.15fr_.85fr]">
+            <div class="p-7 sm:p-9 lg:p-11">
+              <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200">
+                Principal's Message
+              </span>
+
+              <h3 class="mt-6 max-w-[48rem] text-3xl font-black leading-tight sm:text-4xl">
+                “Every student deserves a school where they feel valued, challenged and confident about what comes next.”
+              </h3>
+
+              <div class="mt-6 max-w-3xl space-y-4 text-sm leading-7 text-slate-300 sm:text-base">
+                <p>
+                  At JuniCore School, our responsibility is much broader than preparing students for examinations. We want our students to develop strong knowledge, good habits, confidence in communication and respect for the people around them.
+                </p>
+                <p>
+                  Our teachers work to create classrooms where expectations are clear and students are comfortable asking questions, trying again and learning from mistakes. We believe that steady progress, consistency and encouragement are more important than short-term pressure.
+                </p>
+                <p>
+                  We also value the role of parents. When school and home communicate openly, students receive more consistent support. That is why we continue to strengthen parent communication through meetings, updates and our connected digital portals.
+                </p>
+                <p>
+                  I invite families to experience JuniCore School as a community — one where learning, character and wellbeing are treated as shared priorities.
+                </p>
+              </div>
+
+              <div class="mt-7 flex items-center gap-4 border-t border-white/10 pt-6">
+                <div class="grid h-14 w-14 place-items-center rounded-full bg-teal-500 text-lg font-black text-white">PR</div>
+                <div>
+                  <p class="font-black text-white"><span data-backend-key="principal.name">Principal, JuniCore School</span></p>
+                  <p class="mt-1 text-sm leading-6 text-slate-400"><span data-backend-key="school.campus">Main Campus • Lahore</span></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative min-h-[360px] border-t border-white/10 lg:min-h-full lg:border-l lg:border-t-0">
+              <img
+                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=86"
+                alt="Teacher supporting students in a classroom"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/15 to-transparent"></div>
+
+              <div class="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/15 bg-slate-950/45 p-5 backdrop-blur-md">
+                <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Leadership Focus</p>
+                <p class="mt-2 text-lg font-black text-white">Learning • Wellbeing • Character • Partnership</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Academics -->
+    <section id="academics" data-section="academics" class="border-y border-sky-100 bg-sky-50/60 py-16 sm:py-20 lg:py-24 dark:border-slate-800 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Heading -->
+        <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 shadow-sm dark:bg-slate-900 dark:text-teal-300">
+              Academics
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+              <span data-backend-key="academics.heading">A clear learning journey from early foundations to senior school.</span>
+            </h2>
+          </div>
+          <div>
+            <p class="max-w-[42rem] text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg dark:text-slate-300">
+              <span data-backend-key="academics.intro">Our academic programme is organised around age-appropriate learning, strong subject foundations, regular feedback and the right level of support at every stage.</span>
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-bold text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+              Academic content ready for backend/API data
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic stages -->
+        <div class="mt-12">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-700 dark:text-teal-300">Classes & Learning Stages</p>
+              <h3 class="mt-2 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">A clear academic pathway for every class.</h3>
+              <p class="mt-3 max-w-[48rem] text-sm leading-6 text-slate-600 sm:text-base sm:leading-7 dark:text-slate-300">
+                Each class has its own learning priorities, subject depth, assessment pattern and student support. The live website can load the exact class structure from the school backend.
+              </p>
+            </div>
+            <span class="inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-bold text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+              Backend-ready class data
+            </span>
+          </div>
+
+          <div class="mt-8 grid gap-6">
+
+            <!-- Early Years -->
+            <article data-academic-stage="early-years" class="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-pink-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div class="grid lg:grid-cols-[0.78fr_1.22fr]">
+                <div class="relative min-h-[280px] sm:min-h-[330px]">
+                  <img src="https://images.unsplash.com/photo-1560785496-3c9d27877182?auto=format&fit=crop&w=1200&q=88" alt="Early years students learning through activities" class="absolute inset-0 h-full w-full object-cover" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute left-5 top-5 rounded-full bg-pink-500 px-4 py-2 text-xs font-black text-white">Playgroup • Nursery • KG</div>
+                  <div class="absolute bottom-5 left-5 right-5 text-white">
+                    <p class="text-xs font-black uppercase tracking-[0.2em] text-pink-200">Early Years</p>
+                    <h4 class="mt-2 text-3xl font-black">Learning through play, discovery and routine.</h4>
+                    <p class="mt-3 text-sm leading-6 text-slate-200">A gentle start focused on language, numeracy, social confidence, movement, creativity and classroom habits.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                  <div class="grid gap-4 md:grid-cols-3">
+                    <div class="rounded-2xl border border-pink-100 bg-pink-50/60 p-4 dark:border-pink-900 dark:bg-pink-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-pink-700 dark:text-pink-300">Playgroup</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Foundation of routine & interaction</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Listening, speaking, fine-motor activities, colours, shapes, songs and classroom confidence.</p>
+                    </div>
+                    <div class="rounded-2xl border border-pink-100 bg-pink-50/60 p-4 dark:border-pink-900 dark:bg-pink-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-pink-700 dark:text-pink-300">Nursery</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Early literacy & number sense</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Phonics awareness, counting, tracing, vocabulary, stories, patterns and creative expression.</p>
+                    </div>
+                    <div class="rounded-2xl border border-pink-100 bg-pink-50/60 p-4 dark:border-pink-900 dark:bg-pink-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-pink-700 dark:text-pink-300">KG</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">School readiness</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Reading readiness, sentence work, basic arithmetic, observation, independence and transition to Grade 1.</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.16em] text-slate-500">Learning Focus</p>
+                      <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li>• Phonics, speaking & vocabulary</li>
+                        <li>• Number concepts & patterns</li>
+                        <li>• Art, music & movement</li>
+                        <li>• Social skills & routines</li>
+                      </ul>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.16em] text-slate-500">Progress Review</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Teacher observation, activity-based checks, work samples and parent updates are used instead of exam-heavy assessment.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Primary -->
+            <article data-academic-stage="primary" class="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-sky-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div class="grid lg:grid-cols-[0.78fr_1.22fr]">
+                <div class="relative min-h-[290px] sm:min-h-[340px] lg:min-h-[360px]">
+                  <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=88" alt="Primary school students in class" class="absolute inset-0 h-full w-full object-cover" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute left-5 top-5 rounded-full bg-sky-500 px-4 py-2 text-xs font-black text-white">Grade 1 • 2 • 3 • 4 • 5</div>
+                  <div class="absolute bottom-5 left-5 right-5 text-white">
+                    <p class="text-xs font-black uppercase tracking-[0.2em] text-sky-200">Primary School</p>
+                    <h4 class="mt-2 text-3xl font-black">Strong foundations in literacy, numeracy and curiosity.</h4>
+                    <p class="mt-3 text-sm leading-6 text-slate-200">Primary years move students from basic skills toward stronger reading, writing, problem-solving and independent learning.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                  <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+                    <div class="rounded-2xl bg-sky-50 p-4 dark:bg-sky-950/20">
+                      <p class="text-xs font-black text-sky-700 dark:text-sky-300">Grade 1</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Core Foundations</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Reading, handwriting, number operations and classroom confidence.</p>
+                    </div>
+                    <div class="rounded-2xl bg-sky-50 p-4 dark:bg-sky-950/20">
+                      <p class="text-xs font-black text-sky-700 dark:text-sky-300">Grade 2</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Skill Building</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Sentence fluency, comprehension, arithmetic and observation skills.</p>
+                    </div>
+                    <div class="rounded-2xl bg-sky-50 p-4 dark:bg-sky-950/20">
+                      <p class="text-xs font-black text-sky-700 dark:text-sky-300">Grade 3</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Concept Growth</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Paragraph writing, multiplication, science concepts and project work.</p>
+                    </div>
+                    <div class="rounded-2xl bg-sky-50 p-4 dark:bg-sky-950/20">
+                      <p class="text-xs font-black text-sky-700 dark:text-sky-300">Grade 4</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Independent Practice</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Research basics, fractions, extended writing and teamwork.</p>
+                    </div>
+                    <div class="rounded-2xl bg-sky-50 p-4 dark:bg-sky-950/20">
+                      <p class="text-xs font-black text-sky-700 dark:text-sky-300">Grade 5</p>
+                      <p class="mt-2 text-sm font-bold text-slate-950 dark:text-white">Primary Transition</p>
+                      <p class="mt-2 text-xs leading-5 text-slate-600 dark:text-slate-300">Stronger subject depth, study habits and preparation for middle school.</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Core Subjects</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">English, Mathematics, Science, Social Studies, Computing, Languages and creative subjects.</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Assessment</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Classwork, homework, quizzes, oral participation, projects and term assessments.</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Student Support</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Teacher feedback, revision practice, parent updates and focused support for learning gaps.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Middle -->
+            <article data-academic-stage="middle" class="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-amber-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div class="grid lg:grid-cols-[0.78fr_1.22fr]">
+                <div class="relative min-h-[290px] sm:min-h-[330px] lg:min-h-[350px]">
+                  <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1200&q=88" alt="Middle school students working together" class="absolute inset-0 h-full w-full object-cover" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute left-5 top-5 rounded-full bg-amber-400 px-4 py-2 text-xs font-black text-slate-950">Grade 6 • 7 • 8</div>
+                  <div class="absolute bottom-5 left-5 right-5 text-white">
+                    <p class="text-xs font-black uppercase tracking-[0.2em] text-amber-200">Middle School</p>
+                    <h4 class="mt-2 text-3xl font-black">Deeper subjects, stronger study habits and more independence.</h4>
+                    <p class="mt-3 text-sm leading-6 text-slate-200">Students transition from broad primary learning into more specialised subject work, projects and academic responsibility.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                  <div class="grid gap-4 md:grid-cols-3">
+                    <div class="rounded-2xl border border-amber-100 bg-amber-50/60 p-5 dark:border-amber-900 dark:bg-amber-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">Grade 6</p>
+                      <h5 class="mt-2 font-black text-slate-950 dark:text-white">Middle School Transition</h5>
+                      <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Subject organisation, note-taking, lab routines, independent homework and structured revision.</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-100 bg-amber-50/60 p-5 dark:border-amber-900 dark:bg-amber-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">Grade 7</p>
+                      <h5 class="mt-2 font-black text-slate-950 dark:text-white">Concept Development</h5>
+                      <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Deeper mathematics, scientific reasoning, extended writing, research tasks and collaborative work.</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-100 bg-amber-50/60 p-5 dark:border-amber-900 dark:bg-amber-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">Grade 8</p>
+                      <h5 class="mt-2 font-black text-slate-950 dark:text-white">Senior Readiness</h5>
+                      <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Advanced concepts, exam technique, subject choice awareness and preparation for Grade 9 expectations.</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Academic Development</p>
+                      <ul class="mt-3 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                        <li>• Subject-specific notebooks & homework</li>
+                        <li>• Lab activities and projects</li>
+                        <li>• Research & presentation skills</li>
+                        <li>• Revision and time management</li>
+                      </ul>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Progress & Feedback</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Teachers review class performance, assessment trends and learning gaps, then communicate progress through reports and parent-school channels.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Senior -->
+            <article data-academic-stage="senior" class="overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-violet-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <div class="grid lg:grid-cols-[0.78fr_1.22fr]">
+                <div class="relative min-h-[290px] sm:min-h-[330px] lg:min-h-[350px]">
+                  <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=88" alt="Senior school students on campus" class="absolute inset-0 h-full w-full object-cover" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                  <div class="absolute left-5 top-5 rounded-full bg-violet-500 px-4 py-2 text-xs font-black text-white">Grade 9 • 10</div>
+                  <div class="absolute bottom-5 left-5 right-5 text-white">
+                    <p class="text-xs font-black uppercase tracking-[0.2em] text-violet-200">Senior School</p>
+                    <h4 class="mt-2 text-3xl font-black">Focused preparation for examinations and future pathways.</h4>
+                    <p class="mt-3 text-sm leading-6 text-slate-200">Senior students work with more subject depth, formal assessments, revision planning and academic guidance.</p>
+                  </div>
+                </div>
+
+                <div class="p-6 sm:p-8">
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <div class="rounded-2xl border border-violet-100 bg-violet-50/60 p-5 dark:border-violet-900 dark:bg-violet-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">Grade 9</p>
+                      <h5 class="mt-2 font-black text-slate-950 dark:text-white">Senior Foundation</h5>
+                      <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Subject depth, examination format, structured notes, regular testing and strong study routines.</p>
+                    </div>
+                    <div class="rounded-2xl border border-violet-100 bg-violet-50/60 p-5 dark:border-violet-900 dark:bg-violet-950/20">
+                      <p class="text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">Grade 10</p>
+                      <h5 class="mt-2 font-black text-slate-950 dark:text-white">Board & Future Readiness</h5>
+                      <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Intensive revision, mock examinations, targeted support and guidance for the next academic stage.</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 grid gap-4 md:grid-cols-3">
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Exam Preparation</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Past-paper practice, timed work, mock exams and targeted revision planning.</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Mentoring</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Teacher guidance supports study habits, attendance, wellbeing and academic consistency.</p>
+                    </div>
+                    <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                      <p class="text-xs font-black uppercase tracking-[0.15em] text-slate-500">Next Step Guidance</p>
+                      <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Students receive guidance about future subjects, college pathways and continued education.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Core subjects -->
+        <div class="mt-10 rounded-[1.5rem] sm:rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-7 lg:p-10 dark:border-slate-800 dark:bg-slate-900/70">
+          <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-700 dark:text-teal-300">Core Learning Areas</p>
+              <h3 class="mt-3 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">Subjects that build strong academic foundations.</h3>
+              <p class="mt-4 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7 dark:text-slate-300">Subject offerings can vary by grade and school policy. The live website will load the current curriculum and subject list from the backend.</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <div class="rounded-2xl border border-sky-100 bg-sky-50 p-4 dark:border-sky-900 dark:bg-sky-950/20">
+                <span class="text-xl">📖</span>
+                <p class="mt-2 text-sm font-black text-slate-950 dark:text-white">English</p>
+              </div>
+              <div class="rounded-2xl border border-teal-100 bg-teal-50 p-4 dark:border-teal-900 dark:bg-teal-950/20">
+                <span class="text-xl">➗</span>
+                <p class="mt-2 text-sm font-black text-slate-950 dark:text-white">Mathematics</p>
+              </div>
+              <div class="rounded-2xl border border-amber-100 bg-amber-50 p-4 dark:border-amber-900 dark:bg-amber-950/20">
+                <span class="text-xl">🔬</span>
+                <p class="mt-2 text-sm font-black text-slate-950 dark:text-white">Science</p>
+              </div>
+              <div class="rounded-2xl border border-violet-100 bg-violet-50 p-4 dark:border-violet-900 dark:bg-violet-950/20">
+                <span class="text-xl">🌍</span>
+                <p class="mt-2 text-sm font-black text-slate-950 dark:text-white">Social Studies</p>
+              </div>
+              <div class="rounded-2xl border border-rose-100 bg-rose-50 p-4 dark:border-rose-900 dark:bg-rose-950/20">
+                <span class="text-xl">💻</span>
+                <p class="mt-2 text-sm font-black text-slate-950 dark:text-white">Computing</p>
+              </div>
+              <div class="rounded-2xl border border-orange-100 bg-orange-50 p-4 dark:border-orange-900 dark:bg-orange-950/20">
+                <span class="text-xl">🎨</span>
+                <p class="mt-2 text-sm font-black text-slate-950 dark:text-white">Arts & Creativity</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Learning approach image + content -->
+        <div class="mt-8 grid gap-7 sm:gap-8 lg:grid-cols-[1fr_1fr]">
+          <div class="relative min-h-[340px] sm:min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] lg:min-h-[480px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1500&q=88" alt="Students participating in classroom learning" class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Learning Approach</p>
+              <h3 class="mt-3 max-w-xl text-3xl font-black leading-tight text-white">Students learn by listening, practising, discussing, creating and reflecting.</h3>
+              <p class="mt-3 max-w-xl text-sm leading-7 text-slate-200">Lessons combine teacher guidance with active participation so students can build understanding, confidence and independent learning habits.</p>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-7 dark:border-slate-800 dark:bg-slate-900/70">
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-700 dark:text-teal-300">How Learning Works</p>
+            <h3 class="mt-3 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">A balanced classroom model.</h3>
+
+            <div class="mt-7 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-sky-50 text-lg dark:bg-sky-950/30">🎯</span>
+                <h4 class="mt-4 font-black text-slate-950 dark:text-white">Clear Objectives</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Students know what they are expected to learn and demonstrate.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-teal-50 text-lg dark:bg-teal-950/30">🗣️</span>
+                <h4 class="mt-4 font-black text-slate-950 dark:text-white">Active Participation</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Questioning, discussion and collaboration keep learning active.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-amber-50 text-lg dark:bg-amber-950/30">✍️</span>
+                <h4 class="mt-4 font-black text-slate-950 dark:text-white">Practice & Application</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Classwork, tasks and projects help students apply new concepts.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 p-5 dark:border-slate-800">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-violet-50 text-lg dark:bg-violet-950/30">💬</span>
+                <h4 class="mt-4 font-black text-slate-950 dark:text-white">Feedback & Improvement</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Feedback helps students understand strengths and next steps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Assessment and support -->
+        <div class="mt-8 grid gap-5 lg:grid-cols-3">
+          <div class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-xl dark:bg-teal-950/30">📊</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Assessment</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Regular progress checks.</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Class activities, homework, quizzes, projects and formal assessments help teachers track progress and plan next steps.</p>
+          </div>
+
+          <div class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-xl dark:bg-sky-950/30">🧭</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:text-sky-300">Academic Support</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Support when students need it.</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Teachers use feedback, extra explanation, revision support and parent communication to help students close learning gaps.</p>
+          </div>
+
+          <div class="rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-xl dark:bg-amber-950/30">🏅</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:text-amber-300">Extension & Challenge</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Room to go further.</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Projects, problem-solving, reading, competitions and enrichment activities give motivated students additional challenge.</p>
+          </div>
+        </div>
+
+        <!-- Academic CTA -->
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-slate-950 text-white">
+          <div class="grid lg:grid-cols-[1.2fr_.8fr]">
+            <div class="p-7 sm:p-9 lg:p-10">
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Academic Information</p>
+              <h3 class="mt-3 max-w-[42rem] text-3xl font-black tracking-tight sm:text-4xl">Explore the right learning stage for your child.</h3>
+              <p class="mt-4 max-w-[42rem] text-sm leading-7 text-slate-300 sm:text-base">For current grade offerings, subject combinations, academic calendars and admission requirements, contact the school or submit an admission inquiry.</p>
+              <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a href="#achievements" class="rounded-xl bg-amber-400 px-5 py-3.5 text-center text-sm font-black text-slate-950 transition hover:bg-amber-300">View Achievements</a>
+                <a href="#contact" class="rounded-xl border border-white/15 bg-white/10 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-white/15">Contact Academic Office</a>
+              </div>
+            </div>
+
+            <div class="relative min-h-[280px] border-t border-white/10 lg:border-l lg:border-t-0">
+              <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=86" alt="Books and learning resources" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-r from-slate-950/60 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" data-section="achievements" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Heading -->
+        <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+              School Achievements
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+              Celebrating results, talent and student success across school life.
+            </h2>
+          </div>
+
+          <div>
+            <p class="max-w-[42rem] text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg dark:text-slate-300">
+              From strong academic results to sports, STEM, debates and creative activities, this section highlights the efforts and achievements that make our school community proud.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-[11px] font-bold text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+              Demo data now • verified records from backend later
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured result -->
+        <div class="mt-10 overflow-hidden rounded-[1.5rem] bg-slate-950 text-white shadow-xl sm:rounded-[2rem]">
+          <div class="grid lg:grid-cols-[1.1fr_.9fr]">
+            <div class="p-5 sm:p-7 lg:p-10">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="rounded-full bg-amber-400 px-3 py-1.5 text-xs font-black uppercase tracking-[0.14em] text-slate-950">Result Highlight</span>
+                <span class="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-bold text-slate-200" data-backend-key="achievements.academicYear">Academic Session 2025–26</span>
+              </div>
+
+              <div class="mt-7 grid gap-6 sm:grid-cols-[auto_1fr] sm:items-center">
+                <div class="grid h-24 w-24 place-items-center rounded-[1.75rem] bg-gradient-to-br from-amber-300 to-amber-500 text-4xl shadow-lg shadow-amber-500/20">🏆</div>
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Overall School Performance</p>
+                  <div class="mt-2 flex flex-wrap items-end gap-x-4 gap-y-2">
+                    <p class="text-5xl font-black text-white sm:text-6xl" data-backend-key="achievements.passRate">98%</p>
+                    <p class="pb-1 text-sm font-bold text-slate-300">Annual pass rate</p>
+                  </div>
+                  <p class="mt-3 max-w-xl text-sm leading-7 text-slate-300">
+                    A strong overall result supported by consistent teaching, student effort, regular assessment and parent-school communication.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-amber-300" data-backend-key="achievements.aGrades">84</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">A / A+ Grades</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-teal-300" data-backend-key="achievements.competitionWins">12</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Competition Wins</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-sky-300" data-backend-key="achievements.awards">7</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">School Awards</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="text-2xl font-black text-violet-300" data-backend-key="achievements.distinctions">31</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-400">Distinctions</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative min-h-[320px] border-t border-white/10 lg:border-l lg:border-t-0">
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=88" alt="Students celebrating school success" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-950/10 to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/15 bg-slate-950/45 p-4 backdrop-blur-md sm:bottom-7 sm:left-7 sm:right-7">
+                <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Achievement Culture</p>
+                <p class="mt-2 text-lg font-black text-white">Effort • Consistency • Progress • Recognition</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top achievers -->
+        <div class="mt-10">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Top Achievers</p>
+              <h3 class="mt-2 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">Students leading by example</h3>
+            </div>
+            <p class="max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-300">
+              Names, marks and percentages are sample content. The live system will show verified published results only.
+            </p>
+          </div>
+
+          <div class="mt-6 grid gap-5 lg:grid-cols-3">
+            <article data-achievement-record="topper-1" class="relative overflow-hidden rounded-[1.5rem] border border-amber-100 bg-gradient-to-br from-amber-50 to-white shadow-sm sm:rounded-[1.75rem] dark:border-amber-900 dark:from-amber-950/20 dark:to-slate-900">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=86" alt="Top student portrait" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                <div class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-amber-400 text-sm font-black text-slate-950">#1</div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.15em] text-amber-300">School Topper</p>
+                    <h4 class="mt-1 text-2xl font-black text-white" data-backend-key="achievements.topper1.name">Ayesha Khan</h4>
+                    <p class="mt-1 text-sm text-slate-200" data-backend-key="achievements.topper1.class">Grade 10 • Annual Examination</p>
+                    <p class="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-amber-200" data-backend-key="achievements.topper1.year">Session 2025–26</p>
+                  </div>
+                  <span class="text-3xl">🥇</span>
+                </div>
+              </div>
+              <div class="p-5 sm:p-6">
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-amber-100 bg-white p-4 dark:border-amber-900/50 dark:bg-slate-950/60">
+                    <p class="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Percentage</p>
+                    <p class="mt-2 text-3xl font-black text-amber-600 dark:text-amber-400" data-backend-key="achievements.topper1.percentage">96.8%</p>
+                  </div>
+                  <div class="rounded-2xl border border-amber-100 bg-white p-4 dark:border-amber-900/50 dark:bg-slate-950/60">
+                    <p class="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Marks</p>
+                    <p class="mt-2 text-xl font-black text-slate-950 dark:text-white" data-backend-key="achievements.topper1.marks">1,065 / 1,100</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article data-achievement-record="topper-2" class="relative overflow-hidden rounded-[1.5rem] border border-sky-100 bg-gradient-to-br from-sky-50 to-white shadow-sm sm:rounded-[1.75rem] dark:border-sky-900 dark:from-sky-950/20 dark:to-slate-900">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=86" alt="Second position student portrait" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                <div class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-sky-200 text-sm font-black text-sky-900 dark:bg-sky-900 dark:text-sky-200">#2</div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.15em] text-sky-200">Second Position</p>
+                    <h4 class="mt-1 text-2xl font-black text-white" data-backend-key="achievements.topper2.name">Hamza Ali</h4>
+                    <p class="mt-1 text-sm text-slate-200" data-backend-key="achievements.topper2.class">Grade 9 • Annual Examination</p>
+                    <p class="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-sky-200" data-backend-key="achievements.topper2.year">Session 2025–26</p>
+                  </div>
+                  <span class="text-3xl">🥈</span>
+                </div>
+              </div>
+              <div class="p-5 sm:p-6">
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-sky-100 bg-white p-4 dark:border-sky-900/50 dark:bg-slate-950/60">
+                    <p class="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Percentage</p>
+                    <p class="mt-2 text-3xl font-black text-sky-600 dark:text-sky-400" data-backend-key="achievements.topper2.percentage">95.4%</p>
+                  </div>
+                  <div class="rounded-2xl border border-sky-100 bg-white p-4 dark:border-sky-900/50 dark:bg-slate-950/60">
+                    <p class="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Marks</p>
+                    <p class="mt-2 text-xl font-black text-slate-950 dark:text-white" data-backend-key="achievements.topper2.marks">1,049 / 1,100</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article data-achievement-record="topper-3" class="relative overflow-hidden rounded-[1.5rem] border border-teal-100 bg-gradient-to-br from-teal-50 to-white shadow-sm sm:rounded-[1.75rem] dark:border-teal-900 dark:from-teal-950/20 dark:to-slate-900">
+              <div class="relative h-56 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=86" alt="Third position student portrait" class="h-full w-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+                <div class="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-teal-200 text-sm font-black text-teal-900 dark:bg-teal-900 dark:text-teal-200">#3</div>
+                <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs font-black uppercase tracking-[0.15em] text-teal-200">Third Position</p>
+                    <h4 class="mt-1 text-2xl font-black text-white" data-backend-key="achievements.topper3.name">Sara Ahmed</h4>
+                    <p class="mt-1 text-sm text-slate-200" data-backend-key="achievements.topper3.class">Grade 8 • Annual Examination</p>
+                    <p class="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-teal-200" data-backend-key="achievements.topper3.year">Session 2025–26</p>
+                  </div>
+                  <span class="text-3xl">🥉</span>
+                </div>
+              </div>
+              <div class="p-5 sm:p-6">
+                <div class="grid gap-3 sm:grid-cols-2">
+                  <div class="rounded-2xl border border-teal-100 bg-white p-4 dark:border-teal-900/50 dark:bg-slate-950/60">
+                    <p class="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Percentage</p>
+                    <p class="mt-2 text-3xl font-black text-teal-600 dark:text-teal-400" data-backend-key="achievements.topper3.percentage">94.9%</p>
+                  </div>
+                  <div class="rounded-2xl border border-teal-100 bg-white p-4 dark:border-teal-900/50 dark:bg-slate-950/60">
+                    <p class="text-xs font-black uppercase tracking-[0.12em] text-slate-500">Marks</p>
+                    <p class="mt-2 text-xl font-black text-slate-950 dark:text-white" data-backend-key="achievements.topper3.marks">949 / 1,000</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Subject excellence -->
+        <div class="mt-10 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[2rem] sm:p-7 lg:p-9 dark:border-slate-800 dark:bg-slate-900/60">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Subject Excellence</p>
+              <h3 class="mt-2 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">Outstanding subject performance</h3>
+            </div>
+            <span class="w-fit rounded-full bg-white px-3 py-1.5 text-[11px] font-bold text-slate-500 shadow-sm dark:bg-slate-950 dark:text-slate-400">Backend Generated Later</span>
+          </div>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div class="overflow-hidden rounded-[1.35rem] border border-sky-100 bg-white dark:border-sky-900 dark:bg-slate-950/60">
+              <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=700&q=86" alt="Mathematics high achiever" class="h-40 w-full object-cover" />
+              <div class="p-4 sm:p-5">
+                <div class="flex items-center justify-between">
+                  <span class="grid h-11 w-11 place-items-center rounded-xl bg-sky-50 text-lg dark:bg-sky-950/30">➗</span>
+                  <span class="rounded-full bg-sky-50 px-3 py-1 text-sm font-black text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">100%</span>
+                </div>
+                <p class="mt-4 text-lg font-black text-slate-950 dark:text-white" data-backend-key="achievements.subject.math.student">Zainab Malik</p>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Mathematics • Grade 10</p>
+                <p class="mt-2 text-[11px] font-black uppercase tracking-[0.12em] text-sky-700 dark:text-sky-300" data-backend-key="achievements.subject.math.year">Session 2025–26</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[1.35rem] border border-teal-100 bg-white dark:border-teal-900 dark:bg-slate-950/60">
+              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=86" alt="Science high achiever" class="h-40 w-full object-cover" />
+              <div class="p-4 sm:p-5">
+                <div class="flex items-center justify-between">
+                  <span class="grid h-11 w-11 place-items-center rounded-xl bg-teal-50 text-lg dark:bg-teal-950/30">🔬</span>
+                  <span class="rounded-full bg-teal-50 px-3 py-1 text-sm font-black text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">99%</span>
+                </div>
+                <p class="mt-4 text-lg font-black text-slate-950 dark:text-white" data-backend-key="achievements.subject.science.student">Ahmed Raza</p>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Science • Grade 9</p>
+                <p class="mt-2 text-[11px] font-black uppercase tracking-[0.12em] text-teal-700 dark:text-teal-300" data-backend-key="achievements.subject.science.year">Session 2025–26</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[1.35rem] border border-violet-100 bg-white dark:border-violet-900 dark:bg-slate-950/60">
+              <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=700&q=86" alt="English high achiever" class="h-40 w-full object-cover" />
+              <div class="p-4 sm:p-5">
+                <div class="flex items-center justify-between">
+                  <span class="grid h-11 w-11 place-items-center rounded-xl bg-violet-50 text-lg dark:bg-violet-950/30">📖</span>
+                  <span class="rounded-full bg-violet-50 px-3 py-1 text-sm font-black text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">98%</span>
+                </div>
+                <p class="mt-4 text-lg font-black text-slate-950 dark:text-white" data-backend-key="achievements.subject.english.student">Mariam Noor</p>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">English • Grade 8</p>
+                <p class="mt-2 text-[11px] font-black uppercase tracking-[0.12em] text-violet-700 dark:text-violet-300" data-backend-key="achievements.subject.english.year">Session 2025–26</p>
+              </div>
+            </div>
+
+            <div class="overflow-hidden rounded-[1.35rem] border border-amber-100 bg-white dark:border-amber-900 dark:bg-slate-950/60">
+              <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=700&q=86" alt="Computing high achiever" class="h-40 w-full object-cover" />
+              <div class="p-4 sm:p-5">
+                <div class="flex items-center justify-between">
+                  <span class="grid h-11 w-11 place-items-center rounded-xl bg-amber-50 text-lg dark:bg-amber-950/30">💻</span>
+                  <span class="rounded-full bg-amber-50 px-3 py-1 text-sm font-black text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">100%</span>
+                </div>
+                <p class="mt-4 text-lg font-black text-slate-950 dark:text-white" data-backend-key="achievements.subject.computing.student">Usman Tariq</p>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Computing • Grade 7</p>
+                <p class="mt-2 text-[11px] font-black uppercase tracking-[0.12em] text-amber-700 dark:text-amber-300" data-backend-key="achievements.subject.computing.year">Session 2025–26</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beyond academics -->
+        <div class="mt-10">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Beyond Academics</p>
+            <h3 class="mt-2 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">Success across school life</h3>
+          </div>
+
+          <div class="mt-6 grid gap-5 lg:grid-cols-3">
+            <article class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1000&q=86" alt="Students taking part in sports" class="h-52 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-teal-500 px-3 py-1.5 text-xs font-black text-white">Sports</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white">Inter-School Sports Champions</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Students represented the school in athletics and team sports, earning multiple podium finishes.</p>
+                <div class="mt-4 flex flex-wrap items-center gap-2"><p class="text-xs font-bold uppercase tracking-[0.13em] text-teal-700 dark:text-teal-300">3 Gold • 2 Silver • 4 Bronze</p><span class="rounded-full bg-teal-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300" data-backend-key="achievements.sports.year">2025–26</span></div>
+              </div>
+            </article>
+
+            <article class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1000&q=86" alt="Students working on a science project" class="h-52 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-sky-500 px-3 py-1.5 text-xs font-black text-white">STEM</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white">Science & Innovation Recognition</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Student projects received recognition for creativity, problem-solving and practical scientific thinking.</p>
+                <div class="mt-4 flex flex-wrap items-center gap-2"><p class="text-xs font-bold uppercase tracking-[0.13em] text-sky-700 dark:text-sky-300">Best Prototype • Science Fair</p><span class="rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-sky-700 dark:bg-sky-950/30 dark:text-sky-300" data-backend-key="achievements.stem.year">2025–26</span></div>
+              </div>
+            </article>
+
+            <article class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=86" alt="Students participating in a school event" class="h-52 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-amber-400 px-3 py-1.5 text-xs font-black text-slate-950">Co-Curricular</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white">Debate, Arts & Leadership</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Students earned recognition through debates, creative events, leadership activities and school competitions.</p>
+                <div class="mt-4 flex flex-wrap items-center gap-2"><p class="text-xs font-bold uppercase tracking-[0.13em] text-amber-700 dark:text-amber-300">Debate Winner • Creative Arts Award</p><span class="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300" data-backend-key="achievements.cocurricular.year">2025–26</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Recent milestones -->
+        <div class="mt-10 grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[2rem] sm:p-7 dark:border-slate-800 dark:bg-slate-900/60">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Recent Milestones</p>
+            <h3 class="mt-2 text-[1.75rem] font-black leading-tight text-slate-950 sm:text-3xl dark:text-white">Achievement timeline</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">A simple record of recent verified school accomplishments.</p>
+
+            <div class="mt-6 space-y-4">
+              <div class="flex gap-4">
+                <div class="mt-1 h-3 w-3 shrink-0 rounded-full bg-amber-400"></div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2"><p class="text-sm font-black text-slate-950 dark:text-white">Annual Result Excellence</p><span class="rounded-full bg-amber-50 px-2 py-0.5 text-[10px] font-black text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">2025–26</span></div>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">98% school-wide pass rate recorded.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="mt-1 h-3 w-3 shrink-0 rounded-full bg-teal-500"></div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2"><p class="text-sm font-black text-slate-950 dark:text-white">Inter-School Sports Success</p><span class="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">2025–26</span></div>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Multiple podium finishes across school sports.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="mt-1 h-3 w-3 shrink-0 rounded-full bg-sky-500"></div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2"><p class="text-sm font-black text-slate-950 dark:text-white">STEM Recognition</p><span class="rounded-full bg-sky-50 px-2 py-0.5 text-[10px] font-black text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">2025–26</span></div>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Student prototype recognised at science fair.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="mt-1 h-3 w-3 shrink-0 rounded-full bg-violet-500"></div>
+                <div>
+                  <div class="flex flex-wrap items-center gap-2"><p class="text-sm font-black text-slate-950 dark:text-white">Debate & Creative Arts</p><span class="rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-black text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">2025–26</span></div>
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">Students earned awards in debate and creative events.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[360px] overflow-hidden rounded-[1.5rem] bg-slate-950 sm:rounded-[2rem]">
+            <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1400&q=86" alt="School awards and celebration" class="absolute inset-0 h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-7 lg:p-9">
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-amber-300">Achievement Wall</p>
+              <h3 class="mt-3 max-w-2xl text-[1.75rem] font-black leading-tight sm:text-3xl">Every achievement tells a story of effort, guidance and consistency.</h3>
+              <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200">
+                Later, School Admin-approved achievements can appear here automatically after verification, keeping the public website accurate and up to date.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Facilities -->
+    <section id="facilities" data-section="facilities" class="bg-sky-50/55 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <!-- Heading -->
+        <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 shadow-sm dark:bg-slate-900 dark:text-teal-300">
+              Campus Facilities
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+              Spaces that support learning, wellbeing and everyday school life.
+            </h2>
+          </div>
+
+          <div>
+            <p class="max-w-[42rem] text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg dark:text-slate-300">
+              A well-designed campus helps students feel safe, focused and connected. JuniCore School brings classrooms, labs, reading spaces, sports, transport and student support together in one organised school environment.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-bold text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+              Facility data & images can load from backend later
+            </div>
+          </div>
+        </div>
+
+        <!-- Campus overview -->
+        <div class="mt-10 overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[2rem] dark:border-slate-800 dark:bg-slate-900">
+          <div class="grid lg:grid-cols-[1.08fr_.92fr]">
+            <div class="relative min-h-[360px] sm:min-h-[430px]">
+              <img
+                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=88"
+                alt="Modern school campus"
+                class="absolute inset-0 h-full w-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+                <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Main Campus</p>
+                <h3 class="mt-2 max-w-2xl text-[1.75rem] font-black leading-tight sm:text-3xl">
+                  A calm, secure and student-friendly learning environment.
+                </h3>
+                <p class="mt-3 max-w-xl text-sm leading-7 text-slate-200">
+                  Campus spaces are planned around daily learning, student movement, supervision, safety and access to academic resources.
+                </p>
+              </div>
+            </div>
+
+            <div class="p-5 sm:p-7 lg:p-9">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Campus at a Glance</p>
+              <h3 class="mt-2 text-[1.75rem] font-black leading-tight text-slate-950 sm:text-3xl dark:text-white">Everything students need within one connected campus.</h3>
+
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <div class="rounded-2xl border border-teal-100 bg-teal-50/70 p-4 dark:border-teal-900 dark:bg-teal-950/20">
+                  <p class="text-2xl font-black text-teal-700 dark:text-teal-300" data-backend-key="facilities.classrooms">30+</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Classrooms</p>
+                </div>
+                <div class="rounded-2xl border border-sky-100 bg-sky-50/70 p-4 dark:border-sky-900 dark:bg-sky-950/20">
+                  <p class="text-2xl font-black text-sky-700 dark:text-sky-300" data-backend-key="facilities.labs">4</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Labs</p>
+                </div>
+                <div class="rounded-2xl border border-amber-100 bg-amber-50/70 p-4 dark:border-amber-900 dark:bg-amber-950/20">
+                  <p class="text-2xl font-black text-amber-700 dark:text-amber-300" data-backend-key="facilities.activityAreas">6</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Activity Areas</p>
+                </div>
+                <div class="rounded-2xl border border-violet-100 bg-violet-50/70 p-4 dark:border-violet-900 dark:bg-violet-950/20">
+                  <p class="text-2xl font-black text-violet-700 dark:text-violet-300" data-backend-key="facilities.transportRoutes">12</p>
+                  <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Transport Routes</p>
+                </div>
+              </div>
+
+              <div class="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Campus Priority</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">
+                  Clean spaces, supervised movement, safe arrival and departure, learning resources and accessible student support.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facility cards -->
+        <div class="mt-10">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Explore Our Facilities</p>
+            <h3 class="mt-2 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">
+              Designed for academics, activity and student care.
+            </h3>
+          </div>
+
+          <div class="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            <article data-facility="classrooms" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=86" alt="Modern school classroom" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-teal-500 px-3 py-1.5 text-xs font-black text-white">Learning</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.classroom.title">Smart Classrooms</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Bright, organised classrooms designed for discussion, independent work, presentations and daily learning.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-teal-700 dark:text-teal-300">Comfort • Visibility • Interaction</p>
+              </div>
+            </article>
+
+            <article data-facility="science-lab" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=900&q=86" alt="School science laboratory" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-sky-500 px-3 py-1.5 text-xs font-black text-white">Science</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.science.title">Science Laboratories</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Practical spaces for demonstrations, experiments, observation and scientific investigation under teacher supervision.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-sky-700 dark:text-sky-300">Experiment • Observe • Discover</p>
+              </div>
+            </article>
+
+            <article data-facility="computer-lab" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=86" alt="School computer laboratory" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-violet-500 px-3 py-1.5 text-xs font-black text-white">Technology</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.computer.title">Computer Lab</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Digital learning space for computing basics, typing, research, presentations and age-appropriate coding activities.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-violet-700 dark:text-violet-300">Digital Skills • Research • Coding</p>
+              </div>
+            </article>
+
+            <article data-facility="library" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=86" alt="School library" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-amber-400 px-3 py-1.5 text-xs font-black text-slate-950">Reading</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.library.title">Library & Reading Space</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Books, reference resources and quiet reading areas that support research, reading habits and independent study.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-amber-700 dark:text-amber-300">Read • Explore • Research</p>
+              </div>
+            </article>
+
+            <article data-facility="sports" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=86" alt="School sports ground" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-orange-500 px-3 py-1.5 text-xs font-black text-white">Sports</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.sports.title">Sports & Activity Areas</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Spaces for physical education, athletics, team games, practice sessions and school competitions.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-orange-700 dark:text-orange-300">Fitness • Teamwork • Competition</p>
+              </div>
+            </article>
+
+            <article data-facility="transport" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=86" alt="School transport bus" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-teal-600 px-3 py-1.5 text-xs font-black text-white">Transport</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.transport.title">School Transport</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Organised routes, student transport records, pickup/drop coordination and issue reporting through the school system.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-teal-700 dark:text-teal-300">Routes • Tracking • Support</p>
+              </div>
+            </article>
+
+            <article data-facility="clinic" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=86" alt="Student health support area" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-rose-500 px-3 py-1.5 text-xs font-black text-white">Wellbeing</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.clinic.title">Health & First Aid</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Basic first-aid support, student wellbeing response and clear escalation to parents when required.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-rose-700 dark:text-rose-300">Care • Support • Response</p>
+              </div>
+            </article>
+
+            <article data-facility="security" class="group overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1558008258-3256797b43f3?auto=format&fit=crop&w=900&q=86" alt="Secure school entrance" class="h-48 w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span class="absolute left-4 top-4 rounded-full bg-slate-700 px-3 py-1.5 text-xs font-black text-white">Safety</span>
+              </div>
+              <div class="p-4 sm:p-5">
+                <h4 class="text-lg font-black text-slate-950 dark:text-white" data-backend-key="facilities.security.title">Security & Gate Control</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Supervised entry, visitor handling, student movement controls and clear arrival/departure procedures.</p>
+                <p class="mt-4 text-xs font-bold uppercase tracking-[0.13em] text-slate-700 dark:text-slate-300">Entry • Supervision • Safety</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Safety & support -->
+        <div class="mt-10 overflow-hidden rounded-[1.5rem] bg-slate-950 text-white sm:rounded-[2rem]">
+          <div class="grid lg:grid-cols-[1.1fr_.9fr]">
+            <div class="p-5 sm:p-7 lg:p-10">
+              <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Student Safety & Support</p>
+              <h3 class="mt-3 max-w-[48rem] text-[1.75rem] font-black leading-tight sm:text-3xl lg:text-4xl">
+                Facilities matter most when students feel safe using them.
+              </h3>
+              <p class="mt-4 max-w-[42rem] text-sm leading-7 text-slate-300 sm:text-base">
+                School facilities are supported by supervision, maintenance, clear routines, transport coordination, first-aid response and communication with families.
+              </p>
+
+              <div class="mt-7 grid gap-3 sm:grid-cols-2">
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="font-black text-white">Supervised Campus Movement</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">Students move between classrooms and activity areas through planned school routines.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="font-black text-white">Transport Coordination</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">Routes and transport issues can be tracked through authorised school staff.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="font-black text-white">Health Support</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">Basic first aid and parent contact procedures support student wellbeing.</p>
+                </div>
+                <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p class="font-black text-white">Visitor & Gate Procedures</p>
+                  <p class="mt-2 text-sm leading-6 text-slate-300">Entry and visitor processes help protect students and maintain campus order.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="relative min-h-[320px] border-t border-white/10 lg:border-l lg:border-t-0">
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=86" alt="Students learning safely at school" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/15 bg-slate-950/45 p-4 backdrop-blur-md sm:bottom-7 sm:left-7 sm:right-7">
+                <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Campus Promise</p>
+                <p class="mt-2 text-lg font-black text-white">Safe • Clean • Organised • Student Friendly</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Faculty -->
+    <section id="teachers" data-section="teachers" class="border-y border-slate-200 bg-white py-16 sm:py-20 lg:py-24 dark:border-slate-800 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+              Our Teachers
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+              Meet the educators guiding every stage of school life.
+            </h2>
+          </div>
+          <div>
+            <p class="max-w-[42rem] text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg dark:text-slate-300">
+              Our teachers work across Early Years, Primary, Middle and Senior School with clear subject responsibilities, regular feedback and consistent communication with families.
+            </p>
+            <div class="mt-5 flex flex-wrap gap-3">
+              <a href="junicore-school-teachers-nursery.html" class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-5 py-3 text-sm font-black text-white transition hover:bg-teal-700">
+                View Teachers by Class <span aria-hidden="true">→</span>
+              </a>
+              <a href="#contact" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+                Contact School Office
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.5rem] border border-pink-100 bg-pink-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-pink-900 dark:bg-pink-950/20">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🧩</div>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-pink-700 dark:text-pink-300">Early Years Team</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Playgroup • Nursery • KG</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Early literacy, numeracy, classroom routines, creativity and school readiness.</p>
+            <a href="junicore-school-teachers-v2-classwise-full.html#early-years" class="mt-5 inline-flex items-center gap-2 text-sm font-black text-pink-700 dark:text-pink-300">Full Details →</a>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-sky-950/20">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">📘</div>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">Primary Team</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Grade 1 – 5</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Core literacy, mathematics, science, classroom guidance and student support.</p>
+            <a href="junicore-school-teachers-v2-classwise-full.html#primary" class="mt-5 inline-flex items-center gap-2 text-sm font-black text-sky-700 dark:text-sky-300">Full Details →</a>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-amber-100 bg-amber-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-amber-950/20">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🔬</div>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">Middle School Team</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Grade 6 – 8</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Subject depth, labs, projects, research skills and senior school preparation.</p>
+            <a href="junicore-school-teachers-v2-classwise-full.html#middle" class="mt-5 inline-flex items-center gap-2 text-sm font-black text-amber-700 dark:text-amber-300">Full Details →</a>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-violet-100 bg-violet-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-violet-900 dark:bg-violet-950/20">
+            <div class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🎓</div>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">Senior School Team</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Grade 9 – 10</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Exam preparation, subject mentoring, revision planning and future pathway guidance.</p>
+            <a href="junicore-school-teachers-v2-classwise-full.html#senior" class="mt-5 inline-flex items-center gap-2 text-sm font-black text-violet-700 dark:text-violet-300">Full Details →</a>
+          </article>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-teal-600 dark:text-teal-400" data-backend-key="teachers.total">75+</p>
+            <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Teachers</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-sky-600 dark:text-sky-400" data-backend-key="teachers.coordinators">8</p>
+            <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Coordinators</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-amber-600 dark:text-amber-400" data-backend-key="teachers.subjectAreas">12+</p>
+            <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Subject Areas</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-center dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-violet-600 dark:text-violet-400">4</p>
+            <p class="mt-1 text-[11px] font-black uppercase tracking-[0.12em] text-slate-500">Learning Stages</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Events & News -->
+    <section id="events" data-section="events" class="bg-sky-50/50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <div class="grid gap-7 sm:gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+          <div>
+            <span class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 shadow-sm dark:bg-slate-900 dark:text-teal-300">
+              Events & News
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl lg:text-5xl dark:text-white">
+              Stay connected with what is happening across school life.
+            </h2>
+          </div>
+          <div>
+            <p class="max-w-[42rem] text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg dark:text-slate-300">
+              Upcoming events, school notices, celebrations and important updates will be published here after approval from the authorised school team.
+            </p>
+            <div class="mt-5 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-[11px] font-bold text-slate-500 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400">
+              <span class="h-2 w-2 rounded-full bg-teal-500"></span>
+              Events & news ready for backend publishing
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 grid gap-6 lg:grid-cols-[1.05fr_.95fr]">
+          <article class="group relative min-h-[430px] overflow-hidden rounded-[1.5rem] bg-slate-950 sm:rounded-[2rem]">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1500&q=88" alt="School annual event" class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/35 to-transparent"></div>
+            <div class="absolute left-5 top-5 rounded-full bg-amber-400 px-4 py-2 text-xs font-black text-slate-950">Featured Event</div>
+
+            <div class="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">24 October 2026 • Main Campus</p>
+              <h3 class="mt-3 text-[1.75rem] font-black leading-tight sm:text-3xl">Annual School Celebration & Student Showcase</h3>
+              <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-200">A school-wide event featuring student performances, project displays, awards and family participation.</p>
+              <a href="#contact" class="mt-5 inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/20">Event Details →</a>
+            </div>
+          </article>
+
+          <div class="grid gap-4">
+            <article class="rounded-[1.35rem] border border-slate-200 bg-white p-5 shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex items-start gap-4">
+                <div class="w-16 shrink-0 rounded-2xl bg-teal-50 p-3 text-center dark:bg-teal-950/30">
+                  <p class="text-xl font-black text-teal-700 dark:text-teal-300">08</p>
+                  <p class="text-[10px] font-black uppercase tracking-[0.12em] text-teal-700 dark:text-teal-300">Oct</p>
+                </div>
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Academic</p>
+                  <h4 class="mt-1 text-lg font-black text-slate-950 dark:text-white">Parent–Teacher Meeting</h4>
+                  <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Families meet teachers to review progress, attendance, learning strengths and next steps.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="rounded-[1.35rem] border border-slate-200 bg-white p-5 shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex items-start gap-4">
+                <div class="w-16 shrink-0 rounded-2xl bg-sky-50 p-3 text-center dark:bg-sky-950/30">
+                  <p class="text-xl font-black text-sky-700 dark:text-sky-300">15</p>
+                  <p class="text-[10px] font-black uppercase tracking-[0.12em] text-sky-700 dark:text-sky-300">Nov</p>
+                </div>
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.14em] text-slate-500">STEM</p>
+                  <h4 class="mt-1 text-lg font-black text-slate-950 dark:text-white">Science & Innovation Day</h4>
+                  <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Student experiments, models, presentations and practical problem-solving projects.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="rounded-[1.35rem] border border-slate-200 bg-white p-5 shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex items-start gap-4">
+                <div class="w-16 shrink-0 rounded-2xl bg-amber-50 p-3 text-center dark:bg-amber-950/30">
+                  <p class="text-xl font-black text-amber-700 dark:text-amber-300">04</p>
+                  <p class="text-[10px] font-black uppercase tracking-[0.12em] text-amber-700 dark:text-amber-300">Dec</p>
+                </div>
+                <div>
+                  <p class="text-xs font-black uppercase tracking-[0.14em] text-slate-500">Sports</p>
+                  <h4 class="mt-1 text-lg font-black text-slate-950 dark:text-white">Annual Sports Day</h4>
+                  <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Athletics, team events, student participation and school house competitions.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-10">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">School News</p>
+              <h3 class="mt-2 text-[1.75rem] font-black leading-tight tracking-tight text-slate-950 sm:text-3xl dark:text-white">Latest updates</h3>
+            </div>
+            <a href="#contact" class="inline-flex w-fit items-center gap-2 text-sm font-black text-teal-700 dark:text-teal-300">View all updates →</a>
+          </div>
+
+          <div class="mt-6 grid gap-5 md:grid-cols-3">
+            <article class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=900&q=86" alt="Students at science activity" class="h-48 w-full object-cover" />
+              <div class="p-5">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">18 Sep 2026 • STEM</p>
+                <h4 class="mt-2 text-lg font-black text-slate-950 dark:text-white">Students recognised for science projects</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Middle School students presented practical projects focused on creativity and scientific thinking.</p>
+              </div>
+            </article>
+
+            <article class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=900&q=86" alt="School sports activity" class="h-48 w-full object-cover" />
+              <div class="p-5">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">12 Sep 2026 • Sports</p>
+                <h4 class="mt-2 text-lg font-black text-slate-950 dark:text-white">Inter-school sports success</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Student teams earned multiple podium finishes across athletics and team sports.</p>
+              </div>
+            </article>
+
+            <article class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=86" alt="Students learning in class" class="h-48 w-full object-cover" />
+              <div class="p-5">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">05 Sep 2026 • Academics</p>
+                <h4 class="mt-2 text-lg font-black text-slate-950 dark:text-white">New academic support programme launched</h4>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Focused revision and additional teacher support introduced for students who need extra guidance.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-[48rem] text-center"><span class="inline-flex rounded-full bg-amber-50 px-3 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">School Life</span><h2 class="mt-5 text-3xl font-black text-slate-950 sm:text-4xl dark:text-white">A school day is more than a classroom.</h2><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">Projects, sports, reading, creativity and shared experiences help students build confidence and friendships.</p></div>
+        <div class="mt-10 grid gap-4 md:grid-cols-3">
+          <div class="relative min-h-[360px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] md:col-span-2"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80" alt="Students learning together" class="absolute inset-0 h-full w-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent"></div><div class="absolute bottom-0 p-7 text-white"><p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Learning Together</p><p class="mt-2 text-2xl font-black">Classroom collaboration & student projects</p></div></div>
+          <div class="grid gap-4">
+            <div class="relative min-h-[172px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]"><img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=900&q=80" alt="School sports" class="absolute inset-0 h-full w-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div><p class="absolute bottom-5 left-5 font-black text-white">Sports & Teamwork</p></div>
+            <div class="relative min-h-[172px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80" alt="School library books" class="absolute inset-0 h-full w-full object-cover"><div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent"></div><p class="absolute bottom-5 left-5 font-black text-white">Reading & Discovery</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portal Access -->
+    <section class="border-y border-teal-100 bg-gradient-to-br from-teal-50 via-white to-sky-50 py-16 sm:py-20 lg:py-24 dark:border-slate-800 dark:from-teal-950/20 dark:via-slate-950 dark:to-sky-950/20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-[48rem] text-center"><span class="inline-flex rounded-full bg-white px-3 py-1.5 text-xs font-black uppercase tracking-[0.18em] text-teal-700 shadow-sm dark:bg-slate-900 dark:text-teal-300">JuniCore Connected School</span><h2 class="mt-5 text-3xl font-black text-slate-950 sm:text-4xl dark:text-white">Quick access for every school role.</h2><p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">Students, parents, teachers and school administration each get a focused portal with the right tools and permissions.</p></div>
+        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <a href="junicore-school-admin-v108-sidebar-school-card-color-fix.html" class="group rounded-3xl border border-white bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-2xl dark:bg-teal-950/30">🏫</div><h3 class="mt-4 text-xl font-black">School Admin</h3><p class="mt-2 text-sm leading-6 text-slate-500">Oversight, approvals, official records and school control.</p><p class="mt-5 text-sm font-black text-teal-700 dark:text-teal-300">Open Admin Portal →</p></a>
+          <a href="junicore-school-teacher-v31-final-aligned-loader.html" class="group rounded-3xl border border-white bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-2xl dark:bg-sky-950/30">👩‍🏫</div><h3 class="mt-4 text-xl font-black">Teacher</h3><p class="mt-2 text-sm leading-6 text-slate-500">Classes, attendance, homework, marks and communication.</p><p class="mt-5 text-sm font-black text-sky-700 dark:text-sky-300">Open Teacher Portal →</p></a>
+          <a href="junicore-school-student-v1-final-control-sync.html" class="group rounded-3xl border border-white bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-2xl dark:bg-amber-950/30">🎒</div><h3 class="mt-4 text-xl font-black">Student</h3><p class="mt-2 text-sm leading-6 text-slate-500">Learning, timetable, homework, results and tracked requests.</p><p class="mt-5 text-sm font-black text-amber-700 dark:text-amber-300">Open Student Portal →</p></a>
+          <a href="junicore-school-parent-v1-admin-teacher-sync-final.html" class="group rounded-3xl border border-white bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"><div class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-2xl dark:bg-violet-950/30">👨‍👩‍👧</div><h3 class="mt-4 text-xl font-black">Parent</h3><p class="mt-2 text-sm leading-6 text-slate-500">Progress monitoring, school messages, notices and requests.</p><p class="mt-5 text-sm font-black text-violet-700 dark:text-violet-300">Open Parent Portal →</p></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+        <div>
+          <p class="text-sm font-black uppercase tracking-[0.25em] text-teal-600">Contact Us</p>
+          <h2 class="mt-4 text-3xl font-black text-slate-950 sm:text-4xl dark:text-white">Have a question? Talk to the school team.</h2>
+          <p class="mt-4 max-w-xl leading-7 text-slate-600 dark:text-slate-300">For admissions, fees, campus visits, transport or general school information, contact us through any of the options below.</p>
+          <div class="mt-8 space-y-4">
+            <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-5 dark:border-slate-800 dark:bg-slate-900"><p class="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">Address</p><p class="mt-1 font-black">JuniCore School, Main Campus, Lahore</p></div>
+            <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-5 dark:border-slate-800 dark:bg-slate-900"><p class="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">Phone</p><p class="mt-1 font-black">+92 42 111 000 111</p></div>
+            <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-5 dark:border-slate-800 dark:bg-slate-900"><p class="text-xs font-bold uppercase tracking-[0.15em] text-slate-400">Email</p><p class="mt-1 font-black">info@junicoreschool.edu.pk</p></div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] border border-sky-100 bg-white p-8 shadow-lg shadow-sky-100/40 dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-xl font-black">Send a Message</h3>
+          <form id="contactForm" class="mt-6 grid gap-5">
+            <label class="text-sm font-bold">Your Name<input required type="text" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 shadow-sm text-slate-900 outline-none focus:border-teal-500 focus:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100" placeholder="Full name"></label>
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="text-sm font-bold">Email<input required type="email" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 shadow-sm text-slate-900 outline-none focus:border-teal-500 focus:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100" placeholder="you@example.com"></label>
+              <label class="text-sm font-bold">Topic<select class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 shadow-sm text-slate-900 outline-none focus:border-teal-500 focus:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100"><option class="text-slate-900 dark:text-slate-100">General Inquiry</option><option class="text-slate-900 dark:text-slate-100">Admissions</option><option class="text-slate-900 dark:text-slate-100">Transport</option><option class="text-slate-900 dark:text-slate-100">Fees</option><option class="text-slate-900 dark:text-slate-100">Campus Visit</option></select></label>
+            </div>
+            <label class="text-sm font-bold">Message<textarea required rows="5" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 shadow-sm text-slate-900 outline-none focus:border-teal-500 focus:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100" placeholder="Write your message..."></textarea></label>
+            <button type="submit" class="rounded-xl bg-teal-600 px-5 py-3.5 font-black text-white transition hover:bg-teal-700">Send Message</button>
+            <p id="contactSuccess" class="hidden rounded-xl bg-emerald-50 px-4 py-3 text-sm font-bold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">Message saved in this demo. Backend sending will be connected later.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-950 text-slate-300">
+    <div class="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div><div class="flex items-center gap-3"><div class="grid h-10 w-10 place-items-center rounded-xl bg-teal-500 font-black text-white">JC</div><div><p class="font-black text-white">JuniCore School</p><p class="text-xs leading-5 text-slate-500">Learn • Grow • Lead</p></div></div><p class="mt-4 text-sm leading-6 text-slate-400">A connected school experience for students, parents, teachers and administration.</p></div>
+        <div><p class="font-black text-white">Quick Links</p><div class="mt-4 grid gap-2 text-sm"><a href="#about" class="hover:text-white">About</a><a href="#academics" class="hover:text-white">Academics</a><a href="#achievements" class="hover:text-white">Achievements</a><a href="#events" class="hover:text-white">Events</a></div></div>
+        <div><p class="font-black text-white">Portals</p><div class="mt-4 grid gap-2 text-sm"><a href="junicore-school-admin-v108-sidebar-school-card-color-fix.html" class="hover:text-white">Admin Portal</a><a href="junicore-school-teacher-v31-final-aligned-loader.html" class="hover:text-white">Teacher Portal</a><a href="junicore-school-student-v1-final-control-sync.html" class="hover:text-white">Student Portal</a><a href="junicore-school-parent-v1-admin-teacher-sync-final.html" class="hover:text-white">Parent Portal</a></div></div>
+        <div><p class="font-black text-white">Office Hours</p><div class="mt-4 text-sm leading-7 text-slate-400"><p>Mon–Thu: 8:00 AM – 3:00 PM</p><p>Friday: 8:00 AM – 12:30 PM</p><p>Saturday: Admissions by appointment</p></div></div>
+      </div>
+      <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs leading-5 text-slate-500 sm:flex-row sm:items-center sm:justify-between"><p>© 2026 JuniCore School. All rights reserved.</p><p>Powered by JuniCore Education System</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const mobileBtn = document.getElementById('mobileBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const portalBtn = document.getElementById('portalBtn');
+    const portalMenu = document.getElementById('portalMenu');
+
+    function applyTheme(theme) {
+      const dark = theme === 'dark';
+      root.classList.toggle('dark', dark);
+      localStorage.setItem('juniSchoolWebsiteTheme', dark ? 'dark' : 'light');
+      themeBtn.innerHTML = dark
+        ? '<span class="grid h-6 w-6 place-items-center rounded-lg bg-white/10">☀️</span><span class="hidden sm:inline">Light</span>'
+        : '<span class="grid h-6 w-6 place-items-center rounded-lg bg-white/10">🌙</span><span class="hidden sm:inline">Dark</span>';
+    }
+
+    const savedTheme = localStorage.getItem('juniSchoolWebsiteTheme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    applyTheme(savedTheme || systemTheme);
+
+    themeBtn.addEventListener('click', () => {
+      applyTheme(root.classList.contains('dark') ? 'light' : 'dark');
+    });
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    portalBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      portalMenu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!portalMenu.contains(event.target) && event.target !== portalBtn) {
+        portalMenu.classList.add('hidden');
+      }
+    });
+
+    document.getElementById('admissionForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('admissionSuccess').classList.remove('hidden');
+      this.reset();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('contactSuccess').classList.remove('hidden');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

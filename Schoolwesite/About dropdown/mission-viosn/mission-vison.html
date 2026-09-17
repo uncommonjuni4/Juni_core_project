@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission, Vision & Values | JuniCore School</title>
+
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+</head>
+
+<body class="bg-slate-50 text-[15px] leading-relaxed text-slate-800 antialiased sm:text-base dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="junicore-school-main-website-v30-mission-values-linked.html#home" class="flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-sm font-black text-white sm:h-11 sm:w-11 sm:rounded-2xl">JC</span>
+        <span class="min-w-0">
+          <span class="block truncate text-base font-black text-slate-950 sm:text-lg dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[10px] sm:tracking-[0.18em] dark:text-teal-400">Mission, Vision & Values</span>
+        </span>
+      </a>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <a href="junicore-school-main-website-v30-mission-values-linked.html#about" class="hidden rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:inline-flex dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-700 dark:hover:text-teal-300">
+          ← Main Website
+        </a>
+        <button id="themeBtn" type="button" class="rounded-xl bg-slate-100 px-3 py-2.5 text-sm font-black text-slate-700 transition hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <img
+        src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=90"
+        alt="Students learning together at school"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/95 via-slate-950/82 to-slate-950/50"></div>
+
+      <div class="mx-auto grid min-h-[560px] max-w-7xl items-center gap-8 px-4 py-14 sm:min-h-[620px] sm:px-6 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:px-8 lg:py-20">
+        <div>
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200 backdrop-blur">
+            Mission, Vision & Values
+          </span>
+
+          <h1 class="mt-6 max-w-4xl text-4xl font-black leading-[1.07] tracking-[-0.03em] sm:text-5xl lg:text-6xl" data-backend-key="mv.hero.title">
+            The principles that guide how we teach, learn and grow together.
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg" data-backend-key="mv.hero.intro">
+            Our mission gives us purpose, our vision gives us direction, and our values shape the everyday choices that create a strong school culture.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#mission" class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-5 py-3.5 text-sm font-black text-white transition hover:bg-teal-400">
+              Explore Our Mission
+            </a>
+            <a href="#values" class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/15">
+              View Core Values
+            </a>
+          </div>
+        </div>
+
+        <aside class="rounded-[1.5rem] border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-6">
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">At a Glance</p>
+
+          <div class="mt-5 space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-sm font-black uppercase tracking-[0.12em] text-teal-200">Mission</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">Strong learning, character, confidence and responsibility.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-sm font-black uppercase tracking-[0.12em] text-sky-200">Vision</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">Capable learners prepared for future education and life.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-sm font-black uppercase tracking-[0.12em] text-amber-200">Values</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">Respect, responsibility, integrity, curiosity, kindness and growth.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section id="mission" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">Our Mission</span>
+
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white" data-backend-key="mv.mission.title">
+              To provide a safe and purposeful learning environment where every student can build strong foundations and keep growing.
+            </h2>
+
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300" data-backend-key="mv.mission.description">
+              We aim to combine clear teaching, consistent support and meaningful opportunities so students develop academic knowledge, confidence, responsibility and curiosity.
+            </p>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-teal-100 bg-teal-50/60 p-4 dark:border-teal-900 dark:bg-teal-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Academic Foundations</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Build strong literacy, numeracy, subject knowledge and study habits.</p>
+              </div>
+
+              <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-4 dark:border-sky-900 dark:bg-sky-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Personal Growth</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Develop confidence, independence, teamwork and responsibility.</p>
+              </div>
+
+              <div class="rounded-2xl border border-amber-100 bg-amber-50/60 p-4 dark:border-amber-900 dark:bg-amber-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Safe Environment</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Create clear routines and respectful relationships that support learning.</p>
+              </div>
+
+              <div class="rounded-2xl border border-violet-100 bg-violet-50/60 p-4 dark:border-violet-900 dark:bg-violet-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Family Partnership</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Keep communication timely, useful and focused on student progress.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[470px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1300&q=88"
+              alt="Students engaged in classroom learning"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-slate-950/10 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Mission in Practice</p>
+              <p class="mt-2 text-2xl font-black">Teach clearly. Support consistently. Help students grow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <div class="relative min-h-[440px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=88"
+              alt="Students preparing for future education"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-sky-200">Looking Ahead</p>
+              <p class="mt-2 text-2xl font-black">Preparing students for the next stage, not just the next test.</p>
+            </div>
+          </div>
+
+          <div>
+            <span class="inline-flex rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">Our Vision</span>
+
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white" data-backend-key="mv.vision.title">
+              To develop capable, thoughtful and responsible learners ready for further education and meaningful participation in the world around them.
+            </h2>
+
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300" data-backend-key="mv.vision.description">
+              Our vision extends beyond examination results. We want students to leave school with knowledge, confidence, curiosity and the ability to keep learning independently.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Ready to Learn</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Students know how to organise work, ask questions and respond to feedback.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Ready to Contribute</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Students understand respect, teamwork and responsibility within a community.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Ready for the Future</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Students develop adaptable thinking, digital awareness and confidence to face new challenges.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section id="values" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">Core Values</span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            Values become meaningful when they are visible in everyday behaviour.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            These values shape how students, teachers and families are expected to work together.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="rounded-[1.5rem] border border-teal-100 bg-teal-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:bg-teal-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🤝</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Respect</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Treat people, time, learning spaces and different viewpoints with consideration.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-sky-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">✅</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Responsibility</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Take ownership of choices, effort, commitments and the consequences that follow.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-violet-100 bg-violet-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-violet-900 dark:bg-violet-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🧭</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Integrity</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Be honest, fair and dependable even when no one is watching.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-amber-100 bg-amber-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-amber-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">💡</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Curiosity</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Ask questions, explore ideas and stay open to learning something new.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-rose-100 bg-rose-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-rose-900 dark:bg-rose-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">💛</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Kindness</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Notice others, offer help and contribute to a school culture where people feel valued.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-emerald-100 bg-emerald-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-emerald-900 dark:bg-emerald-950/20">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-900">🌱</span>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Growth</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Use feedback, effort and reflection to become stronger over time.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values in action -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">Values in Action</span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              How our values should appear in real school life.
+            </h2>
+
+            <div class="mt-6 space-y-4">
+              <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">In the Classroom</p>
+                <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Students listen, participate, ask questions, complete work honestly and support a focused learning environment.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">Around Campus</p>
+                <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Students respect shared spaces, follow safety routines and take responsibility for their behaviour.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+                <p class="text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">In the Community</p>
+                <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Students learn to contribute, cooperate, show kindness and represent the school responsibly.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[460px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1300&q=88"
+              alt="Students participating in school activities"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">School Culture</p>
+              <p class="mt-2 text-2xl font-black">Values are strongest when everyone practices them consistently.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Graduate profile -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-violet-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">Student Character</span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            The kind of learner we hope each student becomes.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-teal-700 dark:text-teal-300">01</p>
+            <h3 class="mt-3 text-lg font-black text-slate-950 dark:text-white">Confident Learner</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Can ask questions, communicate ideas and approach new work with confidence.</p>
+          </div>
+
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-sky-700 dark:text-sky-300">02</p>
+            <h3 class="mt-3 text-lg font-black text-slate-950 dark:text-white">Responsible Individual</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Understands commitments, manages behaviour and accepts responsibility for choices.</p>
+          </div>
+
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-amber-700 dark:text-amber-300">03</p>
+            <h3 class="mt-3 text-lg font-black text-slate-950 dark:text-white">Curious Thinker</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Looks beyond memorisation and wants to understand how and why things work.</p>
+          </div>
+
+          <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-2xl font-black text-violet-700 dark:text-violet-300">04</p>
+            <h3 class="mt-3 text-lg font-black text-slate-950 dark:text-white">Respectful Contributor</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Works well with others and contributes positively to school and community life.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promise -->
+    <section class="bg-slate-950 py-16 text-white sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+          <div>
+            <p class="text-xs font-black uppercase tracking-[0.2em] text-teal-200">Our Shared Promise</p>
+            <h2 class="mt-3 max-w-4xl text-[1.75rem] font-black leading-tight sm:text-3xl lg:text-4xl" data-backend-key="mv.promise.title">
+              We will keep our purpose clear: help students learn well, behave responsibly and grow with confidence.
+            </h2>
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base">
+              Mission, vision and values should guide decisions about teaching, student support, communication, facilities and the way the school continues to develop.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xl font-black text-teal-300">Learn</p>
+              <p class="mt-1 text-xs font-bold text-slate-400">With purpose.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xl font-black text-sky-300">Grow</p>
+              <p class="mt-1 text-xs font-bold text-slate-400">With confidence.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xl font-black text-amber-300">Act</p>
+              <p class="mt-1 text-xs font-bold text-slate-400">With responsibility.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-xl font-black text-violet-300">Contribute</p>
+              <p class="mt-1 text-xs font-bold text-slate-400">With respect.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 border-t border-white/10 pt-7 sm:flex-row">
+          <a href="junicore-school-principal-message-v2-full.html" class="rounded-xl border border-white/15 bg-white/5 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-white/10">← Principal's Message</a>
+          <a href="junicore-school-main-website-v30-mission-values-linked.html#about" class="rounded-xl bg-teal-500 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-teal-400">Back to Website</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+
+    function paintThemeButton() {
+      const isDark = root.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    paintThemeButton();
+
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('juniSchoolWebsiteTheme', root.classList.contains('dark') ? 'dark' : 'light');
+      paintThemeButton();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Governance & Leadership | JuniCore School</title>
+
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+</head>
+
+<body class="bg-slate-50 text-[15px] leading-relaxed text-slate-800 antialiased sm:text-base dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="junicore-school-main-website-v32-governance-linked.html#home" class="flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-sm font-black text-white sm:h-11 sm:w-11 sm:rounded-2xl">JC</span>
+        <span class="min-w-0">
+          <span class="block truncate text-base font-black text-slate-950 sm:text-lg dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[10px] sm:tracking-[0.18em] dark:text-teal-400">Governance & Leadership</span>
+        </span>
+      </a>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <a href="junicore-school-main-website-v32-governance-linked.html#about" class="hidden rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:inline-flex dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-700 dark:hover:text-teal-300">
+          ← Main Website
+        </a>
+        <button id="themeBtn" type="button" class="rounded-xl bg-slate-100 px-3 py-2.5 text-sm font-black text-slate-700 transition hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <img
+        src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=2000&q=90"
+        alt="School leadership meeting"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/96 via-slate-950/84 to-slate-950/52"></div>
+
+      <div class="mx-auto grid min-h-[580px] max-w-7xl items-center gap-8 px-4 py-14 sm:min-h-[640px] sm:px-6 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:px-8 lg:py-20">
+        <div>
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200 backdrop-blur">
+            Governance & Leadership
+          </span>
+
+          <h1 class="mt-6 max-w-4xl text-4xl font-black leading-[1.07] tracking-[-0.03em] sm:text-5xl lg:text-6xl" data-backend-key="governance.hero.title">
+            Clear leadership, defined responsibilities and accountable school decision-making.
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg" data-backend-key="governance.hero.intro">
+            Strong schools work best when leadership responsibilities are clear, academic decisions follow defined processes, and families know who is responsible for each area of school life.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#leadership-structure" class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-5 py-3.5 text-sm font-black text-white transition hover:bg-teal-400">
+              View Leadership Structure
+            </a>
+            <a href="#accountability" class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/15">
+              Accountability Model
+            </a>
+          </div>
+        </div>
+
+        <aside class="rounded-[1.5rem] border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-6">
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Governance Snapshot</p>
+
+          <div class="mt-5 space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-sm font-black uppercase tracking-[0.12em] text-teal-200">Leadership</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">Principal-led school governance with defined academic and operational responsibilities.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-sm font-black uppercase tracking-[0.12em] text-sky-200">Academic Oversight</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">Teaching quality, curriculum, assessment and student progress reviewed through authorised roles.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="text-sm font-black uppercase tracking-[0.12em] text-amber-200">Accountability</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">Approvals, records, communication and school actions remain traceable through defined workflows.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Leadership Structure -->
+    <section id="leadership-structure" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+            Leadership Structure
+          </span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            A clear chain of responsibility across academics, operations and student support.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            Each role should have a defined purpose so decisions are made by the right person and responsibilities do not become unclear or duplicated.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-5 lg:grid-cols-3">
+          <article class="rounded-[1.5rem] border border-teal-100 bg-teal-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:bg-teal-950/20">
+            <div class="flex items-center justify-between gap-4">
+              <span class="grid h-14 w-14 place-items-center rounded-2xl bg-white text-2xl shadow-sm dark:bg-slate-900">🏫</span>
+              <span class="rounded-full bg-teal-100 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-teal-800 dark:bg-teal-900/50 dark:text-teal-200">Executive</span>
+            </div>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Principal</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              Provides overall school leadership, ensures academic and operational alignment, and holds final school-level responsibility for authorised decisions.
+            </p>
+            <div class="mt-5 border-t border-teal-100 pt-4 dark:border-teal-900/60">
+              <p class="text-xs font-black uppercase tracking-[0.13em] text-teal-700 dark:text-teal-300">Key Areas</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">School direction • Staff leadership • Student safety • Parent trust • Quality oversight</p>
+            </div>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-sky-950/20">
+            <div class="flex items-center justify-between gap-4">
+              <span class="grid h-14 w-14 place-items-center rounded-2xl bg-white text-2xl shadow-sm dark:bg-slate-900">📚</span>
+              <span class="rounded-full bg-sky-100 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-sky-800 dark:bg-sky-900/50 dark:text-sky-200">Academic</span>
+            </div>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Academic Coordinators</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              Support curriculum planning, teacher coordination, assessment consistency, student progress review and learning-stage alignment.
+            </p>
+            <div class="mt-5 border-t border-sky-100 pt-4 dark:border-sky-900/60">
+              <p class="text-xs font-black uppercase tracking-[0.13em] text-sky-700 dark:text-sky-300">Key Areas</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Teaching quality • Curriculum • Assessment • Academic support • Teacher guidance</p>
+            </div>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-amber-100 bg-amber-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-amber-950/20">
+            <div class="flex items-center justify-between gap-4">
+              <span class="grid h-14 w-14 place-items-center rounded-2xl bg-white text-2xl shadow-sm dark:bg-slate-900">⚙️</span>
+              <span class="rounded-full bg-amber-100 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-amber-800 dark:bg-amber-900/50 dark:text-amber-200">Operations</span>
+            </div>
+            <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">School Administration</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
+              Manages operational records, communication, fees, transport, documents, permissions and other authorised school processes.
+            </p>
+            <div class="mt-5 border-t border-amber-100 pt-4 dark:border-amber-900/60">
+              <p class="text-xs font-black uppercase tracking-[0.13em] text-amber-700 dark:text-amber-300">Key Areas</p>
+              <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Records • Communication • Finance support • Transport • Official requests</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Principal Authority -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
+          <div class="relative min-h-[460px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=88"
+              alt="School leadership discussion"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/15 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Principal Authority</p>
+              <p class="mt-2 text-2xl font-black">Leadership means responsibility, not just control.</p>
+            </div>
+          </div>
+
+          <div>
+            <span class="inline-flex rounded-full bg-violet-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">
+              Principal's Role
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              The Principal connects academic direction, student wellbeing and school operations.
+            </h2>
+
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              The Principal does not need to perform every school task directly. Instead, the role ensures that responsibilities are delegated properly, important decisions are reviewed and official actions remain accountable.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Set School Direction</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Align academic goals, student support and operational priorities.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Review Important Decisions</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Oversee high-impact school actions, escalations and official publication workflows.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Build Accountability</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Ensure staff roles are clear and actions can be traced through authorised systems.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Governance -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">
+            Academic Governance
+          </span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            Academic decisions should follow clear ownership and review.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            Teaching, attendance, results, homework and student feedback are strongest when every step has a defined role.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.5rem] border border-teal-100 bg-teal-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:bg-teal-950/20">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Teaching</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Teacher Responsibility</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Teachers deliver lessons, manage class activities, mark operational attendance and provide academic feedback.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-sky-950/20">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">Review</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Coordinator Oversight</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Coordinators support consistency across classes, subjects, assessments and academic planning.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-amber-100 bg-amber-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-amber-950/20">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">Publication</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Admin Control</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Official publication, corrections and approved records remain under authorised school administration.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-violet-100 bg-violet-50/60 p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-violet-900 dark:bg-violet-950/20">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">Escalation</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Principal Review</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">High-impact issues and unresolved academic concerns can be escalated for school leadership review.</p>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[2rem] sm:p-7 dark:border-slate-800 dark:bg-slate-900">
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Example Governance Flow</p>
+
+          <div class="mt-5 grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
+            <div class="rounded-2xl bg-white p-4 text-center shadow-sm dark:bg-slate-950/70">
+              <p class="font-black text-slate-950 dark:text-white">Teacher</p>
+              <p class="mt-1 text-xs text-slate-500">Creates / submits</p>
+            </div>
+            <div class="hidden text-xl font-black text-slate-400 lg:block">→</div>
+
+            <div class="rounded-2xl bg-white p-4 text-center shadow-sm dark:bg-slate-950/70">
+              <p class="font-black text-slate-950 dark:text-white">Coordinator</p>
+              <p class="mt-1 text-xs text-slate-500">Reviews quality</p>
+            </div>
+            <div class="hidden text-xl font-black text-slate-400 lg:block">→</div>
+
+            <div class="rounded-2xl bg-white p-4 text-center shadow-sm dark:bg-slate-950/70">
+              <p class="font-black text-slate-950 dark:text-white">Admin</p>
+              <p class="mt-1 text-xs text-slate-500">Publishes officially</p>
+            </div>
+            <div class="hidden text-xl font-black text-slate-400 lg:block">→</div>
+
+            <div class="rounded-2xl bg-white p-4 text-center shadow-sm dark:bg-slate-950/70">
+              <p class="font-black text-slate-950 dark:text-white">Student / Parent</p>
+              <p class="mt-1 text-xs text-slate-500">Views approved record</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operational Governance -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.85fr_1.15fr] lg:items-start">
+          <div class="lg:sticky lg:top-28">
+            <span class="inline-flex rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+              Operational Governance
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              School operations require the same clarity as academics.
+            </h2>
+            <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              Official records, fees, transport, documents, communication and access controls should remain under authorised roles.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-xl dark:bg-teal-950/30">📄</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Official Records</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Profile changes, report records, documents and official corrections follow controlled workflows.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-xl dark:bg-sky-950/30">💳</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Fees & Finance Support</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Financial visibility and dispute handling are managed without allowing unauthorised ledger changes.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-xl dark:bg-amber-950/30">🚌</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Transport & Safety</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Transport routes, issue reporting, arrival/departure and gate procedures remain under assigned staff control.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-xl dark:bg-violet-950/30">🔐</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Access & Permissions</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Portal access and permissions are controlled by role, keeping official functions restricted to authorised users.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accountability -->
+    <section id="accountability" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-rose-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-rose-700 dark:bg-rose-950/30 dark:text-rose-300">
+              Accountability Model
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Every important school action should have an owner, a status and a record.
+            </h2>
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              JuniCore is designed so official actions are not hidden inside informal processes. Requests, approvals, corrections, publication and communication can later be tied to activity history and authorised user roles.
+            </p>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Named Responsibility</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Each workflow belongs to a defined role.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Clear Status</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Pending, In Review, Approved, Returned, Rejected or Resolved.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Visible History</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Important changes can later be reviewed through audit records.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Controlled Publication</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Students and parents see only approved public records.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[470px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=88"
+              alt="Leadership reviewing school records"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-rose-200">Governance Principle</p>
+              <p class="mt-2 text-2xl font-black">Authority should be clear. Actions should be traceable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Family & Community -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+            Family & Community Governance
+          </span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            Parents should know where to go when they need support.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            Clear communication channels help concerns reach the right person without bypassing school responsibilities.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 lg:grid-cols-3">
+          <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Academic Concern</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Teacher First</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Questions about classwork, homework, attendance or academic feedback should usually begin with the assigned teacher.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">Official Correction</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Admin Review</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Official record corrections, profile changes, fee issues or document verification go through authorised administration.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+            <p class="text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">Escalated Issue</p>
+            <h3 class="mt-3 text-xl font-black text-slate-950 dark:text-white">Leadership Review</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Unresolved or high-impact concerns may be escalated to school leadership for review and final direction.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Governance -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[1.5rem] border border-teal-100 bg-gradient-to-br from-teal-50 via-white to-sky-50 p-6 sm:rounded-[2rem] sm:p-8 lg:p-10 dark:border-teal-900 dark:from-teal-950/20 dark:via-slate-900 dark:to-sky-950/20">
+          <div class="grid gap-8 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Digital Governance</p>
+              <h2 class="mt-3 text-[1.75rem] font-black leading-tight text-slate-950 sm:text-3xl lg:text-4xl dark:text-white">
+                JuniCore supports governance by connecting roles, permissions, records and activity history.
+              </h2>
+              <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base dark:text-slate-300">
+                The future backend can keep leadership information, official workflows, notifications, approvals and audit records connected while showing each user only the functions they are authorised to access.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-teal-700 dark:text-teal-300">Roles</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Who can do what.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-sky-700 dark:text-sky-300">Approvals</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Who reviews actions.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-amber-700 dark:text-amber-300">Records</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">What becomes official.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-violet-700 dark:text-violet-300">Audit</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">What changed and when.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="junicore-school-history-v2-full.html" class="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-center text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            ← School History
+          </a>
+          <a href="junicore-school-main-website-v32-governance-linked.html#about" class="rounded-xl bg-teal-600 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-teal-700">
+            Back to Website
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+
+    function paintThemeButton() {
+      const isDark = root.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    paintThemeButton();
+
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('juniSchoolWebsiteTheme', root.classList.contains('dark') ? 'dark' : 'light');
+      paintThemeButton();
+    });
+  </script>
+</body>
+</html>

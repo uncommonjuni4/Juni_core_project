@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Policies & Safeguarding | JuniCore School</title>
+
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('juniSchoolWebsiteTheme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initial = saved || (systemDark ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', initial === 'dark');
+      } catch (_) {}
+    })();
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' };</script>
+</head>
+
+<body class="bg-slate-50 text-[15px] leading-relaxed text-slate-800 antialiased sm:text-base dark:bg-slate-950 dark:text-slate-100">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="junicore-school-main-website-v33-policies-linked.html#home" class="flex min-w-0 items-center gap-3">
+        <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-teal-600 text-sm font-black text-white sm:h-11 sm:w-11 sm:rounded-2xl">JC</span>
+        <span class="min-w-0">
+          <span class="block truncate text-base font-black text-slate-950 sm:text-lg dark:text-white">JuniCore School</span>
+          <span class="block truncate text-[9px] font-bold uppercase tracking-[0.16em] text-teal-600 sm:text-[10px] sm:tracking-[0.18em] dark:text-teal-400">Policies & Safeguarding</span>
+        </span>
+      </a>
+
+      <div class="flex shrink-0 items-center gap-2">
+        <a href="junicore-school-main-website-v33-policies-linked.html#about" class="hidden rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 sm:inline-flex dark:border-slate-700 dark:text-slate-200 dark:hover:border-teal-700 dark:hover:text-teal-300">
+          ← Main Website
+        </a>
+        <button id="themeBtn" type="button" class="rounded-xl bg-slate-100 px-3 py-2.5 text-sm font-black text-slate-700 transition hover:bg-slate-200 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800" aria-label="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden bg-slate-950 text-white">
+      <img
+        src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=2000&q=90"
+        alt="Students in a safe school environment"
+        class="absolute inset-0 -z-20 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-slate-950/96 via-slate-950/84 to-slate-950/48"></div>
+
+      <div class="mx-auto grid min-h-[580px] max-w-7xl items-center gap-8 px-4 py-14 sm:min-h-[640px] sm:px-6 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:px-8 lg:py-20">
+        <div>
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-200 backdrop-blur">
+            Policies & Safeguarding
+          </span>
+
+          <h1 class="mt-6 max-w-4xl text-4xl font-black leading-[1.07] tracking-[-0.03em] sm:text-5xl lg:text-6xl" data-backend-key="policies.hero.title">
+            Clear policies help protect students, guide staff and build trust with families.
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-base leading-8 text-slate-200 sm:text-lg" data-backend-key="policies.hero.intro">
+            Safeguarding is not one document. It is a set of responsibilities, reporting routes, safety procedures and everyday practices designed to keep students supported and protected.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#safeguarding" class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-5 py-3.5 text-sm font-black text-white transition hover:bg-teal-400">
+              Safeguarding Framework
+            </a>
+            <a href="#policy-library" class="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3.5 text-sm font-black text-white backdrop-blur transition hover:bg-white/15">
+              View Policy Areas
+            </a>
+          </div>
+        </div>
+
+        <aside class="rounded-[1.5rem] border border-white/15 bg-slate-950/55 p-5 shadow-2xl backdrop-blur-xl sm:rounded-[2rem] sm:p-6">
+          <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Safety Principles</p>
+
+          <div class="mt-5 space-y-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="font-black text-white">Prevent</p>
+              <p class="mt-1 text-sm leading-6 text-slate-300">Clear expectations, safe routines and trained staff reduce avoidable risks.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="font-black text-white">Report</p>
+              <p class="mt-1 text-sm leading-6 text-slate-300">Students, families and staff should know how to raise a concern safely.</p>
+            </div>
+
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p class="font-black text-white">Respond</p>
+              <p class="mt-1 text-sm leading-6 text-slate-300">Concerns should reach the right authorised person and be handled promptly.</p>
+            </div>
+          </div>
+
+          <p class="mt-5 text-xs leading-5 text-slate-400">Policy titles and dates are demo placeholders until official school documents are connected.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Safeguarding framework -->
+    <section id="safeguarding" class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+              Safeguarding Framework
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Student safety is a shared responsibility with clear ownership.
+            </h2>
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              Teachers, school administration, leadership and families all contribute to safeguarding. The key is knowing who must act, what must be recorded and when a concern needs escalation.
+            </p>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl border border-teal-100 bg-teal-50/60 p-4 dark:border-teal-900 dark:bg-teal-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Recognise Concerns</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Staff remain alert to changes in behaviour, attendance, wellbeing and student safety.</p>
+              </div>
+
+              <div class="rounded-2xl border border-sky-100 bg-sky-50/60 p-4 dark:border-sky-900 dark:bg-sky-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Report Properly</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Concerns should be shared through approved channels, not informal discussion.</p>
+              </div>
+
+              <div class="rounded-2xl border border-amber-100 bg-amber-50/60 p-4 dark:border-amber-900 dark:bg-amber-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Protect Privacy</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Sensitive student information is shared only with authorised people who need it.</p>
+              </div>
+
+              <div class="rounded-2xl border border-violet-100 bg-violet-50/60 p-4 dark:border-violet-900 dark:bg-violet-950/20">
+                <p class="font-black text-slate-950 dark:text-white">Escalate When Needed</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Urgent or serious concerns move quickly to school leadership and appropriate external channels where required.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[470px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=88"
+              alt="Students learning in a supervised classroom"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/10 to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-200">Safeguarding Promise</p>
+              <p class="mt-2 text-2xl font-black">Listen carefully. Record responsibly. Act appropriately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policy library -->
+    <section id="policy-library" class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-sky-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-sky-700 dark:bg-sky-950/30 dark:text-sky-300">
+            Policy Areas
+          </span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            The main policies that support safe and consistent school life.
+          </h2>
+          <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+            Final policy files, review dates and version history can later be managed by authorised school staff through the backend.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <article data-policy="safeguarding" class="rounded-[1.5rem] border border-teal-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-teal-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-teal-50 text-xl dark:bg-teal-950/30">🛡️</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-teal-700 dark:text-teal-300">Student Safety</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Safeguarding Policy</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Defines staff responsibilities, concern reporting, escalation and protection of sensitive student information.</p>
+          </article>
+
+          <article data-policy="behaviour" class="rounded-[1.5rem] border border-sky-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-sky-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-xl dark:bg-sky-950/30">🤝</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-sky-700 dark:text-sky-300">Conduct</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Behaviour & Discipline</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Sets expectations for respectful behaviour, classroom routines, consequences and restorative support.</p>
+          </article>
+
+          <article data-policy="attendance" class="rounded-[1.5rem] border border-amber-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-amber-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-xl dark:bg-amber-950/30">📅</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-amber-700 dark:text-amber-300">Attendance</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Attendance & Punctuality</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Covers attendance recording, leave requests, punctuality and correction of official attendance records.</p>
+          </article>
+
+          <article data-policy="anti-bullying" class="rounded-[1.5rem] border border-rose-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-rose-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-rose-50 text-xl dark:bg-rose-950/30">🚫</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-rose-700 dark:text-rose-300">Respect</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Anti-Bullying Policy</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Defines unacceptable behaviour, reporting options, support for affected students and appropriate school response.</p>
+          </article>
+
+          <article data-policy="digital" class="rounded-[1.5rem] border border-violet-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-violet-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-xl dark:bg-violet-950/30">💻</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-violet-700 dark:text-violet-300">Digital Safety</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Acceptable Use & Online Safety</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Sets expectations for school devices, accounts, online behaviour, password safety and authorised digital access.</p>
+          </article>
+
+          <article data-policy="privacy" class="rounded-[1.5rem] border border-emerald-100 bg-white p-5 shadow-sm sm:rounded-[1.75rem] sm:p-6 dark:border-emerald-900 dark:bg-slate-900">
+            <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-xl dark:bg-emerald-950/30">🔐</span>
+            <p class="mt-5 text-xs font-black uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">Data</p>
+            <h3 class="mt-2 text-xl font-black text-slate-950 dark:text-white">Privacy & Student Data</h3>
+            <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Controls access to personal information, school records, profile data and public-facing student information.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student conduct and bullying -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-rose-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-rose-700 dark:bg-rose-950/30 dark:text-rose-300">
+              Behaviour & Anti-Bullying
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Respectful behaviour is part of student safety.
+            </h2>
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              Behaviour policies should be clear enough that students understand expectations, adults respond consistently and families know how concerns will be handled.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Clear Expectations</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Students are expected to act safely, respectfully and responsibly across classrooms and campus spaces.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Consistent Response</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Staff respond according to school procedures rather than personal or inconsistent rules.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="font-black text-slate-950 dark:text-white">Support & Follow-Up</p>
+                <p class="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-300">Students affected by bullying or repeated behaviour concerns receive appropriate support and follow-up.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[460px] overflow-hidden rounded-[1.5rem] sm:rounded-[2rem]">
+            <img
+              src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1300&q=88"
+              alt="Students learning respectfully together"
+              class="absolute inset-0 h-full w-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-rose-200">School Culture</p>
+              <p class="mt-2 text-2xl font-black">Respect, boundaries and support should be visible every day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital safety and privacy -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
+          <div class="lg:sticky lg:top-28">
+            <span class="inline-flex rounded-full bg-violet-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">
+              Digital Safety & Privacy
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Digital access should be useful, controlled and age-appropriate.
+            </h2>
+            <p class="mt-4 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              JuniCore portals can later enforce role-based access so students, parents, teachers and administrators see only the records and actions relevant to them.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-violet-50 text-xl dark:bg-violet-950/30">🔑</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Account Security</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Users are responsible for their own authorised accounts and should not share login access.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-50 text-xl dark:bg-sky-950/30">👁️</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Role-Based Visibility</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Parents see linked-child information, students see their own records and staff see authorised work areas.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-50 text-xl dark:bg-emerald-950/30">🗂️</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Official Data Control</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Official profile, result, attendance and document changes require authorised workflows.</p>
+            </article>
+
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 sm:rounded-[1.75rem] sm:p-6 dark:border-slate-800 dark:bg-slate-900">
+              <span class="grid h-12 w-12 place-items-center rounded-2xl bg-amber-50 text-xl dark:bg-amber-950/30">📣</span>
+              <h3 class="mt-5 text-xl font-black text-slate-950 dark:text-white">Public Information</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">Only approved content and records should be visible on the public website.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Campus safety -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="inline-flex rounded-full bg-amber-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">
+            Campus Safety
+          </span>
+          <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+            Safe campus routines extend beyond the classroom.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <span class="text-3xl">🚪</span>
+            <h3 class="mt-4 text-lg font-black text-slate-950 dark:text-white">Visitor & Gate Control</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Visitor entry, identification and access should follow clear school procedures.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <span class="text-3xl">🚌</span>
+            <h3 class="mt-4 text-lg font-black text-slate-950 dark:text-white">Transport Safety</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Routes, pickup/drop records and transport concerns remain under authorised staff control.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <span class="text-3xl">🩹</span>
+            <h3 class="mt-4 text-lg font-black text-slate-950 dark:text-white">First Aid & Wellbeing</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Basic care, parent contact and appropriate escalation support student wellbeing.</p>
+          </article>
+
+          <article class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.75rem] dark:border-slate-800 dark:bg-slate-900">
+            <span class="text-3xl">🚨</span>
+            <h3 class="mt-4 text-lg font-black text-slate-950 dark:text-white">Emergency Response</h3>
+            <p class="mt-2 text-sm leading-7 text-slate-600 dark:text-slate-300">Emergency procedures should define communication, supervision and safe movement responsibilities.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reporting & complaints -->
+    <section class="bg-slate-50 py-16 sm:py-20 lg:py-24 dark:bg-slate-900/40">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-8 lg:grid-cols-[1.02fr_.98fr] lg:items-center">
+          <div>
+            <span class="inline-flex rounded-full bg-teal-50 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:bg-teal-950/30 dark:text-teal-300">
+              Concerns, Complaints & Reporting
+            </span>
+            <h2 class="mt-5 text-[2rem] font-black leading-[1.12] tracking-tight text-slate-950 sm:text-4xl dark:text-white">
+              Families and students should know how to raise a concern and what happens next.
+            </h2>
+
+            <p class="mt-5 text-[15px] leading-7 text-slate-600 sm:text-base sm:leading-8 dark:text-slate-300">
+              Different issues belong to different routes. Clear reporting reduces confusion and helps the school respond more effectively.
+            </p>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="text-xs font-black uppercase tracking-[0.13em] text-teal-700 dark:text-teal-300">Academic / Class Concern</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Start with the assigned teacher where appropriate, then escalate if the issue remains unresolved.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="text-xs font-black uppercase tracking-[0.13em] text-sky-700 dark:text-sky-300">Official Record / Service Issue</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Use the relevant request workflow for profile, fee, document, transport or official correction concerns.</p>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <p class="text-xs font-black uppercase tracking-[0.13em] text-rose-700 dark:text-rose-300">Safety / Safeguarding Concern</p>
+                <p class="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-300">Safety concerns should move directly to the authorised safeguarding or leadership route rather than waiting through ordinary service channels.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[1.5rem] bg-slate-950 p-5 text-white sm:rounded-[2rem] sm:p-7 lg:p-9">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-amber-300">Typical Request Status</p>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-amber-400 text-sm font-black text-slate-950">1</span>
+                <div>
+                  <p class="font-black">Pending</p>
+                  <p class="mt-1 text-xs text-slate-400">Request submitted.</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-sky-400 text-sm font-black text-slate-950">2</span>
+                <div>
+                  <p class="font-black">In Review</p>
+                  <p class="mt-1 text-xs text-slate-400">Authorised staff reviewing details.</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-teal-400 text-sm font-black text-slate-950">3</span>
+                <div>
+                  <p class="font-black">Approved / Resolved</p>
+                  <p class="mt-1 text-xs text-slate-400">Action completed or decision finalised.</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-violet-400 text-sm font-black text-slate-950">↺</span>
+                <div>
+                  <p class="font-black">Returned</p>
+                  <p class="mt-1 text-xs text-slate-400">More information or correction required.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review & publication -->
+    <section class="bg-white py-16 sm:py-20 lg:py-24 dark:bg-slate-950">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[1.5rem] border border-teal-100 bg-gradient-to-br from-teal-50 via-white to-sky-50 p-6 sm:rounded-[2rem] sm:p-8 lg:p-10 dark:border-teal-900 dark:from-teal-950/20 dark:via-slate-900 dark:to-sky-950/20">
+          <div class="grid gap-8 lg:grid-cols-[1.08fr_.92fr] lg:items-center">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-teal-700 dark:text-teal-300">Policy Control</p>
+              <h2 class="mt-3 text-[1.75rem] font-black leading-tight text-slate-950 sm:text-3xl lg:text-4xl dark:text-white">
+                Policies should have an owner, version, approval date and review cycle.
+              </h2>
+              <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base dark:text-slate-300">
+                JuniCore can later store policy files and metadata so families always see the current approved version rather than outdated documents.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-teal-700 dark:text-teal-300">Owner</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Responsible role.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-sky-700 dark:text-sky-300">Version</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Current policy release.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-amber-700 dark:text-amber-300">Approved</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Formal approval date.</p>
+              </div>
+              <div class="rounded-2xl bg-white p-4 shadow-sm dark:bg-slate-950/70">
+                <p class="text-xl font-black text-violet-700 dark:text-violet-300">Review</p>
+                <p class="mt-1 text-xs font-bold text-slate-500">Next review date.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="junicore-school-governance-v2-full-professional.html" class="rounded-xl border border-slate-200 bg-white px-5 py-3.5 text-center text-sm font-black text-slate-700 transition hover:border-teal-300 hover:text-teal-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+            ← Governance & Leadership
+          </a>
+          <a href="junicore-school-main-website-v33-policies-linked.html#about" class="rounded-xl bg-teal-600 px-5 py-3.5 text-center text-sm font-black text-white transition hover:bg-teal-700">
+            Back to Website
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+
+    function paintThemeButton() {
+      const isDark = root.classList.contains('dark');
+      themeBtn.textContent = isDark ? '☀️' : '🌙';
+      themeBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+
+    paintThemeButton();
+
+    themeBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('juniSchoolWebsiteTheme', root.classList.contains('dark') ? 'dark' : 'light');
+      paintThemeButton();
+    });
+  </script>
+</body>
+</html>
