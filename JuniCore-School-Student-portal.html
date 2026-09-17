@@ -530,19 +530,19 @@
           </div>
 
           <div class="mt-4 grid gap-3 md:grid-cols-3">
-            <!-- Latest Teacher Remark -->
-            <button onclick="openTab('messages')" class="group relative overflow-hidden rounded-[1.6rem] border border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md dark:border-emerald-900 dark:from-emerald-950/20 dark:via-slate-900 dark:to-lime-950/10">
+            <!-- Published Academic Feedback -->
+            <button onclick="openTab('results')" class="group relative overflow-hidden rounded-[1.6rem] border border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-lime-50 p-4 text-left transition hover:-translate-y-0.5 hover:shadow-md dark:border-emerald-900 dark:from-emerald-950/20 dark:via-slate-900 dark:to-lime-950/10">
               <div class="pointer-events-none absolute -right-5 -top-5 h-20 w-20 rounded-full bg-emerald-200/30 dark:bg-emerald-800/10"></div>
               <div class="relative">
                 <div class="flex items-start justify-between gap-3">
-                  <div class="grid h-11 w-11 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-800">💬</div>
-                  <span class="rounded-full bg-emerald-100 px-2.5 py-1 text-[7px] font-black text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">NEW</span>
+                  <div class="grid h-11 w-11 place-items-center rounded-2xl bg-white text-xl shadow-sm dark:bg-slate-800">📊</div>
+                  <span class="rounded-full bg-emerald-100 px-2.5 py-1 text-[7px] font-black text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">PUBLISHED</span>
                 </div>
-                <p class="mt-3 text-[8px] font-black uppercase tracking-[.1em] text-emerald-600">Teacher Remark</p>
-                <p class="mt-1 text-[10px] font-black">“Good progress in English.”</p>
-                <p class="mt-1 text-[8px] font-semibold text-slate-600 dark:text-slate-300">Ms Sara Ahmed · Today</p>
+                <p class="mt-3 text-[8px] font-black uppercase tracking-[.1em] text-emerald-600">Academic Feedback</p>
+                <p class="mt-1 text-[10px] font-black">View feedback on published results</p>
+                <p class="mt-1 text-[8px] font-semibold text-slate-600 dark:text-slate-300">Teacher feedback shown only inside official published records</p>
                 <div class="mt-3 flex items-center gap-1 text-[8px] font-black text-emerald-700 dark:text-emerald-300">
-                  View details <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i>
+                  Open results <i class="fa-solid fa-arrow-right transition group-hover:translate-x-1"></i>
                 </div>
               </div>
             </button>
@@ -10204,5 +10204,239 @@ Generated from the currently published JuniCore Student Exam record.
     setTimeout(()=>hideStudentPortalLoader(),2500);
 
 </script>
-</body>
+\n<script>
+/* ==========================================================================
+   JuniCore School Student Portal V1 — Final Admin/Teacher/Parent Control Sync
+   Source-of-truth: School Admin V108 + Teacher V31 + Parent V1
+   Student role remains submit / view / track only.
+   ========================================================================== */
+(function(){
+  'use strict';
+
+  const STORE='juniStudentV1ControlSync';
+  const nowLabel=()=>new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const clone=v=>JSON.parse(JSON.stringify(v));
+  function load(){
+    try{
+      const x=JSON.parse(localStorage.getItem(STORE)||'null');
+      if(x&&typeof x==='object')return x;
+    }catch(e){}
+    return {
+      version:'student-v1',
+      documents:[
+        {id:'SDOC-1001',type:'B-Form / Birth Certificate',file:'Ali-Khan-BForm.pdf',status:'Verified',version:1,adminNote:'Identity document verified.',updatedAt:'12 Sep 2026 · 11:30 AM',versions:[{version:1,file:'Ali-Khan-BForm.pdf',status:'Verified',at:'12 Sep 2026 · 10:20 AM'}]},
+        {id:'SDOC-1002',type:'Previous School Record',file:'previous-school-record.pdf',status:'Re-upload Requested',version:1,adminNote:'Upload a clearer scan showing the school stamp and complete page.',updatedAt:'16 Sep 2026 · 02:15 PM',versions:[{version:1,file:'previous-school-record.pdf',status:'Re-upload Requested',at:'15 Sep 2026 · 06:15 PM'}]},
+        {id:'SDOC-1003',type:'Student Photo',file:'ali-student-photo.jpg',status:'Pending Verification',version:1,adminNote:'',updatedAt:'17 Sep 2026 · 08:45 AM',versions:[{version:1,file:'ali-student-photo.jpg',status:'Pending Verification',at:'17 Sep 2026 · 08:45 AM'}]}
+      ],
+      transportRequests:[
+        {id:'TRN-REQ-1001',type:'Pickup timing issue',details:'Please confirm the new Route A pickup time for Model Town stop.',evidence:'',status:'Resolved',submittedAt:'16 Sep 2026 · 04:20 PM',adminNote:'New pickup time is 07:10 AM from 17 Sep 2026.'}
+      ],
+      accessRequests:[],
+      escalations:[],
+      notifications:[
+        {id:'NTF-ST-1001',title:'Homework published',text:'English · Paragraph Writing is available in Homework.',module:'homework',recordId:'HW-ENG-0915',status:'Delivered',read:false,time:'17 Sep 2026 · 09:05 AM',icon:'fa-clipboard-list'},
+        {id:'NTF-ST-1002',title:'Result review updated',text:'Your Mathematics review request is being checked by the teacher.',module:'results',recordId:'RR-1001',status:'Delivered',read:false,time:'17 Sep 2026 · 08:40 AM',icon:'fa-chart-line'},
+        {id:'NTF-ST-1003',title:'Document re-upload requested',text:'Previous School Record needs a clearer scan.',module:'profile',recordId:'SDOC-1002',status:'Delivered',read:false,time:'16 Sep 2026 · 02:15 PM',icon:'fa-file-circle-exclamation'},
+        {id:'NTF-ST-1004',title:'School announcement',text:'Parent Teacher Meeting is scheduled for 19 Sep.',module:'announcements',recordId:'ANN-PTM',status:'Read',read:true,time:'16 Sep 2026 · 01:20 PM',icon:'fa-bullhorn'}
+      ]
+    };
+  }
+  let S=load();
+  function save(){try{localStorage.setItem(STORE,JSON.stringify(S));}catch(e){console.warn(e)}}
+  function toast(msg){if(typeof showToast==='function')showToast(msg);}
+  function requestTone(status){
+    if(['Approved','Verified','Resolved'].includes(status))return 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300';
+    if(['Rejected'].includes(status))return 'bg-rose-100 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300';
+    if(['Returned','Re-upload Requested'].includes(status))return 'bg-orange-100 text-orange-700 dark:bg-orange-950/30 dark:text-orange-300';
+    if(['In Review','Teacher Reviewing','Pending Teacher Review'].includes(status))return 'bg-blue-100 text-blue-700 dark:bg-blue-950/30 dark:text-blue-300';
+    return 'bg-amber-100 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300';
+  }
+  function canonical(status){
+    if(['Teacher Reviewing','Pending Teacher Review','Forwarded to Admin'].includes(status))return 'In Review';
+    if(status==='Re-upload Requested')return 'Returned';
+    if(['Verified'].includes(status))return 'Approved';
+    return status||'Pending';
+  }
+
+  /* ---------- HOMEWORK: STUDENT RECEIVES ADMIN-PUBLISHED ONLY ---------- */
+  try{
+    studentHomeworkItems.forEach(h=>{if(!h.publicationStatus)h.publicationStatus='Published';});
+    // Backend contract demo: a non-published record exists but must never render in Student UI.
+    if(!studentHomeworkItems.some(h=>h.id==='HW-HIDDEN-ADMIN-REVIEW')){
+      studentHomeworkItems.push({id:'HW-HIDDEN-ADMIN-REVIEW',month:'2026-09',assignedSort:'2026-09-17',dueSort:'2026-09-20',subjectCode:'ENG-08',subject:'English',icon:'📖',teacher:'Ms Sara Ahmed',workType:'Homework',title:'Admin Review Demo — Hidden from Student',assigned:'17 Sep 2026',due:'20 Sep 2026',mode:'Notebook',submissionRequired:false,status:'Pending',publicationStatus:'Pending Review',seenAt:null,submittedAt:null,instructions:'This record demonstrates the publication gate and must stay hidden.',note:'',studentFiles:[],attachments:[]});
+    }
+    window.getStudentHomeworkMonthRows=function(){return studentHomeworkItems.filter(x=>x.month===studentHomeworkMonth&&x.publicationStatus==='Published');};
+  }catch(e){console.warn('Homework publication sync:',e)}
+
+  function addHomeworkPublicationNotice(){
+    const tab=document.getElementById('tab-homework');
+    if(!tab||document.getElementById('jcS1HomeworkPublishRule'))return;
+    const box=document.createElement('section');
+    box.id='jcS1HomeworkPublishRule';
+    box.className='rounded-[1.4rem] border border-indigo-200 bg-indigo-50 p-4 dark:border-indigo-900 dark:bg-indigo-950/20';
+    box.innerHTML='<div class="flex items-start gap-3"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-white text-indigo-700 shadow-sm dark:bg-slate-900"><i class="fa-solid fa-shield-halved"></i></span><div><p class="text-[9px] font-black">Admin-published homework only</p><p class="mt-1 text-[8px] leading-5 text-slate-600 dark:text-slate-300">Teacher creates and submits homework. School Admin controls final publication. Draft, Pending Review, Returned or Unpublished homework never appears in the Student Portal.</p></div></div>';
+    const hero=tab.querySelector('section');
+    if(hero)hero.insertAdjacentElement('afterend',box);else tab.prepend(box);
+  }
+
+  /* ---------- OFFICIAL STUDENT DOCUMENT VERIFICATION ---------- */
+  function injectDocuments(){
+    const profile=document.getElementById('tab-profile');
+    if(!profile||document.getElementById('jcS1StudentDocuments'))return;
+    const sec=document.createElement('section');sec.id='jcS1StudentDocuments';sec.className='rounded-[1.5rem] border border-violet-200 bg-white p-4 shadow-sm sm:rounded-[2rem] sm:p-5 dark:border-violet-900 dark:bg-slate-900';
+    sec.innerHTML='<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[8px] font-black uppercase tracking-[.12em] text-violet-600">Official Documents</p><h3 class="mt-1 text-lg font-black">Student Document Verification</h3><p class="mt-1 text-[8px] leading-5 text-slate-500 dark:text-slate-400">Upload required student documents. School Admin verifies, rejects, or requests a new version. Verified versions stay locked.</p></div><button onclick="jcS1OpenDocumentUpload()" class="rounded-xl bg-violet-600 px-4 py-3 text-[8px] font-black text-white"><i class="fa-solid fa-file-arrow-up mr-2"></i>Upload Document</button></div><div id="jcS1DocumentList" class="mt-4 grid gap-3 lg:grid-cols-2"></div>';
+    profile.appendChild(sec);
+
+    const modal=document.createElement('div');modal.id='jcS1DocumentModal';modal.className='fixed inset-0 z-[150] hidden items-start justify-center overflow-y-auto bg-slate-950/70 p-2 backdrop-blur-sm sm:items-center sm:p-4';
+    modal.innerHTML='<div class="my-2 w-full max-w-xl rounded-[1.4rem] border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:rounded-[2rem]"><div class="flex items-start justify-between gap-3 border-b border-slate-100 p-4 dark:border-slate-800"><div><p class="text-[8px] font-black uppercase text-violet-600">Admin Verification</p><h3 id="jcS1DocumentModalTitle" class="mt-1 text-lg font-black">Upload Student Document</h3></div><button onclick="jcS1CloseDocumentUpload()" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 dark:border-slate-700"><i class="fa-solid fa-xmark"></i></button></div><form onsubmit="jcS1SubmitDocument(event)" class="space-y-4 p-4 sm:p-5"><input id="jcS1DocReuploadId" type="hidden"><label class="block"><span class="text-[7px] font-black uppercase text-slate-500">Document Type</span><select id="jcS1DocType" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[9px] font-black dark:border-slate-700 dark:bg-slate-800"><option>B-Form / Birth Certificate</option><option>Student Photo</option><option>Previous School Record</option><option>Medical / Supporting Document</option><option>Other</option></select></label><label class="block"><span class="text-[7px] font-black uppercase text-slate-500">File</span><input id="jcS1DocFile" required type="file" accept=".pdf,.png,.jpg,.jpeg,.doc,.docx" class="mt-2 block w-full rounded-xl border border-slate-200 p-2 text-[8px] dark:border-slate-700"></label><label class="block"><span class="text-[7px] font-black uppercase text-slate-500">Student Note</span><textarea id="jcS1DocNote" rows="3" placeholder="Optional note for School Admin..." class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-[9px] dark:border-slate-700 dark:bg-slate-800"></textarea></label><div id="jcS1DocAdminReason" class="hidden rounded-xl border border-orange-200 bg-orange-50 p-3 text-[8px] text-orange-700 dark:border-orange-900 dark:bg-orange-950/20 dark:text-orange-300"></div><div class="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"><button type="button" onclick="jcS1CloseDocumentUpload()" class="rounded-xl border border-slate-200 px-4 py-3 text-[8px] font-black dark:border-slate-700">Cancel</button><button class="rounded-xl bg-violet-600 px-4 py-3 text-[8px] font-black text-white">Send for Verification</button></div></form></div>';
+    document.body.appendChild(modal);
+    renderDocuments();
+  }
+  function renderDocuments(){
+    const root=document.getElementById('jcS1DocumentList');if(!root)return;
+    root.innerHTML=S.documents.map(d=>`<article class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"><div class="flex flex-wrap items-center gap-2"><span class="rounded-full px-2.5 py-1 text-[7px] font-black ${requestTone(d.status)}">${esc(d.status)}</span><span class="text-[7px] font-black text-violet-600">${esc(d.id)} · V${d.version}</span></div><h4 class="mt-2 text-[10px] font-black">${esc(d.type)}</h4><p class="mt-1 break-all text-[8px] text-slate-500">${esc(d.file||'No file')}</p>${d.adminNote?`<p class="mt-3 rounded-lg ${d.status==='Re-upload Requested'?'bg-orange-50 text-orange-700 dark:bg-orange-950/20 dark:text-orange-300':'bg-slate-50 dark:bg-slate-800'} p-3 text-[8px]"><b>Admin:</b> ${esc(d.adminNote)}</p>`:''}<div class="mt-3 flex flex-wrap gap-2">${d.status==='Re-upload Requested'?`<button onclick="jcS1OpenDocumentUpload('${esc(d.id)}')" class="rounded-lg bg-orange-500 px-3 py-2 text-[7px] font-black text-slate-950">Re-upload V${d.version+1}</button>`:''}<button onclick="jcS1ShowDocumentHistory('${esc(d.id)}')" class="rounded-lg border border-slate-200 px-3 py-2 text-[7px] font-black dark:border-slate-700">Version History</button></div></article>`).join('');
+  }
+  window.jcS1OpenDocumentUpload=function(id=''){
+    const d=S.documents.find(x=>x.id===id);
+    document.getElementById('jcS1DocReuploadId').value=id;
+    document.getElementById('jcS1DocumentModalTitle').textContent=d?`Re-upload ${d.type}`:'Upload Student Document';
+    document.getElementById('jcS1DocType').value=d?.type||'B-Form / Birth Certificate';
+    document.getElementById('jcS1DocType').disabled=!!d;
+    const reason=document.getElementById('jcS1DocAdminReason');reason.classList.toggle('hidden',!d?.adminNote);reason.innerHTML=d?.adminNote?`<b>Admin note:</b> ${esc(d.adminNote)}`:'';
+    document.getElementById('jcS1DocFile').value='';document.getElementById('jcS1DocNote').value='';
+    const modal=document.getElementById('jcS1DocumentModal');modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('overflow-hidden');
+  };
+  window.jcS1CloseDocumentUpload=function(){const modal=document.getElementById('jcS1DocumentModal');modal.classList.add('hidden');modal.classList.remove('flex');document.body.classList.remove('overflow-hidden');document.getElementById('jcS1DocType').disabled=false;};
+  window.jcS1SubmitDocument=function(e){
+    e.preventDefault();const input=document.getElementById('jcS1DocFile');const file=input.files?.[0];if(!file){toast('Choose a document file.');return;}
+    const id=document.getElementById('jcS1DocReuploadId').value;let d=S.documents.find(x=>x.id===id);
+    if(d){d.version+=1;d.file=file.name;d.status='Pending Verification';d.adminNote='';d.updatedAt=nowLabel();d.versions.push({version:d.version,file:file.name,status:'Pending Verification',at:d.updatedAt});}
+    else{const type=document.getElementById('jcS1DocType').value;d={id:`SDOC-${Date.now()}`,type,file:file.name,status:'Pending Verification',version:1,adminNote:'',updatedAt:nowLabel(),versions:[{version:1,file:file.name,status:'Pending Verification',at:nowLabel()}]};S.documents.unshift(d);}
+    pushNotification('Document sent for verification',`${d.type} · V${d.version} is pending School Admin review.`,'profile',d.id,'fa-file-circle-check');save();renderDocuments();renderRequests();jcS1CloseDocumentUpload();toast('Document sent to School Admin for verification.');
+  };
+  window.jcS1ShowDocumentHistory=function(id){const d=S.documents.find(x=>x.id===id);if(!d)return;alert([d.type,'',...d.versions.map(v=>`V${v.version} · ${v.file} · ${v.status} · ${v.at}`)].join(String.fromCharCode(10)))};
+
+  /* ---------- TRANSPORT REQUEST TRACKING ---------- */
+  function injectTransportHistory(){
+    const tab=document.getElementById('tab-transport');if(!tab||document.getElementById('jcS1TransportRequests'))return;
+    const sec=document.createElement('section');sec.id='jcS1TransportRequests';sec.className='rounded-[1.5rem] border border-amber-200 bg-white p-4 shadow-sm sm:rounded-[2rem] sm:p-5 dark:border-amber-900 dark:bg-slate-900';
+    sec.innerHTML='<div><p class="text-[8px] font-black uppercase tracking-[.12em] text-amber-600">Request Tracking</p><h3 class="mt-1 text-lg font-black">My Transport Issues</h3><p class="mt-1 text-[8px] text-slate-500">Track the same request handled by School Admin / authorized Transport staff.</p></div><div id="jcS1TransportRequestList" class="mt-4 space-y-3"></div>';
+    tab.appendChild(sec);renderTransportRequests();
+  }
+  function renderTransportRequests(){const root=document.getElementById('jcS1TransportRequestList');if(!root)return;root.innerHTML=S.transportRequests.length?S.transportRequests.map(r=>`<article class="rounded-xl border border-slate-200 p-3 dark:border-slate-700"><div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between"><div><div class="flex flex-wrap gap-2"><span class="rounded-full px-2 py-1 text-[7px] font-black ${requestTone(r.status)}">${esc(r.status)}</span><span class="text-[7px] font-black text-amber-600">${esc(r.id)}</span></div><h4 class="mt-2 text-[9px] font-black">${esc(r.type)}</h4><p class="mt-1 text-[8px] text-slate-500">${esc(r.submittedAt)}</p></div></div><p class="mt-2 text-[8px] leading-5">${esc(r.details)}</p>${r.adminNote?`<p class="mt-2 rounded-lg bg-emerald-50 p-2 text-[8px] text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-300"><b>School response:</b> ${esc(r.adminNote)}</p>`:''}</article>`).join(''):'<p class="text-[8px] text-slate-500">No transport issues submitted.</p>';};
+  const oldTransportSubmit=window.submitStudentTransportRequest;
+  window.submitStudentTransportRequest=function(e){
+    e.preventDefault();const details=document.getElementById('studentTransportRequestText')?.value.trim();if(!details)return;
+    const type=document.getElementById('studentTransportRequestType')?.value||'Transport issue';
+    const evidence=document.getElementById('studentTransportRequestFile')?.files?.[0]?.name||'';const r={id:`TRN-REQ-${Date.now()}`,type,details,evidence,status:'Pending',submittedAt:nowLabel(),adminNote:''};S.transportRequests.unshift(r);save();
+    if(typeof closeStudentTransportRequest==='function')closeStudentTransportRequest();renderTransportRequests();renderRequests();pushNotification('Transport request submitted',`${r.id} · ${type}`,'requests',r.id,'fa-bus');toast('Transport issue submitted. Track it in My Requests.');
+  };
+
+  /* ---------- PORTAL ACCESS REQUEST ---------- */
+  function injectPortalAccess(){
+    const tab=document.getElementById('tab-settings');if(!tab||document.getElementById('jcS1AccessSupport'))return;
+    const sec=document.createElement('section');sec.id='jcS1AccessSupport';sec.className='rounded-[1.5rem] border border-cyan-200 bg-cyan-50 p-4 dark:border-cyan-900 dark:bg-cyan-950/20';
+    sec.innerHTML='<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[8px] font-black uppercase tracking-[.12em] text-cyan-700">Portal Access</p><h3 class="mt-1 text-lg font-black">Login / Account Support</h3><p class="mt-1 text-[8px] leading-5 text-slate-600 dark:text-slate-300">Report account, login, password-recovery or missing Student Portal access issues. Students cannot request another role or grant themselves permissions.</p></div><button onclick="jcS1OpenAccessRequest()" class="rounded-xl bg-cyan-600 px-4 py-3 text-[8px] font-black text-white">Request Support</button></div><div id="jcS1AccessHistory" class="mt-4 space-y-2"></div>';
+    tab.insertBefore(sec,tab.lastElementChild||null);
+    const modal=document.createElement('div');modal.id='jcS1AccessModal';modal.className='fixed inset-0 z-[151] hidden items-start justify-center overflow-y-auto bg-slate-950/70 p-2 backdrop-blur-sm sm:items-center sm:p-4';modal.innerHTML='<div class="my-2 w-full max-w-lg rounded-[1.4rem] border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900"><div class="flex items-start justify-between border-b border-slate-100 p-4 dark:border-slate-800"><div><p class="text-[8px] font-black uppercase text-cyan-600">School Admin Request</p><h3 class="mt-1 text-lg font-black">Portal Access Support</h3></div><button onclick="jcS1CloseAccessRequest()" class="grid h-10 w-10 place-items-center rounded-xl border border-slate-200 dark:border-slate-700"><i class="fa-solid fa-xmark"></i></button></div><form onsubmit="jcS1SubmitAccessRequest(event)" class="space-y-4 p-4"><label class="block"><span class="text-[7px] font-black uppercase text-slate-500">Issue</span><select id="jcS1AccessType" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-[9px] font-black dark:border-slate-700 dark:bg-slate-800"><option>Cannot sign in</option><option>Account locked</option><option>Password recovery</option><option>Student Portal module missing</option><option>New device / session issue</option><option>Other</option></select></label><label class="block"><span class="text-[7px] font-black uppercase text-slate-500">Details</span><textarea id="jcS1AccessDetails" required rows="4" class="mt-2 w-full rounded-xl border border-slate-200 bg-slate-50 p-3 text-[9px] dark:border-slate-700 dark:bg-slate-800" placeholder="Explain the problem..."></textarea></label><div class="rounded-xl border border-blue-200 bg-blue-50 p-3 text-[8px] leading-5 dark:border-blue-900 dark:bg-blue-950/20">This creates a Portal Access Request for School Admin. It does not change your role or permissions automatically.</div><div class="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"><button type="button" onclick="jcS1CloseAccessRequest()" class="rounded-xl border border-slate-200 px-4 py-3 text-[8px] font-black dark:border-slate-700">Cancel</button><button class="rounded-xl bg-cyan-600 px-4 py-3 text-[8px] font-black text-white">Send Request</button></div></form></div>';document.body.appendChild(modal);renderAccessHistory();
+  }
+  function renderAccessHistory(){const root=document.getElementById('jcS1AccessHistory');if(!root)return;root.innerHTML=S.accessRequests.length?S.accessRequests.map(r=>`<div class="flex flex-col gap-2 rounded-xl border border-cyan-200 bg-white p-3 sm:flex-row sm:items-center sm:justify-between dark:border-cyan-900 dark:bg-slate-900"><div><p class="text-[9px] font-black">${esc(r.type)}</p><p class="mt-1 text-[7px] text-slate-500">${esc(r.id)} · ${esc(r.submittedAt)}</p></div><span class="w-fit rounded-full px-2.5 py-1 text-[7px] font-black ${requestTone(r.status)}">${esc(r.status)}</span></div>`).join(''):'<p class="text-[8px] text-slate-500">No access-support requests.</p>';};
+  window.jcS1OpenAccessRequest=function(){document.getElementById('jcS1AccessDetails').value='';const modal=document.getElementById('jcS1AccessModal');modal.classList.remove('hidden');modal.classList.add('flex');document.body.classList.add('overflow-hidden');};
+  window.jcS1CloseAccessRequest=function(){const modal=document.getElementById('jcS1AccessModal');modal.classList.add('hidden');modal.classList.remove('flex');document.body.classList.remove('overflow-hidden');};
+  window.jcS1SubmitAccessRequest=function(e){e.preventDefault();const type=document.getElementById('jcS1AccessType').value,details=document.getElementById('jcS1AccessDetails').value.trim();if(!details)return;const r={id:`PAR-${Date.now()}`,type,details,status:'Pending',submittedAt:nowLabel(),adminNote:''};S.accessRequests.unshift(r);save();renderAccessHistory();renderRequests();pushNotification('Portal access request submitted',`${r.id} · ${type}`,'requests',r.id,'fa-key');jcS1CloseAccessRequest();toast('Portal access request sent to School Admin.');};
+
+  /* ---------- COMMUNICATION ESCALATION ---------- */
+  function injectEscalationButton(){
+    const pin=document.getElementById('studentMessagePinBtn');if(!pin||document.getElementById('jcS1EscalateMessageBtn'))return;
+    const b=document.createElement('button');b.id='jcS1EscalateMessageBtn';b.className='grid h-10 w-10 place-items-center rounded-xl border border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900 dark:bg-amber-950/20 dark:text-amber-300';b.title='Report / Escalate conversation to School Admin';b.innerHTML='<i class="fa-solid fa-triangle-exclamation"></i>';b.onclick=()=>window.jcS1EscalateConversation();pin.parentElement.insertBefore(b,pin);
+  }
+  window.jcS1EscalateConversation=function(){
+    const t=studentMessageThreads.find(x=>x.id===activeStudentMessageThreadId);if(!t){toast('Select a conversation first.');return;}
+    if(S.escalations.some(x=>x.threadId===t.id&&['Pending','In Review'].includes(x.status))){toast('This conversation is already escalated.');return;}
+    const r={id:`MSG-ESC-${Date.now()}`,threadId:t.id,contact:t.name,context:t.context?.label||t.subject||'General conversation',status:'Pending',submittedAt:nowLabel(),details:'Student requested School Admin review of this conversation.'};S.escalations.unshift(r);t.escalated=true;save();renderRequests();pushNotification('Conversation escalated',`${t.name} conversation sent to School Admin review.`,'requests',r.id,'fa-triangle-exclamation');toast('Conversation escalated to School Admin.');
+  };
+
+  /* ---------- NOTIFICATION CENTER: SHARED-ID / READ STATE ---------- */
+  function pushNotification(title,text,module,recordId,icon='fa-bell'){const n={id:`NTF-ST-${Date.now()}-${Math.floor(Math.random()*999)}`,title,text,module,recordId,status:'Delivered',read:false,time:nowLabel(),icon};S.notifications.unshift(n);S.notifications=S.notifications.slice(0,80);save();renderNotifications();}
+  function renderNotifications(){
+    const panel=document.getElementById('notificationPanel');if(!panel)return;const unread=S.notifications.filter(n=>!n.read).length;
+    panel.innerHTML=`<div class="flex items-center justify-between gap-3 px-1 pb-2"><div><h3 class="text-sm font-black">Notifications</h3><p class="mt-0.5 text-[7px] text-slate-500">Student delivery/read state · Admin Log sync-ready</p></div><button onclick="jcS1MarkAllNotificationsRead()" class="rounded-lg bg-slate-100 px-2 py-1.5 text-[7px] font-black dark:bg-slate-800">Mark all read</button></div><div class="mb-2 flex items-center justify-between"><span class="rounded-full bg-rose-50 px-2 py-1 text-[8px] font-black text-rose-600 dark:bg-rose-950/30 dark:text-rose-300">${unread} New</span><button onclick="openTab('requests')" class="text-[7px] font-black text-indigo-600">My Requests</button></div><div class="max-h-[420px] space-y-2 overflow-y-auto">${S.notifications.map(n=>`<button onclick="jcS1OpenNotification('${esc(n.id)}')" class="w-full rounded-xl border ${n.read?'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900':'border-indigo-200 bg-indigo-50 dark:border-indigo-900 dark:bg-indigo-950/20'} p-3 text-left"><div class="flex gap-3"><span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-indigo-600 shadow-sm dark:bg-slate-800"><i class="fa-solid ${esc(n.icon)}"></i></span><div class="min-w-0"><p class="text-[9px] font-black">${esc(n.title)}</p><p class="mt-1 text-[8px] text-slate-600 dark:text-slate-300">${esc(n.text)}</p><p class="mt-1 text-[6px] text-slate-400">${esc(n.time)} · ${esc(n.status)}${n.read?' · Read':''}</p></div></div></button>`).join('')}</div>`;
+    const dot=document.querySelector('[onclick="toggleNotifications()"] span.absolute');if(dot)dot.classList.toggle('hidden',unread===0);
+  }
+  window.jcS1MarkAllNotificationsRead=function(){S.notifications.forEach(n=>{n.read=true;n.status='Read'});save();renderNotifications();toast('All notifications marked as read.');};
+  window.jcS1OpenNotification=function(id){const n=S.notifications.find(x=>x.id===id);if(!n)return;n.read=true;n.status='Read';save();renderNotifications();document.getElementById('notificationPanel')?.classList.add('hidden');if(n.module==='requests')openTab('requests');else if(tabTitles[n.module])openTab(n.module);};
+
+  /* ---------- UNIFIED MY REQUESTS ---------- */
+  function injectRequestsTab(){
+    if(document.getElementById('tab-requests'))return;
+    tabTitles.requests='My Requests';
+    const settingsBtn=document.querySelector('[data-tab="settings"]');
+    if(settingsBtn){const btn=document.createElement('button');btn.dataset.tab='requests';btn.onclick=()=>openTab('requests');btn.className='nav-btn mb-1 flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-bold text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800';btn.innerHTML='<i class="fa-solid fa-inbox w-5 text-center"></i><span class="flex-1">My Requests</span><span id="jcS1RequestNavBadge" class="rounded-full bg-amber-100 px-2 py-0.5 text-[7px] font-black text-amber-700 dark:bg-amber-950/30 dark:text-amber-300">0</span>';settingsBtn.parentElement.insertBefore(btn,settingsBtn);}
+    const container=document.querySelector('main > .p-4, main > div.p-4');
+    const host=document.querySelector('main .p-4.sm\\:p-6.xl\\:p-8')||document.querySelector('main > div[class*="p-4"]');
+    const panel=document.createElement('section');panel.id='tab-requests';panel.className='tab-panel hidden space-y-5';panel.innerHTML=`<section class="relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-indigo-700 via-violet-600 to-fuchsia-600 p-4 text-white shadow-xl sm:rounded-[2rem] sm:p-6"><div class="relative flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"><div><span class="rounded-full border border-white/20 bg-white/15 px-3 py-1.5 text-[8px] font-black">Shared Request IDs</span><h2 class="mt-4 text-2xl font-black sm:text-3xl">My Requests 📥</h2><p class="mt-2 max-w-2xl text-[10px] leading-5 text-white/85">Track Profile, Attendance, Result Review, Report Card, Documents, Transport, Communication escalation and Portal Access requests in one place.</p></div><button onclick="jcS1RefreshRequests()" class="rounded-xl bg-white px-4 py-3 text-[8px] font-black text-indigo-700"><i class="fa-solid fa-rotate mr-2"></i>Refresh</button></div></section><section id="jcS1RequestSummary" class="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-6"></section><section class="rounded-[1.5rem] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div class="grid gap-3 md:grid-cols-[1fr_180px_180px]"><input id="jcS1RequestSearch" oninput="jcS1RenderRequests()" placeholder="Search request ID, type or module..." class="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[9px] outline-none dark:border-slate-700 dark:bg-slate-800"><select id="jcS1RequestStatus" onchange="jcS1RenderRequests()" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[9px] font-black dark:border-slate-700 dark:bg-slate-800"><option value="all">All Status</option><option>Pending</option><option>In Review</option><option>Approved</option><option>Returned</option><option>Rejected</option><option>Resolved</option></select><select id="jcS1RequestType" onchange="jcS1RenderRequests()" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[9px] font-black dark:border-slate-700 dark:bg-slate-800"><option value="all">All Types</option><option>Profile Correction</option><option>Attendance Correction</option><option>Result Review</option><option>Report Card Correction</option><option>Document Verification</option><option>Transport Issue</option><option>Communication Escalation</option><option>Portal Access Request</option></select></div><div id="jcS1RequestList" class="mt-4 space-y-3"></div></section>`;
+    if(host)host.appendChild(panel);else document.querySelector('main')?.appendChild(panel);
+  }
+  function collectRequests(){
+    const rows=[];
+    try{(profileCorrectionRequests||[]).forEach(r=>rows.push({id:r.id,type:'Profile Correction',module:'Profile',title:r.field,detail:`Requested: ${r.requested}`,status:canonical(r.status),stage:r.status,submittedAt:r.date||'',owner:'School Admin'}));}catch(e){}
+    try{(attendanceCorrectionRequests||[]).forEach(r=>rows.push({id:r.id,type:'Attendance Correction',module:'Attendance',title:`${r.subject} · ${r.date} · ${r.time}`,detail:`${r.currentStatus} → ${r.requestedStatus}`,status:canonical(r.status),stage:r.status,submittedAt:r.submittedAt||'',owner:r.status==='Pending'?'Assigned Teacher → Admin if official change':'Teacher / Admin'}));}catch(e){}
+    try{(studentResultSupportItems||[]).filter(x=>x.kind==='Review').forEach(r=>rows.push({id:r.id,type:'Result Review',module:'Results',title:`${r.subject} · ${r.title}`,detail:r.issue||r.message,status:canonical(r.status),stage:r.stage||r.status,submittedAt:r.submittedAt||'',owner:'Assigned Teacher → School Admin / Examination if correction'}));}catch(e){}
+    try{(studentReportCorrectionRequests||[]).forEach(r=>rows.push({id:r.id,type:'Report Card Correction',module:'Report Cards',title:r.cardTitle,detail:r.type,status:canonical(r.status),stage:r.status,submittedAt:r.submittedAt||'',owner:'School Admin'}));}catch(e){}
+    S.documents.forEach(d=>rows.push({id:d.id,type:'Document Verification',module:'Profile',title:d.type,detail:`V${d.version} · ${d.file}`,status:canonical(d.status),stage:d.status,submittedAt:d.updatedAt||'',owner:'School Admin'}));
+    S.transportRequests.forEach(r=>rows.push({id:r.id,type:'Transport Issue',module:'Transport',title:r.type,detail:r.details,status:canonical(r.status),stage:r.status,submittedAt:r.submittedAt,owner:'School Admin / Transport'}));
+    S.accessRequests.forEach(r=>rows.push({id:r.id,type:'Portal Access Request',module:'Settings',title:r.type,detail:r.details,status:canonical(r.status),stage:r.status,submittedAt:r.submittedAt,owner:'School Admin'}));
+    S.escalations.forEach(r=>rows.push({id:r.id,type:'Communication Escalation',module:'Messages',title:r.contact,detail:r.context,status:canonical(r.status),stage:r.status,submittedAt:r.submittedAt,owner:'School Admin'}));
+    return rows.sort((a,b)=>String(b.submittedAt).localeCompare(String(a.submittedAt)));
+  }
+  function renderRequests(){
+    const list=document.getElementById('jcS1RequestList');const sum=document.getElementById('jcS1RequestSummary');const rows=collectRequests();
+    const open=rows.filter(r=>['Pending','In Review','Returned'].includes(r.status)).length;const badge=document.getElementById('jcS1RequestNavBadge');if(badge)badge.textContent=open;
+    if(!list||!sum)return;
+    const counts={All:rows.length,Pending:rows.filter(x=>x.status==='Pending').length,'In Review':rows.filter(x=>x.status==='In Review').length,Returned:rows.filter(x=>x.status==='Returned').length,Approved:rows.filter(x=>x.status==='Approved').length,Resolved:rows.filter(x=>x.status==='Resolved').length};
+    sum.innerHTML=[['All',counts.All,'slate'],['Pending',counts.Pending,'amber'],['In Review',counts['In Review'],'blue'],['Returned',counts.Returned,'orange'],['Approved',counts.Approved,'emerald'],['Resolved',counts.Resolved,'violet']].map(([l,v,c])=>`<article class="rounded-xl border border-${c}-200 bg-${c}-50 p-3 dark:border-${c}-900 dark:bg-${c}-950/20"><p class="text-[7px] font-black uppercase text-${c}-600">${l}</p><p class="mt-1 text-xl font-black">${v}</p></article>`).join('');
+    const q=(document.getElementById('jcS1RequestSearch')?.value||'').trim().toLowerCase(),status=document.getElementById('jcS1RequestStatus')?.value||'all',type=document.getElementById('jcS1RequestType')?.value||'all';
+    const filtered=rows.filter(r=>(!q||`${r.id} ${r.type} ${r.module} ${r.title} ${r.detail}`.toLowerCase().includes(q))&&(status==='all'||r.status===status)&&(type==='all'||r.type===type));
+    list.innerHTML=filtered.length?filtered.map(r=>`<article class="rounded-xl border border-slate-200 p-4 dark:border-slate-700"><div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"><div class="min-w-0"><div class="flex flex-wrap gap-2"><span class="rounded-full px-2.5 py-1 text-[7px] font-black ${requestTone(r.status)}">${esc(r.status)}</span>${r.stage!==r.status?`<span class="rounded-full bg-slate-100 px-2.5 py-1 text-[7px] font-black text-slate-600 dark:bg-slate-800 dark:text-slate-300">Stage: ${esc(r.stage)}</span>`:''}<span class="text-[7px] font-black text-indigo-600">${esc(r.id)}</span></div><h4 class="mt-2 text-[10px] font-black">${esc(r.type)} · ${esc(r.title)}</h4><p class="mt-1 text-[8px] text-slate-500">${esc(r.owner)} · ${esc(r.submittedAt||'')}</p><p class="mt-2 text-[8px] leading-5 text-slate-600 dark:text-slate-300">${esc(r.detail||'')}</p></div><span class="w-fit rounded-lg bg-slate-50 px-3 py-2 text-[7px] font-black text-slate-500 dark:bg-slate-800">${esc(r.module)}</span></div></article>`).join(''):'<div class="rounded-xl border border-dashed border-slate-300 p-8 text-center dark:border-slate-700"><p class="text-[9px] font-black">No requests match these filters.</p></div>';
+  }
+  window.jcS1RenderRequests=renderRequests;window.jcS1RefreshRequests=function(){renderRequests();toast('Request statuses refreshed.');};
+
+
+  /* ---------- RETURNED REQUESTS: EDIT & RESUBMIT ---------- */
+  function enhanceReturnedFlows(){
+    window.renderProfileCorrectionHistory=function(){
+      const root=document.getElementById('profileCorrectionHistory');if(!root)return;
+      root.innerHTML=profileCorrectionRequests.length?profileCorrectionRequests.map(r=>`<div class="rounded-2xl border border-slate-200 p-3 dark:border-slate-700"><div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[9px] font-black">${esc(r.field)}</p><p class="mt-1 text-[8px] text-slate-500 dark:text-slate-400">${esc(r.id)} · ${esc(r.date||'')} · Requested: ${esc(r.requested)}</p></div><span class="w-fit rounded-full px-2.5 py-1 text-[7px] font-black ${requestTone(canonical(r.status))}">${esc(r.status).toUpperCase()}</span></div>${r.adminNote?`<p class="mt-2 rounded-lg bg-orange-50 p-2 text-[8px] text-orange-700 dark:bg-orange-950/20 dark:text-orange-300"><b>Admin:</b> ${esc(r.adminNote)}</p>`:''}${r.status==='Returned'?`<button onclick="jcS1RetryProfileCorrection('${esc(r.id)}')" class="mt-3 rounded-lg bg-orange-500 px-3 py-2 text-[7px] font-black text-slate-950"><i class="fa-solid fa-rotate-left mr-1"></i>Edit & Resubmit</button>`:''}</div>`).join(''):'<p class="text-[9px] text-slate-500">No correction requests yet.</p>';
+    };
+    window.jcS1RetryProfileCorrection=function(id){const r=profileCorrectionRequests.find(x=>x.id===id);if(!r)return;if(typeof openProfileCorrection==='function')openProfileCorrection();setTimeout(()=>{const f=document.getElementById('correctionField'),v=document.getElementById('correctionRequestedValue'),reason=document.getElementById('correctionReason');if(f)f.value=r.field;if(v)v.value=r.requested;if(reason)reason.value=r.adminNote?`Admin returned this request: ${r.adminNote}`:'';},0);};
+
+    window.renderStudentReportCorrectionHistory=function(){
+      const root=document.getElementById('studentReportCorrectionHistory');if(!root)return;
+      root.innerHTML=studentReportCorrectionRequests.length?studentReportCorrectionRequests.map(item=>`<article class="rounded-xl border border-slate-200 p-3 sm:p-4 dark:border-slate-700"><div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"><div><div class="flex flex-wrap items-center gap-2"><span class="rounded-full bg-rose-100 px-2.5 py-1 text-[7px] font-black text-rose-700 dark:bg-rose-950/30 dark:text-rose-300">CORRECTION</span><span class="rounded-full px-2.5 py-1 text-[7px] font-black ${requestTone(canonical(item.status))}">${esc(item.status).toUpperCase()}</span></div><h4 class="mt-2 text-[10px] font-black">${esc(item.cardTitle)}</h4><p class="mt-1 text-[8px] text-slate-500">${esc(item.type)} · ${esc(item.submittedAt)}</p></div><div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row"><button onclick="openReportCorrectionDetail('${esc(item.id)}')" class="rounded-lg bg-slate-950 px-3 py-2 text-[7px] font-black text-white dark:bg-white dark:text-slate-950">View Request</button>${item.status==='Returned'?`<button onclick="jcS1RetryReportCorrection('${esc(item.id)}')" class="rounded-lg bg-orange-500 px-3 py-2 text-[7px] font-black text-slate-950">Edit & Resubmit</button>`:''}</div></div><p class="mt-3 rounded-lg bg-slate-50 p-3 text-[8px] leading-5 dark:bg-slate-800">${esc(item.reason)}</p>${item.adminReply?`<p class="mt-2 rounded-lg bg-orange-50 p-3 text-[8px] text-orange-700 dark:bg-orange-950/20 dark:text-orange-300"><b>Admin:</b> ${esc(item.adminReply)}</p>`:''}</article>`).join(''):'<p class="text-[8px] text-slate-500">No report-card correction requests.</p>';
+    };
+    window.jcS1RetryReportCorrection=function(id){const item=studentReportCorrectionRequests.find(x=>x.id===id);if(!item)return;try{activeStudentReportCardId=item.cardId;}catch(e){}if(typeof openReportCardCorrectionRequest==='function')openReportCardCorrectionRequest();setTimeout(()=>{const t=document.getElementById('reportCorrectionType'),r=document.getElementById('reportCorrectionReason');if(t)t.value=item.type;if(r)r.value=item.reason;},0);};
+  }
+
+  /* ---------- STATUS CONTRACT MARKERS ---------- */
+  function alignStatusContracts(){
+    try{attendanceCorrectionRequests.forEach(r=>{r.canonicalStatus=canonical(r.status);r.workflowStage=r.status==='Pending'?'Teacher Review':r.status;});}catch(e){}
+    try{studentResultSupportItems.filter(x=>x.kind==='Review').forEach(r=>{r.canonicalStatus=canonical(r.status);});}catch(e){}
+    try{studentReportCorrectionRequests.forEach(r=>{r.canonicalStatus=canonical(r.status);});}catch(e){}
+  }
+
+  /* ---------- BOOTSTRAP / OPEN TAB SYNC ---------- */
+  const originalOpenTab=window.openTab;
+  function wrapOpenTab(){
+    if(!originalOpenTab)return;
+    window.openTab=function(tab){originalOpenTab(tab);if(tab==='requests')renderRequests();if(tab==='profile')renderDocuments();if(tab==='transport')renderTransportRequests();if(tab==='settings')renderAccessHistory();renderNotifications();};
+  }
+  function init(){
+    alignStatusContracts();enhanceReturnedFlows();injectRequestsTab();wrapOpenTab();addHomeworkPublicationNotice();injectDocuments();injectTransportHistory();injectPortalAccess();injectEscalationButton();renderNotifications();renderRequests();
+    // Re-render homework once the publication gate is active.
+    try{if(location.hash==='#homework'&&typeof renderStudentHomework==='function')renderStudentHomework();if(location.hash==='#requests')openTab('requests');}catch(e){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>\n</body>
 </html>

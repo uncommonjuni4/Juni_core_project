@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JuniCore · School Teacher Portal V6 Full Class Workspace</title>
+  <title>JuniCore · School Teacher Portal · Final</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,37 +19,25 @@
 </head>
 
 <body class="min-h-screen bg-slate-50 font-[Inter] text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
-  <!-- JUNICORE TEACHER PORTAL LOADER -->
-  <div id="teacherPortalLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-950 transition-opacity duration-500">
-    <div class="w-full max-w-[360px] px-6 text-center">
-      <div class="relative mx-auto h-24 w-24">
-        <div class="absolute inset-0 rounded-[28px] bg-blue-600/20 blur-xl"></div>
-        <div class="absolute inset-2 animate-spin rounded-[24px] border-2 border-blue-400/20 border-t-blue-500"></div>
-        <div class="absolute inset-4 grid place-items-center rounded-[20px] bg-gradient-to-br from-blue-600 to-indigo-600 shadow-2xl shadow-blue-950/50">
-          <i class="fa-solid fa-chalkboard-user text-2xl text-white"></i>
-        </div>
-      </div>
 
-      <div class="mt-6">
-        <div class="flex items-center justify-center gap-2">
-          <span class="text-2xl font-black tracking-tight text-white">Juni<span class="text-blue-400">Core</span></span>
-        </div>
-        <p class="mt-1 text-[9px] font-black uppercase tracking-[.18em] text-blue-300">School Teacher Portal</p>
-        <p id="teacherLoaderStatus" class="mt-4 text-[9px] font-bold text-slate-400">Preparing your teaching workspace...</p>
+  <!-- JuniCore V31 Fast Portal Loader -->
+  <div id="jcTeacherLoader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-opacity duration-300 dark:bg-slate-950">
+    <div class="w-[min(88vw,360px)] text-center">
+      <div class="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-xl text-white shadow-xl shadow-blue-500/20">
+        <i class="fa-solid fa-graduation-cap"></i>
       </div>
-
-      <div class="mt-5 overflow-hidden rounded-full bg-slate-800">
-        <div id="teacherLoaderBar" class="h-1.5 w-0 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-[width] duration-300"></div>
+      <h1 class="mt-4 text-xl font-black tracking-tight">JuniCore</h1>
+      <p class="mt-1 text-[10px] font-black uppercase tracking-[.16em] text-blue-600 dark:text-blue-400">School Teacher Portal</p>
+      <div class="mt-5 flex items-center justify-center gap-2 text-[10px] font-bold text-slate-400">
+        <span class="h-4 w-4 animate-spin rounded-full border-2 border-slate-200 border-t-blue-600 dark:border-slate-800 dark:border-t-blue-400"></span>
+        <span>Preparing your workspace…</span>
       </div>
-
-      <div class="mt-3 flex items-center justify-center gap-2 text-[8px] font-bold text-slate-500">
-        <span id="teacherLoaderPercent">0%</span>
-        <span>•</span>
-        <span>Secure Portal Access</span>
+      <div class="mx-auto mt-4 h-1.5 max-w-[220px] overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+        <div class="h-full w-2/3 animate-pulse rounded-full bg-gradient-to-r from-blue-600 to-indigo-600"></div>
       </div>
+      <p class="mt-3 text-[8px] font-bold text-slate-400">Assigned classes · Admin-synced controls · Session 2026–27</p>
     </div>
   </div>
-
 
   <div id="mobileOverlay" onclick="toggleSidebar(false)" class="fixed inset-0 z-40 hidden bg-slate-950/60 lg:hidden"></div>
 
@@ -1410,6 +1397,7 @@
                   </span>
                 </div>
                 <h1 class="mt-4 text-2xl font-black tracking-tight sm:text-3xl">Homework Management</h1>
+                <p class="mt-2 max-w-2xl text-[10px] leading-5 text-slate-500 dark:text-slate-400">Create homework, save a draft, then submit it to School Admin for publication. Teacher cannot directly publish to Student/Parent portals.</p>
               </div>
 
               <button onclick="openHomeworkCreateForm()" class="rounded-xl bg-violet-600 px-5 py-3 text-xs font-black text-white shadow-lg shadow-violet-600/15 hover:bg-violet-700">
@@ -1439,7 +1427,7 @@
         </div>
 
         <!-- Create / Edit Form -->
-        <form id="homeworkForm" onsubmit="saveHomework(event)" class="hidden overflow-hidden rounded-[24px] border border-violet-200 bg-white shadow-sm dark:border-violet-900/40 dark:bg-slate-900">
+        <form id="homeworkForm" onsubmit="submitHomeworkToAdmin(event)" class="hidden overflow-hidden rounded-[24px] border border-violet-200 bg-white shadow-sm dark:border-violet-900/40 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-slate-100 p-5 dark:border-slate-800">
             <div>
               <p id="homeworkFormEyebrow" class="text-[9px] font-black uppercase tracking-[.1em] text-violet-600">New Homework</p>
@@ -1509,24 +1497,31 @@
               <textarea id="hwInstructions" rows="4" placeholder="Instructions..." class="input-base mt-1.5"></textarea>
             </label>
 
-            <label>
-              <span class="text-[8px] font-black uppercase tracking-[.08em] text-slate-400">Status</span>
-              <select id="hwStatus" class="input-base mt-1.5">
-                <option>Published</option>
-                <option>Draft</option>
-              </select>
-            </label>
+            <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-900/40 dark:bg-blue-950/15">
+              <input id="hwStatus" type="hidden" value="Draft">
+              <p class="text-[8px] font-black uppercase tracking-[.08em] text-blue-600">Publication Workflow</p>
+              <p id="homeworkWorkflowText" class="mt-2 text-[10px] font-black text-slate-700 dark:text-slate-200">Teacher Draft → Submit to Admin → Admin Publishes</p>
+              <p class="mt-1 text-[8px] leading-4 text-slate-500 dark:text-slate-400">Student and Parent portals receive this homework only after School Admin publishes it.</p>
+            </div>
 
             <label>
               <span class="text-[8px] font-black uppercase tracking-[.08em] text-slate-400">Attachment</span>
-              <input id="hwAttachment" type="file" class="mt-1.5 block h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[10px] font-bold text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-violet-100 file:px-3 file:py-1.5 file:text-[9px] file:font-black file:text-violet-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
+              <input id="hwAttachment" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" class="mt-1.5 block h-12 w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-[10px] font-bold text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-violet-100 file:px-3 file:py-1.5 file:text-[9px] file:font-black file:text-violet-700 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
             </label>
+
+            <div id="homeworkAdminReviewNote" class="hidden md:col-span-2 rounded-2xl border border-rose-200 bg-rose-50 p-4 dark:border-rose-900/40 dark:bg-rose-950/15">
+              <p class="text-[8px] font-black uppercase tracking-[.08em] text-rose-600">Admin Review</p>
+              <p id="homeworkAdminReviewText" class="mt-2 text-[10px] font-bold leading-5 text-slate-700 dark:text-slate-200"></p>
+            </div>
           </div>
 
-          <div class="flex justify-end gap-2 border-t border-slate-100 p-4 dark:border-slate-800">
+          <div class="flex flex-col gap-2 border-t border-slate-100 p-4 sm:flex-row sm:justify-end dark:border-slate-800">
             <button type="button" onclick="toggleHomeworkForm(false)" class="rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-black dark:border-slate-700">Cancel</button>
+            <button type="button" onclick="saveHomeworkDraft()" class="rounded-xl border border-violet-200 bg-white px-4 py-2.5 text-xs font-black text-violet-700 dark:border-violet-900/50 dark:bg-slate-900 dark:text-violet-300">
+              <i class="fa-solid fa-floppy-disk mr-2"></i>Save Draft
+            </button>
             <button class="rounded-xl bg-violet-600 px-5 py-2.5 text-xs font-black text-white">
-              <i class="fa-solid fa-floppy-disk mr-2"></i><span id="homeworkSaveLabel">Publish</span>
+              <i class="fa-solid fa-paper-plane mr-2"></i><span id="homeworkSaveLabel">Submit to Admin</span>
             </button>
           </div>
         </form>
@@ -1584,8 +1579,11 @@
 
             <select id="homeworkStatusFilter" onchange="renderHomework()" class="h-11 rounded-xl border border-slate-200 bg-slate-50 px-3 text-xs font-black dark:border-slate-700 dark:bg-slate-950">
               <option value="All">All Status</option>
-              <option>Published</option>
               <option>Draft</option>
+              <option>Pending Review</option>
+              <option>Published</option>
+              <option>Returned</option>
+              <option>Unpublished</option>
               <option>Closed</option>
             </select>
 
@@ -1604,21 +1602,21 @@
             <p class="text-[8px] font-black uppercase text-slate-400">Records</p>
             <p id="homeworkHistoryRecords" class="mt-1 text-2xl font-black">0</p>
           </div>
-          <div class="rounded-2xl border border-violet-200 bg-violet-50 p-4 shadow-sm dark:border-violet-900/40 dark:bg-violet-950/15">
-            <p class="text-[8px] font-black uppercase text-violet-600">Published</p>
-            <p id="homeworkHistoryPublished" class="mt-1 text-2xl font-black text-violet-700 dark:text-violet-300">0</p>
-          </div>
           <div class="rounded-2xl border border-amber-200 bg-amber-50 p-4 shadow-sm dark:border-amber-900/40 dark:bg-amber-950/15">
             <p class="text-[8px] font-black uppercase text-amber-600">Draft</p>
             <p id="homeworkHistoryDraft" class="mt-1 text-2xl font-black text-amber-700 dark:text-amber-300">0</p>
           </div>
           <div class="rounded-2xl border border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/40 dark:bg-blue-950/15">
-            <p class="text-[8px] font-black uppercase text-blue-600">Subjects</p>
-            <p id="homeworkHistorySubjects" class="mt-1 text-2xl font-black text-blue-700 dark:text-blue-300">0</p>
+            <p class="text-[8px] font-black uppercase text-blue-600">Pending Review</p>
+            <p id="homeworkHistoryPendingAdmin" class="mt-1 text-2xl font-black text-blue-700 dark:text-blue-300">0</p>
           </div>
           <div class="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 shadow-sm dark:border-emerald-900/40 dark:bg-emerald-950/15">
-            <p class="text-[8px] font-black uppercase text-emerald-600">Submission Required</p>
-            <p id="homeworkHistoryRequired" class="mt-1 text-2xl font-black text-emerald-700 dark:text-emerald-300">0</p>
+            <p class="text-[8px] font-black uppercase text-emerald-600">Published</p>
+            <p id="homeworkHistoryPublished" class="mt-1 text-2xl font-black text-emerald-700 dark:text-emerald-300">0</p>
+          </div>
+          <div class="rounded-2xl border border-rose-200 bg-rose-50 p-4 shadow-sm dark:border-rose-900/40 dark:bg-rose-950/15">
+            <p class="text-[8px] font-black uppercase text-rose-600">Returned</p>
+            <p id="homeworkHistoryReturned" class="mt-1 text-2xl font-black text-rose-700 dark:text-rose-300">0</p>
           </div>
         </section>
 
@@ -1629,7 +1627,7 @@
               <p class="text-[9px] font-black uppercase tracking-[.1em] text-violet-600">Class Record</p>
               <h2 class="mt-1 text-lg font-black">Day-wise Homework</h2>
             </div>
-            <p class="text-[9px] text-slate-400">Open any homework to view complete student activity.</p>
+            <p class="text-[9px] text-slate-400">Teacher creates the work; School Admin controls final publication to Student/Parent portals.</p>
           </div>
 
           <div id="homeworkHistoryList" class="space-y-4"></div>
@@ -3646,7 +3644,7 @@
       </section>
 
       <footer class="mt-8 flex flex-col gap-2 border-t border-slate-200 py-5 text-[10px] font-semibold text-slate-400 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
-        <span>JuniCore School Teacher Portal · V72 Professional Loader Locked</span>
+        <span>JuniCore School Teacher Portal · V71 Payroll Dual Proof System Locked</span>
         <span>Frontend functional prototype · HTML + Tailwind + JavaScript</span>
       </footer>
     </main>
@@ -3888,8 +3886,8 @@
 
     let homework = [
       {id:1,title:'Chapter 6 Comprehension',className:'Grade 8-A',subject:'English',assigned:'2026-09-15',due:'2026-09-18',type:'Homework',status:'Published',submissionRequired:'Yes',workMode:'Online',instructions:'Read Chapter 6 and answer questions 1–8.',attachment:''},
-      {id:2,title:'Map Activity',className:'Grade 8-B',subject:'Social Studies',assigned:'2026-09-15',due:'2026-09-19',type:'Assignment',status:'Published',submissionRequired:'No',workMode:'Notebook / Offline',instructions:'Complete the map activity discussed in class.',attachment:''},
-      {id:3,title:'Grammar Practice',className:'Grade 7-A',subject:'English',assigned:'2026-09-15',due:'2026-09-17',type:'Practice Work',status:'Published',submissionRequired:'No',workMode:'Notebook / Offline',instructions:'Complete the grammar practice exercise.',attachment:''},
+      {id:2,title:'Map Activity',className:'Grade 8-B',subject:'Social Studies',assigned:'2026-09-15',due:'2026-09-19',type:'Assignment',status:'Pending Review',submittedToAdminAt:'2026-09-15T13:15:00',submissionRequired:'No',workMode:'Notebook / Offline',instructions:'Complete the map activity discussed in class.',attachment:''},
+      {id:3,title:'Grammar Practice',className:'Grade 7-A',subject:'English',assigned:'2026-09-15',due:'2026-09-17',type:'Practice Work',status:'Returned',adminRemark:'Please correct the due date and attach the worksheet before resubmitting.',submissionRequired:'No',workMode:'Notebook / Offline',instructions:'Complete the grammar practice exercise.',attachment:''},
       {id:4,title:'Islamiat Reading',className:'Grade 7-A',subject:'Islamiat',assigned:'2026-09-15',due:'2026-09-21',type:'Reading',status:'Draft',submissionRequired:'No',workMode:'Classwork Check',instructions:'Read the selected lesson and prepare key points.',attachment:''},
       {id:5,title:'Poem Reading',className:'Grade 8-A',subject:'English',assigned:'2026-09-10',due:'2026-09-12',type:'Reading',status:'Closed',submissionRequired:'No',workMode:'Notebook / Offline',instructions:'Read the poem and underline difficult words.',attachment:''},
       {id:6,title:'Vocabulary Exercise',className:'Grade 8-A',subject:'English',assigned:'2026-09-06',due:'2026-09-08',type:'Practice Work',status:'Closed',submissionRequired:'No',workMode:'Notebook / Offline',instructions:'Write meanings and sentences for vocabulary.',attachment:''},
@@ -4102,47 +4100,7 @@
 
     let timetableHistoryPeriod = 'week';
 
-
-    function startTeacherPortalLoader(){
-      const loader=document.getElementById('teacherPortalLoader');
-      const bar=document.getElementById('teacherLoaderBar');
-      const percent=document.getElementById('teacherLoaderPercent');
-      const status=document.getElementById('teacherLoaderStatus');
-      if(!loader||!bar||!percent||!status)return;
-
-      const stages=[
-        {p:24,t:'Loading teacher profile...'},
-        {p:48,t:'Preparing classes & students...'},
-        {p:72,t:'Syncing academic workspace...'},
-        {p:92,t:'Finalizing portal access...'},
-        {p:100,t:'Teacher Portal ready'}
-      ];
-
-      let i=0;
-      const runStage=()=>{
-        if(i>=stages.length){
-          setTimeout(()=>hideTeacherPortalLoader(),180);
-          return;
-        }
-        const s=stages[i++];
-        bar.style.width=`${s.p}%`;
-        percent.textContent=`${s.p}%`;
-        status.textContent=s.t;
-        setTimeout(runStage,170);
-      };
-
-      setTimeout(runStage,80);
-    }
-
-    function hideTeacherPortalLoader(){
-      const loader=document.getElementById('teacherPortalLoader');
-      if(!loader)return;
-      loader.classList.add('opacity-0','pointer-events-none');
-      setTimeout(()=>loader.remove(),520);
-    }
-
     function init(){
-      startTeacherPortalLoader();
       const savedTheme = localStorage.getItem('juniTeacherTheme');
       const initialTheme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : 'light';
       setTheme(initialTheme);
@@ -11666,8 +11624,484 @@ function profileEditableIds(){
       document.querySelectorAll('.field-label').forEach(el=>el.className='field-label text-[10px] font-black uppercase tracking-[.08em] text-slate-400');
       init();
     });
-  
-    window.addEventListener('load',()=>setTimeout(()=>{if(document.getElementById('teacherPortalLoader'))hideTeacherPortalLoader();},1800));
+  </script>
+
+<script>
+/* JuniCore Teacher V29 — Homework Admin Approval Sync */
+(function(){
+  const originalOpenHomeworkDetail = window.openHomeworkDetail;
+
+  window.homeworkStatusClasses=function(status){
+    const map={
+      'Draft':'bg-amber-50 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300',
+      'Pending Review':'bg-blue-50 text-blue-700 dark:bg-blue-950/30 dark:text-blue-300',
+      'Published':'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300',
+      'Returned':'bg-rose-50 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300',
+      'Unpublished':'bg-orange-50 text-orange-700 dark:bg-orange-950/30 dark:text-orange-300',
+      'Closed':'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300'
+    };
+    return map[status]||map.Draft;
+  };
+
+  function isTeacherEditableHomework(h){
+    return !!h && ['Draft','Returned','Unpublished'].includes(h.status);
+  }
+
+  function homeworkActionButtons(h){
+    const edit=isTeacherEditableHomework(h)
+      ? `<button onclick="editHomework(${h.id})" class="rounded-xl border border-slate-200 px-3 py-2.5 text-[9px] font-black text-blue-600 dark:border-slate-700">${h.status==='Returned'?'Edit & Resubmit':'Edit'}</button>`
+      : `<button disabled class="cursor-not-allowed rounded-xl border border-slate-200 px-3 py-2.5 text-[9px] font-black text-slate-300 dark:border-slate-700 dark:text-slate-600"><i class="fa-solid fa-lock mr-1"></i>Locked</button>`;
+    const submit=(h.status==='Draft'||h.status==='Returned'||h.status==='Unpublished')
+      ? `<button onclick="submitExistingHomeworkToAdmin(${h.id})" class="rounded-xl bg-blue-600 px-3 py-2.5 text-[9px] font-black text-white">Submit to Admin</button>`
+      : `<button onclick="openHomeworkDetail(${h.id})" class="rounded-xl bg-violet-600 px-3 py-2.5 text-[9px] font-black text-white">View</button>`;
+    return `${edit}${submit}`;
+  }
+
+  window.homeworkCard=function(h){
+    const review=h.adminRemark?`<div class="mt-3 rounded-xl border border-rose-200 bg-rose-50 p-3 dark:border-rose-900/40 dark:bg-rose-950/15"><p class="text-[7px] font-black uppercase text-rose-600">Admin Note</p><p class="mt-1 text-[8px] leading-4 text-slate-600 dark:text-slate-300">${h.adminRemark}</p></div>`:'';
+    const publishNote=h.status==='Published'
+      ? '<p class="mt-2 text-[8px] font-bold text-emerald-600"><i class="fa-solid fa-circle-check mr-1"></i>Published by School Admin · Student/Parent visible</p>'
+      : h.status==='Pending Review'
+      ? '<p class="mt-2 text-[8px] font-bold text-blue-600"><i class="fa-solid fa-clock mr-1"></i>Awaiting School Admin publication</p>'
+      : '';
+    return `<article class="rounded-[20px] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div class="flex items-start justify-between gap-3">
+        <div><div class="flex flex-wrap gap-1.5"><span class="rounded-full bg-violet-50 px-2.5 py-1 text-[8px] font-black text-violet-700 dark:bg-violet-950/30 dark:text-violet-300">${h.type}</span><span class="rounded-full px-2.5 py-1 text-[8px] font-black ${homeworkStatusClasses(h.status)}">${h.status}</span></div><h3 class="mt-3 text-sm font-black">${h.title}</h3><p class="mt-1 text-[9px] font-bold text-slate-400">${h.subject} · ${h.className}</p></div>
+        <button onclick="openHomeworkDetail(${h.id})" class="grid h-8 w-8 place-items-center rounded-lg border border-slate-200 text-slate-400 hover:text-violet-600 dark:border-slate-700"><i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></button>
+      </div>
+      <div class="mt-4 grid grid-cols-2 gap-2"><div class="rounded-xl bg-slate-50 p-3 dark:bg-slate-950"><p class="text-[7px] font-black uppercase text-slate-400">Due</p><p class="mt-1 text-[9px] font-black">${formatAttendanceDate(h.due)}</p></div><div class="rounded-xl bg-slate-50 p-3 dark:bg-slate-950"><p class="text-[7px] font-black uppercase text-slate-400">Work Mode</p><p class="mt-1 text-[9px] font-black">${h.workMode}</p></div></div>
+      ${publishNote}${review}
+      <div class="mt-4 grid grid-cols-2 gap-2">${homeworkActionButtons(h)}</div>
+    </article>`;
+  };
+
+  window.openHomeworkCreateForm=function(){
+    homeworkEditingId=null;
+    const form=document.getElementById('homeworkForm');if(!form)return;
+    form.reset();
+    document.getElementById('hwClass').value=document.getElementById('homeworkClassFilter')?.value||'Grade 8-A';
+    syncHomeworkSubjectOptions();
+    document.getElementById('hwDue').value='2026-09-18';
+    document.getElementById('hwStatus').value='Draft';
+    document.getElementById('hwSubmissionRequired').value='No';
+    document.getElementById('hwWorkMode').value='Notebook / Offline';
+    document.getElementById('homeworkFormEyebrow').textContent='New Homework';
+    document.getElementById('homeworkFormTitle').textContent='Create Homework';
+    document.getElementById('homeworkSaveLabel').textContent='Submit to Admin';
+    document.getElementById('homeworkWorkflowText').textContent='Teacher Draft → Submit to Admin → Admin Publishes';
+    const review=document.getElementById('homeworkAdminReviewNote');if(review)review.classList.add('hidden');
+    form.classList.remove('hidden');form.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
+  function homeworkFormPayload(){
+    return {
+      className:document.getElementById('hwClass').value,
+      subject:document.getElementById('hwSubject').value,
+      title:document.getElementById('hwTitle').value.trim(),
+      due:document.getElementById('hwDue').value,
+      type:document.getElementById('hwType').value,
+      submissionRequired:document.getElementById('hwSubmissionRequired').value,
+      workMode:document.getElementById('hwWorkMode').value,
+      instructions:document.getElementById('hwInstructions').value.trim(),
+      attachment:document.getElementById('hwAttachment')?.files?.[0]?.name||''
+    };
+  }
+
+  function persistHomework(status){
+    const p=homeworkFormPayload();
+    if(!p.title||!p.due){showToast('Title and due date are required.');return false;}
+    if(homeworkEditingId!==null){
+      const h=homework.find(x=>x.id===homeworkEditingId);if(!h)return false;
+      if(!isTeacherEditableHomework(h)){showToast('This homework is locked. School Admin controls its current publication state.');return false;}
+      Object.assign(h,p,{status,updatedAt:new Date().toISOString()});
+      if(status==='Pending Review'){
+        h.submittedToAdminAt=new Date().toISOString();
+        h.adminRemark='';
+      }
+    }else{
+      homework.unshift({id:Date.now(),...p,assigned:new Date().toISOString().slice(0,10),status,createdBy:'Ms. Sara Ahmed · T-018',submittedToAdminAt:status==='Pending Review'?new Date().toISOString():null,adminRemark:''});
+    }
+    homeworkEditingId=null;toggleHomeworkForm(false);renderHomework();
+    setSaveState(status==='Pending Review'?'Homework sent to Admin':'Homework draft saved',status==='Pending Review'?'blue':'amber');
+    showToast(status==='Pending Review'?'Homework submitted to School Admin for publication.':'Homework draft saved.');
+    return true;
+  }
+
+  window.saveHomeworkDraft=function(){persistHomework('Draft');};
+  window.submitHomeworkToAdmin=function(e){e?.preventDefault();persistHomework('Pending Review');};
+  window.saveHomework=function(e){window.submitHomeworkToAdmin(e);};
+
+  window.submitExistingHomeworkToAdmin=function(id){
+    const h=homework.find(x=>x.id===id);if(!h||!isTeacherEditableHomework(h))return;
+    if(!confirm(`Submit "${h.title}" to School Admin for publication?`))return;
+    h.status='Pending Review';h.submittedToAdminAt=new Date().toISOString();h.adminRemark='';
+    renderHomework();setSaveState('Homework sent to Admin','blue');showToast('Homework submitted to School Admin.');
+  };
+
+  window.editHomework=function(id){
+    const h=homework.find(x=>x.id===id);if(!h)return;
+    if(!isTeacherEditableHomework(h)){showToast('Published/Pending homework is locked. School Admin controls publication.');return;}
+    homeworkEditingId=id;closeHomeworkDetail();
+    const form=document.getElementById('homeworkForm');form.classList.remove('hidden');
+    document.getElementById('hwClass').value=h.className;syncHomeworkSubjectOptions(h.subject);
+    document.getElementById('hwTitle').value=h.title;document.getElementById('hwDue').value=h.due;document.getElementById('hwType').value=h.type;
+    document.getElementById('hwSubmissionRequired').value=h.submissionRequired;document.getElementById('hwWorkMode').value=h.workMode;document.getElementById('hwInstructions').value=h.instructions||'';document.getElementById('hwStatus').value=h.status;
+    document.getElementById('homeworkFormEyebrow').textContent=h.status==='Returned'?'Returned by Admin':'Edit Homework';
+    document.getElementById('homeworkFormTitle').textContent=h.title;document.getElementById('homeworkSaveLabel').textContent='Submit to Admin';
+    document.getElementById('homeworkWorkflowText').textContent=h.status==='Returned'?'Correct the homework and resubmit it to School Admin.':'Save as Draft or submit to School Admin.';
+    const review=document.getElementById('homeworkAdminReviewNote'),txt=document.getElementById('homeworkAdminReviewText');
+    if(review&&txt){txt.textContent=h.adminRemark||'';review.classList.toggle('hidden',!h.adminRemark);}
+    form.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
+  window.renderHomework=function(){
+    renderStudentContextBanner('homework');
+    const rows=filteredHomework(),cls=document.getElementById('homeworkClassFilter')?.value||'Grade 8-A',[from,to]=getHomeworkDateRange();
+    const label=document.getElementById('homeworkPeriodLabel');if(label){if(homeworkPeriod==='week')label.textContent='Showing: Last 7 Days';else if(homeworkPeriod==='month'){const month=document.getElementById('homeworkMonthSelect');label.textContent=`Showing: ${month?.options[month.selectedIndex]?.text||'Month'}`;}else if(homeworkPeriod==='all')label.textContent='Showing: All History';else label.textContent=`Showing: ${formatAttendanceDate(from)} to ${formatAttendanceDate(to)}`;}
+    const values={homeworkHistoryRecords:rows.length,homeworkHistoryDraft:rows.filter(h=>h.status==='Draft').length,homeworkHistoryPendingAdmin:rows.filter(h=>h.status==='Pending Review').length,homeworkHistoryPublished:rows.filter(h=>h.status==='Published'||h.status==='Closed').length,homeworkHistoryReturned:rows.filter(h=>h.status==='Returned'||h.status==='Unpublished').length};
+    Object.entries(values).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.textContent=val;});
+    const visible=document.getElementById('homeworkVisibleCount');if(visible)visible.textContent=`${rows.length} ${rows.length===1?'record':'records'}`;
+    const grouped={};rows.forEach(h=>{if(!grouped[h.assigned])grouped[h.assigned]=[];grouped[h.assigned].push(h)});
+    const target=document.getElementById('homeworkHistoryList');if(!target)return;
+    const dates=Object.keys(grouped).sort((a,b)=>b.localeCompare(a));
+    target.innerHTML=dates.length?dates.map(date=>{const items=grouped[date];return `<article class="overflow-hidden rounded-[22px] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"><button onclick="toggleHomeworkDay('${date}')" class="flex w-full items-center justify-between gap-3 p-4 text-left"><div><p class="text-sm font-black">${formatAttendanceDate(date)}</p><p class="mt-1 text-[9px] text-slate-400">${cls} · ${items.length} ${items.length===1?'record':'records'} · Admin-controlled publication</p></div><span class="grid h-8 w-8 place-items-center rounded-lg bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300"><i id="homeworkDayIcon-${date}" class="fa-solid fa-chevron-down"></i></span></button><div id="homeworkDay-${date}" class="hidden border-t border-slate-100 p-4 dark:border-slate-800"><div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">${items.map(homeworkCard).join('')}</div></div></article>`}).join(''):`<div class="rounded-[22px] border border-dashed border-slate-300 bg-white p-10 text-center dark:border-slate-700 dark:bg-slate-900"><p class="text-sm font-black">No homework records found</p></div>`;
+  };
+
+  window.openHomeworkDetail=function(id){
+    if(typeof originalOpenHomeworkDetail==='function')originalOpenHomeworkDetail(id);
+    const h=homework.find(x=>x.id===id);if(!h)return;
+    const status=document.getElementById('homeworkDetailStatus');if(status)status.textContent=h.status;
+  };
+})();
+</script>
+<script>
+/* JuniCore School Teacher V31 — Final School Admin V108 Control Sync */
+(function(){
+  const T30 = {
+    version:'V31',
+    attendanceRequests:[
+      {id:'ACR-260917-01',student:'Ali Khan',studentId:'STU-8A-001',className:'Grade 8-A',date:'2026-09-15',subject:'English',current:'Absent',requested:'Present',reason:'I was present in first period; attendance was marked absent by mistake.',evidence:'Parent confirmation attached',status:'Pending Teacher Review'},
+      {id:'ACR-260917-02',student:'Maryam Noor',studentId:'STU-7A-003',className:'Grade 7-A',date:'2026-09-16',subject:'English',current:'Absent',requested:'Approved Leave',reason:'Approved medical leave was not reflected in attendance.',evidence:'Leave request LV-STU-0916',status:'Pending'}
+    ],
+    resultReviews:[
+      {id:'RR-260917-01',student:'Ali Khan',studentId:'STU-8A-001',className:'Grade 8-A',exam:'English Monthly Test',question:'Q4',current:'14/20',claim:'Two marks may be missing in Q4.',status:'Pending Teacher Review',teacherNote:''},
+      {id:'RR-260916-02',student:'Areeba Shah',studentId:'STU-7A-005',className:'Grade 7-A',exam:'English Class Test',question:'Total',current:'24/30',claim:'Please recheck total marks.',status:'Pending',teacherNote:'Paper rechecked; total should be 26/30.'}
+    ],
+    profileRequests:[
+      {id:'PCR-260915-01',field:'CNIC / National ID',current:'35202-1234567-8',requested:'35202-7654321-0',reason:'Corrected CNIC number with updated scanned copy.',status:'Pending',submitted:'15 Sep 2026'}
+    ],
+    adminThread:[
+      {id:1,by:'Admin',text:'Please review the returned Grade 7-A homework before 2:00 PM.',at:'2026-09-17T09:10:00',read:true},
+      {id:2,by:'Teacher',text:'Reviewed. I will correct the attachment and resubmit it.',at:'2026-09-17T09:18:00',read:true}
+    ],
+    adminAttachment:null,
+    mediaRecorder:null,
+    voiceChunks:[]
+  };
+  window.JuniCoreTeacherV30=T30;
+  window.JuniCoreTeacherV31=T30;
+
+  const esc=(v)=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+  const fmt=(v)=>{try{return new Date(v).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}catch{return v||'—'}};
+  const tone=(s)=>{
+    if(['Approved','Published','Verified','Resolved','No Change'].includes(s))return 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300';
+    if(['Returned','Rejected','Re-upload Requested'].includes(s))return 'bg-rose-50 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300';
+    if(['Pending Review','Pending','In Review'].includes(s))return 'bg-blue-50 text-blue-700 dark:bg-blue-950/30 dark:text-blue-300';
+    return 'bg-amber-50 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300';
+  };
+
+  function addNotification(title,text,icon='fa-bell',toneName='blue'){
+    if(typeof notifications!=='undefined'){
+      const id=Math.max(0,...notifications.map(n=>Number(n.id)||0))+1;
+      notifications.unshift({id,title,text,time:'Just now',icon,tone:toneName,read:false});
+      try{renderNotifications();}catch{}
+    }
+  }
+
+  /* ---------- REMARKS: Teacher writes, Admin moderates ---------- */
+  function normalizeRemarkRecords(){
+    if(typeof remarkHistoryStore==='undefined')return;
+    Object.values(remarkHistoryStore).forEach(rows=>(rows||[]).forEach(r=>{
+      if(!r.status)r.status='Approved';
+      if(!r.requestedVisibility)r.requestedVisibility=r.visibility||'Internal';
+      if(r.status==='Approved'&&!r.reviewedBy)r.reviewedBy='School Admin / Principal';
+    }));
+  }
+  normalizeRemarkRecords();
+
+  window.saveProfessionalRemark=function(){
+    const d=currentRemarkPayload();
+    if(!d||!d.text){showToast('Write a remark before submitting.');return;}
+    const status='Pending Review';
+    (remarkHistoryStore[d.studentId]??=[]).unshift({
+      id:`RMK-${Date.now()}`,date:new Date().toISOString(),category:d.category,outcome:d.outcome,
+      visibility:'Internal',requestedVisibility:d.visibility,text:d.text,status,
+      teacher:'Ms. Sara Ahmed',adminRemark:'',reviewedBy:'',reviewedAt:''
+    });
+    delete remarkDraftStore[d.studentId];
+    document.getElementById('remarkText').value='';
+    setSaveState('Remark sent to Admin','blue');
+    renderRemarksWorkspace();
+    addNotification('Remark submitted','Student remark sent to School Admin for moderation.','fa-note-sticky','amber');
+    showToast('Remark submitted to School Admin for review.');
+  };
+
+  window.renderSelectedStudentRemarks=function(){
+    normalizeRemarkRecords();
+    const s=selectedRemarkStudent(),root=document.getElementById('remarksHistoryList');if(!s||!root)return;
+    const c=document.getElementById('remarksHistoryCategoryFilter')?.value||'All';
+    const v=document.getElementById('remarksHistoryVisibilityFilter')?.value||'All';
+    const rows=remarkHistoryFor(s.id).filter(r=>{
+      const vis=r.status==='Approved'?r.visibility:(r.requestedVisibility||r.visibility);
+      return (c==='All'||r.category===c)&&(v==='All'||vis===v);
+    });
+    root.innerHTML=rows.length?rows.map(r=>{
+      const status=r.status||'Approved';
+      const vis=status==='Approved'?r.visibility:(r.requestedVisibility||r.visibility);
+      const editable=status==='Returned';
+      return `<article class="p-4"><div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"><div class="min-w-0"><div class="flex flex-wrap gap-2"><span class="rounded-full bg-indigo-50 px-2.5 py-1 text-[8px] font-black text-indigo-700 dark:bg-indigo-950/30 dark:text-indigo-300">${esc(r.category)}</span><span class="rounded-full px-2.5 py-1 text-[8px] font-black ${remarkOutcomeTone(r.outcome)}">${esc(r.outcome)}</span><span class="rounded-full px-2.5 py-1 text-[8px] font-black ${tone(status)}">${esc(status)}</span><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[8px] font-black text-slate-600 dark:bg-slate-800 dark:text-slate-300">Requested: ${vis==='Parent'?'Parent Visible':'Internal'}</span></div><p class="mt-3 text-[10px] leading-5 text-slate-600 dark:text-slate-300">${esc(r.text)}</p><p class="mt-2 text-[8px] text-slate-400">${esc(r.teacher)} · ${remarkDate(r.date)}</p>${r.adminRemark?`<div class="mt-3 rounded-xl border border-rose-200 bg-rose-50 p-3 dark:border-rose-900/40 dark:bg-rose-950/15"><p class="text-[7px] font-black uppercase text-rose-600">Admin Note</p><p class="mt-1 text-[8px] leading-4">${esc(r.adminRemark)}</p></div>`:''}${status==='Approved'?`<p class="mt-2 text-[8px] font-bold text-emerald-600"><i class="fa-solid fa-shield-check mr-1"></i>Approved by ${esc(r.reviewedBy||'School Admin')} · ${vis==='Parent'?'Visible to linked Parent':'Internal only'}</p>`:''}</div><div class="flex shrink-0 gap-2">${editable?`<button onclick="openRemarkEditModal('${esc(r.id)}')" class="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[8px] font-black text-amber-700">Edit Returned</button><button onclick="jcT30ResubmitRemark('${esc(r.id)}')" class="rounded-lg bg-indigo-600 px-3 py-2 text-[8px] font-black text-white">Resubmit</button>`:`<span class="rounded-lg border border-slate-200 px-3 py-2 text-[8px] font-black text-slate-400 dark:border-slate-700"><i class="fa-solid fa-lock mr-1"></i>${status==='Pending Review'?'Awaiting Admin':'Locked'}</span>`}</div></div></article>`;
+    }).join(''):'<div class="p-8 text-center text-[9px] text-slate-400">No remarks found for the active filters.</div>';
+  };
+
+  window.jcT30ResubmitRemark=function(id){
+    const s=selectedRemarkStudent();const r=(remarkHistoryStore[s?.id]||[]).find(x=>x.id===id);if(!r)return;
+    if(r.status!=='Returned'){showToast('Only returned remarks can be resubmitted.');return;}
+    r.status='Pending Review';r.adminRemark='';r.date=new Date().toISOString();
+    renderRemarksWorkspace();showToast('Remark resubmitted to School Admin.');
+  };
+  const oldSaveRemarkEdit=window.saveRemarkEdit;
+  window.saveRemarkEdit=function(){
+    const s=selectedRemarkStudent(),r=(remarkHistoryStore[s?.id]||[]).find(x=>x.id===activeRemarkEditId);
+    if(r&&r.status!=='Returned'){showToast('Only a remark returned by Admin can be edited.');return;}
+    oldSaveRemarkEdit?.();
+    if(r){r.status='Returned';renderRemarksWorkspace();}
+  };
+  window.deleteRemarkRecord=function(){showToast('Submitted/approved remarks cannot be deleted by Teacher. Use Admin review history.');};
+
+  /* ---------- COMMUNICATION: Parent + School Admin ---------- */
+  function setupCommunication(){
+    const tab=document.getElementById('tab-messages');if(!tab||document.getElementById('jcT30CommSwitcher'))return;
+    const parentWrap=document.createElement('div');parentWrap.id='jcT30ParentWorkspace';parentWrap.className='space-y-6';
+    [...tab.children].forEach(ch=>parentWrap.appendChild(ch));
+    const switcher=document.createElement('section');switcher.id='jcT30CommSwitcher';switcher.className='rounded-2xl border border-slate-200 bg-white p-2 shadow-sm dark:border-slate-800 dark:bg-slate-900';
+    switcher.innerHTML=`<div class="grid grid-cols-2 gap-2"><button id="jcT30CommParentsBtn" onclick="jcT30SetCommunication('parents')" class="rounded-xl bg-cyan-600 px-4 py-3 text-[9px] font-black text-white"><i class="fa-solid fa-people-roof mr-2"></i>Parent Messages</button><button id="jcT30CommAdminBtn" onclick="jcT30SetCommunication('admin')" class="rounded-xl px-4 py-3 text-[9px] font-black text-slate-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"><i class="fa-solid fa-user-shield mr-2"></i>School Admin</button></div>`;
+    const admin=document.createElement('section');admin.id='jcT30AdminChat';admin.className='hidden overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900';
+    admin.innerHTML=`<div class="border-b border-slate-100 p-4 dark:border-slate-800"><div class="flex items-center gap-3"><span class="grid h-11 w-11 place-items-center rounded-2xl bg-indigo-600 text-white"><i class="fa-solid fa-user-shield"></i></span><div class="min-w-0 flex-1"><p class="text-sm font-black">School Admin / Principal</p><p class="mt-1 text-[8px] text-emerald-600"><i class="fa-solid fa-circle mr-1 text-[6px]"></i>Official direct channel</p></div><span class="rounded-full bg-indigo-50 px-2.5 py-1 text-[8px] font-black text-indigo-700 dark:bg-indigo-950/30 dark:text-indigo-300">Admin ↔ Teacher</span></div></div><div id="jcT30AdminThread" class="max-h-[55vh] min-h-[360px] space-y-3 overflow-y-auto bg-slate-50/70 p-4 dark:bg-slate-950/40"></div><div class="border-t border-slate-100 p-3 dark:border-slate-800"><div id="jcT30AdminAttachPreview" class="mb-2 hidden"></div><div class="flex items-end gap-2"><button onclick="document.getElementById('jcT30AdminFile').click()" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200 text-slate-500 hover:text-indigo-600 dark:border-slate-700"><i class="fa-solid fa-paperclip"></i></button><input id="jcT30AdminFile" type="file" class="hidden" accept="image/*,.pdf,.doc,.docx" onchange="jcT30PickAdminFile(event)"><button id="jcT30VoiceBtn" onclick="jcT30ToggleVoice()" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200 text-slate-500 hover:text-rose-600 dark:border-slate-700"><i class="fa-solid fa-microphone"></i></button><textarea id="jcT30AdminInput" rows="1" placeholder="Message School Admin..." class="min-h-[44px] max-h-28 flex-1 resize-none rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-[10px] outline-none focus:border-indigo-400 dark:border-slate-700 dark:bg-slate-950"></textarea><button onclick="jcT30SendAdminMessage()" class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-indigo-600 text-white"><i class="fa-solid fa-paper-plane"></i></button></div><p class="mt-2 text-[7px] text-slate-400">Text, image, PDF/document and voice note. Messages become part of the official Admin ↔ Teacher thread.</p></div>`;
+    tab.append(switcher,parentWrap,admin);
+    renderAdminChat();
+  }
+  window.jcT30SetCommunication=function(mode){
+    const p=document.getElementById('jcT30ParentWorkspace'),a=document.getElementById('jcT30AdminChat');
+    const pb=document.getElementById('jcT30CommParentsBtn'),ab=document.getElementById('jcT30CommAdminBtn');
+    const admin=mode==='admin';p?.classList.toggle('hidden',admin);a?.classList.toggle('hidden',!admin);
+    if(pb)pb.className=`rounded-xl px-4 py-3 text-[9px] font-black ${admin?'text-slate-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800':'bg-cyan-600 text-white'}`;
+    if(ab)ab.className=`rounded-xl px-4 py-3 text-[9px] font-black ${admin?'bg-indigo-600 text-white':'text-slate-500 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800'}`;
+    if(admin)renderAdminChat();
+  };
+  function adminAttachmentHtml(a,mine){
+    if(!a)return'';const base=mine?'bg-white/10':'bg-white dark:bg-slate-900';
+    if(a.kind==='image')return `<div class="mt-2 overflow-hidden rounded-xl ${base} p-2"><img src="${a.url}" class="max-h-56 w-full rounded-lg object-cover" alt="${esc(a.name)}"><p class="mt-1 text-[7px] opacity-70">${esc(a.name)}</p></div>`;
+    if(a.kind==='voice')return `<div class="mt-2 rounded-xl ${base} p-2"><audio src="${a.url}" controls class="h-9 max-w-full"></audio></div>`;
+    return `<div class="mt-2 flex items-center gap-2 rounded-xl ${base} p-2"><i class="fa-solid fa-file-lines"></i><span class="min-w-0 flex-1 truncate text-[8px] font-black">${esc(a.name)}</span>${a.url?`<button onclick="window.open('${a.url}','_blank')" class="rounded-lg bg-indigo-600 px-2 py-1 text-[7px] font-black text-white">Open</button>`:''}</div>`;
+  }
+  function renderAdminChat(){
+    const root=document.getElementById('jcT30AdminThread');if(!root)return;
+    root.innerHTML=T30.adminThread.map(m=>{const mine=m.by==='Teacher';return `<div class="flex ${mine?'justify-end':'justify-start'}"><div class="max-w-[86%] rounded-2xl ${mine?'bg-indigo-600 text-white':'border border-slate-200 bg-white text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200'} px-4 py-3 shadow-sm"><p class="text-[7px] font-black uppercase ${mine?'text-indigo-100':'text-slate-400'}">${mine?'You · Teacher':'School Admin'}</p>${m.text?`<p class="mt-1 text-[10px] leading-5">${esc(m.text)}</p>`:''}${adminAttachmentHtml(m.attachment,mine)}<p class="mt-2 text-right text-[7px] ${mine?'text-indigo-100':'text-slate-400'}">${fmt(m.at)} ${mine?'✓✓':''}</p></div></div>`}).join('');
+    setTimeout(()=>root.scrollTop=root.scrollHeight,0);
+  }
+  window.jcT30PickAdminFile=function(e){
+    const f=e.target.files?.[0];if(!f)return;if(f.size>10*1024*1024){showToast('File must be 10 MB or smaller.');return;}
+    const url=URL.createObjectURL(f);T30.adminAttachment={kind:f.type.startsWith('image/')?'image':'file',name:f.name,size:profileDocFileSize(f.size),url};
+    const box=document.getElementById('jcT30AdminAttachPreview');box.classList.remove('hidden');box.innerHTML=`<div class="flex items-center justify-between rounded-xl border border-indigo-200 bg-indigo-50 p-3 dark:border-indigo-900/40 dark:bg-indigo-950/20"><p class="min-w-0 truncate text-[8px] font-black">${esc(f.name)}</p><button onclick="jcT30ClearAdminAttachment()" class="text-[8px] font-black text-rose-600">Remove</button></div>`;
+  };
+  window.jcT30ClearAdminAttachment=function(){T30.adminAttachment=null;const x=document.getElementById('jcT30AdminFile');if(x)x.value='';const b=document.getElementById('jcT30AdminAttachPreview');if(b){b.classList.add('hidden');b.innerHTML='';}};
+  window.jcT30SendAdminMessage=function(){
+    const input=document.getElementById('jcT30AdminInput');const text=(input?.value||'').trim();if(!text&&!T30.adminAttachment)return;
+    T30.adminThread.push({id:Date.now(),by:'Teacher',text,attachment:T30.adminAttachment?{...T30.adminAttachment}:null,at:new Date().toISOString(),read:true});if(input)input.value='';T30.adminAttachment=null;jcT30ClearAdminAttachment();renderAdminChat();showToast('Message sent to School Admin.');
+  };
+  window.jcT30ToggleVoice=async function(){
+    const btn=document.getElementById('jcT30VoiceBtn');
+    if(T30.mediaRecorder&&T30.mediaRecorder.state==='recording'){T30.mediaRecorder.stop();btn?.classList.remove('bg-rose-600','text-white');return;}
+    if(!navigator.mediaDevices?.getUserMedia||typeof MediaRecorder==='undefined'){showToast('Voice recording is not supported in this browser.');return;}
+    try{
+      const stream=await navigator.mediaDevices.getUserMedia({audio:true});T30.voiceChunks=[];T30.mediaRecorder=new MediaRecorder(stream);
+      T30.mediaRecorder.ondataavailable=e=>{if(e.data.size)T30.voiceChunks.push(e.data)};
+      T30.mediaRecorder.onstop=()=>{const blob=new Blob(T30.voiceChunks,{type:T30.mediaRecorder.mimeType||'audio/webm'});const url=URL.createObjectURL(blob);T30.adminAttachment={kind:'voice',name:'Voice note',url};stream.getTracks().forEach(t=>t.stop());const b=document.getElementById('jcT30AdminAttachPreview');if(b){b.classList.remove('hidden');b.innerHTML='<div class="rounded-xl border border-rose-200 bg-rose-50 p-3 text-[8px] font-black text-rose-700">Voice note ready · press Send</div>';}};
+      T30.mediaRecorder.start();btn?.classList.add('bg-rose-600','text-white');showToast('Voice recording started. Press microphone again to stop.');
+    }catch{showToast('Microphone permission was not available.');}
+  };
+
+  /* ---------- DOCUMENT VERIFICATION + VERSION HISTORY ---------- */
+  function normalizeDocuments(){
+    if(typeof teacherProfileDocuments==='undefined')return;
+    teacherProfileDocuments.forEach(d=>{
+      d.version=d.version||1;d.adminNote=d.adminNote||'';d.versions=d.versions||[{version:d.version,name:d.name,size:d.size,url:d.url||'',status:d.status,uploadedAt:d.uploadedAt||d.verifiedAt||'2026-01-08T11:00:00',verifiedAt:d.verifiedAt||'',verifiedBy:d.verifiedBy||''}];
+    });
+    if(!teacherProfileDocuments.some(d=>d.status==='Re-upload Requested'))teacherProfileDocuments.unshift({id:'DOC-RET-01',type:'Training Certificate',title:'Assessment Training Certificate',name:'training-certificate-blurry.jpg',size:'940 KB',status:'Re-upload Requested',adminNote:'Image is blurred. Please upload a clearer scan with all corners visible.',version:1,versions:[{version:1,name:'training-certificate-blurry.jpg',size:'940 KB',url:'',status:'Re-upload Requested',uploadedAt:'2026-09-16T10:30:00'}],url:'',uploadedAt:'2026-09-16T10:30:00'});
+  }
+  normalizeDocuments();
+  window.renderProfileDocuments=function(){
+    normalizeDocuments();const root=document.getElementById('profileDocumentsList');if(!root)return;
+    const filter=document.getElementById('profileDocumentStatusFilter')?.value||'All';const rows=teacherProfileDocuments.filter(d=>filter==='All'||d.status===filter);
+    const verified=teacherProfileDocuments.filter(d=>d.status==='Verified').length,pending=teacherProfileDocuments.filter(d=>d.status==='Pending Verification').length;
+    const vc=document.getElementById('profileVerifiedDocCount');if(vc)vc.textContent=`${verified} Verified`;const pc=document.getElementById('profilePendingDocCount');if(pc)pc.textContent=`${pending} Pending`;
+    root.innerHTML=rows.length?rows.map(d=>`<article class="rounded-xl border border-slate-200 p-3 dark:border-slate-800"><div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"><div class="min-w-0 flex-1"><div class="flex flex-wrap items-center gap-2"><p class="truncate text-[9px] font-black">${esc(d.title)}</p><span class="rounded-full px-2 py-1 text-[7px] font-black ${tone(d.status)}">${esc(d.status)}</span><span class="rounded-full bg-slate-100 px-2 py-1 text-[7px] font-black text-slate-500 dark:bg-slate-800 dark:text-slate-300">V${d.version||1}</span></div><p class="mt-1 text-[7px] text-slate-400">${esc(d.type)} · ${esc(d.name)} · ${esc(d.size)}</p>${d.adminNote?`<div class="mt-2 rounded-lg border border-rose-200 bg-rose-50 p-2 text-[8px] text-rose-700 dark:border-rose-900/40 dark:bg-rose-950/15 dark:text-rose-300"><strong>Admin:</strong> ${esc(d.adminNote)}</div>`:''}<button onclick="jcT30ToggleDocHistory('${esc(d.id)}')" class="mt-2 text-[8px] font-black text-indigo-600">Version History (${d.versions?.length||1})</button><div id="jcT30DocHistory-${esc(d.id)}" class="mt-2 hidden space-y-1">${(d.versions||[]).slice().reverse().map(v=>`<div class="rounded-lg bg-slate-50 p-2 text-[7px] dark:bg-slate-950"><strong>V${v.version}</strong> · ${esc(v.name)} · ${esc(v.status)} · ${fmt(v.uploadedAt)}</div>`).join('')}</div></div><div class="flex shrink-0 flex-wrap gap-2">${d.url?`<button onclick="viewProfileDocument('${esc(d.id)}')" class="rounded-lg border border-slate-200 px-3 py-2 text-[8px] font-black dark:border-slate-700"><i class="fa-solid fa-eye mr-1"></i>View</button>`:''}${d.status==='Re-upload Requested'?`<button onclick="jcT30StartReupload('${esc(d.id)}')" class="rounded-lg bg-amber-500 px-3 py-2 text-[8px] font-black text-slate-950">Re-upload V${(d.version||1)+1}</button>`:''}${d.status==='Verified'?'<span class="rounded-lg bg-emerald-50 px-3 py-2 text-[8px] font-black text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300"><i class="fa-solid fa-lock mr-1"></i>Verified</span>':''}</div></div></article>`).join(''):'<div class="rounded-xl border border-dashed border-slate-300 p-8 text-center text-[8px] text-slate-400 dark:border-slate-700">No documents match this filter.</div>';
+  };
+  window.jcT30ToggleDocHistory=id=>document.getElementById(`jcT30DocHistory-${id}`)?.classList.toggle('hidden');
+  window.jcT30StartReupload=function(id){
+    const d=teacherProfileDocuments.find(x=>x.id===id);if(!d)return;document.getElementById('profileDocumentType').value=d.type;document.getElementById('profileDocumentTitle').value=d.title;document.getElementById('profileDocumentForm').dataset.reuploadId=id;document.getElementById('profileDocumentFile').click();showToast(`Choose the corrected file for V${(d.version||1)+1}.`);
+  };
+  window.uploadProfileDocument=function(event){
+    event.preventDefault();const type=document.getElementById('profileDocumentType').value,title=document.getElementById('profileDocumentTitle').value.trim();if(!title||!pendingProfileDocumentFile){showToast('Add a document title and choose a file first.');return;}
+    const form=document.getElementById('profileDocumentForm'),rid=form.dataset.reuploadId;
+    if(rid){const d=teacherProfileDocuments.find(x=>x.id===rid);if(d){const nv=(d.version||1)+1;d.versions=d.versions||[];d.versions.push({version:nv,name:pendingProfileDocumentFile.name,size:pendingProfileDocumentFile.size,url:pendingProfileDocumentFile.url,status:'Pending Verification',uploadedAt:new Date().toISOString()});Object.assign(d,{type,title,name:pendingProfileDocumentFile.name,size:pendingProfileDocumentFile.size,url:pendingProfileDocumentFile.url,status:'Pending Verification',version:nv,adminNote:'',uploadedAt:new Date().toISOString(),verifiedBy:'',verifiedAt:''});}delete form.dataset.reuploadId;showToast('New document version uploaded for Admin verification.');}
+    else teacherProfileDocuments.unshift({id:`DOC-${Date.now()}`,type,title,name:pendingProfileDocumentFile.name,size:pendingProfileDocumentFile.size,status:'Pending Verification',verifiedBy:'',verifiedAt:'',url:pendingProfileDocumentFile.url,uploadedAt:new Date().toISOString(),version:1,adminNote:'',versions:[{version:1,name:pendingProfileDocumentFile.name,size:pendingProfileDocumentFile.size,url:pendingProfileDocumentFile.url,status:'Pending Verification',uploadedAt:new Date().toISOString()}]});
+    pendingProfileDocumentFile=null;form.reset();const box=document.getElementById('profileDocumentPreview');if(box){box.classList.add('hidden');box.innerHTML='';}renderProfileDocuments();setSaveState('Document sent for verification','blue');
+  };
+
+  /* ---------- ATTENDANCE CORRECTIONS ---------- */
+  function setupAttendanceCorrections(){
+    const tab=document.getElementById('tab-attendance');if(!tab||document.getElementById('jcT30AttendanceRequests'))return;
+    const box=document.createElement('section');box.id='jcT30AttendanceRequests';box.className='mb-5 rounded-2xl border border-orange-200 bg-orange-50/60 p-4 shadow-sm dark:border-orange-900/40 dark:bg-orange-950/10';
+    tab.prepend(box);renderAttendanceCorrections();
+  }
+  function renderAttendanceCorrections(){
+    const root=document.getElementById('jcT30AttendanceRequests');if(!root)return;const open=T30.attendanceRequests.filter(x=>x.status==='Pending Teacher Review').length;
+    root.innerHTML=`<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[9px] font-black uppercase tracking-[.1em] text-orange-600">Student Requests</p><h2 class="mt-1 text-lg font-black">Attendance Correction Review</h2><p class="mt-1 text-[8px] text-slate-500 dark:text-slate-400">Teacher verifies the exact student/date record. Old official attendance changes are forwarded to School Admin for final apply/audit.</p></div><span class="rounded-xl bg-orange-600 px-3 py-2 text-[9px] font-black text-white">${open} Pending</span></div><div class="mt-4 grid gap-3 lg:grid-cols-2">${T30.attendanceRequests.map(r=>`<article class="rounded-xl border border-orange-100 bg-white p-3 dark:border-orange-900/30 dark:bg-slate-900"><div class="flex flex-wrap gap-2"><span class="rounded-full px-2 py-1 text-[7px] font-black ${tone(r.status)}">${esc(r.status)}</span><span class="text-[8px] font-black text-orange-600">${esc(r.id)}</span></div><h3 class="mt-2 text-sm font-black">${esc(r.student)} · ${esc(r.className)}</h3><p class="mt-1 text-[8px] text-slate-400">${esc(r.date)} · ${esc(r.subject)} · ${esc(r.current)} → ${esc(r.requested)}</p><p class="mt-2 text-[9px] leading-4 text-slate-600 dark:text-slate-300">${esc(r.reason)}</p><div class="mt-3 flex flex-wrap gap-2">${r.status==='Pending Teacher Review'?`<button onclick="jcT30AttendanceDecision('${esc(r.id)}','Pending')" class="rounded-lg bg-orange-600 px-3 py-2 text-[8px] font-black text-white">Verify & Forward to Admin</button><button onclick="jcT30AttendanceDecision('${esc(r.id)}','No Change')" class="rounded-lg border border-slate-200 px-3 py-2 text-[8px] font-black dark:border-slate-700">No Change</button>`:'<span class="text-[8px] font-black text-slate-400">Teacher review completed</span>'}</div></article>`).join('')}</div>`;
+  }
+  window.jcT30AttendanceDecision=function(id,status){const r=T30.attendanceRequests.find(x=>x.id===id);if(!r)return;r.status=status;renderAttendanceCorrections();addNotification('Attendance review updated',`${r.student}: ${status}.`,'fa-calendar-check','orange');showToast(status==='Pending'?'Attendance correction verified and forwarded to Admin.':'Student informed: no official change required.');};
+  const originalEditAttendance=window.editAttendanceHistoryRecord;
+  window.editAttendanceHistoryRecord=function(key){
+    const rec=attendanceHistoryStore?.[key];if(!rec)return;
+    const today=new Date().toISOString().slice(0,10);
+    if(rec.date!==today){
+      const id=`ACR-T-${Date.now()}`;T30.attendanceRequests.unshift({id,student:'Teacher Initiated Correction',studentId:'—',className:rec.className,date:rec.date,subject:teacherClasses.find(c=>c.name===rec.className)?.subject||'Class Attendance',current:'Saved Record',requested:'Correction Required',reason:'Teacher requested an edit to a locked historical attendance record.',evidence:'Existing attendance register',status:'Pending'});renderAttendanceCorrections();showToast('Historical attendance is locked. Correction request sent to School Admin.');return;
+    }
+    originalEditAttendance?.(key);
+  };
+
+  /* ---------- STUDENT RESULT REVIEW REQUESTS ---------- */
+  function setupResultReviews(){
+    const tab=document.getElementById('tab-results');if(!tab||document.getElementById('jcT30ResultReviewQueue'))return;
+    const box=document.createElement('section');box.id='jcT30ResultReviewQueue';box.className='mb-5 rounded-2xl border border-rose-200 bg-rose-50/50 p-4 shadow-sm dark:border-rose-900/40 dark:bg-rose-950/10';tab.prepend(box);renderResultReviews();
+  }
+  function renderResultReviews(){
+    const root=document.getElementById('jcT30ResultReviewQueue');if(!root)return;const pending=T30.resultReviews.filter(x=>x.status==='Pending Teacher Review').length;
+    root.innerHTML=`<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[9px] font-black uppercase tracking-[.1em] text-rose-600">Student Result Requests</p><h2 class="mt-1 text-lg font-black">Result / Marks Review Inbox</h2><p class="mt-1 text-[8px] text-slate-500 dark:text-slate-400">Teacher rechecks the paper/marks. Any verified official correction is forwarded to School Admin / Examination before publication.</p></div><span class="rounded-xl bg-rose-600 px-3 py-2 text-[9px] font-black text-white">${pending} Pending</span></div><div class="mt-4 grid gap-3 lg:grid-cols-2">${T30.resultReviews.map(r=>`<article class="rounded-xl border border-rose-100 bg-white p-3 dark:border-rose-900/30 dark:bg-slate-900"><div class="flex flex-wrap gap-2"><span class="rounded-full px-2 py-1 text-[7px] font-black ${tone(r.status)}">${esc(r.status)}</span><span class="text-[8px] font-black text-rose-600">${esc(r.id)}</span></div><h3 class="mt-2 text-sm font-black">${esc(r.student)} · ${esc(r.exam)}</h3><p class="mt-1 text-[8px] text-slate-400">${esc(r.className)} · ${esc(r.question)} · Current ${esc(r.current)}</p><p class="mt-2 text-[9px] leading-4 text-slate-600 dark:text-slate-300">${esc(r.claim)}</p>${r.teacherNote?`<p class="mt-2 rounded-lg bg-slate-50 p-2 text-[8px] dark:bg-slate-950"><strong>Teacher:</strong> ${esc(r.teacherNote)}</p>`:''}<div class="mt-3 flex flex-wrap gap-2">${r.status==='Pending Teacher Review'?`<button onclick="jcT30OpenResultReview('${esc(r.id)}')" class="rounded-lg bg-rose-600 px-3 py-2 text-[8px] font-black text-white">Review Request</button>`:'<span class="text-[8px] font-black text-slate-400">Review status recorded</span>'}</div></article>`).join('')}</div>`;
+  }
+  window.jcT30OpenResultReview=function(id){
+    const r=T30.resultReviews.find(x=>x.id===id);if(!r)return;
+    const note=prompt(`Teacher review for ${r.student} — ${r.exam}\nEnter finding / corrected marks note:`,'Paper rechecked.');if(note===null)return;
+    r.teacherNote=note.trim()||'Paper rechecked.';
+    const forward=confirm('Does this require an official marks/result correction by Admin / Examination?\nOK = Forward to Admin\nCancel = No Change Required');
+    r.status=forward?'Pending':'No Change';renderResultReviews();showToast(forward?'Result review forwarded to School Admin / Examination.':'Review closed with no official change.');
+  };
+
+  /* ---------- OFFICIAL PROFILE CORRECTION ---------- */
+  function setupProfileControl(){
+    const form=document.getElementById('profileForm');if(!form||document.getElementById('jcT30ProfileControl'))return;
+    const info=document.createElement('section');info.id='jcT30ProfileControl';info.className='mb-5 rounded-2xl border border-violet-200 bg-violet-50/60 p-4 dark:border-violet-900/40 dark:bg-violet-950/10';
+    info.innerHTML=`<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[9px] font-black uppercase tracking-[.1em] text-violet-600">Profile Authority</p><h2 class="mt-1 text-sm font-black">Contact fields editable · Official identity fields require Admin approval</h2><p class="mt-1 text-[8px] text-slate-500 dark:text-slate-400">Direct edit: Mobile, Emergency Contact, Address, Blood Group. Official correction request: Full Name, Official Email, DOB, Gender, CNIC.</p></div><button onclick="jcT30OpenProfileCorrection()" class="rounded-xl bg-violet-600 px-4 py-3 text-[9px] font-black text-white">Request Official Correction</button></div><div id="jcT30ProfileRequests" class="mt-3"></div>`;
+    form.parentNode.insertBefore(info,form);renderProfileRequests();
+    const badge=form.querySelector('span.rounded-full');if(badge)badge.textContent='Mixed Control';
+  }
+  const officialProfileIds=['profileName','profileEmail','profileDob','profileGender','profileCnic'];
+  window.toggleProfileEdit=function(){
+    if(profileEditing)return;profileEditing=true;
+    profileEditableIds().forEach(id=>{const el=document.getElementById(id);if(!el)return;profileSnapshot[id]=el.value;el.disabled=officialProfileIds.includes(id);});
+    document.getElementById('profileSaveRow').classList.remove('hidden');document.getElementById('profileSaveRow').classList.add('flex');setSaveState('Editing contact profile','blue');showToast('Official identity fields stay locked. Use Request Official Correction.');
+  };
+  window.saveProfile=function(e){
+    e.preventDefault();profileEditableIds().forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=true;});profileEditing=false;document.getElementById('profileSaveRow').classList.add('hidden');document.getElementById('profileSaveRow').classList.remove('flex');setSaveState('Contact profile saved','emerald');showToast('Editable contact/personal fields saved. Official identity fields remain Admin-controlled.');
+  };
+  function renderProfileRequests(){const r=document.getElementById('jcT30ProfileRequests');if(!r)return;r.innerHTML=T30.profileRequests.length?T30.profileRequests.map(x=>`<div class="mt-2 flex flex-col gap-2 rounded-xl border border-violet-100 bg-white p-3 dark:border-violet-900/30 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[8px] font-black">${esc(x.field)} · ${esc(x.id)}</p><p class="mt-1 text-[7px] text-slate-400">${esc(x.current)} → ${esc(x.requested)} · ${esc(x.submitted)}</p></div><span class="self-start rounded-full px-2.5 py-1 text-[7px] font-black ${tone(x.status)}">${esc(x.status)}</span></div>`).join(''):'';}
+  window.jcT30OpenProfileCorrection=function(){
+    const choices=[['Full Name','profileName'],['Official Email','profileEmail'],['Date of Birth','profileDob'],['Gender','profileGender'],['CNIC / National ID','profileCnic']];
+    const field=prompt('Official field to correct:\n1 Full Name\n2 Official Email\n3 Date of Birth\n4 Gender\n5 CNIC / National ID','5');const idx=Number(field)-1;if(!choices[idx])return;const [label,id]=choices[idx],el=document.getElementById(id),current=el?.value||'';const requested=prompt(`${label}\nCurrent: ${current}\nEnter requested corrected value:`,current);if(requested===null||requested.trim()===current)return;const reason=prompt('Reason / verification note for School Admin:','Supporting document uploaded in Documents section.');if(reason===null)return;T30.profileRequests.unshift({id:`PCR-${Date.now()}`,field:label,current,requested:requested.trim(),reason:reason.trim(),status:'Pending',submitted:new Date().toLocaleDateString('en-GB')});renderProfileRequests();addNotification('Profile correction submitted',`${label} correction sent to School Admin.`,'fa-id-card','violet');showToast('Official profile correction request sent to School Admin.');
+  };
+
+  /* ---------- NOTIFICATIONS + DASHBOARD ---------- */
+  function setupNotificationsAndDashboard(){
+    const action=document.querySelector('#tab-dashboard .rounded-2xl.border.border-slate-200.bg-white.p-5.shadow-sm');
+    const dash=document.getElementById('tab-dashboard');if(dash&&!document.getElementById('jcT30AdminSyncCard')){
+      const card=document.createElement('section');card.id='jcT30AdminSyncCard';card.className='rounded-2xl border border-indigo-200 bg-indigo-50/60 p-4 dark:border-indigo-900/40 dark:bg-indigo-950/10';card.innerHTML=`<div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-[9px] font-black uppercase tracking-[.1em] text-indigo-600">Admin Sync Center</p><h2 class="mt-1 text-lg font-black">Items waiting on you / School Admin</h2><p class="mt-1 text-[8px] text-slate-500 dark:text-slate-400">Returned homework, pending remarks, attendance corrections, result reviews and official profile/document requests surface here.</p></div><div class="grid grid-cols-3 gap-2 text-center"><div class="rounded-xl bg-white p-3 dark:bg-slate-900"><p class="text-lg font-black text-amber-600">1</p><p class="text-[7px] text-slate-400">Returned</p></div><div class="rounded-xl bg-white p-3 dark:bg-slate-900"><p class="text-lg font-black text-blue-600">3</p><p class="text-[7px] text-slate-400">Admin Review</p></div><div class="rounded-xl bg-white p-3 dark:bg-slate-900"><p class="text-lg font-black text-rose-600">2</p><p class="text-[7px] text-slate-400">Student Review</p></div></div></div>`;dash.insertBefore(card,dash.children[1]||null);
+    }
+    if(typeof notifications!=='undefined'&&!notifications.some(n=>n.id==='ADMIN-SYNC'))notifications.unshift({id:'ADMIN-SYNC',title:'Homework returned by Admin',text:'Grade 7-A Grammar Practice needs correction and resubmission.',time:'Just now',icon:'fa-rotate-left',tone:'rose',read:false});
+  }
+
+  /* ---------- PAGE LABELS / FILTERS ---------- */
+  function polishLabels(){
+    const nav=document.getElementById('nav-messages');if(nav){const nodes=[...nav.childNodes].filter(n=>n.nodeType===3);nodes.forEach(n=>{if(n.textContent.includes('Parent Messages'))n.textContent='Communication'});}
+    const title=document.querySelector('#tab-messages .hero-title');if(title)title.textContent='Communication Center';
+    const msg=document.querySelector('#tab-messages .page-hero p.mt-2');if(msg)msg.textContent='Parent communication plus a direct official channel with School Admin. Text, image, document and voice-note support.';
+    const rTitle=document.querySelector('#tab-remarks .page-hero p.mt-2');if(rTitle)rTitle.textContent='Teacher writes the remark. School Admin reviews visibility before any Parent-visible remark is released.';
+    const saveBtn=document.querySelector('#tab-remarks button[onclick="saveProfessionalRemark()"]');if(saveBtn)saveBtn.innerHTML='<i class="fa-solid fa-paper-plane mr-2"></i>Submit to Admin';
+    const hint=document.querySelector('#tab-remarks button[onclick="saveProfessionalRemark()"]')?.parentElement?.previousElementSibling;if(hint)hint.innerHTML='<i class="fa-solid fa-shield-halved mr-1"></i>Parent-visible request is released only after School Admin approval. Internal/Parent visibility is finalized by Admin.';
+    const filter=document.getElementById('profileDocumentStatusFilter');if(filter&&!filter.querySelector('option[value="Re-upload Requested"]')){filter.insertAdjacentHTML('beforeend','<option value="Re-upload Requested">Re-upload Requested</option><option value="Rejected">Rejected</option>');}
+  }
+
+  /* ---------- OPEN TAB HOOK ---------- */
+  const oldOpenTab=window.openTab;
+  window.openTab=function(tab){oldOpenTab(tab);setTimeout(()=>{
+    if(tab==='attendance')renderAttendanceCorrections();
+    if(tab==='results')renderResultReviews();
+    if(tab==='remarks'){normalizeRemarkRecords();renderRemarksWorkspace();}
+    if(tab==='messages'){setupCommunication();}
+    if(tab==='profile'){normalizeDocuments();renderProfileDocuments();renderProfileRequests();}
+  },0);};
+
+  function init(){
+    polishLabels();setupCommunication();setupAttendanceCorrections();setupResultReviews();setupProfileControl();setupNotificationsAndDashboard();normalizeDocuments();renderProfileDocuments();normalizeRemarkRecords();
+    try{renderNotifications();}catch{}
+    const footer=document.querySelector('footer span');if(footer)footer.textContent='JuniCore School Teacher Portal · V31 Final · Admin-Aligned';
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+
+<script>
+/* JuniCore Teacher V31 — Final Status Contract + Fast Loader */
+(function(){
+  function normalizeLegacyStatus(status){
+    const map={
+      'Pending Admin':'Pending Review',
+      'Pending Admin Review':'Pending Review',
+      'Forwarded to Admin':'Pending'
+    };
+    return map[status]||status;
+  }
+
+  function normalizeExistingDemoData(){
+    try{
+      if(typeof homework!=='undefined') homework.forEach(x=>x.status=normalizeLegacyStatus(x.status));
+      if(window.JuniCoreTeacherV31||window.JuniCoreTeacherV30){
+        ['attendanceRequests','resultReviews','profileRequests'].forEach(k=>{
+          const rows=(window.JuniCoreTeacherV31||window.JuniCoreTeacherV30)[k];
+          if(Array.isArray(rows)) rows.forEach(x=>x.status=normalizeLegacyStatus(x.status));
+        });
+      }
+    }catch(e){console.warn('V31 status normalization skipped',e)}
+  }
+
+  function hideLoader(){
+    const loader=document.getElementById('jcTeacherLoader');
+    if(!loader)return;
+    loader.classList.add('opacity-0','pointer-events-none');
+    setTimeout(()=>loader.remove(),320);
+  }
+
+  const started=performance.now();
+  function ready(){
+    normalizeExistingDemoData();
+    const elapsed=performance.now()-started;
+    setTimeout(hideLoader,Math.max(0,320-elapsed));
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',ready,{once:true});
+  else ready();
+  // Safety fallback: never leave the loader stuck if a third-party asset is slow/fails.
+  setTimeout(hideLoader,1800);
+})();
 </script>
 </body>
 </html>
