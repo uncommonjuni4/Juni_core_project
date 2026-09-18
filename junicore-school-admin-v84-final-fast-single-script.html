@@ -114,6 +114,8 @@
       <p class="px-3 pb-2 pt-5 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Communication</p>
       <button onclick="openPage('announcements', this)" data-nav="announcements" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-bullhorn w-5 text-center"></i><span>Announcements</span></button>
       <button onclick="openPage('schoolEvents', this)" data-nav="schoolEvents" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-calendar-days w-5 text-center"></i><span>School Events</span></button>
+      <button onclick="openPage('onlineMeetings', this)" data-nav="onlineMeetings" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-video w-5 text-center"></i><span>Online Classes / Meetings</span><span class="ml-auto rounded-full bg-emerald-50 px-2 py-0.5 text-[9px] font-extrabold text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300">LIVE</span></button>
+      <button onclick="openPage('complaints', this)" data-nav="complaints" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-triangle-exclamation w-5 text-center"></i><span>Complaints</span><span id="adminComplaintSidebarPending" class="ml-auto rounded-full bg-rose-50 px-2 py-0.5 text-[9px] font-extrabold text-rose-700 dark:bg-rose-950/30 dark:text-rose-300">0</span></button>
 
       <p class="px-3 pb-2 pt-5 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Facilities</p>
       <button onclick="openPage('transport', this)" data-nav="transport" class="nav-btn mb-1 flex w-full min-w-0 items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-slate-600 dark:text-zinc-300 hover:bg-slate-100 dark:hover:bg-zinc-800"><i class="fa-solid fa-bus-simple w-5 text-center"></i><span>Transport</span></button>
@@ -3768,6 +3770,205 @@
 </section>
 
 
+
+      <!-- Online Classes, Meetings & Approval Control Page (V112) -->
+
+      <!-- Online Classes / Meetings — V113 Central Approval Flow -->
+      <section id="onlineMeetingsPage" class="hidden min-w-0 space-y-6">
+        <div class="overflow-hidden rounded-3xl border border-teal-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="bg-gradient-to-r from-slate-950 via-teal-900 to-cyan-800 p-6 text-white sm:p-7">
+            <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
+              <div class="max-w-4xl">
+                <div class="flex flex-wrap gap-2">
+                  <span class="rounded-full bg-white/15 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[.12em]">V113 Central Approval</span>
+                  <span class="rounded-full bg-emerald-400/20 px-3 py-1 text-[10px] font-extrabold">Admin is the Gatekeeper</span>
+                </div>
+                <h1 class="mt-3 text-2xl font-extrabold sm:text-3xl">Online Classes & Meeting Approval Center</h1>
+                <p class="mt-2 max-w-3xl text-sm leading-6 text-teal-50">Student, Parent or Teacher meeting requests first come to Admin. Only after Admin approval does the request become an official scheduled meeting and become visible to the target person.</p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="setAdminMeetingV113Tab('requests')" class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-teal-800">
+                  <i class="fa-solid fa-inbox"></i>Approval Inbox
+                  <span id="adminMeetingV113HeaderPending" class="rounded-full bg-amber-300 px-2 py-0.5 text-[10px] text-slate-900">0</span>
+                </button>
+                <button onclick="setAdminMeetingV113Tab('create')" class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-4 py-3 text-sm font-extrabold text-white"><i class="fa-solid fa-plus"></i>Admin Create</button>
+              </div>
+            </div>
+          </div>
+          <div class="grid gap-px bg-slate-200 dark:bg-zinc-800 md:grid-cols-4">
+            <div class="bg-white p-4 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Student</p><p class="mt-1 text-sm font-bold">Request → Admin → Target</p></div>
+            <div class="bg-white p-4 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Parent</p><p class="mt-1 text-sm font-bold">Request → Admin → Target</p></div>
+            <div class="bg-white p-4 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Teacher</p><p class="mt-1 text-sm font-bold">Request → Admin → Target</p></div>
+            <div class="bg-white p-4 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Admin</p><p class="mt-1 text-sm font-bold">Approve · Route · Schedule · Remove</p></div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <button onclick="setAdminMeetingV113Tab('requests')" class="rounded-2xl border border-amber-200 bg-white p-5 text-left dark:border-amber-900/50 dark:bg-zinc-900">
+            <div class="flex items-center justify-between"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-950/30"><i class="fa-solid fa-hourglass-half"></i></span><span class="text-[10px] font-extrabold text-amber-600">ACTION</span></div>
+            <p id="adminMeetingV113PendingCount" class="mt-3 text-3xl font-extrabold text-amber-600">0</p><p class="mt-1 text-xs text-slate-500">Waiting for Admin</p>
+          </button>
+          <button onclick="setAdminMeetingV113Tab('schedule')" class="rounded-2xl border border-slate-200 bg-white p-5 text-left dark:border-zinc-800 dark:bg-zinc-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-950/30"><i class="fa-solid fa-calendar-check"></i></span>
+            <p id="adminMeetingV113ScheduledCount" class="mt-3 text-3xl font-extrabold">0</p><p class="mt-1 text-xs text-slate-500">Official scheduled meetings</p>
+          </button>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 dark:bg-emerald-950/30"><i class="fa-solid fa-share"></i></span>
+            <p id="adminMeetingV113ForwardedCount" class="mt-3 text-3xl font-extrabold text-emerald-600">0</p><p class="mt-1 text-xs text-slate-500">Approved & routed</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-50 text-violet-700 dark:bg-violet-950/30"><i class="fa-solid fa-user-shield"></i></span>
+            <p class="mt-3 text-lg font-extrabold">Admin Only</p><p class="mt-1 text-xs text-slate-500">Final approval authority</p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-2 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="grid gap-2 sm:grid-cols-4">
+            <button id="adminMeetingV113TabRequests" onclick="setAdminMeetingV113Tab('requests')" class="admin-meeting-v113-tab rounded-xl bg-teal-600 px-4 py-3 text-xs font-extrabold text-white"><i class="fa-solid fa-inbox mr-2"></i>Approval Inbox</button>
+            <button id="adminMeetingV113TabSchedule" onclick="setAdminMeetingV113Tab('schedule')" class="admin-meeting-v113-tab rounded-xl px-4 py-3 text-xs font-extrabold text-slate-600 dark:text-zinc-300"><i class="fa-solid fa-calendar-days mr-2"></i>Official Schedule</button>
+            <button id="adminMeetingV113TabCreate" onclick="setAdminMeetingV113Tab('create')" class="admin-meeting-v113-tab rounded-xl px-4 py-3 text-xs font-extrabold text-slate-600 dark:text-zinc-300"><i class="fa-solid fa-plus mr-2"></i>Admin Create</button>
+            <button id="adminMeetingV113TabFlow" onclick="setAdminMeetingV113Tab('flow')" class="admin-meeting-v113-tab rounded-xl px-4 py-3 text-xs font-extrabold text-slate-600 dark:text-zinc-300"><i class="fa-solid fa-code-branch mr-2"></i>Approval Flow</button>
+          </div>
+        </div>
+
+        <div id="adminMeetingV113PanelRequests" class="admin-meeting-v113-panel space-y-5">
+          <section class="rounded-3xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-900/50 dark:bg-amber-950/10">
+            <div class="flex gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-950/40"><i class="fa-solid fa-shield-halved"></i></span>
+              <div><h2 class="font-extrabold">No Direct Meeting Rule</h2><p class="mt-1 text-sm leading-6 text-slate-600 dark:text-zinc-300">Student, Parent and Teacher requests stay private in the Admin Inbox. The target user receives nothing until Admin chooses <b>Approve & Forward</b>. Admin can also Return, Reject or Permanently Remove the request.</p></div>
+            </div>
+          </section>
+
+          <section class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="border-b border-slate-100 p-5 dark:border-zinc-800">
+              <div class="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+                <div><p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-amber-600">Incoming Meeting Requests</p><h2 class="mt-1 text-xl font-extrabold">Admin Approval Inbox</h2></div>
+                <div class="grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
+                  <input id="adminMeetingV113RequestSearch" oninput="renderAdminMeetingV113Requests()" placeholder="Search person / reason" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs dark:border-zinc-700 dark:bg-zinc-950">
+                  <select id="adminMeetingV113SourceFilter" onchange="renderAdminMeetingV113Requests()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Senders</option><option>Student</option><option>Parent</option><option>Teacher</option></select>
+                  <select id="adminMeetingV113TargetFilter" onchange="renderAdminMeetingV113Requests()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Targets</option><option>Teacher</option><option>Student</option><option>Parent</option><option>Staff</option></select>
+                  <select id="adminMeetingV113StatusFilter" onchange="renderAdminMeetingV113Requests()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Status</option><option>Pending Admin Approval</option><option>Approved & Forwarded</option><option>Returned</option><option>Rejected</option><option>Cancelled by Admin</option></select>
+                  <select id="adminMeetingV113Sort" onchange="renderAdminMeetingV113Requests()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="newest">Newest First</option><option value="sender">Sender A-Z</option><option value="target">Target A-Z</option></select>
+                </div>
+              </div>
+            </div>
+            <div id="adminMeetingV113RequestsList" class="divide-y divide-slate-100 dark:divide-zinc-800"></div>
+          </section>
+        </div>
+
+        <div id="adminMeetingV113PanelSchedule" class="admin-meeting-v113-panel hidden space-y-5">
+          <section class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <div class="flex flex-col gap-3 border-b border-slate-100 p-5 dark:border-zinc-800 lg:flex-row lg:items-center lg:justify-between">
+              <div><p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-teal-600">Official Records</p><h2 class="mt-1 text-xl font-extrabold">Approved Meetings & Admin-Created Sessions</h2><p class="mt-1 text-xs text-slate-500">Only records in this schedule are allowed to sync to participant portals.</p></div>
+              <input id="adminMeetingV113ScheduleSearch" oninput="renderAdminMeetingV113Sessions()" placeholder="Search meeting / participant" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs dark:border-zinc-700 dark:bg-zinc-950">
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-[1120px] w-full text-left text-sm">
+                <thead class="bg-slate-50 text-[10px] uppercase tracking-wider text-slate-500 dark:bg-zinc-950"><tr><th class="px-5 py-3">Meeting</th><th class="px-5 py-3">From → To</th><th class="px-5 py-3">Schedule</th><th class="px-5 py-3">Provider</th><th class="px-5 py-3">Source</th><th class="px-5 py-3">Status</th><th class="px-5 py-3">Admin Control</th></tr></thead>
+                <tbody id="adminMeetingV113ScheduleBody" class="divide-y divide-slate-100 dark:divide-zinc-800"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div id="adminMeetingV113PanelCreate" class="admin-meeting-v113-panel hidden">
+          <section class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 sm:p-6">
+            <div><p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-blue-600">Direct Admin Authority</p><h2 class="mt-1 text-xl font-extrabold">Create Official Class / Meeting</h2><p class="mt-1 text-xs text-slate-500">Admin-created sessions do not need an approval request.</p></div>
+            <form id="adminMeetingV113CreateForm" onsubmit="createAdminMeetingV113Session(event)" class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <label class="text-xs font-extrabold">Session Type<select id="adminMeetingV113CreateType" required class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"><option value="">Select</option><option>Online Class</option><option>Teacher Meeting</option><option>Staff Meeting</option><option>Parent-Teacher Meeting</option><option>Student-Teacher Meeting</option></select></label>
+              <label class="text-xs font-extrabold">Title<input id="adminMeetingV113CreateTitle" required placeholder="Meeting title" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"></label>
+              <label class="text-xs font-extrabold">From / Host<input id="adminMeetingV113CreateFrom" required placeholder="Admin / Teacher name" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"></label>
+              <label class="text-xs font-extrabold">Target / Audience<input id="adminMeetingV113CreateTo" required placeholder="Grade / Teacher / Parent / Student" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"></label>
+              <label class="text-xs font-extrabold">Date<input id="adminMeetingV113CreateDate" type="date" required class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"></label>
+              <label class="text-xs font-extrabold">Time<input id="adminMeetingV113CreateTime" type="time" required class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"></label>
+              <label class="text-xs font-extrabold">Provider<select id="adminMeetingV113CreateProvider" class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"><option>Google Meet</option><option>Zoom</option><option>Microsoft Teams</option></select></label>
+              <label class="text-xs font-extrabold md:col-span-2">Meeting Link<input id="adminMeetingV113CreateLink" placeholder="https://..." class="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm dark:border-zinc-700 dark:bg-zinc-950"></label>
+              <div class="flex items-end"><button class="w-full rounded-xl bg-teal-600 px-5 py-3 text-sm font-extrabold text-white"><i class="fa-solid fa-calendar-plus mr-2"></i>Create & Publish</button></div>
+            </form>
+          </section>
+        </div>
+
+        <div id="adminMeetingV113PanelFlow" class="admin-meeting-v113-panel hidden space-y-5">
+          <section class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-violet-600">Locked Authority Flow</p>
+            <h2 class="mt-1 text-xl font-extrabold">Every request passes through Admin</h2>
+            <div class="mt-6 grid gap-4 lg:grid-cols-3">
+              <div class="rounded-2xl bg-slate-50 p-5 dark:bg-zinc-950"><p class="font-extrabold">Student Request</p><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-zinc-300">Student → <b>Admin Inbox</b> → Admin Approves → Teacher / relevant target receives meeting.</p></div>
+              <div class="rounded-2xl bg-slate-50 p-5 dark:bg-zinc-950"><p class="font-extrabold">Parent Request</p><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-zinc-300">Parent → <b>Admin Inbox</b> → Admin Approves → Teacher / relevant target receives meeting.</p></div>
+              <div class="rounded-2xl bg-slate-50 p-5 dark:bg-zinc-950"><p class="font-extrabold">Teacher Request</p><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-zinc-300">Teacher → <b>Admin Inbox</b> → Admin Approves → Student / Parent / Staff / relevant target receives meeting.</p></div>
+            </div>
+            <div class="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-800 dark:border-emerald-900/50 dark:bg-emerald-950/20 dark:text-emerald-200"><b>Important:</b> Approval does not create duplicate records. One official meeting record is created and later the backend will expose that same record to only the approved participants.</div>
+          </section>
+        </div>
+      
+        <section class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between"><div><p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-indigo-600">Audit & History</p><h2 class="mt-1 text-xl font-extrabold">Month-wise Meeting Control History</h2><p id="adminMeetingV114MonthSummary" class="mt-1 text-xs text-slate-500"></p></div><select id="adminMeetingV114Month" onchange="renderAdminMeetingV114History()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"></select></div>
+          <div id="adminMeetingV114MonthCards" class="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4"></div><div id="adminMeetingV114HistoryList" class="mt-5 space-y-3"></div>
+        </section>
+</section>
+
+      <!-- Complaints Page (V111 add-only) -->
+
+      <!-- Complaints — V113 Central Approval & Routing -->
+      <section id="complaintsPage" class="hidden min-w-0 space-y-6">
+        <div class="overflow-hidden rounded-3xl border border-rose-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="bg-gradient-to-r from-slate-950 via-rose-900 to-rose-700 p-6 text-white sm:p-7">
+            <div class="flex flex-col gap-5 xl:flex-row xl:items-center xl:justify-between">
+              <div class="max-w-4xl">
+                <div class="flex flex-wrap gap-2"><span class="rounded-full bg-white/15 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[.12em]">Central Complaint Control</span><span class="rounded-full bg-amber-300/20 px-3 py-1 text-[10px] font-extrabold">Admin Approval Required</span></div>
+                <h1 class="mt-3 text-2xl font-extrabold sm:text-3xl">Complaints Approval & Routing Center</h1>
+                <p class="mt-2 max-w-3xl text-sm leading-6 text-rose-50">Student, Parent and Teacher complaints first arrive privately to Admin. Admin decides whether to approve and forward the case to the relevant Teacher, Parent, Staff member or Department.</p>
+              </div>
+              <button onclick="createAdminComplaintV113()" class="rounded-xl bg-white px-4 py-3 text-sm font-extrabold text-rose-700"><i class="fa-solid fa-plus mr-2"></i>New Admin Case</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div class="rounded-2xl border border-amber-200 bg-white p-5 dark:border-amber-900/50 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Awaiting Admin</p><p id="adminComplaintV113PendingCount" class="mt-2 text-3xl font-extrabold text-amber-600">0</p></div>
+          <div class="rounded-2xl border border-blue-200 bg-white p-5 dark:border-blue-900/50 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Forwarded</p><p id="adminComplaintV113ForwardedCount" class="mt-2 text-3xl font-extrabold text-blue-600">0</p></div>
+          <div class="rounded-2xl border border-violet-200 bg-white p-5 dark:border-violet-900/50 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">In Review</p><p id="adminComplaintV113ReviewCount" class="mt-2 text-3xl font-extrabold text-violet-600">0</p></div>
+          <div class="rounded-2xl border border-emerald-200 bg-white p-5 dark:border-emerald-900/50 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">Resolved</p><p id="adminComplaintV113ResolvedCount" class="mt-2 text-3xl font-extrabold text-emerald-600">0</p></div>
+          <div class="rounded-2xl border border-rose-200 bg-white p-5 dark:border-rose-900/50 dark:bg-zinc-900"><p class="text-[10px] font-extrabold uppercase text-slate-400">High Priority</p><p id="adminComplaintV113HighCount" class="mt-2 text-3xl font-extrabold text-rose-600">0</p></div>
+        </div>
+
+        <section class="rounded-3xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-900/50 dark:bg-amber-950/10">
+          <div class="flex gap-3"><span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-950/40"><i class="fa-solid fa-lock"></i></span><div><h2 class="font-extrabold">Privacy & Routing Rule</h2><p class="mt-1 text-sm leading-6 text-slate-600 dark:text-zinc-300">Before approval, only Admin can see the complaint. After <b>Approve & Forward</b>, the selected target receives it. Admin still retains full control to reassign, return, reject, resolve, reopen or permanently remove the case.</p></div></div>
+        </section>
+
+        <section class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="border-b border-slate-100 p-5 dark:border-zinc-800">
+            <div class="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+              <div><p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-rose-600">All Cases</p><h2 class="mt-1 text-xl font-extrabold">Admin Complaint Registry</h2></div>
+              <div class="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
+                <input id="adminComplaintV113Search" oninput="renderAdminComplaintV113()" placeholder="Search case / person / issue" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs dark:border-zinc-700 dark:bg-zinc-950">
+                <select id="adminComplaintV113SourceFilter" onchange="renderAdminComplaintV113()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Senders</option><option>Student</option><option>Parent</option><option>Teacher</option><option>Admin</option></select>
+                <select id="adminComplaintV113TargetFilter" onchange="renderAdminComplaintV113()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Targets</option><option>Teacher</option><option>Student</option><option>Parent</option><option>Staff</option><option>Department</option></select>
+                <select id="adminComplaintV113StatusFilter" onchange="renderAdminComplaintV113()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Status</option><option>Pending Admin Approval</option><option>Approved & Forwarded</option><option>In Review</option><option>Resolved</option><option>Returned</option><option>Rejected</option></select>
+                <select id="adminComplaintV113PriorityFilter" onchange="renderAdminComplaintV113()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="all">All Priority</option><option>High</option><option>Medium</option><option>Normal</option></select>
+                <select id="adminComplaintV113Sort" onchange="renderAdminComplaintV113()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"><option value="newest">Newest</option><option value="priority">Priority</option><option value="sender">Sender A-Z</option></select>
+              </div>
+            </div>
+          </div>
+          <div id="adminComplaintV113List" class="divide-y divide-slate-100 dark:divide-zinc-800"></div>
+        </section>
+
+        <section class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-violet-600">Complaint Flow</p>
+          <div class="mt-4 grid gap-4 lg:grid-cols-3">
+            <div class="rounded-2xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="font-extrabold">Student / Parent</p><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-zinc-300">Submit → Admin reviews → Approves → complaint goes to Teacher / Department / relevant target.</p></div>
+            <div class="rounded-2xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="font-extrabold">Teacher</p><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-zinc-300">Submit → Admin reviews → Approves → complaint goes to Parent / Student / Staff / relevant department.</p></div>
+            <div class="rounded-2xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="font-extrabold">Admin</p><p class="mt-2 text-sm leading-6 text-slate-600 dark:text-zinc-300">Approve, route, assign, reassign, review, resolve, reopen, return, reject or permanently remove.</p></div>
+          </div>
+        </section>
+      
+        <section class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+          <div class="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between"><div><p class="text-[10px] font-extrabold uppercase tracking-[.12em] text-indigo-600">Audit & History</p><h2 class="mt-1 text-xl font-extrabold">Month-wise Complaint Control History</h2><p id="adminComplaintV114MonthSummary" class="mt-1 text-xs text-slate-500"></p></div><select id="adminComplaintV114Month" onchange="renderAdminComplaintV114History()" class="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold dark:border-zinc-700 dark:bg-zinc-950"></select></div>
+          <div id="adminComplaintV114MonthCards" class="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4"></div><div id="adminComplaintV114HistoryList" class="mt-5 space-y-3"></div>
+        </section>
+</section>
+
+
       <!-- Admin / Principal Profile -->
       <section id="adminProfilePage" class="hidden min-w-0">
         <!-- Hero -->
@@ -5948,6 +6149,8 @@
       const permissionsPage = document.getElementById('permissionsPage');
       const settingsPage = document.getElementById('settingsPage');
       const websiteManagementPage = document.getElementById('websiteManagementPage');
+      const onlineMeetingsPage = document.getElementById('onlineMeetingsPage');
+      const complaintsPage = document.getElementById('complaintsPage');
       const adminProfilePage = document.getElementById('adminProfilePage');
       const placeholderPage = document.getElementById('placeholderPage');
       const pageTitle = document.getElementById('pageTitle');
@@ -5980,6 +6183,8 @@
       permissionsPage.classList.add('hidden');
       settingsPage.classList.add('hidden');
       websiteManagementPage.classList.add('hidden');
+      onlineMeetingsPage.classList.add('hidden');
+      complaintsPage.classList.add('hidden');
       adminProfilePage.classList.add('hidden');
       placeholderPage.classList.add('hidden');
 
@@ -6087,6 +6292,14 @@
         websiteManagementPage.classList.remove('hidden');
         pageTitle.textContent = 'Website Management';
         initWebsiteManagementPage();
+      } else if(page === 'onlineMeetings'){
+        onlineMeetingsPage.classList.remove('hidden');
+        pageTitle.textContent = 'Online Classes / Meetings';
+        initAdminMeetingControlV113();
+      } else if(page === 'complaints'){
+        complaintsPage.classList.remove('hidden');
+        pageTitle.textContent = 'Complaints';
+        initAdminComplaintControlV113();
       } else if(page === 'profile'){
         adminProfilePage.classList.remove('hidden');
         pageTitle.textContent = 'My Profile';
@@ -17362,6 +17575,335 @@
     if(note){note.textContent='New offer draft started. Full offer records will be stored by backend later.';note.classList.remove('hidden');}
     markWebsiteDirty();
   }
+
+
+  // ===== V112 ADMIN ONLINE CLASS / MEETING CONTROL =====
+  const ADMIN_MEETING_V112_KEY = 'juniCoreSchoolAdminMeetingControlV112';
+  let adminMeetingV112ActiveTab = 'schedule';
+
+  const adminMeetingV112Seed = {
+    sessions: [
+      {id:'MTG-001',type:'Online Class',title:'Grade 8 Mathematics Live Class',audience:'Grade 8-A Students',host:'Mr. Hamza Tariq',date:'2026-09-21',time:'10:00',duration:'45 min',provider:'Google Meet',link:'https://meet.google.com/demo-grade8',source:'Admin Created',status:'Scheduled',requestId:null},
+      {id:'MTG-002',type:'Teacher Meeting',title:'Academic Planning Meeting',audience:'All Teachers',host:'Principal / Admin',date:'2026-09-22',time:'14:30',duration:'60 min',provider:'Microsoft Teams',link:'https://teams.microsoft.com/demo-teachers',source:'Admin Created',status:'Scheduled',requestId:null},
+      {id:'MTG-003',type:'Staff Meeting',title:'Monthly Staff Operations Briefing',audience:'All Staff',host:'Principal / Admin',date:'2026-09-25',time:'13:30',duration:'45 min',provider:'Google Meet',link:'https://meet.google.com/demo-staff',source:'Admin Created',status:'Scheduled',requestId:null},
+      {id:'MTG-004',type:'Parent-Teacher Meeting',title:'Parent Meeting — Ali Hassan / Mathematics',audience:'Muhammad Hassan (Parent)',host:'Mr. Hamza Tariq',date:'2026-09-23',time:'16:00',duration:'30 min',provider:'Google Meet',link:'https://meet.google.com/demo-parent',source:'Approved Parent Request',status:'Scheduled',requestId:'REQ-MTG-003'}
+    ],
+    requests: [
+      {id:'REQ-MTG-001',kind:'Parent → Teacher',requester:'Nadia Ahmed',student:'Sara Ahmed · Grade 8-A',teacher:'Ms. Ayesha Khan',reason:'Discuss recent English progress and reading support.',preferred:'24 Sep · 4:30 PM',submitted:'18 Sep 2026 · 10:20 AM',status:'Pending'},
+      {id:'REQ-MTG-002',kind:'Student → Teacher',requester:'Ayesha Khan',student:'Grade 10-A',teacher:'Mr. Hamza Tariq',reason:'Need guidance about mathematics exam preparation.',preferred:'25 Sep · 2:30 PM',submitted:'18 Sep 2026 · 11:05 AM',status:'Pending'},
+      {id:'REQ-MTG-003',kind:'Parent → Teacher',requester:'Muhammad Hassan',student:'Ali Hassan · Grade 7-A',teacher:'Mr. Hamza Tariq',reason:'Review mathematics support plan.',preferred:'23 Sep · 4:00 PM',submitted:'17 Sep 2026 · 5:40 PM',status:'Approved',approvedSessionId:'MTG-004'},
+      {id:'REQ-MTG-004',kind:'Student → Teacher',requester:'Ali Hassan',student:'Grade 7-A',teacher:'Mr. Hamza Tariq',reason:'Question about algebra practice.',preferred:'22 Sep · 1:30 PM',submitted:'17 Sep 2026 · 12:10 PM',status:'Reschedule Requested'}
+    ]
+  };
+
+  function getAdminMeetingV112State(){
+    try{
+      const saved=JSON.parse(localStorage.getItem(ADMIN_MEETING_V112_KEY)||'null');
+      if(saved&&Array.isArray(saved.sessions)&&Array.isArray(saved.requests)) return saved;
+    }catch(e){}
+    return JSON.parse(JSON.stringify(adminMeetingV112Seed));
+  }
+  function saveAdminMeetingV112State(state){localStorage.setItem(ADMIN_MEETING_V112_KEY,JSON.stringify(state));}
+  function escAdminMeetingV112(value){return String(value??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+  function badgeAdminMeetingV112(status){
+    const map={Scheduled:'bg-blue-100 text-blue-700 dark:bg-blue-950/30 dark:text-blue-300',Live:'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300',Completed:'bg-slate-100 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300',Cancelled:'bg-rose-100 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300',Pending:'bg-amber-100 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300',Approved:'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300','Reschedule Requested':'bg-violet-100 text-violet-700 dark:bg-violet-950/30 dark:text-violet-300',Declined:'bg-rose-100 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300'};
+    return `<span class="rounded-full px-2.5 py-1 text-[10px] font-extrabold ${map[status]||'bg-slate-100 text-slate-600'}">${escAdminMeetingV112(status)}</span>`;
+  }
+  function adminMeetingV112Date(date,time){
+    if(!date)return '—';
+    try{return new Date(`${date}T${time||'00:00'}`).toLocaleString('en-PK',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});}catch(e){return `${date} ${time||''}`;}
+  }
+
+  function initAdminMeetingControlV112(){
+    setAdminMeetingV112Tab(adminMeetingV112ActiveTab||'schedule',false);
+    renderAdminMeetingV112All();
+  }
+  function setAdminMeetingV112Tab(tab,scroll=true){
+    adminMeetingV112ActiveTab=tab;
+    document.querySelectorAll('.admin-meeting-v112-panel').forEach(p=>p.classList.add('hidden'));
+    const panel=document.getElementById('adminMeetingV112Panel'+tab.charAt(0).toUpperCase()+tab.slice(1));
+    if(panel)panel.classList.remove('hidden');
+    document.querySelectorAll('.admin-meeting-v112-tab').forEach(btn=>{
+      btn.classList.remove('bg-teal-600','text-white');
+      btn.classList.add('text-slate-600','dark:text-zinc-300');
+    });
+    const active=document.getElementById('adminMeetingV112Tab'+tab.charAt(0).toUpperCase()+tab.slice(1));
+    if(active){active.classList.add('bg-teal-600','text-white');active.classList.remove('text-slate-600','dark:text-zinc-300');}
+    if(tab==='schedule')renderAdminMeetingV112Sessions();
+    if(tab==='requests')renderAdminMeetingV112Requests();
+    if(scroll)document.getElementById('onlineMeetingsPage')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function renderAdminMeetingV112All(){renderAdminMeetingV112Summary();renderAdminMeetingV112Sessions();renderAdminMeetingV112Requests();}
+  function renderAdminMeetingV112Summary(){
+    const s=getAdminMeetingV112State();
+    const active=s.sessions.filter(x=>['Scheduled','Live'].includes(x.status));
+    const pending=s.requests.filter(x=>x.status==='Pending'||x.status==='Reschedule Requested');
+    const approved=s.requests.filter(x=>x.status==='Approved');
+    const classes=active.filter(x=>x.type==='Online Class');
+    const staff=active.filter(x=>['Teacher Meeting','Staff Meeting','School Briefing'].includes(x.type));
+    const put=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+    put('adminMeetingsScheduledCount',active.length);put('adminMeetingsPendingCount',pending.length);put('adminMeetingsClassCount',classes.length);put('adminMeetingsStaffCount',staff.length);put('adminMeetingsApprovedCount',approved.length);put('adminMeetingRequestHeaderCount',pending.length);
+  }
+  function renderAdminMeetingV112Sessions(){
+    const body=document.getElementById('adminMeetingV112ScheduleBody');if(!body)return;
+    const state=getAdminMeetingV112State();
+    const type=document.getElementById('adminMeetingV112ScheduleTypeFilter')?.value||'all';
+    const q=(document.getElementById('adminMeetingV112ScheduleSearch')?.value||'').trim().toLowerCase();
+    const rows=state.sessions.filter(x=>(type==='all'||x.type===type)&&(!q||`${x.title} ${x.audience} ${x.host} ${x.type}`.toLowerCase().includes(q)));
+    if(!rows.length){body.innerHTML='<tr><td colspan="7" class="px-5 py-10 text-center text-sm text-slate-400">No sessions found.</td></tr>';return;}
+    body.innerHTML=rows.map(x=>`<tr>
+      <td class="px-5 py-4"><p class="font-extrabold">${escAdminMeetingV112(x.title)}</p><p class="mt-1 text-xs text-slate-400">${escAdminMeetingV112(x.type)} · ${escAdminMeetingV112(x.provider||'Provider pending')}</p></td>
+      <td class="px-5 py-4"><p class="font-bold">${escAdminMeetingV112(x.audience)}</p><p class="mt-1 text-[10px] text-slate-400">Shared by participant role</p></td>
+      <td class="px-5 py-4">${escAdminMeetingV112(x.host)}</td>
+      <td class="px-5 py-4"><p class="font-bold">${escAdminMeetingV112(adminMeetingV112Date(x.date,x.time))}</p><p class="mt-1 text-[10px] text-slate-400">${escAdminMeetingV112(x.duration||'45 min')}</p></td>
+      <td class="px-5 py-4"><span class="rounded-lg bg-slate-100 px-2 py-1 text-[10px] font-bold text-slate-600 dark:bg-zinc-800 dark:text-zinc-300">${escAdminMeetingV112(x.source)}</span></td>
+      <td class="px-5 py-4">${badgeAdminMeetingV112(x.status)}</td>
+      <td class="px-5 py-4"><div class="flex flex-wrap gap-1.5"><button onclick="adminMeetingV112SetSessionStatus('${x.id}','Live')" class="rounded-lg bg-emerald-600 px-2.5 py-2 text-[10px] font-extrabold text-white">Live</button><button onclick="adminMeetingV112SetSessionStatus('${x.id}','Completed')" class="rounded-lg border border-slate-200 px-2.5 py-2 text-[10px] font-bold dark:border-zinc-700">Complete</button><button onclick="adminMeetingV112RescheduleSession('${x.id}')" class="rounded-lg border border-slate-200 px-2.5 py-2 text-[10px] font-bold dark:border-zinc-700">Reschedule</button><button onclick="adminMeetingV112SetSessionStatus('${x.id}','Cancelled')" class="rounded-lg border border-rose-200 px-2.5 py-2 text-[10px] font-bold text-rose-600 dark:border-rose-900/50">Cancel</button></div></td>
+    </tr>`).join('');
+  }
+  function renderAdminMeetingV112Requests(){
+    const wrap=document.getElementById('adminMeetingV112RequestsList');if(!wrap)return;
+    const state=getAdminMeetingV112State();
+    const f=document.getElementById('adminMeetingV112RequestFilter')?.value||'all';
+    const rows=state.requests.filter(r=>f==='all'||r.status===f);
+    if(!rows.length){wrap.innerHTML='<div class="p-10 text-center text-sm text-slate-400">No requests in this status.</div>';return;}
+    wrap.innerHTML=rows.map(r=>`<article class="p-5">
+      <div class="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+        <div class="min-w-0"><div class="flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-extrabold text-slate-600 dark:bg-zinc-800 dark:text-zinc-300">${escAdminMeetingV112(r.kind)}</span>${badgeAdminMeetingV112(r.status)}</div><h3 class="mt-3 text-base font-extrabold">${escAdminMeetingV112(r.requester)} wants to meet ${escAdminMeetingV112(r.teacher)}</h3><p class="mt-1 text-xs text-slate-500">${escAdminMeetingV112(r.student)}</p><div class="mt-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-zinc-950 dark:text-zinc-300">${escAdminMeetingV112(r.reason)}</div><div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-slate-500"><span><b>Preferred:</b> ${escAdminMeetingV112(r.preferred)}</span><span><b>Submitted:</b> ${escAdminMeetingV112(r.submitted)}</span><span><b>Request ID:</b> ${escAdminMeetingV112(r.id)}</span></div></div>
+        <div class="flex shrink-0 flex-wrap gap-2">${r.status==='Pending'||r.status==='Reschedule Requested'?`<button onclick="approveAdminMeetingV112Request('${r.id}')" class="rounded-xl bg-teal-600 px-3 py-2.5 text-xs font-extrabold text-white"><i class="fa-solid fa-check mr-1"></i>Approve & Schedule</button><button onclick="adminMeetingV112RequestReschedule('${r.id}')" class="rounded-xl border border-violet-200 px-3 py-2.5 text-xs font-bold text-violet-700 dark:border-violet-900/50 dark:text-violet-300">Ask Reschedule</button><button onclick="adminMeetingV112DeclineRequest('${r.id}')" class="rounded-xl border border-rose-200 px-3 py-2.5 text-xs font-bold text-rose-600 dark:border-rose-900/50">Decline</button>`:`<button onclick="showToast('Request record opened. Approved meetings are controlled from Schedule tab.')" class="rounded-xl border border-slate-200 px-3 py-2.5 text-xs font-bold dark:border-zinc-700">View Record</button>`}</div>
+      </div>
+    </article>`).join('');
+  }
+  function approveAdminMeetingV112Request(id){
+    const state=getAdminMeetingV112State();const req=state.requests.find(r=>r.id===id);if(!req)return;
+    const date=prompt('Final meeting date (YYYY-MM-DD):','2026-09-26');if(!date)return;
+    const time=prompt('Final meeting time (HH:MM):','16:00');if(!time)return;
+    const provider=prompt('Provider: Google Meet / Zoom / Microsoft Teams','Google Meet')||'Google Meet';
+    const link=prompt('Meeting link (demo can be left blank):','https://meet.google.com/demo-approved')||'';
+    const type=req.kind.startsWith('Parent')?'Parent-Teacher Meeting':'Student-Teacher Meeting';
+    const sessionId='MTG-'+String(Date.now()).slice(-7);
+    state.sessions.unshift({id:sessionId,type,title:`${type} — ${req.requester} / ${req.teacher}`,audience:req.kind.startsWith('Parent')?`${req.requester} (Parent)`:req.requester,host:req.teacher,date,time,duration:'30 min',provider,link,source:`Approved ${req.kind} Request`,status:'Scheduled',requestId:req.id});
+    req.status='Approved';req.approvedSessionId=sessionId;req.approvedAt=new Date().toISOString();
+    saveAdminMeetingV112State(state);renderAdminMeetingV112All();
+    if(typeof showToast==='function')showToast('Request approved. Same meeting is now ready to sync to Teacher and requester portal.');
+  }
+  function adminMeetingV112RequestReschedule(id){
+    const state=getAdminMeetingV112State();const req=state.requests.find(r=>r.id===id);if(!req)return;req.status='Reschedule Requested';saveAdminMeetingV112State(state);renderAdminMeetingV112All();if(typeof showToast==='function')showToast('Reschedule requested from requester.');
+  }
+  function adminMeetingV112DeclineRequest(id){
+    if(!confirm('Decline this meeting request?'))return;const state=getAdminMeetingV112State();const req=state.requests.find(r=>r.id===id);if(!req)return;req.status='Declined';saveAdminMeetingV112State(state);renderAdminMeetingV112All();if(typeof showToast==='function')showToast('Meeting request declined.');
+  }
+  function adminMeetingV112SetSessionStatus(id,status){
+    if(status==='Cancelled'&&!confirm('Cancel this official session?'))return;const state=getAdminMeetingV112State();const s=state.sessions.find(x=>x.id===id);if(!s)return;s.status=status;saveAdminMeetingV112State(state);renderAdminMeetingV112All();if(typeof showToast==='function')showToast(`Session marked ${status}.`);
+  }
+  function adminMeetingV112RescheduleSession(id){
+    const state=getAdminMeetingV112State();const s=state.sessions.find(x=>x.id===id);if(!s)return;const date=prompt('New date (YYYY-MM-DD):',s.date);if(!date)return;const time=prompt('New time (HH:MM):',s.time);if(!time)return;s.date=date;s.time=time;s.status='Scheduled';saveAdminMeetingV112State(state);renderAdminMeetingV112All();if(typeof showToast==='function')showToast('Session rescheduled. All linked portals will use the updated schedule.');
+  }
+  function updateAdminMeetingV112CreateHint(){
+    const type=document.getElementById('adminMeetingV112CreateType')?.value||'';const note=document.getElementById('adminMeetingV112CreateHint');if(!note)return;
+    const hints={'Online Class':'Choose the class as Audience and the subject teacher as Host. Students will later read this same published session.','Teacher Meeting':'Use All Teachers or Selected Teachers as the audience. Admin/Principal can be host.','Staff Meeting':'Use All Staff or Selected Staff. Suitable for HR, accounts, library, reception and support teams.','Parent-Teacher Meeting':'For a direct Admin-created parent meeting. If the parent submitted a request, approve it from Requests instead.','Student-Teacher Meeting':'For a direct Admin-created student support meeting. If student requested it, approve from Requests instead.','School Briefing':'Use for a school-wide staff/teacher briefing.'};
+    note.textContent=hints[type]||'';note.classList.toggle('hidden',!type);
+  }
+  function createAdminMeetingV112Session(event){
+    event.preventDefault();
+    const get=id=>document.getElementById(id)?.value?.trim()||'';
+    const state=getAdminMeetingV112State();
+    const record={id:'MTG-'+String(Date.now()).slice(-7),type:get('adminMeetingV112CreateType'),title:get('adminMeetingV112CreateTitle'),audience:get('adminMeetingV112CreateAudience'),host:get('adminMeetingV112CreateHost'),date:get('adminMeetingV112CreateDate'),time:get('adminMeetingV112CreateTime'),duration:get('adminMeetingV112CreateDuration')||'45 min',provider:get('adminMeetingV112CreateProvider')||'Google Meet',link:get('adminMeetingV112CreateLink'),notes:get('adminMeetingV112CreateNotes'),source:'Admin Created',status:'Scheduled',requestId:null};
+    state.sessions.unshift(record);saveAdminMeetingV112State(state);event.target.reset();updateAdminMeetingV112CreateHint();renderAdminMeetingV112All();setAdminMeetingV112Tab('schedule');if(typeof showToast==='function')showToast('Official session scheduled and published in Admin prototype.');
+  }
+
+
+
+  // ===== V113 CENTRAL MEETING APPROVAL FLOW =====
+  const ADMIN_MEETING_V113_KEY='juniCoreSchoolAdminMeetingControlV113';
+  let adminMeetingV113ActiveTab='requests';
+  const adminMeetingV113Seed={
+    requests:[
+      {id:'MR-260918-001',sourceRole:'Student',sourceName:'Ayesha Khan',targetRole:'Teacher',targetName:'Mr. Hamza Tariq',related:'Grade 10-A · Mathematics',reason:'Need guidance about mathematics exam preparation.',preferred:'25 Sep · 2:30 PM',submitted:'2026-09-18T11:05:00+05:00',status:'Pending Admin Approval',approvedSessionId:null},
+      {id:'MR-260918-002',sourceRole:'Parent',sourceName:'Nadia Ahmed',targetRole:'Teacher',targetName:'Ms. Ayesha Malik',related:'Sara Ahmed · Grade 8-A',reason:'Discuss recent English progress and reading support.',preferred:'24 Sep · 4:30 PM',submitted:'2026-09-18T10:20:00+05:00',status:'Pending Admin Approval',approvedSessionId:null},
+      {id:'MR-260918-003',sourceRole:'Teacher',sourceName:'Mr. Hamza Tariq',targetRole:'Parent',targetName:'Muhammad Hassan',related:'Ali Hassan · Grade 7-A',reason:'Discuss a support plan for mathematics practice at home.',preferred:'26 Sep · 4:00 PM',submitted:'2026-09-18T09:15:00+05:00',status:'Pending Admin Approval',approvedSessionId:null},
+      {id:'MR-260917-004',sourceRole:'Teacher',sourceName:'Ms. Ayesha Malik',targetRole:'Student',targetName:'Sara Ahmed',related:'Grade 8-A · English',reason:'Short online support meeting about reading targets.',preferred:'23 Sep · 1:30 PM',submitted:'2026-09-17T12:10:00+05:00',status:'Approved & Forwarded',approvedSessionId:'V113-MTG-004'}
+    ],
+    sessions:[
+      {id:'V113-MTG-001',type:'Online Class',title:'Grade 8 Mathematics Live Class',from:'Mr. Hamza Tariq',to:'Grade 8-A Students',date:'2026-09-21',time:'10:00',provider:'Google Meet',link:'https://meet.google.com/demo-grade8',source:'Admin Created',status:'Scheduled',requestId:null},
+      {id:'V113-MTG-004',type:'Student-Teacher Meeting',title:'English Support — Ms. Ayesha Malik / Sara Ahmed',from:'Ms. Ayesha Malik',to:'Sara Ahmed',date:'2026-09-23',time:'13:30',provider:'Google Meet',link:'https://meet.google.com/demo-support',source:'Approved Teacher Request',status:'Scheduled',requestId:'MR-260917-004'}
+    ]
+  };
+  function getAdminMeetingV113State(){
+    try{const x=JSON.parse(localStorage.getItem(ADMIN_MEETING_V113_KEY)||'null');if(x&&Array.isArray(x.requests)&&Array.isArray(x.sessions))return x;}catch(e){}
+    return JSON.parse(JSON.stringify(adminMeetingV113Seed));
+  }
+  function saveAdminMeetingV113State(x){localStorage.setItem(ADMIN_MEETING_V113_KEY,JSON.stringify(x));}
+  function escV113(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+  function v113Badge(status){
+    const m={'Pending Admin Approval':'bg-amber-100 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300','Approved & Forwarded':'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300','Returned':'bg-violet-100 text-violet-700 dark:bg-violet-950/30 dark:text-violet-300','Rejected':'bg-rose-100 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300','Cancelled by Admin':'bg-slate-100 text-slate-600 dark:bg-zinc-800 dark:text-zinc-300',Scheduled:'bg-blue-100 text-blue-700 dark:bg-blue-950/30 dark:text-blue-300',Live:'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300',Completed:'bg-slate-100 text-slate-600 dark:bg-zinc-800 dark:text-zinc-300',Cancelled:'bg-rose-100 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300'};
+    return `<span class="rounded-full px-2.5 py-1 text-[10px] font-extrabold ${m[status]||'bg-slate-100 text-slate-600'}">${escV113(status)}</span>`;
+  }
+  function initAdminMeetingControlV113(){setAdminMeetingV113Tab(adminMeetingV113ActiveTab,false);renderAdminMeetingV113All();}
+  function setAdminMeetingV113Tab(tab,scroll=true){
+    adminMeetingV113ActiveTab=tab;
+    document.querySelectorAll('.admin-meeting-v113-panel').forEach(x=>x.classList.add('hidden'));
+    const panel=document.getElementById('adminMeetingV113Panel'+tab.charAt(0).toUpperCase()+tab.slice(1));if(panel)panel.classList.remove('hidden');
+    document.querySelectorAll('.admin-meeting-v113-tab').forEach(x=>{x.classList.remove('bg-teal-600','text-white');x.classList.add('text-slate-600','dark:text-zinc-300');});
+    const active=document.getElementById('adminMeetingV113Tab'+tab.charAt(0).toUpperCase()+tab.slice(1));if(active){active.classList.add('bg-teal-600','text-white');active.classList.remove('text-slate-600','dark:text-zinc-300');}
+    if(tab==='requests')renderAdminMeetingV113Requests();if(tab==='schedule')renderAdminMeetingV113Sessions();
+    if(scroll)document.getElementById('onlineMeetingsPage')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function renderAdminMeetingV113All(){renderAdminMeetingV113Summary();renderAdminMeetingV113Requests();renderAdminMeetingV113Sessions();}
+  function renderAdminMeetingV113Summary(){
+    const s=getAdminMeetingV113State(), pending=s.requests.filter(x=>x.status==='Pending Admin Approval'||x.status==='Returned').length, forwarded=s.requests.filter(x=>x.status==='Approved & Forwarded').length, scheduled=s.sessions.filter(x=>['Scheduled','Live'].includes(x.status)).length;
+    [['adminMeetingV113PendingCount',pending],['adminMeetingV113HeaderPending',pending],['adminMeetingV113ForwardedCount',forwarded],['adminMeetingV113ScheduledCount',scheduled]].forEach(([id,v])=>{const e=document.getElementById(id);if(e)e.textContent=v;});
+  }
+  function renderAdminMeetingV113Requests(){
+    const wrap=document.getElementById('adminMeetingV113RequestsList');if(!wrap)return;
+    const s=getAdminMeetingV113State();
+    const q=(document.getElementById('adminMeetingV113RequestSearch')?.value||'').trim().toLowerCase(), sf=document.getElementById('adminMeetingV113SourceFilter')?.value||'all', tf=document.getElementById('adminMeetingV113TargetFilter')?.value||'all', st=document.getElementById('adminMeetingV113StatusFilter')?.value||'all', sort=document.getElementById('adminMeetingV113Sort')?.value||'newest';
+    let rows=s.requests.filter(r=>(sf==='all'||r.sourceRole===sf)&&(tf==='all'||r.targetRole===tf)&&(st==='all'||r.status===st)&&(!q||`${r.id} ${r.sourceName} ${r.targetName} ${r.reason} ${r.related}`.toLowerCase().includes(q)));
+    rows.sort((a,b)=>sort==='sender'?a.sourceName.localeCompare(b.sourceName):sort==='target'?a.targetName.localeCompare(b.targetName):new Date(b.submitted)-new Date(a.submitted));
+    if(!rows.length){wrap.innerHTML='<div class="p-10 text-center text-sm text-slate-400">No meeting requests found.</div>';return;}
+    wrap.innerHTML=rows.map(r=>`<article class="p-5">
+      <div class="flex flex-col gap-4 2xl:flex-row 2xl:items-start 2xl:justify-between">
+        <div class="min-w-0">
+          <div class="flex flex-wrap items-center gap-2"><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-extrabold text-slate-600 dark:bg-zinc-800 dark:text-zinc-300">${escV113(r.sourceRole)} → ${escV113(r.targetRole)}</span>${v113Badge(r.status)}</div>
+          <h3 class="mt-3 text-base font-extrabold">${escV113(r.sourceName)} <span class="text-slate-400">requests meeting with</span> ${escV113(r.targetName)}</h3>
+          <p class="mt-1 text-xs font-bold text-teal-700 dark:text-teal-300">${escV113(r.related)}</p>
+          <div class="mt-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-zinc-950 dark:text-zinc-300">${escV113(r.reason)}</div>
+          <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-slate-500"><span><b>Preferred:</b> ${escV113(r.preferred)}</span><span><b>ID:</b> ${escV113(r.id)}</span></div>
+        </div>
+        <div class="flex shrink-0 flex-wrap gap-2">
+          ${r.status==='Pending Admin Approval'||r.status==='Returned'?`<button onclick="approveAdminMeetingV113('${r.id}')" class="rounded-xl bg-teal-600 px-3 py-2.5 text-xs font-extrabold text-white"><i class="fa-solid fa-check mr-1"></i>Approve & Forward</button><button onclick="returnAdminMeetingV113('${r.id}')" class="rounded-xl border border-violet-200 px-3 py-2.5 text-xs font-bold text-violet-700 dark:border-violet-900/50 dark:text-violet-300">Return</button><button onclick="rejectAdminMeetingV113('${r.id}')" class="rounded-xl border border-rose-200 px-3 py-2.5 text-xs font-bold text-rose-600 dark:border-rose-900/50">Reject</button>`:`<button onclick="setAdminMeetingV113Tab('schedule')" class="rounded-xl border border-slate-200 px-3 py-2.5 text-xs font-bold dark:border-zinc-700">Official Record</button>`}
+          <button onclick="removeAdminMeetingV113Request('${r.id}')" class="rounded-xl bg-rose-50 px-3 py-2.5 text-xs font-extrabold text-rose-700 dark:bg-rose-950/20 dark:text-rose-300"><i class="fa-solid fa-trash mr-1"></i>Full Remove</button>
+        </div>
+      </div>
+    </article>`).join('');
+  }
+  function meetingTypeV113(r){
+    if((r.sourceRole==='Parent'&&r.targetRole==='Teacher')||(r.sourceRole==='Teacher'&&r.targetRole==='Parent'))return 'Parent-Teacher Meeting';
+    if((r.sourceRole==='Student'&&r.targetRole==='Teacher')||(r.sourceRole==='Teacher'&&r.targetRole==='Student'))return 'Student-Teacher Meeting';
+    return 'Teacher Meeting';
+  }
+  function approveAdminMeetingV113(id){
+    const s=getAdminMeetingV113State(),r=s.requests.find(x=>x.id===id);if(!r)return;
+    const date=prompt('Final date (YYYY-MM-DD):','2026-09-26');if(!date)return;
+    const time=prompt('Final time (HH:MM):','16:00');if(!time)return;
+    const provider=prompt('Provider: Google Meet / Zoom / Microsoft Teams','Google Meet')||'Google Meet';
+    const link=prompt('Meeting link:','https://meet.google.com/approved-demo')||'';
+    const mid='V113-MTG-'+String(Date.now()).slice(-7);
+    s.sessions.unshift({id:mid,type:meetingTypeV113(r),title:`${r.sourceName} ↔ ${r.targetName}`,from:r.sourceName,to:r.targetName,date,time,provider,link,source:`Approved ${r.sourceRole} Request`,status:'Scheduled',requestId:r.id});
+    r.status='Approved & Forwarded';r.approvedSessionId=mid;r.approvedAt=new Date().toISOString();
+    saveAdminMeetingV113State(s);renderAdminMeetingV113All();if(typeof showToast==='function')showToast('Approved. Official meeting is now ready for the target portal.');
+  }
+  function returnAdminMeetingV113(id){const s=getAdminMeetingV113State(),r=s.requests.find(x=>x.id===id);if(!r)return;r.status='Returned';r.adminNote=prompt('Reason / information required:','Please update preferred time or details.')||'';saveAdminMeetingV113State(s);renderAdminMeetingV113All();showToast?.('Request returned to sender.');}
+  function rejectAdminMeetingV113(id){if(!confirm('Reject this meeting request?'))return;const s=getAdminMeetingV113State(),r=s.requests.find(x=>x.id===id);if(!r)return;r.status='Rejected';saveAdminMeetingV113State(s);renderAdminMeetingV113All();showToast?.('Meeting request rejected.');}
+  function removeAdminMeetingV113Request(id){
+    if(!confirm('Permanently remove this request and any linked scheduled meeting?'))return;
+    const s=getAdminMeetingV113State(),r=s.requests.find(x=>x.id===id);if(!r)return;
+    if(r.approvedSessionId)s.sessions=s.sessions.filter(x=>x.id!==r.approvedSessionId);
+    s.requests=s.requests.filter(x=>x.id!==id);saveAdminMeetingV113State(s);renderAdminMeetingV113All();showToast?.('Request fully removed.');
+  }
+  function renderAdminMeetingV113Sessions(){
+    const body=document.getElementById('adminMeetingV113ScheduleBody');if(!body)return;const s=getAdminMeetingV113State(),q=(document.getElementById('adminMeetingV113ScheduleSearch')?.value||'').trim().toLowerCase();
+    const rows=s.sessions.filter(x=>!q||`${x.title} ${x.from} ${x.to} ${x.type}`.toLowerCase().includes(q));
+    if(!rows.length){body.innerHTML='<tr><td colspan="7" class="px-5 py-10 text-center text-sm text-slate-400">No official meetings found.</td></tr>';return;}
+    body.innerHTML=rows.map(x=>`<tr><td class="px-5 py-4"><p class="font-extrabold">${escV113(x.title)}</p><p class="mt-1 text-xs text-slate-400">${escV113(x.type)}</p></td><td class="px-5 py-4"><b>${escV113(x.from)}</b><span class="mx-2 text-slate-400">→</span><b>${escV113(x.to)}</b></td><td class="px-5 py-4">${escV113(x.date)} · ${escV113(x.time)}</td><td class="px-5 py-4">${escV113(x.provider)}</td><td class="px-5 py-4"><span class="rounded-lg bg-slate-100 px-2 py-1 text-[10px] font-bold dark:bg-zinc-800">${escV113(x.source)}</span></td><td class="px-5 py-4">${v113Badge(x.status)}</td><td class="px-5 py-4"><div class="flex flex-wrap gap-1.5"><button onclick="setAdminMeetingV113SessionStatus('${x.id}','Live')" class="rounded-lg bg-emerald-600 px-2.5 py-2 text-[10px] font-extrabold text-white">Live</button><button onclick="setAdminMeetingV113SessionStatus('${x.id}','Completed')" class="rounded-lg border border-slate-200 px-2.5 py-2 text-[10px] font-bold dark:border-zinc-700">Complete</button><button onclick="rescheduleAdminMeetingV113('${x.id}')" class="rounded-lg border border-slate-200 px-2.5 py-2 text-[10px] font-bold dark:border-zinc-700">Reschedule</button><button onclick="setAdminMeetingV113SessionStatus('${x.id}','Cancelled')" class="rounded-lg border border-rose-200 px-2.5 py-2 text-[10px] font-bold text-rose-600">Cancel</button><button onclick="removeAdminMeetingV113Session('${x.id}')" class="rounded-lg bg-rose-50 px-2.5 py-2 text-[10px] font-extrabold text-rose-700 dark:bg-rose-950/20">Remove</button></div></td></tr>`).join('');
+  }
+  function setAdminMeetingV113SessionStatus(id,status){if(status==='Cancelled'&&!confirm('Cancel this official meeting?'))return;const s=getAdminMeetingV113State(),x=s.sessions.find(y=>y.id===id);if(!x)return;x.status=status;saveAdminMeetingV113State(s);renderAdminMeetingV113All();showToast?.(`Meeting marked ${status}.`);}
+  function rescheduleAdminMeetingV113(id){const s=getAdminMeetingV113State(),x=s.sessions.find(y=>y.id===id);if(!x)return;const d=prompt('New date:',x.date);if(!d)return;const t=prompt('New time:',x.time);if(!t)return;x.date=d;x.time=t;x.status='Scheduled';saveAdminMeetingV113State(s);renderAdminMeetingV113All();showToast?.('Meeting rescheduled.');}
+  function removeAdminMeetingV113Session(id){
+    if(!confirm('Permanently remove this official meeting?'))return;
+    const s=getAdminMeetingV113State(),x=s.sessions.find(y=>y.id===id);if(!x)return;
+    if(x.requestId){const r=s.requests.find(y=>y.id===x.requestId);if(r){r.status='Cancelled by Admin';r.approvedSessionId=null;}}
+    s.sessions=s.sessions.filter(y=>y.id!==id);saveAdminMeetingV113State(s);renderAdminMeetingV113All();showToast?.('Official meeting removed.');
+  }
+  function createAdminMeetingV113Session(e){
+    e.preventDefault();const val=id=>document.getElementById(id)?.value?.trim()||'',s=getAdminMeetingV113State();
+    s.sessions.unshift({id:'V113-MTG-'+String(Date.now()).slice(-7),type:val('adminMeetingV113CreateType'),title:val('adminMeetingV113CreateTitle'),from:val('adminMeetingV113CreateFrom'),to:val('adminMeetingV113CreateTo'),date:val('adminMeetingV113CreateDate'),time:val('adminMeetingV113CreateTime'),provider:val('adminMeetingV113CreateProvider'),link:val('adminMeetingV113CreateLink'),source:'Admin Created',status:'Scheduled',requestId:null});
+    saveAdminMeetingV113State(s);e.target.reset();renderAdminMeetingV113All();setAdminMeetingV113Tab('schedule');showToast?.('Admin session created and published.');
+  }
+
+  // ===== V113 CENTRAL COMPLAINT APPROVAL & ROUTING =====
+  const ADMIN_COMPLAINT_V113_KEY='juniCoreSchoolAdminComplaintControlV113';
+  const adminComplaintV113Seed={
+    cases:[
+      {id:'CMP-260918-101',sourceRole:'Student',sourceName:'Ali Hassan',targetRole:'Teacher',targetName:'Mr. Hamza Tariq',related:'Grade 7-A · Mathematics',category:'Academic',priority:'Medium',subject:'Assessment clarification',details:'I need clarification about the marking of a recent mathematics assessment.',submitted:'2026-09-18T11:40:00+05:00',status:'Pending Admin Approval',targetVisible:false},
+      {id:'CMP-260918-102',sourceRole:'Parent',sourceName:'Nadia Ahmed',targetRole:'Teacher',targetName:'Ms. Ayesha Malik',related:'Sara Ahmed · Grade 8-A',category:'Academic',priority:'Normal',subject:'Homework feedback concern',details:'Please review the feedback frequency on recent English homework.',submitted:'2026-09-18T10:25:00+05:00',status:'Pending Admin Approval',targetVisible:false},
+      {id:'CMP-260918-103',sourceRole:'Teacher',sourceName:'Mr. Hamza Tariq',targetRole:'Parent',targetName:'Muhammad Hassan',related:'Ali Hassan · Grade 7-A',category:'Student Support',priority:'Medium',subject:'Repeated homework follow-up',details:'Requesting parent support regarding repeated incomplete mathematics practice.',submitted:'2026-09-18T09:00:00+05:00',status:'Pending Admin Approval',targetVisible:false},
+      {id:'CMP-260917-104',sourceRole:'Teacher',sourceName:'Ms. Ayesha Malik',targetRole:'Department',targetName:'Facilities Office',related:'Room M-208',category:'Facilities',priority:'High',subject:'Classroom projector issue',details:'Projector is not working consistently during lessons.',submitted:'2026-09-17T13:15:00+05:00',status:'Approved & Forwarded',targetVisible:true},
+      {id:'CMP-260916-105',sourceRole:'Parent',sourceName:'Muhammad Hassan',targetRole:'Department',targetName:'Transport Office',related:'Ali Hassan · Route 01',category:'Transport',priority:'Medium',subject:'Pickup timing concern',details:'Pickup timing has varied over the last few days.',submitted:'2026-09-16T15:10:00+05:00',status:'In Review',targetVisible:true},
+      {id:'CMP-260915-106',sourceRole:'Student',sourceName:'Sara Ahmed',targetRole:'Teacher',targetName:'Ms. Ayesha Malik',related:'Grade 8-A · English',category:'Academic',priority:'Normal',subject:'Reading material request',details:'Requested additional reading material and received support.',submitted:'2026-09-15T12:20:00+05:00',status:'Resolved',targetVisible:true}
+    ]
+  };
+  function getAdminComplaintV113State(){try{const x=JSON.parse(localStorage.getItem(ADMIN_COMPLAINT_V113_KEY)||'null');if(x&&Array.isArray(x.cases))return x;}catch(e){}return JSON.parse(JSON.stringify(adminComplaintV113Seed));}
+  function saveAdminComplaintV113State(x){localStorage.setItem(ADMIN_COMPLAINT_V113_KEY,JSON.stringify(x));}
+  function complaintBadgeV113(status){
+    const m={'Pending Admin Approval':'bg-amber-100 text-amber-700 dark:bg-amber-950/30 dark:text-amber-300','Approved & Forwarded':'bg-blue-100 text-blue-700 dark:bg-blue-950/30 dark:text-blue-300','In Review':'bg-violet-100 text-violet-700 dark:bg-violet-950/30 dark:text-violet-300',Resolved:'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/30 dark:text-emerald-300',Returned:'bg-orange-100 text-orange-700 dark:bg-orange-950/30 dark:text-orange-300',Rejected:'bg-rose-100 text-rose-700 dark:bg-rose-950/30 dark:text-rose-300'};
+    return `<span class="rounded-full px-2.5 py-1 text-[10px] font-extrabold ${m[status]||'bg-slate-100 text-slate-600'}">${escV113(status)}</span>`;
+  }
+  function priorityBadgeV113(p){const c=p==='High'?'bg-rose-100 text-rose-700':p==='Medium'?'bg-amber-100 text-amber-700':'bg-slate-100 text-slate-600';return `<span class="rounded-full px-2.5 py-1 text-[10px] font-extrabold ${c}">${escV113(p)}</span>`;}
+  function initAdminComplaintControlV113(){renderAdminComplaintV113();}
+  function renderAdminComplaintV113(){
+    const wrap=document.getElementById('adminComplaintV113List');if(!wrap)return;
+    const s=getAdminComplaintV113State(),q=(document.getElementById('adminComplaintV113Search')?.value||'').trim().toLowerCase(),sf=document.getElementById('adminComplaintV113SourceFilter')?.value||'all',tf=document.getElementById('adminComplaintV113TargetFilter')?.value||'all',st=document.getElementById('adminComplaintV113StatusFilter')?.value||'all',pf=document.getElementById('adminComplaintV113PriorityFilter')?.value||'all',sort=document.getElementById('adminComplaintV113Sort')?.value||'newest';
+    let rows=s.cases.filter(c=>(sf==='all'||c.sourceRole===sf)&&(tf==='all'||c.targetRole===tf)&&(st==='all'||c.status===st)&&(pf==='all'||c.priority===pf)&&(!q||`${c.id} ${c.sourceName} ${c.targetName} ${c.subject} ${c.details} ${c.related}`.toLowerCase().includes(q)));
+    const weight={High:3,Medium:2,Normal:1};rows.sort((a,b)=>sort==='priority'?(weight[b.priority]-weight[a.priority]):sort==='sender'?a.sourceName.localeCompare(b.sourceName):new Date(b.submitted)-new Date(a.submitted));
+    const all=s.cases,pending=all.filter(x=>x.status==='Pending Admin Approval'||x.status==='Returned').length,forwarded=all.filter(x=>x.status==='Approved & Forwarded').length,review=all.filter(x=>x.status==='In Review').length,resolved=all.filter(x=>x.status==='Resolved').length,high=all.filter(x=>x.priority==='High'&&x.status!=='Resolved').length;
+    [['adminComplaintV113PendingCount',pending],['adminComplaintSidebarPending',pending],['adminComplaintV113ForwardedCount',forwarded],['adminComplaintV113ReviewCount',review],['adminComplaintV113ResolvedCount',resolved],['adminComplaintV113HighCount',high]].forEach(([id,v])=>{const e=document.getElementById(id);if(e)e.textContent=v;});
+    if(!rows.length){wrap.innerHTML='<div class="p-10 text-center text-sm text-slate-400">No complaints found.</div>';return;}
+    wrap.innerHTML=rows.map(c=>`<article class="p-5">
+      <div class="flex flex-col gap-4 2xl:flex-row 2xl:items-start 2xl:justify-between">
+        <div class="min-w-0">
+          <div class="flex flex-wrap gap-2"><span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-extrabold dark:bg-zinc-800">${escV113(c.sourceRole)} → ${escV113(c.targetRole)}</span>${complaintBadgeV113(c.status)}${priorityBadgeV113(c.priority)}</div>
+          <h3 class="mt-3 text-base font-extrabold">${escV113(c.subject)}</h3>
+          <p class="mt-1 text-xs"><b>${escV113(c.sourceName)}</b> <span class="text-slate-400">→</span> <b>${escV113(c.targetName)}</b> · ${escV113(c.related)}</p>
+          <div class="mt-3 rounded-xl bg-slate-50 p-3 text-sm leading-6 text-slate-700 dark:bg-zinc-950 dark:text-zinc-300">${escV113(c.details)}</div>
+          <div class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-slate-500"><span><b>Case:</b> ${escV113(c.id)}</span><span><b>Category:</b> ${escV113(c.category)}</span><span><b>Target visible:</b> ${c.targetVisible?'Yes — approved':'No — Admin only'}</span></div>
+        </div>
+        <div class="flex shrink-0 flex-wrap gap-2">
+          ${c.status==='Pending Admin Approval'||c.status==='Returned'?`<button onclick="approveAdminComplaintV113('${c.id}')" class="rounded-xl bg-rose-600 px-3 py-2.5 text-xs font-extrabold text-white"><i class="fa-solid fa-check mr-1"></i>Approve & Forward</button><button onclick="returnAdminComplaintV113('${c.id}')" class="rounded-xl border border-orange-200 px-3 py-2.5 text-xs font-bold text-orange-700">Return</button><button onclick="rejectAdminComplaintV113('${c.id}')" class="rounded-xl border border-rose-200 px-3 py-2.5 text-xs font-bold text-rose-600">Reject</button>`:''}
+          ${c.status==='Approved & Forwarded'?`<button onclick="setAdminComplaintV113Status('${c.id}','In Review')" class="rounded-xl bg-violet-600 px-3 py-2.5 text-xs font-extrabold text-white">Start Review</button>`:''}
+          ${['Approved & Forwarded','In Review'].includes(c.status)?`<button onclick="reassignAdminComplaintV113('${c.id}')" class="rounded-xl border border-blue-200 px-3 py-2.5 text-xs font-bold text-blue-700">Reassign</button><button onclick="setAdminComplaintV113Status('${c.id}','Resolved')" class="rounded-xl bg-emerald-600 px-3 py-2.5 text-xs font-extrabold text-white">Resolve</button>`:''}
+          ${c.status==='Resolved'?`<button onclick="setAdminComplaintV113Status('${c.id}','In Review')" class="rounded-xl border border-violet-200 px-3 py-2.5 text-xs font-bold text-violet-700">Reopen</button>`:''}
+          <button onclick="removeAdminComplaintV113('${c.id}')" class="rounded-xl bg-rose-50 px-3 py-2.5 text-xs font-extrabold text-rose-700 dark:bg-rose-950/20 dark:text-rose-300"><i class="fa-solid fa-trash mr-1"></i>Full Remove</button>
+        </div>
+      </div>
+    </article>`).join('');
+  }
+  function approveAdminComplaintV113(id){
+    const s=getAdminComplaintV113State(),c=s.cases.find(x=>x.id===id);if(!c)return;
+    const target=prompt('Final target person / department:',c.targetName);if(!target)return;c.targetName=target;
+    c.adminNote=prompt('Admin forwarding note (optional):','Approved and forwarded for review.')||'';
+    c.status='Approved & Forwarded';c.targetVisible=true;c.approvedAt=new Date().toISOString();
+    saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.('Complaint approved and forwarded to the selected target.');
+  }
+  function returnAdminComplaintV113(id){const s=getAdminComplaintV113State(),c=s.cases.find(x=>x.id===id);if(!c)return;c.status='Returned';c.targetVisible=false;c.adminNote=prompt('Reason for return:','Please provide more details.')||'';saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.('Complaint returned to sender.');}
+  function rejectAdminComplaintV113(id){if(!confirm('Reject this complaint?'))return;const s=getAdminComplaintV113State(),c=s.cases.find(x=>x.id===id);if(!c)return;c.status='Rejected';c.targetVisible=false;saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.('Complaint rejected.');}
+  function setAdminComplaintV113Status(id,status){const s=getAdminComplaintV113State(),c=s.cases.find(x=>x.id===id);if(!c)return;c.status=status;c.targetVisible=!['Pending Admin Approval','Returned','Rejected'].includes(status);if(status==='Resolved')c.resolvedAt=new Date().toISOString();saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.(`Complaint marked ${status}.`);}
+  function reassignAdminComplaintV113(id){const s=getAdminComplaintV113State(),c=s.cases.find(x=>x.id===id);if(!c)return;const role=prompt('Target role: Teacher / Student / Parent / Staff / Department',c.targetRole);if(!role)return;const name=prompt('Target person / department:',c.targetName);if(!name)return;c.targetRole=role;c.targetName=name;c.targetVisible=true;c.status='Approved & Forwarded';saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.('Complaint reassigned by Admin.');}
+  function removeAdminComplaintV113(id){if(!confirm('Permanently remove this complaint from the Admin registry?'))return;const s=getAdminComplaintV113State();s.cases=s.cases.filter(x=>x.id!==id);saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.('Complaint fully removed.');}
+  function createAdminComplaintV113(){
+    const subject=prompt('Case subject:','Internal school issue');if(!subject)return;const target=prompt('Target person / department:','Facilities Office');if(!target)return;
+    const s=getAdminComplaintV113State();s.cases.unshift({id:'CMP-'+String(Date.now()).slice(-9),sourceRole:'Admin',sourceName:'School Admin',targetRole:'Department',targetName:target,related:'Admin-created internal case',category:'Internal',priority:'Normal',subject,details:prompt('Case details:','')||'',submitted:new Date().toISOString(),status:'Approved & Forwarded',targetVisible:true});
+    saveAdminComplaintV113State(s);renderAdminComplaintV113();showToast?.('Admin case created and routed.');
+  }
+
+
+
+  // ===== V114 shared portal migration + month-wise Admin history =====
+  const ADMIN_V114_MIGRATION_MEET=[{"id":"MR-JCX-SEP-001","sourceRole":"Student","sourceName":"Ali Khan","targetRole":"Teacher","targetName":"Ms. Sara Ahmed","related":"Grade 8-A \u00b7 English","reason":"I want to discuss my English progress and the next improvement targets.","preferred":"2026-09-25 \u00b7 14:30","submitted":"2026-09-18T11:30:00+05:00","status":"Pending Admin Approval","approvedSessionId":null},{"id":"MR-JCX-SEP-002","sourceRole":"Parent","sourceName":"Ahsan Khan","targetRole":"Teacher","targetName":"Ms. Sara Ahmed","related":"Ali Khan \u00b7 Grade 8-A","reason":"I would like a short progress meeting about attendance and English performance.","preferred":"2026-09-24 \u00b7 16:30","submitted":"2026-09-17T10:15:00+05:00","status":"Approved & Forwarded","approvedSessionId":"V113-MTG-JCX-SEP-002","approvedAt":"2026-09-17T12:00:00+05:00"},{"id":"MR-JCX-SEP-003","sourceRole":"Teacher","sourceName":"Ms. Sara Ahmed","targetRole":"Parent","targetName":"Ahsan Khan","related":"Ali Khan \u00b7 Grade 8-A","reason":"Request a parent meeting to discuss class participation and reading practice.","preferred":"2026-09-27 \u00b7 16:00","submitted":"2026-09-16T13:20:00+05:00","status":"Pending Admin Approval","approvedSessionId":null},{"id":"MR-JCX-AUG-001","sourceRole":"Teacher","sourceName":"Ms. Sara Ahmed","targetRole":"Student","targetName":"Ali Khan","related":"Grade 8-A \u00b7 English Support","reason":"Short support session for reading comprehension.","preferred":"2026-08-25 \u00b7 13:30","submitted":"2026-08-22T11:00:00+05:00","status":"Approved & Forwarded","approvedSessionId":"V113-MTG-JCX-AUG-001","approvedAt":"2026-08-22T15:00:00+05:00"},{"id":"MR-JCX-AUG-002","sourceRole":"Parent","sourceName":"Ahsan Khan","targetRole":"Teacher","targetName":"Ms. Sara Ahmed","related":"Ali Khan \u00b7 Grade 8-A","reason":"Requested a meeting about homework routine.","preferred":"2026-08-14 \u00b7 16:00","submitted":"2026-08-12T09:00:00+05:00","status":"Rejected","approvedSessionId":null},{"id":"MR-JCX-JUL-001","sourceRole":"Student","sourceName":"Ali Khan","targetRole":"Teacher","targetName":"Ms. Sara Ahmed","related":"Grade 8-A \u00b7 English","reason":"Requested guidance before the monthly assessment.","preferred":"2026-07-22 \u00b7 14:00","submitted":"2026-07-20T10:10:00+05:00","status":"Approved & Forwarded","approvedSessionId":"V113-MTG-JCX-JUL-001","approvedAt":"2026-07-20T12:10:00+05:00"}];
+  const ADMIN_V114_MIGRATION_SESS=[{"id":"V113-MTG-JCX-SEP-002","type":"Parent-Teacher Meeting","title":"Ahsan Khan \u2194 Ms. Sara Ahmed","from":"Ahsan Khan","to":"Ms. Sara Ahmed","date":"2026-09-24","time":"16:30","provider":"Google Meet","link":"https://meet.google.com/demo-parent-teacher","source":"Approved Parent Request","status":"Scheduled","requestId":"MR-JCX-SEP-002"},{"id":"V113-MTG-JCX-AUG-001","type":"Student-Teacher Meeting","title":"Ms. Sara Ahmed \u2194 Ali Khan","from":"Ms. Sara Ahmed","to":"Ali Khan","date":"2026-08-25","time":"13:30","provider":"Google Meet","link":"https://meet.google.com/demo-aug-support","source":"Approved Teacher Request","status":"Completed","requestId":"MR-JCX-AUG-001"},{"id":"V113-MTG-JCX-JUL-001","type":"Student-Teacher Meeting","title":"Ali Khan \u2194 Ms. Sara Ahmed","from":"Ali Khan","to":"Ms. Sara Ahmed","date":"2026-07-22","time":"14:00","provider":"Google Meet","link":"https://meet.google.com/demo-jul-guidance","source":"Approved Student Request","status":"Completed","requestId":"MR-JCX-JUL-001"},{"id":"V113-CLS-JCX-SEP-001","type":"Online Class","title":"Grade 8-A English Live Support","from":"Ms. Sara Ahmed","to":"Grade 8-A Students","date":"2026-09-22","time":"10:30","provider":"Google Meet","link":"https://meet.google.com/demo-grade8-english","source":"Admin Approved Class","status":"Scheduled","requestId":null}];
+  const ADMIN_V114_MIGRATION_COMP=[{"id":"CMP-JCX-SEP-001","sourceRole":"Student","sourceName":"Ali Khan","targetRole":"Teacher","targetName":"Ms. Sara Ahmed","related":"Grade 8-A \u00b7 English","category":"Academic","priority":"Medium","subject":"Assessment feedback clarification","details":"I need clarification on feedback from my recent English assessment.","submitted":"2026-09-18T10:40:00+05:00","status":"Pending Admin Approval","targetVisible":false},{"id":"CMP-JCX-SEP-002","sourceRole":"Parent","sourceName":"Ahsan Khan","targetRole":"Teacher","targetName":"Ms. Sara Ahmed","related":"Ali Khan \u00b7 Grade 8-A","category":"Academic","priority":"Normal","subject":"Homework feedback concern","details":"Please review the frequency of feedback on recent homework.","submitted":"2026-09-17T10:00:00+05:00","status":"Approved & Forwarded","targetVisible":true,"approvedAt":"2026-09-17T12:10:00+05:00"},{"id":"CMP-JCX-SEP-003","sourceRole":"Teacher","sourceName":"Ms. Sara Ahmed","targetRole":"Parent","targetName":"Ahsan Khan","related":"Ali Khan \u00b7 Grade 8-A","category":"Student Support","priority":"Medium","subject":"Homework follow-up required","details":"Requesting parent support for a repeated incomplete homework pattern.","submitted":"2026-09-16T11:20:00+05:00","status":"Pending Admin Approval","targetVisible":false},{"id":"CMP-JCX-AUG-001","sourceRole":"Teacher","sourceName":"Ms. Sara Ahmed","targetRole":"Department","targetName":"Facilities Office","related":"Room M-208","category":"Facilities","priority":"High","subject":"Projector issue","details":"Classroom projector needed technical attention.","submitted":"2026-08-20T09:15:00+05:00","status":"Resolved","targetVisible":true,"approvedAt":"2026-08-20T10:00:00+05:00","resolvedAt":"2026-08-21T15:00:00+05:00"},{"id":"CMP-JCX-AUG-002","sourceRole":"Student","sourceName":"Ali Khan","targetRole":"Department","targetName":"IT Support","related":"Student Portal","category":"Portal / IT","priority":"Normal","subject":"Homework attachment preview issue","details":"Attachment preview was not opening on the student portal.","submitted":"2026-08-11T13:00:00+05:00","status":"Resolved","targetVisible":true,"approvedAt":"2026-08-11T14:00:00+05:00","resolvedAt":"2026-08-12T12:00:00+05:00"},{"id":"CMP-JCX-JUL-001","sourceRole":"Parent","sourceName":"Ahsan Khan","targetRole":"Department","targetName":"Transport Office","related":"Ali Khan \u00b7 Route A","category":"Transport","priority":"Medium","subject":"Pickup timing concern","details":"Requested review of route pickup timing.","submitted":"2026-07-12T08:30:00+05:00","status":"Resolved","targetVisible":true,"approvedAt":"2026-07-12T10:00:00+05:00","resolvedAt":"2026-07-13T11:30:00+05:00"}];
+  function adminV114Merge(a,b){const ids=new Set(a.map(x=>x.id));b.forEach(x=>{if(!ids.has(x.id)){a.push(JSON.parse(JSON.stringify(x)));ids.add(x.id);}});}
+  function adminV114Migrate(){const m=getAdminMeetingV113State();adminV114Merge(m.requests,ADMIN_V114_MIGRATION_MEET);adminV114Merge(m.sessions,ADMIN_V114_MIGRATION_SESS);saveAdminMeetingV113State(m);const c=getAdminComplaintV113State();adminV114Merge(c.cases,ADMIN_V114_MIGRATION_COMP);saveAdminComplaintV113State(c);}
+  function adminV114MonthKey(v){if(!v)return'';const d=new Date(v);if(!isNaN(d))return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;return String(v).slice(0,7);}
+  function adminV114Label(k){const [y,m]=k.split('-').map(Number);return new Date(y,m-1,1).toLocaleDateString('en-GB',{month:'long',year:'numeric'});}
+  function adminV114Fill(id,dates){const e=document.getElementById(id);if(!e)return'';const old=e.value, months=[...new Set(dates.map(adminV114MonthKey).filter(Boolean))].sort().reverse();e.innerHTML=months.map(k=>`<option value="${k}">${adminV114Label(k)}</option>`).join('');e.value=months.includes(old)?old:(months[0]||'');return e.value;}
+  function renderAdminMeetingV114History(){adminV114Migrate();const s=getAdminMeetingV113State(),month=adminV114Fill('adminMeetingV114Month',s.requests.map(x=>x.submitted));if(!month)return;const r=s.requests.filter(x=>adminV114MonthKey(x.submitted)===month),sess=s.sessions.filter(x=>adminV114MonthKey(x.date)===month),pending=r.filter(x=>['Pending Admin Approval','Returned'].includes(x.status)).length,approved=r.filter(x=>x.status==='Approved & Forwarded').length,closed=sess.filter(x=>['Completed','Cancelled'].includes(x.status)).length;document.getElementById('adminMeetingV114MonthSummary').textContent=`${r.length} requests · ${sess.length} official sessions · ${adminV114Label(month)}`;document.getElementById('adminMeetingV114MonthCards').innerHTML=`<div class="rounded-2xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="text-[9px] text-slate-400">Requests</p><p class="mt-1 text-2xl font-extrabold">${r.length}</p></div><div class="rounded-2xl bg-amber-50 p-4 dark:bg-amber-950/20"><p class="text-[9px] text-slate-400">Awaiting Admin</p><p class="mt-1 text-2xl font-extrabold text-amber-600">${pending}</p></div><div class="rounded-2xl bg-blue-50 p-4 dark:bg-blue-950/20"><p class="text-[9px] text-slate-400">Approved</p><p class="mt-1 text-2xl font-extrabold text-blue-600">${approved}</p></div><div class="rounded-2xl bg-emerald-50 p-4 dark:bg-emerald-950/20"><p class="text-[9px] text-slate-400">Completed / Cancelled</p><p class="mt-1 text-2xl font-extrabold text-emerald-600">${closed}</p></div>`;document.getElementById('adminMeetingV114HistoryList').innerHTML=r.length?r.sort((a,b)=>new Date(b.submitted)-new Date(a.submitted)).map(x=>{const ss=s.sessions.find(z=>z.id===x.approvedSessionId||z.requestId===x.id);return `<details class="rounded-2xl border border-slate-200 p-4 dark:border-zinc-800"><summary class="cursor-pointer list-none"><div class="flex items-center justify-between gap-3"><div><p class="text-xs font-extrabold">${escV113(x.sourceName)} → ${escV113(x.targetName)}</p><p class="mt-1 text-[10px] text-slate-400">${escV113(x.id)} · ${escV113(x.status)}</p></div><span class="text-[10px] font-extrabold text-indigo-600">AUDIT DETAIL +</span></div></summary><div class="mt-4 border-t border-slate-100 pt-4 text-xs dark:border-zinc-800"><p><b>Reason:</b> ${escV113(x.reason)}</p><p class="mt-2"><b>Submitted:</b> ${escV113(x.submitted)}</p><p class="mt-2"><b>Preferred:</b> ${escV113(x.preferred)}</p>${ss?`<p class="mt-2"><b>Official session:</b> ${escV113(ss.date)} ${escV113(ss.time)} · ${escV113(ss.provider)} · ${escV113(ss.status)}</p>`:''}</div></details>`}).join(''):'<p class="text-xs text-slate-400">No records for this month.</p>';}
+  function renderAdminComplaintV114History(){adminV114Migrate();const s=getAdminComplaintV113State(),month=adminV114Fill('adminComplaintV114Month',s.cases.map(x=>x.submitted));if(!month)return;const r=s.cases.filter(x=>adminV114MonthKey(x.submitted)===month),pending=r.filter(x=>['Pending Admin Approval','Returned'].includes(x.status)).length,forwarded=r.filter(x=>['Approved & Forwarded','In Review'].includes(x.status)).length,resolved=r.filter(x=>x.status==='Resolved').length;document.getElementById('adminComplaintV114MonthSummary').textContent=`${r.length} cases · ${adminV114Label(month)}`;document.getElementById('adminComplaintV114MonthCards').innerHTML=`<div class="rounded-2xl bg-slate-50 p-4 dark:bg-zinc-950"><p class="text-[9px] text-slate-400">Total Cases</p><p class="mt-1 text-2xl font-extrabold">${r.length}</p></div><div class="rounded-2xl bg-amber-50 p-4 dark:bg-amber-950/20"><p class="text-[9px] text-slate-400">Awaiting Admin</p><p class="mt-1 text-2xl font-extrabold text-amber-600">${pending}</p></div><div class="rounded-2xl bg-blue-50 p-4 dark:bg-blue-950/20"><p class="text-[9px] text-slate-400">Forwarded / Review</p><p class="mt-1 text-2xl font-extrabold text-blue-600">${forwarded}</p></div><div class="rounded-2xl bg-emerald-50 p-4 dark:bg-emerald-950/20"><p class="text-[9px] text-slate-400">Resolved</p><p class="mt-1 text-2xl font-extrabold text-emerald-600">${resolved}</p></div>`;document.getElementById('adminComplaintV114HistoryList').innerHTML=r.length?r.sort((a,b)=>new Date(b.submitted)-new Date(a.submitted)).map(x=>`<details class="rounded-2xl border border-slate-200 p-4 dark:border-zinc-800"><summary class="cursor-pointer list-none"><div class="flex items-center justify-between gap-3"><div><p class="text-xs font-extrabold">${escV113(x.subject)}</p><p class="mt-1 text-[10px] text-slate-400">${escV113(x.sourceName)} → ${escV113(x.targetName)} · ${escV113(x.status)}</p></div><span class="text-[10px] font-extrabold text-indigo-600">AUDIT DETAIL +</span></div></summary><div class="mt-4 border-t border-slate-100 pt-4 text-xs dark:border-zinc-800"><p>${escV113(x.details)}</p><p class="mt-2"><b>Case:</b> ${escV113(x.id)} · <b>Category:</b> ${escV113(x.category)} · <b>Priority:</b> ${escV113(x.priority)}</p><p class="mt-2"><b>Submitted:</b> ${escV113(x.submitted)}</p><p class="mt-2"><b>Target visible:</b> ${x.targetVisible?'Yes — Admin approved':'No — Admin only'}</p></div></details>`).join(''):'<p class="text-xs text-slate-400">No cases for this month.</p>';}
+  adminV114Migrate();
+  const _adminV114OldMeetRender=renderAdminMeetingV113All;renderAdminMeetingV113All=function(){_adminV114OldMeetRender();setTimeout(renderAdminMeetingV114History,0);};
+  const _adminV114OldCompRender=renderAdminComplaintV113;renderAdminComplaintV113=function(){_adminV114OldCompRender();setTimeout(renderAdminComplaintV114History,0);};
+  document.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{renderAdminMeetingV114History();renderAdminComplaintV114History();},0)});
+
 </script>
 
 </body>
